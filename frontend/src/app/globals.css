@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   *, *::before, *::after {
     box-sizing: border-box;
@@ -74,7 +76,7 @@ html.dark .glass-panel-hover:hover {
 }
 
 html.light .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid #e2e8f0;
@@ -92,13 +94,13 @@ html.light .glass-panel-hover:hover {
 
 /* Gradients and Accent Glows */
 .gradient-text {
-  background: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #0284c7 100%);
+  background: linear-gradient(135deg, #4338ca 0%, #7e22ce 50%, #0369a1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 html.dark .gradient-text {
-  background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #38bdf8 100%);
+  background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #38bdf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -111,182 +113,15 @@ html.dark .gradient-text {
   box-shadow: 0 0 40px -10px rgba(168, 85, 247, 0.35);
 }
 
-/* Light Theme Component Adaptations */
+/* Light Theme Global Defaults */
 html.light body {
   background-color: #f8fafc;
   color: #0f172a;
 }
 
-html.light header {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  border-color: #e2e8f0 !important;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-}
-
-html.light footer {
-  background-color: #ffffff !important;
-  border-color: #e2e8f0 !important;
-}
-
-html.light .bg-slate-950,
-html.light .bg-slate-950\/90,
-html.light .bg-slate-950\/85,
-html.light .bg-slate-950\/80 {
-  background-color: #ffffff;
-}
-
-html.light .bg-slate-950\/40,
-html.light .bg-slate-950\/30 {
-  background-color: rgba(248, 250, 252, 0.7);
-}
-
-html.light .bg-slate-900,
-html.light .bg-slate-900\/90,
-html.light .bg-slate-900\/80 {
-  background-color: #f8fafc;
-}
-
-html.light .bg-slate-900\/60,
-html.light .bg-slate-900\/50,
-html.light .bg-slate-900\/40 {
-  background-color: #f1f5f9;
-}
-
-html.light .bg-slate-800,
-html.light .bg-slate-800\/90,
-html.light .bg-slate-800\/80,
-html.light .bg-slate-800\/60,
-html.light .bg-slate-800\/40 {
-  background-color: #f1f5f9;
-}
-
-html.light .border-slate-800,
-html.light .border-slate-800\/80,
-html.light .border-slate-700,
-html.light .border-slate-700\/60 {
-  border-color: #e2e8f0;
-}
-
-/* Light theme headings and text hierarchy */
-html.light h1.text-white,
-html.light h2.text-white,
-html.light h3.text-white,
-html.light h4.text-white,
-html.light p.text-white,
-html.light span.text-white:not([class*="bg-indigo-"]):not([class*="bg-purple-"]):not([class*="bg-emerald-"]):not([class*="bg-blue-"]):not([class*="bg-rose-"]):not([class*="bg-gradient-"]),
-html.light div.text-white:not([class*="bg-indigo-"]):not([class*="bg-purple-"]):not([class*="bg-emerald-"]):not([class*="bg-blue-"]):not([class*="bg-rose-"]):not([class*="bg-gradient-"]) {
-  color: #0f172a;
-}
-
-html.light .text-slate-100,
-html.light .text-slate-200,
-html.light .text-slate-300 {
-  color: #334155;
-}
-
-html.light .text-slate-400,
-html.light .text-slate-500 {
-  color: #64748b;
-}
-
-/* Accessible Accent Text for Light Mode */
-html.light .text-indigo-400,
-html.light .text-indigo-300 {
-  color: #4f46e5;
-}
-
-html.light .text-emerald-400,
-html.light .text-emerald-300 {
-  color: #059669;
-}
-
-html.light .text-purple-400,
-html.light .text-purple-300 {
-  color: #7c3aed;
-}
-
-html.light .text-blue-400,
-html.light .text-blue-300 {
-  color: #2563eb;
-}
-
-html.light .text-amber-400,
-html.light .text-amber-300 {
-  color: #d97706;
-}
-
-html.light .text-rose-400,
-html.light .text-rose-300 {
-  color: #e11d48;
-}
-
-html.light .text-teal-400,
-html.light .text-teal-300 {
-  color: #0d9488;
-}
-
-/* Light Theme Banner Gradients */
-html.light .from-indigo-950,
-html.light .from-indigo-950\/80,
-html.light .from-indigo-950\/40,
-html.light .from-indigo-950\/30 {
-  --tw-gradient-from: #e0e7ff var(--tw-gradient-from-position);
-}
-
-html.light .to-purple-950,
-html.light .to-purple-950\/80,
-html.light .to-purple-950\/40,
-html.light .to-purple-950\/30 {
-  --tw-gradient-to: #f3e8ff var(--tw-gradient-to-position);
-}
-
-html.light .via-slate-900 {
-  --tw-gradient-via: #ffffff var(--tw-gradient-via-position);
-}
-
-html.light .bg-indigo-950\/40,
-html.light .bg-indigo-950\/30,
-html.light .bg-indigo-950\/20 {
-  background-color: rgba(238, 242, 255, 0.85);
-}
-
-html.light .bg-purple-950\/40,
-html.light .bg-purple-950\/30 {
-  background-color: rgba(250, 245, 255, 0.85);
-}
-
-html.light .bg-emerald-950\/30,
-html.light .bg-emerald-950\/20,
-html.light .bg-emerald-950\/10 {
-  background-color: rgba(236, 253, 245, 0.85);
-}
-
-html.light .bg-rose-950\/20 {
-  background-color: rgba(255, 241, 242, 0.85);
-}
-
-html.light .bg-amber-950\/10 {
-  background-color: rgba(254, 252, 232, 0.85);
-}
-
-/* Light Theme Form Controls */
-html.light input:not([type="checkbox"]):not([type="radio"]),
-html.light textarea,
-html.light select {
-  background-color: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  color: #0f172a !important;
-}
-
-html.light input::placeholder,
-html.light textarea::placeholder {
-  color: #94a3b8 !important;
-}
-
-/* Light Theme Modals & Dialogs */
-html.light .bg-slate-950\/80,
-html.light .bg-slate-950\/85 {
-  background-color: rgba(15, 23, 42, 0.45);
+html.dark body {
+  background-color: #0b0f19;
+  color: #f8fafc;
 }
 
 /* Custom Scrollbars */

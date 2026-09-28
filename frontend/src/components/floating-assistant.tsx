@@ -116,7 +116,7 @@ export function FloatingAssistant() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-3 sm:bottom-6 right-3 sm:right-6 z-50 flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 text-white shadow-2xl hover:scale-105 transition-all duration-300 group border border-white/20 glow-purple"
+          className="fixed bottom-3 sm:bottom-6 right-3 sm:right-6 z-50 flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 text-white shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 group border border-white/20 glow-purple cursor-pointer"
           title="Open AI Innovation Assistant"
           aria-label="Open AI Assistant"
         >
@@ -126,7 +126,7 @@ export function FloatingAssistant() {
           </div>
           <span className="text-xs font-bold tracking-wide">AI Mentor</span>
           {activeProject && (
-            <span className="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full bg-white/20 text-white/90 truncate max-w-[110px] lg:max-w-[130px]">
+            <span className="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full bg-white/20 text-white truncate max-w-[110px] lg:max-w-[130px] font-semibold">
               {activeProject.domain}
             </span>
           )}
@@ -136,31 +136,31 @@ export function FloatingAssistant() {
       {/* Assistant Modal / Drawer */}
       {isOpen && (
         <div
-          className={`fixed bottom-3 sm:bottom-6 right-3 sm:right-6 z-50 flex flex-col rounded-2xl bg-slate-950 dark:bg-slate-950 border border-slate-700 shadow-2xl overflow-hidden transition-all duration-300 animate-in fade-in slide-in-from-bottom-6 max-w-[calc(100vw-1.5rem)] max-h-[88vh] ${
+          className={`fixed bottom-3 sm:bottom-6 right-3 sm:right-6 z-50 flex flex-col rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden transition-all duration-300 animate-in fade-in slide-in-from-bottom-6 max-w-[calc(100vw-1.5rem)] max-h-[88vh] ${
             isExpanded
               ? 'w-[calc(100vw-1.5rem)] md:w-[650px] h-[80vh]'
               : 'w-[calc(100vw-1.5rem)] sm:w-[420px] h-[540px] max-h-[85vh]'
           }`}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-3.5 bg-gradient-to-r from-indigo-950/80 via-slate-900 to-purple-950/80 border-b border-slate-800 shrink-0">
+          <div className="flex items-center justify-between p-3.5 bg-gradient-to-r from-indigo-50/90 via-slate-50 to-purple-50/90 dark:from-indigo-950/80 dark:via-slate-900 dark:to-purple-950/80 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div className="flex items-center gap-2.5">
-              <div className="h-8 w-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow">
+              <div className="h-8 w-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-xs">
                 <Bot className="h-4 w-4" />
               </div>
               <div>
-                <h3 className="text-xs font-bold text-white flex items-center gap-1.5">
+                <h3 className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
                   AI Innovation Mentor
-                  <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30 font-bold">
                     Online
                   </span>
                 </h3>
                 {activeProject ? (
-                  <p className="text-[10px] text-slate-400 truncate max-w-[200px] sm:max-w-[240px]">
-                    Context: <span className="text-indigo-300 font-medium">{activeProject.title}</span>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[200px] sm:max-w-[240px]">
+                    Context: <span className="text-indigo-600 dark:text-indigo-300 font-semibold">{activeProject.title}</span>
                   </p>
                 ) : (
-                  <p className="text-[10px] text-slate-400">Global Innovation Context</p>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400">Global Innovation Context</p>
                 )}
               </div>
             </div>
@@ -168,7 +168,7 @@ export function FloatingAssistant() {
             <div className="flex items-center gap-1">
               <button
                 onClick={handleResetChat}
-                className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 dark:text-slate-400 dark:hover:text-white rounded-lg dark:hover:bg-slate-800 transition-colors cursor-pointer"
                 title="Reset Conversation"
                 aria-label="Reset Conversation"
               >
@@ -176,7 +176,7 @@ export function FloatingAssistant() {
               </button>
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 dark:text-slate-400 dark:hover:text-white rounded-lg dark:hover:bg-slate-800 transition-colors cursor-pointer"
                 title={isExpanded ? 'Collapse' : 'Expand'}
                 aria-label={isExpanded ? 'Collapse' : 'Expand'}
               >
@@ -184,7 +184,7 @@ export function FloatingAssistant() {
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 dark:text-slate-400 dark:hover:text-white rounded-lg dark:hover:bg-slate-800 transition-colors cursor-pointer"
                 title="Close"
                 aria-label="Close"
               >
@@ -194,23 +194,23 @@ export function FloatingAssistant() {
           </div>
 
           {/* Chat Messages Body */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-slate-950/60">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-slate-50/50 dark:bg-slate-950/60">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
                 className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'} group`}
               >
                 {msg.role !== 'user' && (
-                  <div className="h-6 w-6 rounded-md bg-indigo-600/30 border border-indigo-500/30 flex items-center justify-center shrink-0 mt-0.5">
-                    <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
+                  <div className="h-6 w-6 rounded-md bg-indigo-100 dark:bg-indigo-600/30 border border-indigo-200 dark:border-indigo-500/30 flex items-center justify-center shrink-0 mt-0.5">
+                    <Sparkles className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
                   </div>
                 )}
                 <div className="relative max-w-[85%]">
                   <div
                     className={`rounded-2xl px-3.5 py-2.5 text-xs leading-relaxed ${
                       msg.role === 'user'
-                        ? 'bg-indigo-600 text-white rounded-br-none shadow'
-                        : 'bg-slate-900 border border-slate-800 text-slate-200 rounded-tl-none prose prose-invert prose-xs'
+                        ? 'bg-indigo-600 text-white rounded-br-none shadow-xs font-medium'
+                        : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 rounded-tl-none shadow-2xs'
                     }`}
                   >
                     <div className="whitespace-pre-wrap">{msg.content}</div>
@@ -219,10 +219,10 @@ export function FloatingAssistant() {
                   {msg.role !== 'user' && (
                     <button
                       onClick={() => handleCopy(msg.content, idx)}
-                      className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1 rounded bg-slate-800 text-slate-400 hover:text-white transition-opacity"
+                      className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-opacity shadow-xs cursor-pointer"
                       title="Copy message"
                     >
-                      {copiedIndex === idx ? <Check className="h-3 w-3 text-emerald-400" /> : <Copy className="h-3 w-3" />}
+                      {copiedIndex === idx ? <Check className="h-3 w-3 text-emerald-600 dark:text-emerald-400" /> : <Copy className="h-3 w-3" />}
                     </button>
                   )}
                 </div>
@@ -230,8 +230,8 @@ export function FloatingAssistant() {
             ))}
 
             {isLoading && (
-              <div className="flex gap-2 items-center text-xs text-indigo-400 bg-slate-900/80 p-3 rounded-2xl w-fit border border-slate-800 animate-pulse">
-                <Loader2 className="h-3.5 w-3.5 animate-spin text-indigo-400" />
+              <div className="flex gap-2 items-center text-xs text-indigo-700 dark:text-indigo-300 bg-white dark:bg-slate-900/80 p-3 rounded-2xl w-fit border border-indigo-100 dark:border-slate-800 animate-pulse shadow-xs">
+                <Loader2 className="h-3.5 w-3.5 animate-spin text-indigo-600 dark:text-indigo-400" />
                 <span>AI Mentor is analyzing project context & literature...</span>
               </div>
             )}
@@ -239,14 +239,14 @@ export function FloatingAssistant() {
           </div>
 
           {/* Quick Starter Chips */}
-          <div className="p-2 border-t border-slate-800 bg-slate-900/70 shrink-0">
+          <div className="p-2 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/70 shrink-0">
             <div className="flex gap-1.5 overflow-x-auto pb-1 no-scrollbar">
               {starterPrompts.map((p, i) => (
                 <button
                   key={i}
                   onClick={() => handleSend(p.query)}
                   disabled={isLoading}
-                  className="whitespace-nowrap px-2.5 py-1 rounded-full bg-slate-800 hover:bg-indigo-600/30 hover:border-indigo-500/40 border border-slate-700 text-[10px] text-slate-300 hover:text-white transition-all shrink-0"
+                  className="whitespace-nowrap px-2.5 py-1 rounded-full bg-white hover:bg-indigo-50 hover:border-indigo-300 dark:bg-slate-800 dark:hover:bg-indigo-600/30 dark:hover:border-indigo-500/40 border border-slate-200 dark:border-slate-700 text-[10px] text-slate-700 hover:text-indigo-700 dark:text-slate-300 dark:hover:text-white transition-all shrink-0 cursor-pointer shadow-2xs"
                 >
                   {p.label}
                 </button>
@@ -260,7 +260,7 @@ export function FloatingAssistant() {
               e.preventDefault();
               handleSend();
             }}
-            className="p-3 bg-slate-900 border-t border-slate-800 flex items-center gap-2 shrink-0"
+            className="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2 shrink-0"
           >
             <input
               type="text"
@@ -271,12 +271,12 @@ export function FloatingAssistant() {
                   ? `Ask about ${activeProject.title}...`
                   : 'Ask about technologies, datasets, roadmaps...'
               }
-              className="flex-1 bg-slate-950 border border-slate-700/80 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
+              className="flex-1 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700/80 rounded-xl px-3.5 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
             />
             <button
               type="submit"
               disabled={!input.trim() || isLoading}
-              className="h-8 w-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shrink-0 shadow"
+              className="h-8 w-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shrink-0 shadow-xs cursor-pointer"
               aria-label="Send message"
             >
               <Send className="h-3.5 w-3.5" />
