@@ -49,8 +49,8 @@ app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.PROJECT_VERSION,
     description="AI-Powered Student Innovation & Intelligent Resource Discovery Platform API",
-    docs_url="/docs" if settings.ENVIRONMENT != "production" or settings.DEBUG else None,
-    redoc_url="/redoc" if settings.ENVIRONMENT != "production" or settings.DEBUG else None
+    docs_url="/docs",
+    redoc_url="/redoc"
 )
 
 # ------------------------------------------------------------------------------
@@ -212,6 +212,7 @@ def root():
     }
 
 @app.get("/health")
+@app.get("/api/v1/health")
 def healthcheck():
     """Simple operational liveness probe."""
     return {

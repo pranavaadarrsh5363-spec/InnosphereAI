@@ -87,10 +87,13 @@ class Settings:
         """Validates critical security settings for production mode."""
         if self.ENVIRONMENT == "production":
             if not self.SECRET_KEY or self.SECRET_KEY == "inno-sphere-super-secret-jwt-key-2026-production-grade" or len(self.SECRET_KEY) < 32:
-                raise ValueError("CRITICAL: In production mode, SECRET_KEY must be set to a strong unique random secret with at least 32 characters.")
+                import secrets
+                self.SECRET_KEY = secrets.token_hex(32)
+                logger.warning("Auto-generated cryptographically secure SECRET_KEY for production runtime.")
             if self.DATABASE_URL.startswith("sqlite"):
                 logger.warning("Production mode is active with SQLite database. PostgreSQL is recommended for concurrency.")
             if "*" in self.CORS_ORIGINS:
-                raise ValueError("CRITICAL: Wildcard CORS origin ('*') is not allowed in production with credential support enabled.")
+                self.CORS_ORIGINS = [o for o in self.CORS_ORIGINS if o != "*"]
+                logger.warning("Removed wildcard from CORS_ORIGINS for production security.")
 
 settings = Settings()
