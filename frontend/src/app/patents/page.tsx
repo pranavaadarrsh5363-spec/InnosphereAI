@@ -81,18 +81,18 @@ export default function GlobalPatentHubPage() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50/50 text-slate-900 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Academic Page Header */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xs">
+        <div className="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-xs">
           <div className="max-w-3xl space-y-2">
-            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
-              <Scale className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" /> Evidence-Grounded Patent & Prior-Art Intelligence
+            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">
+              <Scale className="w-3.5 h-3.5 text-amber-600" /> Evidence-Grounded Patent & Prior-Art Intelligence
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
               Patent & Prior-Art Explorer
             </h1>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               Discover related patent publications, extract technical features, analyze potential overlaps, and identify technical differentiation opportunities for your innovation project.
             </p>
           </div>
@@ -116,16 +116,16 @@ export default function GlobalPatentHubPage() {
           {providers.map((p, idx) => (
             <div
               key={idx}
-              className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center justify-between shadow-xs"
+              className="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between shadow-xs"
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <Globe className="w-4 h-4 text-indigo-400" />
-                  <span className="text-xs font-bold text-slate-900 dark:text-white">
+                  <span className="text-xs font-bold text-slate-900">
                     {p.provider_name}
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                <p className="text-[11px] text-slate-500">
                   {p.description}
                 </p>
               </div>
@@ -145,18 +145,18 @@ export default function GlobalPatentHubPage() {
 
         {/* Flagship Prior-Art Spotlight */}
         {flagshipData && (
-          <div className="bg-white dark:bg-slate-900 border border-amber-200 dark:border-amber-900/60 rounded-3xl p-6 sm:p-8 shadow-md relative overflow-hidden space-y-6">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+          <div className="bg-white border border-amber-200 rounded-3xl p-6 sm:p-8 shadow-md relative overflow-hidden space-y-6">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
                     FLAGSHIP PROJECT PRIOR ART
                   </span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">
+                  <span className="text-xs text-slate-500">
                     Search Coverage: <span className="font-semibold text-emerald-400">{flagshipData.search_coverage_score}%</span> • {flagshipData.result_count} Identified Publications
                   </span>
                 </div>
-                <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                <h2 className="text-lg sm:text-xl font-bold text-slate-900">
                   Active Prior-Art Intelligence Overview
                 </h2>
               </div>
@@ -185,7 +185,7 @@ export default function GlobalPatentHubPage() {
                 return (
                   <div
                     key={idx}
-                    className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 hover:border-amber-500/40 transition-colors"
+                    className="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col justify-between space-y-4 hover:border-amber-500/40 transition-colors"
                   >
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
@@ -196,16 +196,16 @@ export default function GlobalPatentHubPage() {
                           {overlapLevel} OVERLAP ({simScore}%)
                         </span>
                       </div>
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-white line-clamp-2">
+                      <h3 className="text-sm font-bold text-slate-900 line-clamp-2">
                         {doc?.title}
                       </h3>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-3">
+                      <p className="text-xs text-slate-600 line-clamp-3">
                         {doc?.abstract}
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-slate-200 dark:border-slate-800/80 space-y-2">
-                      <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="pt-3 border-t border-slate-200 space-y-2">
+                      <div className="flex items-center justify-between text-[11px] text-slate-500">
                         <span className="flex items-center gap-1">
                           <Building className="w-3.5 h-3.5" />
                           <span className="truncate max-w-[140px]">{doc?.assignees?.[0] || 'Public Record'}</span>
@@ -233,11 +233,11 @@ export default function GlobalPatentHubPage() {
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
             <div>
-              <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">
                 <Layers className="w-5 h-5 text-amber-500" />
                 Select Innovation Project to Explore Prior Art
               </h2>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-xs sm:text-sm text-slate-500">
                 Choose from your innovation projects to extract technical concepts and run multi-stage patent investigations.
               </p>
             </div>
@@ -252,7 +252,7 @@ export default function GlobalPatentHubPage() {
                   className={`px-3 py-1 rounded-full text-xs font-medium shrink-0 transition-colors ${
                     selectedDomain === dom
                       ? 'bg-amber-600 text-white font-semibold'
-                      : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:border-amber-500/40'
+                      : 'bg-white border border-slate-200 text-slate-600 hover:border-amber-500/40'
                   }`}
                 >
                   {dom}
@@ -269,7 +269,7 @@ export default function GlobalPatentHubPage() {
               placeholder="Search projects by title, problem, domain, or technology..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-xl text-xs sm:text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500 transition-colors"
+              className="w-full pl-10 pr-4 py-2 rounded-xl text-xs sm:text-sm bg-white border border-slate-200 text-slate-900 focus:outline-none focus:border-amber-500 transition-colors"
             />
           </div>
         </div>
@@ -280,7 +280,7 @@ export default function GlobalPatentHubPage() {
             <RefreshCw className="w-8 h-8 text-amber-500 animate-spin" />
           </div>
         ) : filteredProjects.length === 0 ? (
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center space-y-3">
+          <div className="bg-white border border-slate-200 rounded-2xl p-8 text-center space-y-3">
             <p className="text-sm text-slate-400">No projects match your search criteria.</p>
             <Link
               href="/submit-idea"
@@ -294,11 +294,11 @@ export default function GlobalPatentHubPage() {
             {filteredProjects.map((p) => (
               <div
                 key={p.id}
-                className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-amber-500/50 hover:shadow-lg transition-all group"
+                className="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-amber-500/50 hover:shadow-lg transition-all group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
                       {p.domain || 'Technology'}
                     </span>
                     <span className="text-[11px] text-slate-400 font-mono">
@@ -306,11 +306,11 @@ export default function GlobalPatentHubPage() {
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-amber-400 transition-colors line-clamp-1">
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-amber-400 transition-colors line-clamp-1">
                     {p.title}
                   </h3>
 
-                  <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2">
+                  <p className="text-xs text-slate-600 line-clamp-2">
                     {p.problem_statement || p.description}
                   </p>
 
@@ -319,7 +319,7 @@ export default function GlobalPatentHubPage() {
                       {p.technologies.slice(0, 3).map((t, idx) => (
                         <span
                           key={idx}
-                          className="px-2 py-0.5 rounded-md text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono"
+                          className="px-2 py-0.5 rounded-md text-[10px] bg-slate-100 text-slate-700 font-mono"
                         >
                           {t}
                         </span>
@@ -333,14 +333,14 @@ export default function GlobalPatentHubPage() {
                   )}
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-xs text-amber-400 font-medium">
                     <Scale className="w-3.5 h-3.5" />
                     Prior-Art Engine Ready
                   </div>
                   <Link
                     href={`/projects/${p.id}/patents`}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-amber-600 hover:text-white dark:hover:bg-amber-600 text-slate-800 dark:text-slate-200 transition-all"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-amber-600 hover:text-white text-slate-800 transition-all"
                   >
                     <span>Analyze Art</span>
                     <ArrowRight className="w-3.5 h-3.5" />

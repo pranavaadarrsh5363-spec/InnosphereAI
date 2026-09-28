@@ -62,18 +62,18 @@ export default function GlobalKnowledgeGraphHubPage() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50/50 text-slate-900 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Academic Page Header */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xs">
+        <div className="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-xs">
           <div className="max-w-3xl space-y-2">
-            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
-              <Share2 className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" /> Evidence-Grounded Cross-System Intelligence
+            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+              <Share2 className="w-3.5 h-3.5 text-indigo-600" /> Evidence-Grounded Cross-System Intelligence
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
               Knowledge Graph
             </h1>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               Explore the relationships between ideas, research literature, technologies, datasets, hardware, experiments, validation evidence, and architecture. Generated from project telemetry for students, mentors, and academic reviewers.
             </p>
           </div>
@@ -81,20 +81,20 @@ export default function GlobalKnowledgeGraphHubPage() {
 
         {/* Flagship Graph Spotlight Banner */}
         {flagshipGraph && (
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-xs relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-xs relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
                   FLAGSHIP INNOVATION GRAPH
                 </span>
-                <span className="text-xs text-slate-500 dark:text-slate-400">
+                <span className="text-xs text-slate-500">
                   Version {flagshipGraph.version} • {flagshipGraph.stats?.total_nodes || 0} Entities • {flagshipGraph.stats?.total_edges || 0} Relationships
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+              <h2 className="text-base sm:text-lg font-bold text-slate-900">
                 {flagshipGraph.name}
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
+              <p className="text-xs sm:text-sm text-slate-600 max-w-2xl">
                 {flagshipGraph.insights?.summary || 'Interactive graph connecting problem definition, technical stack, edge telemetry, and empirical experiments.'}
               </p>
             </div>
@@ -108,9 +108,9 @@ export default function GlobalKnowledgeGraphHubPage() {
         )}
 
         {/* 17 Canonical Entities Grid */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-4">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
               <Boxes className="w-4 h-4 text-indigo-500" /> Supported Innovation Entity Categories
             </h2>
             <span className="text-xs text-slate-400">17 Canonical Entity Types</span>
@@ -137,14 +137,14 @@ export default function GlobalKnowledgeGraphHubPage() {
             ]).map((cat) => (
               <div
                 key={cat.category}
-                className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 flex items-center gap-2.5"
+                className="p-3 rounded-xl border border-slate-200 bg-slate-50 flex items-center gap-2.5"
               >
                 <div
                   className="w-3 h-3 rounded-full shrink-0"
                   style={{ backgroundColor: cat.color }}
                 />
                 <div className="truncate">
-                  <div className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate">
+                  <div className="text-xs font-semibold text-slate-800 truncate">
                     {cat.label}
                   </div>
                   <div className="text-[10px] text-slate-400 font-mono truncate">
@@ -160,10 +160,10 @@ export default function GlobalKnowledgeGraphHubPage() {
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+              <h2 className="text-lg font-bold text-slate-900">
                 Project Knowledge Graphs
               </h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-500">
                 Select an innovation project to explore its interactive relationship graph, diagnostics, and AI insights.
               </p>
             </div>
@@ -177,7 +177,7 @@ export default function GlobalKnowledgeGraphHubPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search projects..."
-                  className="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+                  className="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
@@ -185,7 +185,7 @@ export default function GlobalKnowledgeGraphHubPage() {
               <select
                 value={selectedDomain}
                 onChange={(e) => setSelectedDomain(e.target.value)}
-                className="px-3 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+                className="px-3 py-1.5 text-xs rounded-xl border border-slate-200 bg-white text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
               >
                 {domains.map((d) => (
                   <option key={d} value={d}>
@@ -203,7 +203,7 @@ export default function GlobalKnowledgeGraphHubPage() {
               Loading project knowledge graphs...
             </div>
           ) : filteredProjects.length === 0 ? (
-            <div className="p-12 text-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-400 text-xs">
+            <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl text-slate-400 text-xs">
               No projects found matching your criteria.
             </div>
           ) : (
@@ -211,11 +211,11 @@ export default function GlobalKnowledgeGraphHubPage() {
               {filteredProjects.map((p) => (
                 <div
                   key={p.id}
-                  className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-xs hover:border-indigo-500/50 transition-all flex flex-col justify-between group"
+                  className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs hover:border-indigo-500/50 transition-all flex flex-col justify-between group"
                 >
                   <div className="space-y-3">
                     <div className="flex items-start justify-between gap-2">
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200/50 dark:border-indigo-800/40">
+                      <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-200/50">
                         {p.domain}
                       </span>
                       <span className="text-[10px] text-slate-400">
@@ -224,10 +224,10 @@ export default function GlobalKnowledgeGraphHubPage() {
                     </div>
 
                     <div>
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      <h3 className="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
                         {p.title}
                       </h3>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
                         {p.problem_statement}
                       </p>
                     </div>
@@ -238,13 +238,13 @@ export default function GlobalKnowledgeGraphHubPage() {
                         {p.technologies.slice(0, 3).map((t: string) => (
                           <span
                             key={t}
-                            className="px-1.5 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                            className="px-1.5 py-0.5 rounded text-[10px] bg-slate-100 text-slate-600"
                           >
                             {t}
                           </span>
                         ))}
                         {p.technologies.length > 3 && (
-                          <span className="px-1.5 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-400">
+                          <span className="px-1.5 py-0.5 rounded text-[10px] bg-slate-100 text-slate-400">
                             +{p.technologies.length - 3} more
                           </span>
                         )}
@@ -252,13 +252,13 @@ export default function GlobalKnowledgeGraphHubPage() {
                     )}
                   </div>
 
-                  <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
                     <span className="text-[11px] text-slate-400 flex items-center gap-1">
                       <Share2 className="w-3 h-3 text-indigo-500" /> Evidence-Grounded
                     </span>
                     <button
                       onClick={() => router.push(`/projects/${p.id}/knowledge-graph`)}
-                      className="px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/80 text-indigo-600 dark:text-indigo-400 text-xs font-semibold flex items-center gap-1 transition-colors"
+                      className="px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-600 text-xs font-semibold flex items-center gap-1 transition-colors"
                     >
                       Explore Graph <ArrowRight className="w-3.5 h-3.5" />
                     </button>

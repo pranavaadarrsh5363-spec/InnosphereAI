@@ -17,14 +17,14 @@ export function ErrorState({
   isRetrying = false,
 }: ErrorStateProps) {
   return (
-    <div className="glass-panel rounded-2xl p-6 sm:p-8 text-center max-w-md mx-auto border border-rose-500/30 bg-rose-950/10 space-y-3.5 animate-in fade-in">
-      <div className="h-12 w-12 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center mx-auto">
+    <div className="rounded-2xl p-6 sm:p-8 text-center max-w-md mx-auto border border-rose-200 bg-rose-50/50 space-y-3.5 animate-in fade-in shadow-xs">
+      <div className="h-12 w-12 rounded-xl bg-rose-100 border border-rose-200 text-rose-600 flex items-center justify-center mx-auto">
         <AlertCircle className="h-6 w-6" />
       </div>
 
       <div className="space-y-1">
-        <h4 className="text-sm font-bold text-white">{title}</h4>
-        <p className="text-xs text-slate-300 leading-relaxed">{message}</p>
+        <h4 className="text-sm font-bold text-slate-900">{title}</h4>
+        <p className="text-xs text-slate-600 leading-relaxed">{message}</p>
       </div>
 
       {onRetry && (
@@ -32,7 +32,7 @@ export function ErrorState({
           <button
             onClick={onRetry}
             disabled={isRetrying}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-semibold transition-all disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 text-xs font-semibold transition-all disabled:opacity-50 cursor-pointer shadow-xs"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isRetrying ? 'animate-spin' : ''}`} />
             <span>{isRetrying ? 'Retrying...' : 'Retry Request'}</span>

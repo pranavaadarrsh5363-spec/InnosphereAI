@@ -116,17 +116,19 @@ export function FloatingAssistant() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white dark:bg-slate-100 dark:hover:bg-white dark:text-slate-900 shadow-md hover:shadow-lg transition-all border border-slate-700 dark:border-slate-300 cursor-pointer text-xs font-semibold"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-white hover:bg-slate-50 text-slate-800 shadow-lg hover:shadow-xl transition-all border border-slate-200 cursor-pointer text-xs font-semibold"
           title="Open AI Research & Innovation Assistant"
           aria-label="Open AI Assistant"
         >
           <div className="relative flex items-center justify-center">
-            <Bot className="h-4 w-4 text-blue-400 dark:text-blue-600" />
-            <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-emerald-500 ring-2 ring-slate-900 dark:ring-slate-100" />
+            <div className="h-6 w-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+              <Bot className="h-3.5 w-3.5" />
+            </div>
+            <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-emerald-500 ring-2 ring-white" />
           </div>
           <span>AI Mentor</span>
           {activeProject && (
-            <span className="hidden sm:inline-block text-[10px] px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 dark:bg-slate-200 dark:text-slate-700 font-medium truncate max-w-[120px]">
+            <span className="hidden sm:inline-block text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium truncate max-w-[120px] border border-slate-200">
               {activeProject.domain}
             </span>
           )}
@@ -136,31 +138,31 @@ export function FloatingAssistant() {
       {/* Assistant Modal / Drawer */}
       {isOpen && (
         <div
-          className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden transition-all duration-200 animate-in fade-in slide-in-from-bottom-4 max-w-[calc(100vw-2rem)] max-h-[88vh] ${
+          className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col rounded-xl bg-white border border-slate-200 shadow-2xl overflow-hidden transition-all duration-200 animate-in fade-in slide-in-from-bottom-4 max-w-[calc(100vw-2rem)] max-h-[88vh] ${
             isExpanded
               ? 'w-[calc(100vw-2rem)] md:w-[680px] h-[80vh]'
               : 'w-[calc(100vw-2rem)] sm:w-[440px] h-[550px] max-h-[85vh]'
           }`}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <div className="flex items-center justify-between px-4 py-3 bg-slate-50 border-b border-slate-200 shrink-0">
             <div className="flex items-center gap-2.5">
-              <div className="h-7 w-7 rounded-md bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 flex items-center justify-center shadow-xs">
-                <Bot className="h-4 w-4 text-blue-400 dark:text-blue-600" />
+              <div className="h-7 w-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs">
+                <Bot className="h-4 w-4" />
               </div>
               <div>
-                <h3 className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                <h3 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
                   InnoSphere AI Mentor
-                  <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 font-semibold">
+                  <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 border border-emerald-200 font-semibold">
                     Online
                   </span>
                 </h3>
                 {activeProject ? (
-                  <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[200px] sm:max-w-[260px]">
-                    Context: <span className="text-blue-600 dark:text-blue-400 font-medium">{activeProject.title}</span>
+                  <p className="text-[10px] text-slate-500 truncate max-w-[200px] sm:max-w-[260px]">
+                    Context: <span className="text-blue-600 font-medium">{activeProject.title}</span>
                   </p>
                 ) : (
-                  <p className="text-[10px] text-slate-500 dark:text-slate-400">Global Research & Innovation Mode</p>
+                  <p className="text-[10px] text-slate-500">Global Research & Innovation Mode</p>
                 )}
               </div>
             </div>
@@ -168,7 +170,7 @@ export function FloatingAssistant() {
             <div className="flex items-center gap-1">
               <button
                 onClick={handleResetChat}
-                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 dark:text-slate-400 dark:hover:text-white rounded-md dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 rounded-md transition-colors cursor-pointer"
                 title="Reset Conversation"
                 aria-label="Reset Conversation"
               >
@@ -176,7 +178,7 @@ export function FloatingAssistant() {
               </button>
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 dark:text-slate-400 dark:hover:text-white rounded-md dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 rounded-md transition-colors cursor-pointer"
                 title={isExpanded ? 'Collapse' : 'Expand'}
                 aria-label={isExpanded ? 'Collapse' : 'Expand'}
               >
@@ -184,7 +186,7 @@ export function FloatingAssistant() {
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 dark:text-slate-400 dark:hover:text-white rounded-md dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 rounded-md transition-colors cursor-pointer"
                 title="Close"
                 aria-label="Close"
               >
@@ -194,23 +196,23 @@ export function FloatingAssistant() {
           </div>
 
           {/* Chat Messages Body */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-white dark:bg-slate-950">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-white">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
                 className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'} group`}
               >
                 {msg.role !== 'user' && (
-                  <div className="h-6 w-6 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shrink-0 mt-0.5">
-                    <Bot className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+                  <div className="h-6 w-6 rounded bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0 mt-0.5">
+                    <Bot className="h-3.5 w-3.5 text-blue-600" />
                   </div>
                 )}
                 <div className="relative max-w-[85%]">
                   <div
                     className={`rounded-lg px-3.5 py-2.5 text-xs leading-relaxed ${
                       msg.role === 'user'
-                        ? 'bg-blue-600 text-white font-medium shadow-2xs'
-                        : 'bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 shadow-2xs'
+                        ? 'bg-blue-600 text-white font-medium shadow-xs'
+                        : 'bg-slate-50 border border-slate-200 text-slate-800 shadow-xs'
                     }`}
                   >
                     <div className="whitespace-pre-wrap">{msg.content}</div>
@@ -219,10 +221,10 @@ export function FloatingAssistant() {
                   {msg.role !== 'user' && (
                     <button
                       onClick={() => handleCopy(msg.content, idx)}
-                      className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-opacity shadow-2xs cursor-pointer"
+                      className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1 rounded bg-white border border-slate-200 text-slate-500 hover:text-slate-900 transition-opacity shadow-xs cursor-pointer"
                       title="Copy response"
                     >
-                      {copiedIndex === idx ? <Check className="h-3 w-3 text-emerald-600 dark:text-emerald-400" /> : <Copy className="h-3 w-3" />}
+                      {copiedIndex === idx ? <Check className="h-3 w-3 text-emerald-600" /> : <Copy className="h-3 w-3" />}
                     </button>
                   )}
                 </div>
@@ -230,8 +232,8 @@ export function FloatingAssistant() {
             ))}
 
             {isLoading && (
-              <div className="flex gap-2 items-center text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded-lg w-fit border border-slate-200 dark:border-slate-800">
-                <Loader2 className="h-3.5 w-3.5 animate-spin text-blue-600 dark:text-blue-400" />
+              <div className="flex gap-2 items-center text-xs text-slate-600 bg-slate-50 p-3 rounded-lg w-fit border border-slate-200">
+                <Loader2 className="h-3.5 w-3.5 animate-spin text-blue-600" />
                 <span>Consulting project context and scientific literature...</span>
               </div>
             )}
@@ -239,14 +241,14 @@ export function FloatingAssistant() {
           </div>
 
           {/* Quick Starter Chips */}
-          <div className="px-3 py-2 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 shrink-0">
+          <div className="px-3 py-2 border-t border-slate-200 bg-slate-50 shrink-0">
             <div className="flex gap-1.5 overflow-x-auto pb-0.5 no-scrollbar">
               {starterPrompts.map((p, i) => (
                 <button
                   key={i}
                   onClick={() => handleSend(p.query)}
                   disabled={isLoading}
-                  className="whitespace-nowrap px-2.5 py-1 rounded-md bg-white hover:bg-slate-100 hover:border-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-[10.5px] text-slate-700 dark:text-slate-300 transition-colors shrink-0 cursor-pointer"
+                  className="whitespace-nowrap px-2.5 py-1 rounded-md bg-white hover:bg-slate-100 hover:border-slate-300 border border-slate-200 text-[10.5px] text-slate-700 transition-colors shrink-0 cursor-pointer"
                 >
                   {p.label}
                 </button>
@@ -260,7 +262,7 @@ export function FloatingAssistant() {
               e.preventDefault();
               handleSend();
             }}
-            className="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2 shrink-0"
+            className="p-3 bg-white border-t border-slate-200 flex items-center gap-2 shrink-0"
           >
             <input
               type="text"
@@ -271,7 +273,7 @@ export function FloatingAssistant() {
                   ? `Ask about ${activeProject.title}...`
                   : 'Ask about literature, datasets, tech stack, roadmaps...'
               }
-              className="flex-1 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              className="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors"
             />
             <button
               type="submit"

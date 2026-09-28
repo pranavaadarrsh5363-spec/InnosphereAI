@@ -287,20 +287,20 @@ export default function ProjectArchitecturePage() {
   const getStatusBadge = (status: string) => {
     const s = (status || '').toUpperCase();
     if (s === 'IMPLEMENTED' || s === 'VALIDATED') {
-      return 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800';
+      return 'bg-emerald-50 text-emerald-700 border-emerald-200';
     } else if (s === 'SIMULATED') {
-      return 'bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 border-amber-200 dark:border-amber-800';
+      return 'bg-amber-50 text-amber-700 border-amber-200';
     } else if (s === 'CONFIGURED' || s === 'TESTED') {
-      return 'bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 border-blue-200 dark:border-blue-800';
+      return 'bg-blue-50 text-blue-700 border-blue-200';
     } else {
-      return 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border-slate-200 dark:border-slate-700';
+      return 'bg-slate-100 text-slate-700 border-slate-200';
     }
   };
 
   const graphData = currentArch?.graph_json || { nodes: [], edges: [], layers: [] };
 
   return (
-    <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50/50 text-slate-900 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Toast Notification */}
         {syncToast && (
@@ -354,7 +354,7 @@ export default function ProjectArchitecturePage() {
         </div>
 
         {/* View Tabs Selector */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-xs">
+        <div className="bg-white border border-slate-200 rounded-2xl p-2 shadow-xs">
           <div className="flex items-center gap-1 overflow-x-auto no-scrollbar">
             {viewTabs.map((tab) => {
               const Icon = tab.icon;
@@ -366,7 +366,7 @@ export default function ProjectArchitecturePage() {
                   className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
                     isActive
                       ? 'bg-indigo-600 text-white shadow-xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                      : 'text-slate-600 hover:bg-slate-100'
                   }`}
                 >
                   <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
@@ -378,16 +378,16 @@ export default function ProjectArchitecturePage() {
         </div>
 
         {/* Mode Selector & Control Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs">
+        <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
               Layout Mode:
             </span>
-            <div className="inline-flex p-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs">
+            <div className="inline-flex p-0.5 rounded-lg bg-slate-100 text-xs">
               <button
                 onClick={() => setEditorMode('split')}
                 className={`px-3 py-1 rounded-md font-medium transition ${
-                  editorMode === 'split' ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs' : 'text-slate-600 dark:text-slate-400'
+                  editorMode === 'split' ? 'bg-white text-indigo-600 shadow-xs' : 'text-slate-600'
                 }`}
               >
                 Split View
@@ -395,7 +395,7 @@ export default function ProjectArchitecturePage() {
               <button
                 onClick={() => setEditorMode('visual')}
                 className={`px-3 py-1 rounded-md font-medium transition ${
-                  editorMode === 'visual' ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs' : 'text-slate-600 dark:text-slate-400'
+                  editorMode === 'visual' ? 'bg-white text-indigo-600 shadow-xs' : 'text-slate-600'
                 }`}
               >
                 Visual Only
@@ -403,7 +403,7 @@ export default function ProjectArchitecturePage() {
               <button
                 onClick={() => setEditorMode('code')}
                 className={`px-3 py-1 rounded-md font-medium transition ${
-                  editorMode === 'code' ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-xs' : 'text-slate-600 dark:text-slate-400'
+                  editorMode === 'code' ? 'bg-white text-indigo-600 shadow-xs' : 'text-slate-600'
                 }`}
               >
                 Mermaid Code
@@ -414,18 +414,18 @@ export default function ProjectArchitecturePage() {
           {/* Diagram State & Synchronization */}
           <div className="flex items-center gap-2">
             {currentArch?.is_customized ? (
-              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
                 Custom Edited Diagram
               </span>
             ) : (
-              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                 AI Generated & Synchronized
               </span>
             )}
 
             <button
               onClick={handleSyncRoadmap}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 transition"
               title="Add Architecture Implementation Tasks to Roadmap"
             >
               <PlusCircle className="w-3.5 h-3.5 text-indigo-500" /> Add to Roadmap
@@ -433,7 +433,7 @@ export default function ProjectArchitecturePage() {
 
             <button
               onClick={handleSyncResearch}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 transition"
               title="Insert Architecture Section into Research Paper"
             >
               <Atom className="w-3.5 h-3.5 text-purple-500" /> Insert into Research
@@ -441,7 +441,7 @@ export default function ProjectArchitecturePage() {
 
             <button
               onClick={handleOpenSimplification}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 hover:bg-amber-100 border border-amber-200 dark:border-amber-800/40 transition"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 transition"
               title="Simplify Architecture for Student Prototypes"
             >
               <Sliders className="w-3.5 h-3.5 text-amber-500" /> Simplify MVP
@@ -521,33 +521,33 @@ export default function ProjectArchitecturePage() {
 
             {/* Visual Interactive Diagram Preview (Col 7 if split, 12 if visual) */}
             {(editorMode === 'split' || editorMode === 'visual') && (
-              <div className={`${editorMode === 'visual' ? 'lg:col-span-12' : 'lg:col-span-7'} bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-5`}>
+              <div className={`${editorMode === 'visual' ? 'lg:col-span-12' : 'lg:col-span-7'} bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-5`}>
                 <div className="flex items-center justify-between">
                   <div className="space-y-0.5">
-                    <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                       <Network className="w-4 h-4 text-indigo-600" />
                       {currentArch?.name || 'Visual Architecture Preview'}
                     </h3>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    <p className="text-[11px] text-slate-500">
                       Click any component node to inspect skills, telemetry, experiments, and evidence contracts.
                     </p>
                   </div>
 
                   {/* Zoom Controls */}
-                  <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+                  <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg">
                     <button
                       onClick={() => setZoomLevel((z) => Math.max(0.7, z - 0.1))}
-                      className="p-1 rounded text-slate-500 hover:text-slate-900 dark:hover:text-white transition"
+                      className="p-1 rounded text-slate-500 hover:text-slate-900 transition"
                       title="Zoom Out"
                     >
                       <ZoomOut className="w-3.5 h-3.5" />
                     </button>
-                    <span className="text-[10px] font-mono px-1.5 text-slate-600 dark:text-slate-300">
+                    <span className="text-[10px] font-mono px-1.5 text-slate-600">
                       {Math.round(zoomLevel * 100)}%
                     </span>
                     <button
                       onClick={() => setZoomLevel((z) => Math.min(1.4, z + 0.1))}
-                      className="p-1 rounded text-slate-500 hover:text-slate-900 dark:hover:text-white transition"
+                      className="p-1 rounded text-slate-500 hover:text-slate-900 transition"
                       title="Zoom In"
                     >
                       <ZoomIn className="w-3.5 h-3.5" />
@@ -568,10 +568,10 @@ export default function ProjectArchitecturePage() {
                       return (
                         <div
                           key={lIdx}
-                          className="p-4 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-800/30 space-y-3"
+                          className="p-4 rounded-xl border border-slate-200 bg-slate-50/70 space-y-3"
                         >
                           <div className="flex items-center justify-between">
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600">
                               {layer.name}
                             </span>
                             {layer.description && (
@@ -587,7 +587,7 @@ export default function ProjectArchitecturePage() {
                                   setSelectedNode(node);
                                   setInspectorOpen(true);
                                 }}
-                                className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-900 hover:border-indigo-400 dark:hover:border-indigo-500 shadow-xs hover:shadow-md cursor-pointer transition flex flex-col justify-between space-y-2 group"
+                                className="p-3.5 rounded-xl border border-slate-200 bg-white hover:border-indigo-400 shadow-xs hover:shadow-md cursor-pointer transition flex flex-col justify-between space-y-2 group"
                               >
                                 <div className="space-y-1">
                                   <div className="flex items-center justify-between">
@@ -602,15 +602,15 @@ export default function ProjectArchitecturePage() {
                                       {node.status}
                                     </span>
                                   </div>
-                                  <h4 className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">
+                                  <h4 className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition">
                                     {node.name}
                                   </h4>
-                                  <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">
+                                  <p className="text-[11px] text-slate-500 line-clamp-1">
                                     {node.technology || node.category}
                                   </p>
                                 </div>
 
-                                <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[10px] text-indigo-600 dark:text-indigo-400 font-medium">
+                                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-indigo-600 font-medium">
                                   <span>Inspect Details</span>
                                   <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition" />
                                 </div>
@@ -629,7 +629,7 @@ export default function ProjectArchitecturePage() {
                             setSelectedNode(node);
                             setInspectorOpen(true);
                           }}
-                          className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-indigo-400 shadow-xs cursor-pointer transition space-y-2"
+                          className="p-3.5 rounded-xl border border-slate-200 bg-white hover:border-indigo-400 shadow-xs cursor-pointer transition space-y-2"
                         >
                           <div className="flex items-center justify-between">
                             <span className="text-[9px] font-mono text-slate-400">{node.node_type}</span>
@@ -637,8 +637,8 @@ export default function ProjectArchitecturePage() {
                               {node.status}
                             </span>
                           </div>
-                          <h4 className="text-xs font-bold text-slate-900 dark:text-white">{node.name}</h4>
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400">{node.technology}</p>
+                          <h4 className="text-xs font-bold text-slate-900">{node.name}</h4>
+                          <p className="text-[11px] text-slate-500">{node.technology}</p>
                         </div>
                       ))}
                     </div>
@@ -646,7 +646,7 @@ export default function ProjectArchitecturePage() {
                 </div>
 
                 {/* Edge Relationships Summary */}
-                <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
+                <div className="pt-4 border-t border-slate-100">
                   <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">
                     Verified Interconnect Protocols ({graphData.edges?.length || 0} Links)
                   </h4>
@@ -654,13 +654,13 @@ export default function ProjectArchitecturePage() {
                     {(graphData.edges || []).slice(0, 6).map((edge: any, i: number) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] bg-slate-100 text-slate-700 font-mono"
                       >
                         <span>{edge.source_node}</span>
                         <ArrowRight className="w-2.5 h-2.5 text-indigo-500" />
                         <span>{edge.target_node}</span>
                         {edge.protocol && (
-                          <span className="text-indigo-600 dark:text-indigo-400">({edge.protocol})</span>
+                          <span className="text-indigo-600">({edge.protocol})</span>
                         )}
                       </span>
                     ))}
@@ -672,9 +672,9 @@ export default function ProjectArchitecturePage() {
         )}
 
         {/* Step-by-Step Architecture Explanation */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-4">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-2">
               <FileText className="w-4 h-4 text-indigo-500" /> Step-by-Step Technical Execution Explanation
             </h3>
             <span className="text-[11px] text-slate-400 font-mono">
@@ -682,19 +682,19 @@ export default function ProjectArchitecturePage() {
             </span>
           </div>
 
-          <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/30 p-5 rounded-xl border border-slate-200 dark:border-slate-800 whitespace-pre-line font-sans">
+          <div className="prose max-w-none text-xs sm:text-sm text-slate-700 leading-relaxed bg-slate-50 p-5 rounded-xl border border-slate-200 whitespace-pre-line font-sans">
             {currentArch?.explanation || 'Architecture explanation is being synthesized...'}
           </div>
         </div>
 
         {/* Architecture Diagnostics & Readiness Panel */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-4">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Architecture Completeness Checklist
               </h3>
-              <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 font-mono">
+              <span className="text-xs font-bold text-indigo-600 font-mono">
                 {currentArch?.diagnostics?.completeness_score || 85}% Ready
               </span>
             </div>
@@ -708,7 +708,7 @@ export default function ProjectArchitecturePage() {
               ]).map((chk: any, idx: number) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-2.5 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/20 text-xs"
+                  className="flex items-start gap-2.5 p-2.5 rounded-lg border border-slate-100 bg-slate-50/50 text-xs"
                 >
                   {chk.passed ? (
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
@@ -716,38 +716,38 @@ export default function ProjectArchitecturePage() {
                     <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                   )}
                   <div>
-                    <h5 className="font-semibold text-slate-900 dark:text-white">{chk.label}</h5>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">{chk.detail}</p>
+                    <h5 className="font-semibold text-slate-900">{chk.label}</h5>
+                    <p className="text-[11px] text-slate-500">{chk.detail}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-indigo-500" /> Evidence Provenance & Realism Audit
             </h3>
 
             <div className="space-y-3 text-xs">
-              <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40">
+              <div className="p-3 rounded-xl border border-slate-200 bg-slate-50">
                 <span className="text-[10px] font-mono text-slate-400 uppercase">Hardware Realism Status</span>
-                <p className="text-xs font-bold text-slate-900 dark:text-white mt-1">
+                <p className="text-xs font-bold text-slate-900 mt-1">
                   {currentArch?.graph_json?.metrics?.hardware_status === 'SIMULATED' || currentArch?.diagnostics?.warnings?.some((w: any) => w.type === 'SIMULATED_HARDWARE')
                     ? '⚙️ Hardware Execution is Currently SIMULATED'
                     : '🟢 Physical Telemetry Active'}
                 </p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                <p className="text-[11px] text-slate-500 mt-0.5">
                   Hardware Lab executes in deterministic simulation mode. The architecture clearly tags edge devices as SIMULATED to preserve scientific credibility with judges.
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40">
+              <div className="p-3 rounded-xl border border-slate-200 bg-slate-50">
                 <span className="text-[10px] font-mono text-slate-400 uppercase">Deployment Realism</span>
-                <p className="text-xs font-bold text-slate-900 dark:text-white mt-1">
+                <p className="text-xs font-bold text-slate-900 mt-1">
                   Containerized Local / Node SSR (Cloud CDN is PLANNED)
                 </p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                <p className="text-[11px] text-slate-500 mt-0.5">
                   Components with PLANNED status represent target production architecture without falsely asserting active cloud deployment.
                 </p>
               </div>
@@ -758,53 +758,53 @@ export default function ProjectArchitecturePage() {
         {/* Node Details Inspector Modal */}
         {inspectorOpen && selectedNode && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-xs p-4">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95">
+            <div className="bg-white border border-slate-200 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <span className="text-[10px] font-mono font-bold uppercase text-indigo-600 dark:text-indigo-400">
+                  <span className="text-[10px] font-mono font-bold uppercase text-indigo-600">
                     {selectedNode.node_type} &bull; {selectedNode.category}
                   </span>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-base font-bold text-slate-900">
                     {selectedNode.name}
                   </h3>
                 </div>
                 <button
                   onClick={() => setInspectorOpen(false)}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600"
                 >
                   <XCircle className="w-5 h-5" />
                 </button>
               </div>
 
               <div className="space-y-3 text-xs">
-                <div className="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <div className="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-200">
                   <span className="text-slate-500">Implementation Status:</span>
                   <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${getStatusBadge(selectedNode.status)}`}>
                     {selectedNode.status}
                   </span>
                 </div>
 
-                <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-1">
+                <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
                   <span className="font-semibold text-slate-500">Description:</span>
-                  <p className="text-slate-700 dark:text-slate-300">{selectedNode.description || 'Core system component.'}</p>
+                  <p className="text-slate-700">{selectedNode.description || 'Core system component.'}</p>
                 </div>
 
                 {/* Skills Integration */}
-                <div className="p-3 rounded-lg bg-violet-50/50 dark:bg-violet-950/30 border border-violet-200 dark:border-violet-800/40 space-y-2">
+                <div className="p-3 rounded-lg bg-violet-50/50 border border-violet-200 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-violet-700 dark:text-violet-300 flex items-center gap-1.5">
+                    <span className="font-bold text-violet-700 flex items-center gap-1.5">
                       <Brain className="w-3.5 h-3.5" /> Required Competencies & Skills
                     </span>
                     <Link
                       href={`/projects/${projectId}/skills`}
-                      className="text-[10px] font-semibold text-violet-600 dark:text-violet-400 hover:underline flex items-center gap-1"
+                      className="text-[10px] font-semibold text-violet-600 hover:underline flex items-center gap-1"
                     >
                       View Skill Gap <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>
                   <div className="flex flex-wrap gap-1">
                     {(selectedNode.required_skills || ['Python', 'System Architecture']).map((sk: string, i: number) => (
-                      <span key={i} className="px-2 py-0.5 rounded text-[10px] bg-white dark:bg-slate-900 text-violet-700 dark:text-violet-300 border border-violet-200 dark:border-violet-800">
+                      <span key={i} className="px-2 py-0.5 rounded text-[10px] bg-white text-violet-700 border border-violet-200">
                         {sk}
                       </span>
                     ))}
@@ -813,19 +813,19 @@ export default function ProjectArchitecturePage() {
 
                 {/* Hardware Integration */}
                 {selectedNode.node_type === 'HARDWARE' || selectedNode.node_type === 'SENSOR' ? (
-                  <div className="p-3 rounded-lg bg-rose-50/50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/40 space-y-2">
+                  <div className="p-3 rounded-lg bg-rose-50/50 border border-rose-200 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-rose-700 dark:text-rose-300 flex items-center gap-1.5">
+                      <span className="font-bold text-rose-700 flex items-center gap-1.5">
                         <Cpu className="w-3.5 h-3.5" /> Hardware Lab Telemetry
                       </span>
                       <Link
                         href={`/projects/${projectId}/hardware-lab`}
-                        className="text-[10px] font-semibold text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1"
+                        className="text-[10px] font-semibold text-rose-600 hover:underline flex items-center gap-1"
                       >
                         Open Hardware Lab <ArrowRight className="w-3 h-3" />
                       </Link>
                     </div>
-                    <p className="text-[11px] text-slate-600 dark:text-slate-400">
+                    <p className="text-[11px] text-slate-600">
                       {selectedNode.metadata_json?.status_note || 'Hardware device telemetry is configured in Hardware Lab.'}
                     </p>
                   </div>
@@ -833,21 +833,21 @@ export default function ProjectArchitecturePage() {
 
                 {/* Experiment Integration */}
                 {selectedNode.associated_experiments && selectedNode.associated_experiments.length > 0 ? (
-                  <div className="p-3 rounded-lg bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800/40 space-y-2">
+                  <div className="p-3 rounded-lg bg-indigo-50/50 border border-indigo-200 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-indigo-700 dark:text-indigo-300 flex items-center gap-1.5">
+                      <span className="font-bold text-indigo-700 flex items-center gap-1.5">
                         <FlaskConical className="w-3.5 h-3.5" /> Associated Experiments
                       </span>
                       <Link
                         href={`/projects/${projectId}/experiments`}
-                        className="text-[10px] font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
+                        className="text-[10px] font-semibold text-indigo-600 hover:underline flex items-center gap-1"
                       >
                         Open Experiments <ArrowRight className="w-3 h-3" />
                       </Link>
                     </div>
                     <div className="flex flex-wrap gap-1">
                       {selectedNode.associated_experiments.map((exp: string, i: number) => (
-                        <span key={i} className="px-2 py-0.5 rounded text-[10px] bg-white dark:bg-slate-900 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                        <span key={i} className="px-2 py-0.5 rounded text-[10px] bg-white text-indigo-700 border border-indigo-200">
                           {exp}
                         </span>
                       ))}
@@ -856,7 +856,7 @@ export default function ProjectArchitecturePage() {
                 ) : null}
               </div>
 
-              <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+              <div className="pt-3 border-t border-slate-100 flex justify-end">
                 <button
                   onClick={() => setInspectorOpen(false)}
                   className="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-slate-800 hover:bg-slate-700 transition"
@@ -871,38 +871,38 @@ export default function ProjectArchitecturePage() {
         {/* AI Co-Pilot Modal */}
         {assistantModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-xs p-4">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95">
+            <div className="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-50 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200">
                     <Wand2 className="w-3 h-3" /> AI Architecture Assistant
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-base font-bold text-slate-900">
                     Architecture Co-Pilot & Diagnostics
                   </h3>
                 </div>
                 <button
                   onClick={() => setAssistantModalOpen(false)}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600"
                 >
                   <XCircle className="w-5 h-5" />
                 </button>
               </div>
 
               {/* Chat History */}
-              <div className="h-64 overflow-y-auto space-y-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs">
+              <div className="h-64 overflow-y-auto space-y-3 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs">
                 {assistantHistory.length === 0 ? (
                   <div className="text-center py-12 text-slate-400 space-y-1">
-                    <Network className="w-8 h-8 mx-auto text-slate-300 dark:text-slate-600" />
+                    <Network className="w-8 h-8 mx-auto text-slate-300" />
                     <p>Ask anything about this architecture or click a suggested prompt below.</p>
                   </div>
                 ) : (
                   assistantHistory.map((item, idx) => (
                     <div key={idx} className="space-y-2">
-                      <div className="p-2.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-900 dark:text-indigo-200 font-medium">
+                      <div className="p-2.5 rounded-lg bg-indigo-50 text-indigo-900 font-medium">
                         Q: {item.q}
                       </div>
-                      <div className="p-2.5 rounded-lg bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 leading-relaxed whitespace-pre-line">
+                      <div className="p-2.5 rounded-lg bg-white text-slate-800 border border-slate-200 leading-relaxed whitespace-pre-line">
                         {item.a}
                       </div>
                     </div>
@@ -930,7 +930,7 @@ export default function ProjectArchitecturePage() {
                     <button
                       key={i}
                       onClick={() => handleAskAssistant(pr)}
-                      className="px-2.5 py-1 rounded-lg text-[11px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition"
+                      className="px-2.5 py-1 rounded-lg text-[11px] bg-slate-100 text-slate-700 hover:bg-slate-200 transition"
                     >
                       {pr}
                     </button>
@@ -946,7 +946,7 @@ export default function ProjectArchitecturePage() {
                   onChange={(e) => setAssistantQuery(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleAskAssistant()}
                   placeholder="Ask a technical architecture question..."
-                  className="flex-1 px-3 py-2 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
+                  className="flex-1 px-3 py-2 rounded-xl text-xs bg-slate-50 border border-slate-200 text-slate-900"
                 />
                 <button
                   onClick={() => handleAskAssistant()}
@@ -963,32 +963,32 @@ export default function ProjectArchitecturePage() {
         {/* Prototype Simplification Modal */}
         {simplificationModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-xs p-4">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-3xl w-full p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95">
+            <div className="bg-white border border-slate-200 rounded-2xl max-w-3xl w-full p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
                     <Sliders className="w-3 h-3" /> MVP Prototype Simplification
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-base font-bold text-slate-900">
                     Suggested Lean Architecture for Initial Prototype
                   </h3>
                 </div>
                 <button
                   onClick={() => setSimplificationModalOpen(false)}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600"
                 >
                   <XCircle className="w-5 h-5" />
                 </button>
               </div>
 
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed">
                 For student hackathons and initial validation runs, InnoSphere AI suggests collapsing decoupled external queues into direct asynchronous streams to accelerate MVP construction while preserving all core AI inference logic.
               </p>
 
               {simplificationData?.simplification_rationale && (
-                <div className="space-y-2 p-3.5 rounded-xl bg-amber-50/50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/40 text-xs">
-                  <h5 className="font-bold text-amber-800 dark:text-amber-300">Simplification Rationale:</h5>
-                  <ul className="list-disc list-inside space-y-1 text-slate-700 dark:text-slate-300">
+                <div className="space-y-2 p-3.5 rounded-xl bg-amber-50/50 border border-amber-200 text-xs">
+                  <h5 className="font-bold text-amber-800">Simplification Rationale:</h5>
+                  <ul className="list-disc list-inside space-y-1 text-slate-700">
                     {simplificationData.simplification_rationale.map((r: string, idx: number) => (
                       <li key={idx}>{r}</li>
                     ))}
@@ -1003,10 +1003,10 @@ export default function ProjectArchitecturePage() {
                 </pre>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-end gap-2">
+              <div className="pt-3 border-t border-slate-100 flex justify-end gap-2">
                 <button
                   onClick={() => setSimplificationModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition"
                 >
                   Dismiss
                 </button>
@@ -1018,14 +1018,14 @@ export default function ProjectArchitecturePage() {
         {/* Export Diagrams Modal */}
         {exportModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-xs p-4">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95">
+            <div className="bg-white border border-slate-200 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95">
               <div className="flex items-center justify-between">
-                <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <Download className="w-4 h-4 text-indigo-500" /> Export Architecture Diagrams
                 </h3>
                 <button
                   onClick={() => setExportModalOpen(false)}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600"
                 >
                   <XCircle className="w-5 h-5" />
                 </button>
@@ -1048,13 +1048,13 @@ export default function ProjectArchitecturePage() {
                       alert(`Export failed: ${e.message}`);
                     }
                   }}
-                  className="w-full p-3.5 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/40 hover:bg-indigo-100 text-left transition flex items-center justify-between group"
+                  className="w-full p-3.5 rounded-xl border border-indigo-200 bg-indigo-50/50 hover:bg-indigo-100 text-left transition flex items-center justify-between group"
                 >
                   <div>
-                    <h5 className="text-xs font-bold text-indigo-900 dark:text-indigo-200">
+                    <h5 className="text-xs font-bold text-indigo-900">
                       Complete Architecture Package (All Views)
                     </h5>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    <p className="text-[11px] text-slate-500">
                       Includes all 8 views in SVG, MMD, manifest JSON & README.
                     </p>
                   </div>
@@ -1082,13 +1082,13 @@ export default function ProjectArchitecturePage() {
                       alert(`SVG export failed: ${e.message}`);
                     }
                   }}
-                  className="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 text-left transition flex items-center justify-between group"
+                  className="w-full p-3.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-left transition flex items-center justify-between group"
                 >
                   <div>
-                    <h5 className="text-xs font-bold text-slate-900 dark:text-white">
+                    <h5 className="text-xs font-bold text-slate-900">
                       Export Current View as Vector SVG
                     </h5>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    <p className="text-[11px] text-slate-500">
                       High-resolution vector for papers & slides ({activeView}).
                     </p>
                   </div>
@@ -1096,10 +1096,10 @@ export default function ProjectArchitecturePage() {
                 </button>
               </div>
 
-              <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+              <div className="pt-2 border-t border-slate-100 flex justify-end">
                 <button
                   onClick={() => setExportModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition"
                 >
                   Close
                 </button>

@@ -128,7 +128,7 @@ export function ProjectSwitcher() {
     return (
       <Link
         href="/submit-idea"
-        className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 transition-colors"
+        className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 transition-colors"
       >
         <Plus className="h-3.5 w-3.5" />
         <span>Create Project</span>
@@ -137,7 +137,6 @@ export function ProjectSwitcher() {
   }
 
   const ActiveIcon = activeProject ? getDomainIcon(activeProject.domain) : Sparkles;
-  const activeDomainColor = activeProject ? getDomainColor(activeProject.domain) : { bg: '', text: '', border: '' };
 
   return (
     <div className="relative inline-block text-left" ref={containerRef} onKeyDown={handleKeyDown}>
@@ -151,14 +150,14 @@ export function ProjectSwitcher() {
         aria-label={`Current project: ${activeProject ? activeProject.title : 'Select Project'}. Click to switch active project.`}
         className={`group flex items-center gap-1.5 h-8 sm:h-8.5 px-2 sm:px-2.5 rounded-lg text-xs font-medium transition-all select-none border min-w-0 max-w-[120px] sm:max-w-[140px] md:max-w-[155px] lg:max-w-[175px] xl:max-w-[200px] 2xl:max-w-[220px] ${
           isOpen
-            ? 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border-indigo-500/60 dark:border-indigo-500/60 ring-2 ring-indigo-500/20'
-            : 'bg-slate-100/80 hover:bg-slate-200/70 dark:bg-slate-900/90 dark:hover:bg-slate-800/80 text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs'
+            ? 'bg-blue-50 text-blue-900 border-blue-400 ring-2 ring-blue-500/20'
+            : 'bg-slate-100/80 hover:bg-slate-200/70 text-slate-700 hover:text-slate-900 border-slate-200 hover:border-slate-300 shadow-2xs'
         }`}
         title={activeProject ? `${activeProject.title} (${activeProject.domain})` : 'Select Project'}
       >
         {/* Project Icon */}
         <div className="flex items-center justify-center shrink-0">
-          <ActiveIcon className={`h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform`} />
+          <ActiveIcon className="h-3.5 w-3.5 text-blue-600 group-hover:scale-110 transition-transform" />
         </div>
 
         {/* Project Title */}
@@ -168,8 +167,8 @@ export function ProjectSwitcher() {
 
         {/* Downward Chevron */}
         <ChevronDown
-          className={`h-3.5 w-3.5 text-slate-400 dark:text-slate-500 shrink-0 ml-auto transition-transform duration-200 ${
-            isOpen ? 'rotate-180 text-indigo-500 dark:text-indigo-400' : 'group-hover:text-slate-600 dark:group-hover:text-slate-300'
+          className={`h-3.5 w-3.5 text-slate-400 shrink-0 ml-auto transition-transform duration-200 ${
+            isOpen ? 'rotate-180 text-blue-600' : 'group-hover:text-slate-600'
           }`}
         />
       </button>
@@ -179,20 +178,20 @@ export function ProjectSwitcher() {
         <div
           role="listbox"
           aria-label="Projects list"
-          className="absolute left-0 mt-1.5 w-[calc(100vw-32px)] sm:w-80 max-w-[340px] rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl dark:shadow-2xl shadow-slate-950/20 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150 origin-top-left"
+          className="absolute left-0 mt-1.5 w-[calc(100vw-32px)] sm:w-80 max-w-[340px] rounded-2xl bg-white border border-slate-200 shadow-xl shadow-slate-900/10 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150 origin-top-left"
         >
           {/* Compact Header */}
-          <div className="px-3.5 py-2.5 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between bg-slate-50/70 dark:bg-slate-900/80">
+          <div className="px-3.5 py-2.5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
             <div>
               <div className="flex items-center gap-1.5">
-                <FolderKanban className="h-3.5 w-3.5 text-indigo-500" />
-                <span className="text-xs font-bold text-slate-900 dark:text-white">Switch Project</span>
+                <FolderKanban className="h-3.5 w-3.5 text-blue-600" />
+                <span className="text-xs font-bold text-slate-900">Switch Project</span>
               </div>
-              <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-[10px] text-slate-500 mt-0.5">
                 Select an active innovation workspace
               </p>
             </div>
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-slate-200/70 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-slate-200 text-slate-700">
               {projects.length}
             </span>
           </div>
@@ -200,7 +199,7 @@ export function ProjectSwitcher() {
           {/* Scrollable Project List */}
           <div
             ref={listRef}
-            className="max-h-[260px] overflow-y-auto p-1.5 space-y-1 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-800"
+            className="max-h-[260px] overflow-y-auto p-1.5 space-y-1"
           >
             {projects.map((p, idx) => {
               const Icon = getDomainIcon(p.domain);
@@ -219,10 +218,10 @@ export function ProjectSwitcher() {
                   onMouseEnter={() => setFocusedIndex(idx)}
                   className={`w-full text-left px-2.5 py-2 rounded-xl transition-all flex flex-col gap-1.5 cursor-pointer relative group ${
                     isSelected
-                      ? 'bg-indigo-50/90 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800/60 shadow-2xs'
+                      ? 'bg-blue-50/90 border border-blue-200 shadow-2xs'
                       : isFocused
-                      ? 'bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700/50'
-                      : 'hover:bg-slate-100/80 dark:hover:bg-slate-800/50 border border-transparent'
+                      ? 'bg-slate-100 border border-slate-200'
+                      : 'hover:bg-slate-50 border border-transparent'
                   }`}
                 >
                   {/* Top Row: Icon + Title + Selection Indicator / Progress Percentage */}
@@ -231,8 +230,8 @@ export function ProjectSwitcher() {
                       <div
                         className={`flex h-6 w-6 items-center justify-center rounded-lg shrink-0 ${
                           isSelected
-                            ? 'bg-indigo-600 text-white shadow-2xs'
-                            : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:text-indigo-500 transition-colors'
+                            ? 'bg-blue-600 text-white shadow-2xs'
+                            : 'bg-slate-100 text-slate-600 group-hover:text-blue-600 transition-colors'
                         }`}
                       >
                         <Icon className="h-3.5 w-3.5" />
@@ -240,8 +239,8 @@ export function ProjectSwitcher() {
                       <span
                         className={`text-xs font-semibold truncate ${
                           isSelected
-                            ? 'text-indigo-950 dark:text-white font-bold'
-                            : 'text-slate-800 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white'
+                            ? 'text-blue-950 font-bold'
+                            : 'text-slate-800 group-hover:text-slate-900'
                         }`}
                         title={p.title}
                       >
@@ -250,11 +249,11 @@ export function ProjectSwitcher() {
                     </div>
 
                     <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400">
+                      <span className="text-[10px] font-bold text-slate-500">
                         {progressVal}%
                       </span>
                       {isSelected && (
-                        <div className="flex h-4 w-4 items-center justify-center rounded-full bg-indigo-600 text-white shrink-0">
+                        <div className="flex h-4 w-4 items-center justify-center rounded-full bg-blue-600 text-white shrink-0">
                           <Check className="h-2.5 w-2.5 stroke-[3]" />
                         </div>
                       )}
@@ -270,17 +269,17 @@ export function ProjectSwitcher() {
                     </span>
 
                     {/* Compact Micro-Progress Bar */}
-                    <div className="h-1 w-14 sm:w-16 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden shrink-0">
+                    <div className="h-1 w-14 sm:w-16 rounded-full bg-slate-200 overflow-hidden shrink-0">
                       <div
                         style={{ width: `${Math.min(100, Math.max(0, progressVal))}%` }}
                         className={`h-full rounded-full transition-all duration-300 ${
                           isSelected
-                            ? 'bg-indigo-600 dark:bg-indigo-400'
+                            ? 'bg-blue-600'
                             : progressVal >= 80
                             ? 'bg-emerald-500'
                             : progressVal >= 50
                             ? 'bg-blue-500'
-                            : 'bg-slate-400 dark:bg-slate-500'
+                            : 'bg-slate-400'
                         }`}
                       />
                     </div>
@@ -291,17 +290,17 @@ export function ProjectSwitcher() {
           </div>
 
           {/* Sticky Action Footer */}
-          <div className="p-1.5 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
+          <div className="p-1.5 border-t border-slate-100 bg-slate-50">
             <Link
               href="/submit-idea"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-between w-full px-2.5 py-2 rounded-xl text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 transition-colors group"
+              className="flex items-center justify-between w-full px-2.5 py-2 rounded-xl text-xs font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 transition-colors group"
             >
               <div className="flex items-center gap-1.5">
-                <Plus className="h-3.5 w-3.5 text-indigo-500 group-hover:scale-110 transition-transform" />
+                <Plus className="h-3.5 w-3.5 text-blue-600 group-hover:scale-110 transition-transform" />
                 <span>Submit New Idea</span>
               </div>
-              <ArrowRight className="h-3 w-3 text-indigo-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="h-3 w-3 text-blue-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
             </Link>
           </div>
         </div>

@@ -324,30 +324,30 @@ export default function ProjectKnowledgeGraphPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-6 px-3 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50/50 text-slate-900 py-6 px-3 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Navigation Breadcrumb & Project Selector Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <Link
               href="/knowledge-graph"
-              className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors shadow-xs"
+              className="p-2 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 transition-colors shadow-xs"
               title="Back to Knowledge Graph Hub"
             >
               <Share2 className="w-4 h-4" />
             </Link>
             <div>
-              <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex items-center gap-2 text-xs text-slate-500">
                 <Link href="/projects" className="hover:underline">Projects</Link>
                 <span>/</span>
                 <span>Project #{projectId}</span>
                 <span>/</span>
-                <span className="text-indigo-600 dark:text-indigo-400 font-semibold">Knowledge Graph</span>
+                <span className="text-indigo-600 font-semibold">Knowledge Graph</span>
               </div>
-              <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+              <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2">
                 {graphData?.name || `Project #${projectId} Knowledge Graph`}
                 {graphData && (
-                  <span className="text-xs px-2 py-0.5 rounded-full font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                  <span className="text-xs px-2 py-0.5 rounded-full font-bold bg-indigo-50 text-indigo-600 border border-indigo-200">
                     v{graphData.version}
                   </span>
                 )}
@@ -358,13 +358,13 @@ export default function ProjectKnowledgeGraphPage() {
           {/* Action Toolbar */}
           <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             {/* View Mode Toggle */}
-            <div className="flex rounded-xl bg-slate-200 dark:bg-slate-800 p-1 border border-slate-300/60 dark:border-slate-700/60">
+            <div className="flex rounded-xl bg-slate-200 p-1 border border-slate-300/60">
               <button
                 onClick={() => setViewMode('visual')}
                 className={`px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-all ${
                   viewMode === 'visual'
-                    ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    ? 'bg-white text-indigo-600 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <Grid className="w-3.5 h-3.5" /> Graph Visualizer
@@ -373,8 +373,8 @@ export default function ProjectKnowledgeGraphPage() {
                 onClick={() => setViewMode('list')}
                 className={`px-3 py-1 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-all ${
                   viewMode === 'list'
-                    ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    ? 'bg-white text-indigo-600 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <ListIcon className="w-3.5 h-3.5" /> List View
@@ -384,7 +384,7 @@ export default function ProjectKnowledgeGraphPage() {
             {/* Export Menu */}
             <button
               onClick={() => handleExport('svg')}
-              className="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-indigo-500 text-xs font-semibold flex items-center gap-1.5 shadow-xs transition-colors"
+              className="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-700 hover:border-indigo-500 text-xs font-semibold flex items-center gap-1.5 shadow-xs transition-colors"
             >
               <Download className="w-3.5 h-3.5 text-indigo-500" /> Export Graph
             </button>
@@ -404,9 +404,9 @@ export default function ProjectKnowledgeGraphPage() {
         {/* Top Summary Bar & Statistics Cards */}
         {graphData && (
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
               <div className="text-[11px] text-slate-400 font-medium">Total Entities</div>
-              <div className="text-xl font-black text-slate-900 dark:text-white mt-0.5">
+              <div className="text-xl font-black text-slate-900 mt-0.5">
                 {graphData.stats?.total_nodes || 0}
               </div>
               <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1">
@@ -414,9 +414,9 @@ export default function ProjectKnowledgeGraphPage() {
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
               <div className="text-[11px] text-slate-400 font-medium">Verified Links</div>
-              <div className="text-xl font-black text-slate-900 dark:text-white mt-0.5">
+              <div className="text-xl font-black text-slate-900 mt-0.5">
                 {graphData.stats?.total_edges || 0}
               </div>
               <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1">
@@ -424,9 +424,9 @@ export default function ProjectKnowledgeGraphPage() {
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
               <div className="text-[11px] text-slate-400 font-medium">Graph Completeness</div>
-              <div className="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-0.5">
+              <div className="text-xl font-black text-indigo-600 mt-0.5">
                 {graphData.diagnostics?.completeness_score || 100}%
               </div>
               <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1">
@@ -434,9 +434,9 @@ export default function ProjectKnowledgeGraphPage() {
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
               <div className="text-[11px] text-slate-400 font-medium">Validation Coverage</div>
-              <div className="text-xl font-black text-emerald-600 dark:text-emerald-400 mt-0.5">
+              <div className="text-xl font-black text-emerald-600 mt-0.5">
                 {graphData.diagnostics?.validation_coverage || 0}%
               </div>
               <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1">
@@ -444,9 +444,9 @@ export default function ProjectKnowledgeGraphPage() {
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
               <div className="text-[11px] text-slate-400 font-medium">Graph Density</div>
-              <div className="text-xl font-black text-slate-900 dark:text-white mt-0.5">
+              <div className="text-xl font-black text-slate-900 mt-0.5">
                 {graphData.stats?.density || 0}
               </div>
               <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1">
@@ -454,9 +454,9 @@ export default function ProjectKnowledgeGraphPage() {
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
               <div className="text-[11px] text-slate-400 font-medium">Components</div>
-              <div className="text-xl font-black text-slate-900 dark:text-white mt-0.5">
+              <div className="text-xl font-black text-slate-900 mt-0.5">
                 {graphData.stats?.connected_components_count || 1}
               </div>
               <div className="text-[10px] text-slate-500 mt-0.5 flex items-center gap-1">
@@ -467,7 +467,7 @@ export default function ProjectKnowledgeGraphPage() {
         )}
 
         {/* Filter Toolbar */}
-        <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-wrap items-center justify-between gap-3">
+        <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2.5 flex-1">
             {/* Search Input */}
             <div className="relative min-w-[200px] flex-1 sm:flex-initial">
@@ -477,7 +477,7 @@ export default function ProjectKnowledgeGraphPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search entities, tags..."
-                className="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+                className="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
@@ -485,7 +485,7 @@ export default function ProjectKnowledgeGraphPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-3 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+              className="px-3 py-1.5 text-xs rounded-xl border border-slate-200 bg-slate-50 text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
             >
               <option value="ALL">All Categories</option>
               {Object.keys(categoryColorLUT).map((cat) => (
@@ -499,7 +499,7 @@ export default function ProjectKnowledgeGraphPage() {
             <select
               value={selectedRelationship}
               onChange={(e) => setSelectedRelationship(e.target.value)}
-              className="px-3 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+              className="px-3 py-1.5 text-xs rounded-xl border border-slate-200 bg-slate-50 text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
             >
               <option value="ALL">All Relationships</option>
               {['ADDRESSES', 'USES', 'SUPPORTS', 'REQUIRES', 'TESTS', 'BENCHMARKS', 'VALIDATES', 'PRODUCES', 'CITES', 'DEPENDS_ON', 'IMPLEMENTS', 'CONNECTS_TO', 'INFORMS'].map((rel) => (
@@ -515,7 +515,7 @@ export default function ProjectKnowledgeGraphPage() {
             <div className="flex items-center gap-1.5">
               <button
                 onClick={() => setZoomLevel((z) => Math.max(0.4, z - 0.15))}
-                className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100"
+                className="p-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100"
                 title="Zoom Out"
               >
                 <ZoomOut className="w-3.5 h-3.5" />
@@ -525,7 +525,7 @@ export default function ProjectKnowledgeGraphPage() {
               </span>
               <button
                 onClick={() => setZoomLevel((z) => Math.min(2.0, z + 0.15))}
-                className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100"
+                className="p-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100"
                 title="Zoom In"
               >
                 <ZoomIn className="w-3.5 h-3.5" />
@@ -535,7 +535,7 @@ export default function ProjectKnowledgeGraphPage() {
                   setZoomLevel(1.0);
                   setPanOffset({ x: 0, y: 0 });
                 }}
-                className="px-2 py-1 text-[11px] rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100"
+                className="px-2 py-1 text-[11px] rounded-lg border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100"
                 title="Reset View"
               >
                 Reset
@@ -546,12 +546,12 @@ export default function ProjectKnowledgeGraphPage() {
 
         {/* Main Canvas / List View Body */}
         {loading ? (
-          <div className="p-20 text-center text-slate-400 text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl">
+          <div className="p-20 text-center text-slate-400 text-xs bg-white border border-slate-200 rounded-3xl">
             <RefreshCw className="w-8 h-8 animate-spin mx-auto mb-3 text-indigo-500" />
             Synthesizing Knowledge Graph across 17 innovation subsystems...
           </div>
         ) : error ? (
-          <div className="p-12 text-center text-rose-500 text-xs bg-rose-50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900 rounded-3xl">
+          <div className="p-12 text-center text-rose-500 text-xs bg-rose-50 border border-rose-200 rounded-3xl">
             <AlertCircle className="w-8 h-8 mx-auto mb-2" />
             {error}
           </div>
@@ -770,15 +770,15 @@ export default function ProjectKnowledgeGraphPage() {
               return (
                 <div
                   key={cat}
-                  className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-xs space-y-3"
+                  className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-3"
                 >
-                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2.5">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
                     <div className="flex items-center gap-2">
                       <span className="w-3 h-3 rounded-full" style={{ backgroundColor: st.color }} />
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                      <h3 className="text-sm font-bold text-slate-900">
                         {cat.replace('_', ' ')} Entities
                       </h3>
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-mono">
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono">
                         {catNodes.length}
                       </span>
                     </div>
@@ -794,29 +794,29 @@ export default function ProjectKnowledgeGraphPage() {
                             setSelectedNode(n);
                             setInspectorOpen(true);
                           }}
-                          className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-800/40 hover:border-indigo-500/50 cursor-pointer transition-all space-y-2 flex flex-col justify-between"
+                          className="p-3.5 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-indigo-500/50 cursor-pointer transition-all space-y-2 flex flex-col justify-between"
                         >
                           <div>
                             <div className="flex items-start justify-between gap-2">
-                              <span className="text-xs font-bold text-slate-900 dark:text-slate-100">
+                              <span className="text-xs font-bold text-slate-900">
                                 {n.label}
                               </span>
-                              <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-mono shrink-0">
+                              <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-mono shrink-0">
                                 {n.status}
                               </span>
                             </div>
-                            <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
+                            <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
                               {n.description || 'No description available.'}
                             </p>
                           </div>
 
-                          <div className="flex items-center justify-between pt-2 border-t border-slate-200/60 dark:border-slate-700/60 text-[10px] text-slate-400">
+                          <div className="flex items-center justify-between pt-2 border-t border-slate-200/60 text-[10px] text-slate-400">
                             <span>Degree: {n.total_degree || 0}</span>
                             {contextAction && (
                               <Link
                                 href={contextAction.href}
                                 onClick={(e) => e.stopPropagation()}
-                                className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline flex items-center gap-1"
+                                className="text-indigo-600 font-semibold hover:underline flex items-center gap-1"
                               >
                                 {contextAction.label} <ArrowRight className="w-3 h-3" />
                               </Link>
@@ -834,15 +834,15 @@ export default function ProjectKnowledgeGraphPage() {
 
         {/* Bottom Insight & Diagnostics Tabs */}
         {graphData && (
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xs overflow-hidden">
+          <div className="bg-white border border-slate-200 rounded-2xl shadow-xs overflow-hidden">
             {/* Tab Headers */}
-            <div className="flex border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 px-4">
+            <div className="flex border-b border-slate-200 bg-slate-50 px-4">
               <button
                 onClick={() => setActiveTab('insights')}
                 className={`py-3 px-4 text-xs font-bold flex items-center gap-2 border-b-2 transition-colors ${
                   activeTab === 'insights'
-                    ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400 bg-white dark:bg-slate-900'
-                    : 'border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                    ? 'border-indigo-600 text-indigo-600 bg-white'
+                    : 'border-transparent text-slate-500 hover:text-slate-700'
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5" /> AI Structural Insights & Critical Path
@@ -851,8 +851,8 @@ export default function ProjectKnowledgeGraphPage() {
                 onClick={() => setActiveTab('diagnostics')}
                 className={`py-3 px-4 text-xs font-bold flex items-center gap-2 border-b-2 transition-colors ${
                   activeTab === 'diagnostics'
-                    ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400 bg-white dark:bg-slate-900'
-                    : 'border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                    ? 'border-indigo-600 text-indigo-600 bg-white'
+                    : 'border-transparent text-slate-500 hover:text-slate-700'
                 }`}
               >
                 <Activity className="w-3.5 h-3.5" /> Graph Completeness Diagnostics
@@ -861,8 +861,8 @@ export default function ProjectKnowledgeGraphPage() {
                 onClick={() => setActiveTab('versions')}
                 className={`py-3 px-4 text-xs font-bold flex items-center gap-2 border-b-2 transition-colors ${
                   activeTab === 'versions'
-                    ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400 bg-white dark:bg-slate-900'
-                    : 'border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                    ? 'border-indigo-600 text-indigo-600 bg-white'
+                    : 'border-transparent text-slate-500 hover:text-slate-700'
                 }`}
               >
                 <Clock className="w-3.5 h-3.5" /> Version History ({versions.length})
@@ -873,8 +873,8 @@ export default function ProjectKnowledgeGraphPage() {
             <div className="p-6">
               {activeTab === 'insights' && (
                 <div className="space-y-5">
-                  <div className="p-4 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200/60 dark:border-indigo-900/60 text-xs text-indigo-900 dark:text-indigo-200 leading-relaxed">
-                    <span className="font-bold flex items-center gap-1.5 text-indigo-700 dark:text-indigo-300 mb-1">
+                  <div className="p-4 rounded-xl bg-indigo-50/70 border border-indigo-200/60 text-xs text-indigo-900 leading-relaxed">
+                    <span className="font-bold flex items-center gap-1.5 text-indigo-700 mb-1">
                       <Sparkles className="w-4 h-4 text-indigo-500" /> AI Graph Synthesis Summary
                     </span>
                     {graphData.insights?.summary || 'The Knowledge Graph is centered on the primary project innovation with robust cross-domain connectivity.'}
@@ -882,25 +882,25 @@ export default function ProjectKnowledgeGraphPage() {
 
                   {/* Critical Path Flow */}
                   <div className="space-y-2.5">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                       <TrendingUp className="w-4 h-4 text-emerald-500" /> 5-Stage Critical Innovation Pathway
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
                       {(graphData.insights?.critical_path || []).map((cp: any) => (
                         <div
                           key={cp.step}
-                          className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 space-y-1.5"
+                          className="p-3 rounded-xl border border-slate-200 bg-slate-50 space-y-1.5"
                         >
                           <div className="flex items-center justify-between">
                             <span className="text-[10px] font-bold text-slate-400">Step {cp.step}</span>
-                            <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+                            <span className="text-[10px] font-semibold text-emerald-600">
                               {cp.status}
                             </span>
                           </div>
-                          <div className="text-xs font-bold text-slate-900 dark:text-slate-100">
+                          <div className="text-xs font-bold text-slate-900">
                             {cp.stage}
                           </div>
-                          <div className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2">
+                          <div className="text-[11px] text-slate-500 line-clamp-2">
                             {cp.detail}
                           </div>
                         </div>
@@ -913,12 +913,12 @@ export default function ProjectKnowledgeGraphPage() {
                     {(graphData.insights?.innovation_threads || []).map((th: any, idx: number) => (
                       <div
                         key={idx}
-                        className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 space-y-1.5"
+                        className="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1.5"
                       >
-                        <div className="text-xs font-bold text-slate-900 dark:text-slate-100">
+                        <div className="text-xs font-bold text-slate-900">
                           {th.name}
                         </div>
-                        <div className="text-[11px] font-mono text-indigo-600 dark:text-indigo-400">
+                        <div className="text-[11px] font-mono text-indigo-600">
                           {th.flow}
                         </div>
                         <div className="text-[10px] text-slate-400">
@@ -934,14 +934,14 @@ export default function ProjectKnowledgeGraphPage() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                      <h4 className="text-sm font-bold text-slate-900">
                         Structural Diagnostics & Gaps
                       </h4>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                      <p className="text-xs text-slate-500">
                         Evidence-grounding and missing links analyzed across your innovation pipeline.
                       </p>
                     </div>
-                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
+                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-200">
                       Completeness: {graphData.diagnostics?.completeness_score || 100}%
                     </span>
                   </div>
@@ -952,21 +952,21 @@ export default function ProjectKnowledgeGraphPage() {
                       (graphData.diagnostics?.recommendations || []).map((rec: any, idx: number) => (
                         <div
                           key={idx}
-                          className="p-3 rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/60 dark:bg-amber-950/20 flex items-center justify-between gap-3 text-xs"
+                          className="p-3 rounded-xl border border-amber-200 bg-amber-50/60 flex items-center justify-between gap-3 text-xs"
                         >
                           <div className="flex items-center gap-2">
                             <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0" />
-                            <span className="text-amber-900 dark:text-amber-200 font-medium">
+                            <span className="text-amber-900 font-medium">
                               {rec.action}
                             </span>
                           </div>
-                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-200/60 dark:bg-amber-900/60 text-amber-900 dark:text-amber-200 shrink-0">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-200/60 text-amber-900 shrink-0">
                             {rec.priority}
                           </span>
                         </div>
                       ))
                     ) : (
-                      <div className="p-6 text-center text-xs text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900 rounded-xl flex items-center justify-center gap-2">
+                      <div className="p-6 text-center text-xs text-emerald-600 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center gap-2">
                         <CheckCircle2 className="w-4 h-4" /> All core innovation entities and evidence connections are fully grounded!
                       </div>
                     )}
@@ -976,7 +976,7 @@ export default function ProjectKnowledgeGraphPage() {
 
               {activeTab === 'versions' && (
                 <div className="space-y-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
                     Snapshots & Graph Version History
                   </h4>
                   {versions.length === 0 ? (
@@ -984,14 +984,14 @@ export default function ProjectKnowledgeGraphPage() {
                       No previous version snapshots found.
                     </div>
                   ) : (
-                    <div className="divide-y divide-slate-100 dark:divide-slate-800">
+                    <div className="divide-y divide-slate-100">
                       {versions.map((v) => (
                         <div key={v.id} className="py-3 flex items-center justify-between text-xs">
                           <div>
-                            <span className="font-bold text-slate-900 dark:text-white mr-2">
+                            <span className="font-bold text-slate-900 mr-2">
                               Version {v.version_number}
                             </span>
-                            <span className="text-slate-500 dark:text-slate-400">
+                            <span className="text-slate-500">
                               {v.change_summary}
                             </span>
                           </div>
@@ -1015,9 +1015,9 @@ export default function ProjectKnowledgeGraphPage() {
 
         {/* Node Details Inspector Drawer */}
         {inspectorOpen && selectedNode && (
-          <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
+          <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-white border-l border-slate-200 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
             <div className="space-y-4">
-              <div className="flex items-start justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+              <div className="flex items-start justify-between gap-2 border-b border-slate-100 pb-3">
                 <div className="space-y-1">
                   <span
                     className="px-2 py-0.5 rounded-full text-[10px] font-bold"
@@ -1028,13 +1028,13 @@ export default function ProjectKnowledgeGraphPage() {
                   >
                     {selectedNode.category.replace('_', ' ')}
                   </span>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-base font-bold text-slate-900">
                     {selectedNode.label}
                   </h3>
                 </div>
                 <button
                   onClick={() => setInspectorOpen(false)}
-                  className="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                  className="p-1 rounded-lg text-slate-400 hover:text-slate-600"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1042,20 +1042,20 @@ export default function ProjectKnowledgeGraphPage() {
 
               {/* Status & Provenance */}
               <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
                   <div className="text-[10px] text-slate-400">Status</div>
-                  <div className="font-bold text-slate-800 dark:text-slate-200">{selectedNode.status}</div>
+                  <div className="font-bold text-slate-800">{selectedNode.status}</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
                   <div className="text-[10px] text-slate-400">Source Provenance</div>
-                  <div className="font-bold text-indigo-600 dark:text-indigo-400">{selectedNode.source_type}</div>
+                  <div className="font-bold text-indigo-600">{selectedNode.source_type}</div>
                 </div>
               </div>
 
               {/* Description */}
               <div className="space-y-1 text-xs">
-                <div className="font-bold text-slate-700 dark:text-slate-300">Description</div>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/40">
+                <div className="font-bold text-slate-700">Description</div>
+                <p className="text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/60">
                   {selectedNode.description || 'No description available for this entity.'}
                 </p>
               </div>
@@ -1063,12 +1063,12 @@ export default function ProjectKnowledgeGraphPage() {
               {/* Metadata Details */}
               {selectedNode.metadata_json && Object.keys(selectedNode.metadata_json).length > 0 && (
                 <div className="space-y-1.5 text-xs">
-                  <div className="font-bold text-slate-700 dark:text-slate-300">Entity Metadata</div>
-                  <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-700/40 space-y-1 font-mono text-[11px]">
+                  <div className="font-bold text-slate-700">Entity Metadata</div>
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/60 space-y-1 font-mono text-[11px]">
                     {Object.entries(selectedNode.metadata_json).map(([k, v]) => (
                       <div key={k} className="flex justify-between">
                         <span className="text-slate-400">{k}:</span>
-                        <span className="text-slate-800 dark:text-slate-200">{String(v)}</span>
+                        <span className="text-slate-800">{String(v)}</span>
                       </div>
                     ))}
                   </div>
@@ -1077,7 +1077,7 @@ export default function ProjectKnowledgeGraphPage() {
 
               {/* Connected Relationships */}
               <div className="space-y-2 text-xs">
-                <div className="font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                <div className="font-bold text-slate-700 flex items-center justify-between">
                   <span>Connected Relationships</span>
                   <span className="text-[10px] text-slate-400 font-mono">
                     Total Degree: {selectedNode.total_degree || 0}
@@ -1093,12 +1093,12 @@ export default function ProjectKnowledgeGraphPage() {
                     .map((e, idx) => (
                       <div
                         key={idx}
-                        className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 text-[11px]"
+                        className="p-2 rounded-lg bg-slate-50 border border-slate-200 text-[11px]"
                       >
-                        <div className="font-semibold text-indigo-600 dark:text-indigo-400">
+                        <div className="font-semibold text-indigo-600">
                           {e.relationship_type.replace('_', ' ')}
                         </div>
-                        <div className="text-slate-500 dark:text-slate-400 text-[10px]">
+                        <div className="text-slate-500 text-[10px]">
                           {e.source_node_key === selectedNode.node_key
                             ? `--> ${e.target_node_key}`
                             : `<-- ${e.source_node_key}`}
@@ -1111,7 +1111,7 @@ export default function ProjectKnowledgeGraphPage() {
 
             {/* Context Action Button */}
             {getContextualAction(selectedNode) && (
-              <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800">
+              <div className="pt-4 mt-4 border-t border-slate-100">
                 {(() => {
                   const ca = getContextualAction(selectedNode)!;
                   const Icon = ca.icon;
@@ -1132,14 +1132,14 @@ export default function ProjectKnowledgeGraphPage() {
         {/* Multi-Format Export Modal */}
         {exportModalOpen && (
           <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 max-w-2xl w-full shadow-2xl space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
-                <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <div className="bg-white border border-slate-200 rounded-3xl p-6 max-w-2xl w-full shadow-2xl space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <Download className="w-4 h-4 text-indigo-500" /> Export Knowledge Graph ({exportFormat.toUpperCase()})
                 </h3>
                 <button
                   onClick={() => setExportModalOpen(false)}
-                  className="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                  className="p-1 rounded-lg text-slate-400 hover:text-slate-600"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1154,7 +1154,7 @@ export default function ProjectKnowledgeGraphPage() {
                     className={`px-3 py-1.5 text-xs font-semibold rounded-xl border transition-all ${
                       exportFormat === fmt
                         ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
-                        : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+                        : 'bg-slate-50 border-slate-200 text-slate-700'
                     }`}
                   >
                     {fmt.toUpperCase()}

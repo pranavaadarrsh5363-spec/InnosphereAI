@@ -171,25 +171,25 @@ export default function SubmitIdeaPage() {
   return (
     <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-6 animate-in fade-in duration-300">
       {/* Academic Page Header */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xs">
+      <div className="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-xs">
         <div className="max-w-3xl space-y-2">
-          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
-            <Sparkles className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+            <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
             <span>Project Ingestion & AI Synthesis</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
             Submit Innovation Project
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
             Specify the problem domain, technical scope, and expected impact. Our intelligence engine analyzes requirements against literature benchmarks and generates an execution roadmap.
           </p>
         </div>
       </div>
 
       {/* Preset Quick-Fill Inspiration Bar */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-800 shadow-2xs text-left">
+      <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-2xs text-left">
         <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-          <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+          <span className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
             <Zap className="h-3.5 w-3.5 text-amber-500" />
             Sample Pre-fills:
           </span>
@@ -199,28 +199,28 @@ export default function SubmitIdeaPage() {
           <button
             type="button"
             onClick={() => handlePreFill('health')}
-            className="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/80 border border-emerald-200 dark:border-emerald-800 text-xs font-semibold text-emerald-700 dark:text-emerald-300 transition-colors"
+            className="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-xs font-semibold text-emerald-700 transition-colors"
           >
             Smart Healthcare Telemetry
           </button>
           <button
             type="button"
             onClick={() => handlePreFill('agri')}
-            className="px-3 py-1.5 rounded-lg bg-lime-50 hover:bg-lime-100 dark:bg-lime-950/60 dark:hover:bg-lime-900/80 border border-lime-200 dark:border-lime-800 text-xs font-semibold text-lime-700 dark:text-lime-300 transition-colors"
+            className="px-3 py-1.5 rounded-lg bg-lime-50 hover:bg-lime-100 border border-lime-200 text-xs font-semibold text-lime-700 transition-colors"
           >
             AgriTech Crop Vision
           </button>
           <button
             type="button"
             onClick={() => handlePreFill('waste')}
-            className="px-3 py-1.5 rounded-lg bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/60 dark:hover:bg-teal-900/80 border border-teal-200 dark:border-teal-800 text-xs font-semibold text-teal-700 dark:text-teal-300 transition-colors"
+            className="px-3 py-1.5 rounded-lg bg-teal-50 hover:bg-teal-100 border border-teal-200 text-xs font-semibold text-teal-700 transition-colors"
           >
             Edge AI Waste Sorting
           </button>
           <button
             type="button"
             onClick={() => handlePreFill('traffic')}
-            className="px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/60 dark:hover:bg-amber-900/80 border border-amber-200 dark:border-amber-800 text-xs font-semibold text-amber-700 dark:text-amber-300 transition-colors"
+            className="px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 border border-amber-200 text-xs font-semibold text-amber-700 transition-colors"
           >
             RL Traffic Optimization
           </button>
@@ -228,18 +228,18 @@ export default function SubmitIdeaPage() {
       </div>
 
       {errorMsg && (
-        <div className="p-4 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 text-red-700 dark:text-red-400 text-xs font-medium">
+        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium">
           {errorMsg}
         </div>
       )}
 
       {/* Main Submission Form */}
-      <form onSubmit={handleSubmit} className="bg-white dark:bg-slate-900 rounded-xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 space-y-6 shadow-xs">
+      <form onSubmit={handleSubmit} className="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 space-y-6 shadow-xs">
         {/* Title & Domain */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="md:col-span-2 space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-              <Lightbulb className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+            <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+              <Lightbulb className="h-3.5 w-3.5 text-indigo-600" />
               Idea Title <span className="text-red-500">*</span>
             </label>
             <input
@@ -248,20 +248,20 @@ export default function SubmitIdeaPage() {
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               placeholder="e.g. AI-Based Smart Healthcare Monitoring for Rural Clinics"
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-              <Layers className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
+            <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+              <Layers className="h-3.5 w-3.5 text-purple-600" />
               Domain <span className="text-red-500">*</span>
             </label>
             <select
               value={formData.domain}
               onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
               aria-label="Select Domain"
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2 text-xs text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
             >
               {domains.map((d, i) => (
                 <option key={i} value={d}>
@@ -275,7 +275,7 @@ export default function SubmitIdeaPage() {
         {/* Problem Description & Proposed Solution */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+            <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
               <Target className="h-3.5 w-3.5 text-red-500" />
               Problem Description <span className="text-red-500">*</span>
             </label>
@@ -285,12 +285,12 @@ export default function SubmitIdeaPage() {
               value={formData.problem_description}
               onChange={(e) => setFormData({ ...formData, problem_description: e.target.value })}
               placeholder="Explain the real-world problem you are addressing, who suffers from it, and why existing solutions fall short..."
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-3 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors leading-relaxed"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors leading-relaxed"
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+            <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
               <Sparkles className="h-3.5 w-3.5 text-emerald-500" />
               Proposed Solution <span className="text-red-500">*</span>
             </label>
@@ -300,7 +300,7 @@ export default function SubmitIdeaPage() {
               value={formData.proposed_solution}
               onChange={(e) => setFormData({ ...formData, proposed_solution: e.target.value })}
               placeholder="Describe your proposed architecture, algorithms, user interface, or physical device solution..."
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-3 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors leading-relaxed"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors leading-relaxed"
             />
           </div>
         </div>
@@ -308,7 +308,7 @@ export default function SubmitIdeaPage() {
         {/* Target Users & Expected Impact */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+            <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
               <Users className="h-3.5 w-3.5 text-blue-500" />
               Target Users & Beneficiaries
             </label>
@@ -317,12 +317,12 @@ export default function SubmitIdeaPage() {
               value={formData.target_users}
               onChange={(e) => setFormData({ ...formData, target_users: e.target.value })}
               placeholder="e.g. Elderly patients, rural doctors, municipal staff, farmers"
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+            <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
               <Rocket className="h-3.5 w-3.5 text-amber-500" />
               Expected Impact & Metrics
             </label>
@@ -331,7 +331,7 @@ export default function SubmitIdeaPage() {
               value={formData.expected_impact}
               onChange={(e) => setFormData({ ...formData, expected_impact: e.target.value })}
               placeholder="e.g. 60% faster diagnosis, 30% reduction in water contamination"
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
             />
           </div>
         </div>
@@ -339,8 +339,8 @@ export default function SubmitIdeaPage() {
         {/* Technologies Known & Technologies Interested In */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-              <Cpu className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+            <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+              <Cpu className="h-3.5 w-3.5 text-indigo-600" />
               Technologies Known (Comma separated)
             </label>
             <input
@@ -348,13 +348,13 @@ export default function SubmitIdeaPage() {
               value={formData.technologies_known}
               onChange={(e) => setFormData({ ...formData, technologies_known: e.target.value })}
               placeholder="e.g. Python, JavaScript, HTML, React"
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors font-mono"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors font-mono"
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-              <Wrench className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
+            <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+              <Wrench className="h-3.5 w-3.5 text-purple-600" />
               Technologies Interested In (Comma separated)
             </label>
             <input
@@ -362,7 +362,7 @@ export default function SubmitIdeaPage() {
               value={formData.technologies_interested}
               onChange={(e) => setFormData({ ...formData, technologies_interested: e.target.value })}
               placeholder="e.g. FastAPI, PyTorch, YOLOv8, Docker, WebSockets"
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors font-mono"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors font-mono"
             />
           </div>
         </div>
@@ -370,8 +370,8 @@ export default function SubmitIdeaPage() {
         {/* Available Resources & Project Stage */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="md:col-span-2 space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-              <Layers className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" />
+            <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+              <Layers className="h-3.5 w-3.5 text-teal-600" />
               Available Resources / Hardware
             </label>
             <input
@@ -379,20 +379,20 @@ export default function SubmitIdeaPage() {
               value={formData.available_resources}
               onChange={(e) => setFormData({ ...formData, available_resources: e.target.value })}
               placeholder="e.g. College GPU server, ESP32 microcontrollers, Arduino sensors"
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-              <Rocket className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+            <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+              <Rocket className="h-3.5 w-3.5 text-blue-600" />
               Project Stage
             </label>
             <select
               value={formData.project_stage}
               onChange={(e) => setFormData({ ...formData, project_stage: e.target.value })}
               aria-label="Select Project Stage"
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2 text-xs text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 transition-colors"
             >
               {projectStages.map((st, i) => (
                 <option key={i} value={st}>
@@ -404,8 +404,8 @@ export default function SubmitIdeaPage() {
         </div>
 
         {/* Submit Button */}
-        <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] text-slate-500 dark:text-slate-400">
+        <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[11px] text-slate-500">
             System will analyze requirements, synthesize technical recommendations, and generate a development roadmap.
           </p>
 

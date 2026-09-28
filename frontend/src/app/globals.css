@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @layer base {
   *, *::before, *::after {
     box-sizing: border-box;
@@ -12,13 +10,15 @@
     overflow-x: clip;
     min-height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
   }
 
   img, svg, video, canvas, audio, iframe, embed, object {
     max-width: 100%;
   }
 
-  :root, html.light {
+  :root {
     --background: 210 20% 98%;
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
@@ -36,24 +36,6 @@
     --ring: 221 83% 53%;
   }
 
-  html.dark {
-    --background: 222 47% 7%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 10%;
-    --card-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 217 33% 18%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 91% 60%;
-    --accent-foreground: 210 40% 98%;
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 224 76% 48%;
-  }
-
   body {
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     text-rendering: optimizeLegibility;
@@ -61,49 +43,28 @@
   }
 }
 
-/* Professional Surface Panels */
-html.dark .glass-panel,
-html.dark .surface-card {
-  background: #0f172a;
-  border: 1px solid #1e293b;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-}
-
-html.dark .glass-panel-hover,
-html.dark .surface-card-hover {
-  transition: all 0.2s ease-in-out;
-}
-html.dark .glass-panel-hover:hover,
-html.dark .surface-card-hover:hover {
-  border-color: #334155;
-  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.35);
-  transform: translateY(-1px);
-}
-
-html.light .glass-panel,
-html.light .surface-card {
+/* Professional Light Mode Surface Panels */
+.glass-panel,
+.surface-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
 }
 
-html.light .glass-panel-hover,
-html.light .surface-card-hover {
+.glass-panel-hover,
+.surface-card-hover {
   transition: all 0.2s ease-in-out;
 }
-html.light .glass-panel-hover:hover,
-html.light .surface-card-hover:hover {
+.glass-panel-hover:hover,
+.surface-card-hover:hover {
   border-color: #cbd5e1;
   box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
   transform: translateY(-1px);
 }
 
-/* Subtle, Disciplined Emphasis */
+/* Clean Heading Emphasis */
 .gradient-text {
   color: #0f172a;
-}
-html.dark .gradient-text {
-  color: #f8fafc;
 }
 
 /* Restrained Focus & Selection */
@@ -112,41 +73,19 @@ html.dark .gradient-text {
   color: #ffffff;
 }
 
-/* Light Theme Global Defaults */
-html.light body {
-  background-color: #f8fafc;
-  color: #0f172a;
-}
-
-html.dark body {
-  background-color: #090d16;
-  color: #f8fafc;
-}
-
 /* Clean, Precise Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-html.dark ::-webkit-scrollbar-track {
-  background: #090d16;
-}
-html.dark ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 3px;
-}
-html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
-}
-
-html.light ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: #f8fafc;
 }
-html.light ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 3px;
 }
-html.light ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }

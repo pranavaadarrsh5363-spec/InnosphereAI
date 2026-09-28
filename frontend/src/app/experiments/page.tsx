@@ -120,19 +120,19 @@ export default function GlobalExperimentsHub() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 pb-16">
+    <div className="min-h-screen bg-slate-50/50 text-slate-900 pb-16">
       {/* Header */}
-      <div className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 sm:px-6 lg:px-8 py-4">
+      <div className="border-b border-slate-200 bg-white px-4 sm:px-6 lg:px-8 py-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-lg bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-900 flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-2xs">
+            <div className="h-9 w-9 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 shadow-2xs">
               <FlaskConical className="h-4.5 w-4.5" />
             </div>
             <div>
-              <h1 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+              <h1 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
                 Experimentation & Reproducibility Hub
               </h1>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-500 mt-0.5">
                 Global Empirical Trials • Multi-Run Reproducibility • Comparative Metric Baselines
               </p>
             </div>
@@ -151,7 +151,7 @@ export default function GlobalExperimentsHub() {
             <button
               onClick={loadAllProjectsExperiments}
               disabled={loading}
-              className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600 transition-colors cursor-pointer"
               title="Refresh Experiments"
             >
               <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
@@ -163,56 +163,56 @@ export default function GlobalExperimentsHub() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 space-y-6">
         {/* KPI Strip */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs flex items-center justify-between">
+          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
               <span className="text-xs text-slate-500 font-medium">Total Experiments</span>
-              <p className="text-xl font-bold text-slate-900 dark:text-white mt-0.5">{allExperiments.length}</p>
+              <p className="text-xl font-bold text-slate-900 mt-0.5">{allExperiments.length}</p>
             </div>
-            <FlaskConical className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+            <FlaskConical className="h-6 w-6 text-blue-600" />
           </div>
 
-          <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs flex items-center justify-between">
+          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
               <span className="text-xs text-slate-500 font-medium">Completed Validations</span>
-              <p className="text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">
+              <p className="text-xl font-bold text-emerald-600 mt-0.5">
                 {allExperiments.filter((e) => e.status?.toLowerCase() === 'completed').length}
               </p>
             </div>
             <CheckCircle2 className="h-6 w-6 text-emerald-500" />
           </div>
 
-          <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs flex items-center justify-between">
+          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
               <span className="text-xs text-slate-500 font-medium">Active Projects</span>
-              <p className="text-xl font-bold text-slate-900 dark:text-white mt-0.5">{projects.length}</p>
+              <p className="text-xl font-bold text-slate-900 mt-0.5">{projects.length}</p>
             </div>
             <Layers className="h-6 w-6 text-slate-500" />
           </div>
 
-          <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs flex items-center justify-between">
+          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center justify-between">
             <div>
               <span className="text-xs text-slate-500 font-medium">Mean Reproducibility</span>
-              <p className="text-xl font-bold text-blue-600 dark:text-blue-400 mt-0.5">86%</p>
+              <p className="text-xl font-bold text-blue-600 mt-0.5">86%</p>
             </div>
             <ShieldCheck className="h-6 w-6 text-blue-500" />
           </div>
         </div>
 
         {/* Filter Toolbar */}
-        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-xs shadow-2xs">
+        <div className="p-4 rounded-xl bg-white border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-3 text-xs shadow-2xs">
           <div className="flex flex-1 items-center gap-2 w-full md:w-auto">
             <input
               type="text"
               placeholder="Search experiments, hypotheses, models, projects..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full md:max-w-md px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full md:max-w-md px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
             />
 
             <select
               value={selectedProjectId}
               onChange={(e) => setSelectedProjectId(e.target.value === 'all' ? 'all' : parseInt(e.target.value, 10))}
-              className="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-medium focus:outline-none focus:border-blue-500"
+              className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 font-medium focus:outline-none focus:border-blue-500"
             >
               <option value="all">All Projects ({projects.length})</option>
               {projects.map((p) => (
@@ -231,7 +231,7 @@ export default function GlobalExperimentsHub() {
                 className={`px-2.5 py-1 rounded-md font-semibold capitalize transition-colors cursor-pointer ${
                   statusFilter === st
                     ? 'bg-blue-600 text-white shadow-2xs'
-                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    : 'bg-slate-100 text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {st}

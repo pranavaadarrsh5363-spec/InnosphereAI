@@ -358,31 +358,31 @@ export default function ProjectValidationPage() {
     switch (status) {
       case 'VALIDATED':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
             <CheckCircle2 className="w-3.5 h-3.5" /> Validated
           </span>
         );
       case 'PARTIALLY_VALIDATED':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-300 dark:border-blue-800">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 border border-blue-300">
             <Activity className="w-3.5 h-3.5" /> Partially Validated
           </span>
         );
       case 'INCONCLUSIVE':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-300">
             <AlertTriangle className="w-3.5 h-3.5" /> Inconclusive
           </span>
         );
       case 'NOT_VALIDATED':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-300 dark:border-rose-800">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 border border-rose-300">
             <XCircle className="w-3.5 h-3.5" /> Not Validated
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-300">
             <Clock className="w-3.5 h-3.5" /> Not Tested
           </span>
         );
@@ -395,8 +395,8 @@ export default function ProjectValidationPage() {
       <span
         className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-medium ${
           isSimulated
-            ? 'bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60'
-            : 'bg-indigo-50 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60'
+            ? 'bg-amber-50 text-amber-700 border border-amber-200'
+            : 'bg-indigo-50 text-indigo-700 border border-indigo-200'
         }`}
       >
         {isSimulated && <AlertCircle className="w-3 h-3 text-amber-500" />}
@@ -413,8 +413,8 @@ export default function ProjectValidationPage() {
 
   if (isLoading && !matrixData) {
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center p-6">
-        <div className="flex items-center gap-3 text-indigo-600 dark:text-indigo-400">
+      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6">
+        <div className="flex items-center gap-3 text-indigo-600">
           <RefreshCw className="w-8 h-8 animate-spin" />
           <span className="text-lg font-medium">Synthesizing Validation Matrix & Competition Readiness...</span>
         </div>
@@ -425,29 +425,29 @@ export default function ProjectValidationPage() {
   const coveragePct = matrixData?.evidence_coverage_pct ?? 0;
 
   return (
-    <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 pb-20">
+    <div className="min-h-screen bg-slate-50/50 text-slate-900 pb-20">
       {/* ------------------------------------------------------------- */}
       {/* Header & Command Center Navigation */}
       {/* ------------------------------------------------------------- */}
-      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-30 shadow-xs">
+      <div className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <button
                 onClick={() => router.push(`/projects/${projectId}`)}
-                className="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
                 title="Back to Project Overview"
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
                     <ShieldCheck className="w-3.5 h-3.5" /> Validation Engine
                   </span>
-                  <span className="text-xs text-slate-400 dark:text-slate-500">Project #{projectId}</span>
+                  <span className="text-xs text-slate-400">Project #{projectId}</span>
                 </div>
-                <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white truncate max-w-md sm:max-w-xl">
+                <h1 className="text-lg sm:text-xl font-bold text-slate-900 truncate max-w-md sm:max-w-xl">
                   {project?.title || 'Innovation Validation Hub'}
                 </h1>
               </div>
@@ -457,13 +457,13 @@ export default function ProjectValidationPage() {
             <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => router.push(`/projects/${projectId}/experiments`)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 transition"
               >
                 <Cpu className="w-3.5 h-3.5 text-indigo-500" /> Experiments
               </button>
               <button
                 onClick={() => router.push(`/projects/${projectId}/research`)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 transition"
               >
                 <BookOpen className="w-3.5 h-3.5 text-purple-500" /> Research Paper
               </button>
@@ -486,53 +486,53 @@ export default function ProjectValidationPage() {
         {/* ------------------------------------------------------------- */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Evidence Coverage Gauge */}
-          <div className="lg:col-span-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs flex flex-col justify-between">
+          <div className="lg:col-span-4 bg-white border border-slate-200 rounded-2xl p-6 shadow-xs flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-emerald-500" /> Evidence Coverage
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded-full font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                <span className="text-xs px-2 py-0.5 rounded-full font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
                   {matrixData?.coverage_label || 'Calculated Metric'}
                 </span>
               </div>
 
               <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-4xl font-extrabold text-slate-900 dark:text-white">
+                <span className="text-4xl font-extrabold text-slate-900">
                   {coveragePct.toFixed(1)}%
                 </span>
-                <span className="text-xs text-slate-500 dark:text-slate-400">
+                <span className="text-xs text-slate-500">
                   ({matrixData?.validated_claims || 0} full + {matrixData?.partially_validated_claims || 0} partial of {matrixData?.total_claims || 0} claims)
                 </span>
               </div>
 
               {/* Progress Bar */}
-              <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3 overflow-hidden mb-4">
+              <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden mb-4">
                 <div
                   className="bg-linear-to-r from-indigo-500 via-emerald-500 to-teal-400 h-full rounded-full transition-all duration-700"
                   style={{ width: `${Math.min(100, Math.max(0, coveragePct))}%` }}
                 />
               </div>
 
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed">
                 Evidence coverage measures what percentage of technical and scientific assertions have empirical backing from recorded experiments, benchmarks, or telemetry.
               </p>
             </div>
 
-            <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-              <span>Untested Claims: <strong className="text-slate-800 dark:text-slate-200">{matrixData?.not_tested_claims || 0}</strong></span>
-              <span>Gaps Detected: <strong className="text-amber-600 dark:text-amber-400">{matrixData?.gaps?.length || 0}</strong></span>
+            <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span>Untested Claims: <strong className="text-slate-800">{matrixData?.not_tested_claims || 0}</strong></span>
+              <span>Gaps Detected: <strong className="text-amber-600">{matrixData?.gaps?.length || 0}</strong></span>
             </div>
           </div>
 
           {/* 8-Dimensional Validation Scorecard */}
-          <div className="lg:col-span-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs">
+          <div className="lg:col-span-8 bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white flex items-center gap-2">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2">
                   <Layers className="w-4 h-4 text-indigo-500" /> 8-Dimensional Validation Scorecard
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
+                <p className="text-xs text-slate-500">
                   Comprehensive audit across problem formulation, architecture, empirics, benchmarks, and reproducibility.
                 </p>
               </div>
@@ -548,32 +548,32 @@ export default function ProjectValidationPage() {
                 return (
                   <div
                     key={dim.key}
-                    className="p-3 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 flex flex-col justify-between hover:border-indigo-300 dark:hover:border-indigo-700 transition"
+                    className="p-3 rounded-xl border border-slate-200/80 bg-slate-50/50 flex flex-col justify-between hover:border-indigo-300 transition"
                   >
                     <div>
                       <div className="flex items-center justify-between gap-1 mb-1.5">
                         <span
                           className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider ${
                             isReady
-                              ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300'
+                              ? 'bg-emerald-100 text-emerald-800'
                               : isPartial
-                              ? 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300'
+                              ? 'bg-blue-100 text-blue-800'
                               : isSimulated
-                              ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300'
-                              : 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300'
+                              ? 'bg-amber-100 text-amber-800'
+                              : 'bg-slate-200 text-slate-700'
                           }`}
                         >
                           {dim.status}
                         </span>
-                        <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                        <span className="text-xs font-bold text-slate-700">
                           {dim.score.toFixed(0)}%
                         </span>
                       </div>
-                      <h4 className="text-xs font-semibold text-slate-900 dark:text-white line-clamp-2 leading-snug">
+                      <h4 className="text-xs font-semibold text-slate-900 line-clamp-2 leading-snug">
                         {dim.name}
                       </h4>
                     </div>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-2 line-clamp-2">
+                    <p className="text-[11px] text-slate-500 mt-2 line-clamp-2">
                       {dim.summary}
                     </p>
                   </div>
@@ -586,7 +586,7 @@ export default function ProjectValidationPage() {
         {/* ------------------------------------------------------------- */}
         {/* Navigation Tabs */}
         {/* ------------------------------------------------------------- */}
-        <div className="flex overflow-x-auto no-scrollbar gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+        <div className="flex overflow-x-auto no-scrollbar gap-2 border-b border-slate-200 pb-2">
           {[
             { id: 'claims', label: '1. Validation Matrix & Claims', icon: ShieldCheck, count: claims.length },
             { id: 'differentiation', label: '2. Differentiation Matrix', icon: Scale, count: differentiationData?.rows.length },
@@ -606,7 +606,7 @@ export default function ProjectValidationPage() {
                 className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                   isActive
                     ? 'bg-indigo-600 text-white shadow-xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -616,7 +616,7 @@ export default function ProjectValidationPage() {
                     className={`px-1.5 py-0.2 rounded-full text-[10px] ${
                       isActive
                         ? 'bg-indigo-700 text-indigo-100'
-                        : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
+                        : 'bg-slate-200 text-slate-700'
                     }`}
                   >
                     {tab.count}
@@ -633,9 +633,9 @@ export default function ProjectValidationPage() {
         {activeTab === 'claims' && (
           <div className="space-y-6">
             {/* Action Bar & Filter */}
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs">
+            <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Filter Status:</span>
+                <span className="text-xs font-semibold text-slate-500">Filter Status:</span>
                 {['ALL', 'VALIDATED', 'PARTIALLY_VALIDATED', 'INCONCLUSIVE', 'NOT_VALIDATED', 'NOT_TESTED'].map(
                   (st) => (
                     <button
@@ -643,8 +643,8 @@ export default function ProjectValidationPage() {
                       onClick={() => setStatusFilter(st)}
                       className={`px-2.5 py-1 rounded-lg text-xs font-medium transition ${
                         statusFilter === st
-                          ? 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800'
-                          : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                          ? 'bg-indigo-50 text-indigo-700 border border-indigo-200'
+                          : 'text-slate-600 hover:bg-slate-100'
                       }`}
                     >
                       {st.replace('_', ' ')}
@@ -663,10 +663,10 @@ export default function ProjectValidationPage() {
 
             {/* Claims Grid */}
             {filteredClaims.length === 0 ? (
-              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-10 text-center space-y-3">
-                <ShieldCheck className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto" />
-                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">No Innovation Claims Found</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+              <div className="bg-white border border-slate-200 rounded-2xl p-10 text-center space-y-3">
+                <ShieldCheck className="w-12 h-12 text-slate-300 mx-auto" />
+                <h3 className="text-sm font-semibold text-slate-900">No Innovation Claims Found</h3>
+                <p className="text-xs text-slate-500 max-w-md mx-auto">
                   Register your technical advantages, operational benchmarks, and efficiency claims to pair them with empirical experiments.
                 </p>
                 <button
@@ -681,23 +681,23 @@ export default function ProjectValidationPage() {
                 {filteredClaims.map((claim) => (
                   <div
                     key={claim.id}
-                    className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition space-y-4"
+                    className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs hover:border-slate-300 transition space-y-4"
                   >
                     {/* Header Row */}
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div className="space-y-1">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                          <span className="text-xs font-bold uppercase tracking-wider text-indigo-600">
                             {claim.category}
                           </span>
-                          <span className="text-slate-300 dark:text-slate-700">•</span>
+                          <span className="text-slate-300">•</span>
                           {getStatusBadge(claim.status)}
                           {getValidationTypeBadge(claim.validation_type)}
-                          <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
+                          <span className="text-[11px] font-medium text-slate-500">
                             Confidence: {claim.confidence_indicator}
                           </span>
                         </div>
-                        <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                        <h3 className="text-base font-bold text-slate-900">
                           {claim.title}
                         </h3>
                       </div>
@@ -708,7 +708,7 @@ export default function ProjectValidationPage() {
                           value={claim.status}
                           onChange={(e) => handleUpdateClaimStatus(claim.id, e.target.value as ValidationStatus)}
                           aria-label={`Change status for claim: ${claim.title}`}
-                          className="text-xs font-medium bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1 text-slate-700 dark:text-slate-200 focus:ring-1 focus:ring-indigo-500"
+                          className="text-xs font-medium bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1 text-slate-700 focus:ring-1 focus:ring-indigo-500"
                         >
                           <option value="NOT_TESTED">NOT TESTED</option>
                           <option value="SIMULATED">SIMULATED</option>
@@ -722,14 +722,14 @@ export default function ProjectValidationPage() {
                             setSelectedClaimForEvidence(claim);
                             setIsEvidenceModalOpen(true);
                           }}
-                          className="p-1.5 rounded-lg text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 transition"
+                          className="p-1.5 rounded-lg text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 transition"
                           title="Attach Evidence Artifact"
                         >
                           <Plus className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleDeleteClaim(claim.id)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
                           title="Delete Claim"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -738,38 +738,38 @@ export default function ProjectValidationPage() {
                     </div>
 
                     {/* Scientific Assertion */}
-                    <div className="bg-slate-50/70 dark:bg-slate-800/40 rounded-lg p-3.5 border border-slate-100 dark:border-slate-800/80 space-y-1">
+                    <div className="bg-slate-50/70 rounded-lg p-3.5 border border-slate-100 space-y-1">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Scientific Claim</span>
-                      <p className="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                      <p className="text-xs text-slate-700 font-medium leading-relaxed">
                         {claim.claim}
                       </p>
                     </div>
 
                     {/* Matrix Mapping Grid: Question -> Evidence -> Result */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-                      <div className="p-3 rounded-lg border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900/60">
-                        <span className="text-[10px] font-bold uppercase text-indigo-600 dark:text-indigo-400 flex items-center gap-1">
+                      <div className="p-3 rounded-lg border border-slate-200/60 bg-white">
+                        <span className="text-[10px] font-bold uppercase text-indigo-600 flex items-center gap-1">
                           <HelpCircle className="w-3 h-3" /> Validation Question
                         </span>
-                        <p className="mt-1 text-slate-600 dark:text-slate-300">
+                        <p className="mt-1 text-slate-600">
                           {claim.validation_question}
                         </p>
                       </div>
 
-                      <div className="p-3 rounded-lg border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900/60">
-                        <span className="text-[10px] font-bold uppercase text-purple-600 dark:text-purple-400 flex items-center gap-1">
+                      <div className="p-3 rounded-lg border border-slate-200/60 bg-white">
+                        <span className="text-[10px] font-bold uppercase text-purple-600 flex items-center gap-1">
                           <CheckCircle2 className="w-3 h-3" /> Evidence Requirement
                         </span>
-                        <p className="mt-1 text-slate-600 dark:text-slate-300">
+                        <p className="mt-1 text-slate-600">
                           {claim.evidence_requirement || 'Empirical benchmark comparison or hardware telemetry.'}
                         </p>
                       </div>
 
-                      <div className="p-3 rounded-lg border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900/60">
-                        <span className="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                      <div className="p-3 rounded-lg border border-slate-200/60 bg-white">
+                        <span className="text-[10px] font-bold uppercase text-emerald-600 flex items-center gap-1">
                           <Activity className="w-3 h-3" /> Observed Result
                         </span>
-                        <p className="mt-1 text-slate-600 dark:text-slate-300">
+                        <p className="mt-1 text-slate-600">
                           {claim.observed_result || 'Awaiting empirical trial execution.'}
                         </p>
                       </div>
@@ -778,14 +778,14 @@ export default function ProjectValidationPage() {
                     {/* Attached Evidence Items */}
                     {claim.evidence_items && claim.evidence_items.length > 0 && (
                       <div className="pt-2">
-                        <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 block mb-1.5">
+                        <span className="text-[11px] font-semibold text-slate-500 block mb-1.5">
                           Attached Evidence Artifacts ({claim.evidence_items.length}):
                         </span>
                         <div className="flex flex-wrap gap-2">
                           {claim.evidence_items.map((ev) => (
                             <span
                               key={ev.id}
-                              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] bg-slate-100 text-slate-700 border border-slate-200"
                             >
                               <FileText className="w-3 h-3 text-indigo-500" />
                               <strong className="font-semibold">{ev.title}</strong>
@@ -807,13 +807,13 @@ export default function ProjectValidationPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'differentiation' && (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-4">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                     <Scale className="w-5 h-5 text-indigo-500" /> 8-Dimensional Technical Differentiation Matrix
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  <p className="text-xs text-slate-500 mt-0.5">
                     Rigorous comparative analysis of existing industry baselines versus the proposed InnoSphere innovation.
                   </p>
                 </div>
@@ -822,35 +822,35 @@ export default function ProjectValidationPage() {
               {/* Matrix Table */}
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
+                  <thead className="bg-slate-50 text-slate-500 uppercase tracking-wider font-semibold border-b border-slate-200">
                     <tr>
                       <th className="py-3 px-4">Dimension</th>
-                      <th className="py-3 px-4 text-slate-600 dark:text-slate-300">Existing Baseline Approach</th>
-                      <th className="py-3 px-4 text-indigo-600 dark:text-indigo-400">InnoSphere Proposed Solution</th>
+                      <th className="py-3 px-4 text-slate-600">Existing Baseline Approach</th>
+                      <th className="py-3 px-4 text-indigo-600">InnoSphere Proposed Solution</th>
                       <th className="py-3 px-4">Evidence State</th>
                       <th className="py-3 px-4">Attribution Source</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80">
+                  <tbody className="divide-y divide-slate-100">
                     {differentiationData?.rows.map((row, idx) => (
-                      <tr key={idx} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition">
-                        <td className="py-3 px-4 font-bold text-slate-900 dark:text-white whitespace-nowrap">
+                      <tr key={idx} className="hover:bg-slate-50/50 transition">
+                        <td className="py-3 px-4 font-bold text-slate-900 whitespace-nowrap">
                           {row.dimension}
                         </td>
-                        <td className="py-3 px-4 text-slate-600 dark:text-slate-400 max-w-xs">
+                        <td className="py-3 px-4 text-slate-600 max-w-xs">
                           {row.existing_approach}
                         </td>
-                        <td className="py-3 px-4 font-medium text-slate-800 dark:text-slate-200 max-w-xs">
+                        <td className="py-3 px-4 font-medium text-slate-800 max-w-xs">
                           {row.proposed_approach}
                         </td>
                         <td className="py-3 px-4 whitespace-nowrap">
                           <span
                             className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold ${
                               row.evidence_state === 'Verified'
-                                ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300'
+                                ? 'bg-emerald-100 text-emerald-800'
                                 : row.evidence_state === 'Partially Supported'
-                                ? 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300'
-                                : 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300'
+                                ? 'bg-blue-100 text-blue-800'
+                                : 'bg-amber-100 text-amber-800'
                             }`}
                           >
                             {row.evidence_state}
@@ -858,7 +858,7 @@ export default function ProjectValidationPage() {
                         </td>
                         <td className="py-3 px-4 whitespace-nowrap">
                           <div className="flex flex-col">
-                            <span className="text-slate-700 dark:text-slate-300 font-medium">{row.evidence_source}</span>
+                            <span className="text-slate-700 font-medium">{row.evidence_source}</span>
                             <span className="text-[10px] text-slate-400">{row.evidence_type.replace('_', ' ')}</span>
                           </div>
                         </td>
@@ -869,7 +869,7 @@ export default function ProjectValidationPage() {
               </div>
 
               {/* Disclaimer */}
-              <div className="p-3.5 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200/60 dark:border-slate-800 flex items-start gap-2.5 text-xs text-slate-500 dark:text-slate-400">
+              <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200/60 flex items-start gap-2.5 text-xs text-slate-500">
                 <Info className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                 <span>{differentiationData?.novelty_disclaimer}</span>
               </div>
@@ -882,20 +882,20 @@ export default function ProjectValidationPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'gaps' && (
           <div className="space-y-4">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                     <AlertTriangle className="w-5 h-5 text-amber-500" /> Validation Gaps & Actionable Remedies
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-slate-500">
                     Auto-detected unverified claims, missing baselines, and recommended experimental trials.
                   </p>
                 </div>
               </div>
 
               {matrixData?.gaps.length === 0 ? (
-                <div className="p-8 text-center text-xs text-slate-500 dark:text-slate-400">
+                <div className="p-8 text-center text-xs text-slate-500">
                   <CheckCircle2 className="w-10 h-10 text-emerald-500 mx-auto mb-2" />
                   All registered claims have verified empirical backing. No critical validation gaps detected.
                 </div>
@@ -904,30 +904,30 @@ export default function ProjectValidationPage() {
                   {matrixData?.gaps.map((gap) => (
                     <div
                       key={gap.id}
-                      className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                      className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
                     >
                       <div className="space-y-1 max-w-2xl">
                         <div className="flex items-center gap-2">
                           <span
                             className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
                               gap.severity === 'CRITICAL'
-                                ? 'bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300'
+                                ? 'bg-rose-100 text-rose-800'
                                 : gap.severity === 'HIGH'
-                                ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300'
-                                : 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300'
+                                ? 'bg-amber-100 text-amber-800'
+                                : 'bg-blue-100 text-blue-800'
                             }`}
                           >
                             {gap.severity}
                           </span>
-                          <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+                          <h4 className="text-xs font-bold text-slate-900">
                             {gap.gap_title}
                           </h4>
                         </div>
-                        <p className="text-xs text-slate-600 dark:text-slate-400">
+                        <p className="text-xs text-slate-600">
                           {gap.reason}
                         </p>
-                        <div className="text-[11px] text-slate-500 dark:text-slate-400">
-                          <strong className="text-slate-700 dark:text-slate-300">Required:</strong> {gap.required_evidence}
+                        <div className="text-[11px] text-slate-500">
+                          <strong className="text-slate-700">Required:</strong> {gap.required_evidence}
                         </div>
                       </div>
 
@@ -953,13 +953,13 @@ export default function ProjectValidationPage() {
         {activeTab === 'cost' && (
           <div className="space-y-6">
             {/* Cost Tracker Card */}
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-6">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-6">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                     <DollarSign className="w-5 h-5 text-emerald-500" /> Bill of Materials & Economic Feasibility
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-slate-500">
                     Empirical cost profiling for prototype construction, mass production BOM, and cloud infrastructure.
                   </p>
                 </div>
@@ -973,25 +973,25 @@ export default function ProjectValidationPage() {
 
               {/* KPI Row */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40">
-                  <span className="text-xs text-slate-500 dark:text-slate-400">Single Prototype Unit BOM</span>
-                  <div className="text-2xl font-black text-slate-900 dark:text-white mt-1">
+                <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                  <span className="text-xs text-slate-500">Single Prototype Unit BOM</span>
+                  <div className="text-2xl font-black text-slate-900 mt-1">
                     ₹{costData?.total_prototype_cost.toLocaleString() ?? '0'}
                   </div>
                   <span className="text-[10px] text-slate-400 font-mono">Hardware & Local Components</span>
                 </div>
 
-                <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40">
-                  <span className="text-xs text-slate-500 dark:text-slate-400">Estimated Field Deployment</span>
-                  <div className="text-2xl font-black text-indigo-600 dark:text-indigo-400 mt-1">
+                <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                  <span className="text-xs text-slate-500">Estimated Field Deployment</span>
+                  <div className="text-2xl font-black text-indigo-600 mt-1">
                     ₹{costData?.total_deployment_cost.toLocaleString() ?? '0'}
                   </div>
                   <span className="text-[10px] text-slate-400 font-mono">Enclosure + Solar + Mounting (+15%)</span>
                 </div>
 
-                <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40">
-                  <span className="text-xs text-slate-500 dark:text-slate-400">Recurring Monthly OpEx</span>
-                  <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400 mt-1">
+                <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                  <span className="text-xs text-slate-500">Recurring Monthly OpEx</span>
+                  <div className="text-2xl font-black text-emerald-600 mt-1">
                     ₹{costData?.recurring_monthly_cost.toLocaleString() ?? '0'} / mo
                   </div>
                   <span className="text-[10px] text-slate-400 font-mono">MQTT Cloud Broker + Cellular SIM</span>
@@ -1001,7 +1001,7 @@ export default function ProjectValidationPage() {
               {/* Cost Items Table */}
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
+                  <thead className="bg-slate-50 text-slate-500 uppercase tracking-wider font-semibold border-b border-slate-200">
                     <tr>
                       <th className="py-2.5 px-3">Item / Component</th>
                       <th className="py-2.5 px-3">Category</th>
@@ -1013,24 +1013,24 @@ export default function ProjectValidationPage() {
                       <th className="py-2.5 px-3 text-right">Action</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80">
+                  <tbody className="divide-y divide-slate-100">
                     {costData?.items.map((it) => (
-                      <tr key={it.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
-                        <td className="py-2.5 px-3 font-semibold text-slate-900 dark:text-white">
+                      <tr key={it.id} className="hover:bg-slate-50/50">
+                        <td className="py-2.5 px-3 font-semibold text-slate-900">
                           {it.item_name}
                         </td>
                         <td className="py-2.5 px-3 text-slate-500">{it.category}</td>
                         <td className="py-2.5 px-3 font-mono">{it.quantity}</td>
                         <td className="py-2.5 px-3 font-mono">₹{it.unit_cost.toLocaleString()}</td>
-                        <td className="py-2.5 px-3 font-mono font-bold text-slate-800 dark:text-slate-200">
+                        <td className="py-2.5 px-3 font-mono font-bold text-slate-800">
                           ₹{it.total_cost.toLocaleString()}
                         </td>
                         <td className="py-2.5 px-3">
                           <span
                             className={`px-1.5 py-0.5 rounded text-[10px] font-semibold ${
                               it.is_estimated
-                                ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300'
-                                : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300'
+                                ? 'bg-amber-100 text-amber-800'
+                                : 'bg-emerald-100 text-emerald-800'
                             }`}
                           >
                             {it.is_estimated ? 'ESTIMATED' : 'VERIFIED'}
@@ -1054,8 +1054,8 @@ export default function ProjectValidationPage() {
             </div>
 
             {/* Scalability Assessment Grid */}
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-4">
-              <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-4">
+              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <Scale className="w-5 h-5 text-purple-500" /> Multi-Tier Scalability Architecture & Bottleneck Audit
               </h3>
 
@@ -1063,13 +1063,13 @@ export default function ProjectValidationPage() {
                 {scalabilityData?.dimensions.map((dim, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 space-y-2"
+                    className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-2"
                   >
                     <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+                      <h4 className="text-xs font-bold text-slate-900">
                         {dim.dimension}
                       </h4>
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-purple-50 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 font-semibold border border-purple-200 dark:border-purple-800">
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-purple-50 text-purple-700 font-semibold border border-purple-200">
                         {dim.evidence_backing}
                       </span>
                     </div>
@@ -1077,17 +1077,17 @@ export default function ProjectValidationPage() {
                     <div className="grid grid-cols-2 gap-2 text-xs">
                       <div>
                         <span className="text-[10px] text-slate-400 block">Current Capacity</span>
-                        <span className="font-semibold text-slate-700 dark:text-slate-300">{dim.current_capacity}</span>
+                        <span className="font-semibold text-slate-700">{dim.current_capacity}</span>
                       </div>
                       <div>
                         <span className="text-[10px] text-slate-400 block">Documented Limit</span>
-                        <span className="font-mono text-slate-700 dark:text-slate-300">{dim.documented_limit}</span>
+                        <span className="font-mono text-slate-700">{dim.documented_limit}</span>
                       </div>
                     </div>
 
-                    <div className="pt-2 border-t border-slate-200/60 dark:border-slate-800 text-xs">
-                      <span className="text-slate-500 dark:text-slate-400 font-medium">Risk Analysis: </span>
-                      <span className="text-slate-700 dark:text-slate-300">{dim.bottleneck_risk}</span>
+                    <div className="pt-2 border-t border-slate-200/60 text-xs">
+                      <span className="text-slate-500 font-medium">Risk Analysis: </span>
+                      <span className="text-slate-700">{dim.bottleneck_risk}</span>
                     </div>
                   </div>
                 ))}
@@ -1101,19 +1101,19 @@ export default function ProjectValidationPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'competition' && (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-6">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-6">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                     <Award className="w-5 h-5 text-amber-500" /> 8-Pillar Competition & Defense Readiness
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-slate-500">
                     Verify all evaluation criteria expected by hackathon judges, faculty review boards, and venture juries.
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold text-slate-500">Readiness Score:</span>
-                  <span className="text-lg font-black text-indigo-600 dark:text-indigo-400">
+                  <span className="text-lg font-black text-indigo-600">
                     {competitionData?.overall_readiness_pct.toFixed(0)}%
                   </span>
                 </div>
@@ -1124,25 +1124,25 @@ export default function ProjectValidationPage() {
                 {competitionData?.pillars.map((pillar) => (
                   <div
                     key={pillar.pillar}
-                    className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/30 space-y-2"
+                    className="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-2"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-slate-900 dark:text-white">{pillar.pillar}</span>
+                      <span className="text-xs font-bold text-slate-900">{pillar.pillar}</span>
                       <span
                         className={`text-[10px] font-bold px-1.5 py-0.2 rounded uppercase ${
                           pillar.status === 'READY'
-                            ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300'
+                            ? 'bg-emerald-100 text-emerald-800'
                             : pillar.status === 'PARTIAL'
-                            ? 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300'
-                            : 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300'
+                            ? 'bg-blue-100 text-blue-800'
+                            : 'bg-slate-200 text-slate-700'
                         }`}
                       >
                         {pillar.status}
                       </span>
                     </div>
-                    <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
+                    <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
                       <div
-                        className="bg-indigo-600 dark:bg-indigo-400 h-full rounded-full"
+                        className="bg-indigo-600 h-full rounded-full"
                         style={{ width: `${pillar.score_pct}%` }}
                       />
                     </div>
@@ -1152,7 +1152,7 @@ export default function ProjectValidationPage() {
 
               {/* Interactive Checklist */}
               <div className="space-y-3 pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
                   Competition Preparation Checklist
                 </h4>
 
@@ -1163,7 +1163,7 @@ export default function ProjectValidationPage() {
                     return (
                       <div
                         key={item.id}
-                        className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-start justify-between gap-3 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition"
+                        className="p-3.5 rounded-xl border border-slate-200 bg-white flex items-start justify-between gap-3 hover:bg-slate-50/50 transition"
                       >
                         <div className="flex items-start gap-3">
                           <button
@@ -1171,19 +1171,19 @@ export default function ProjectValidationPage() {
                             className="mt-0.5 text-slate-400 hover:text-indigo-600 transition"
                           >
                             {isReady ? (
-                              <CheckSquare className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                              <CheckSquare className="w-4 h-4 text-emerald-600" />
                             ) : isPartial ? (
-                              <Sliders className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                              <Sliders className="w-4 h-4 text-blue-600" />
                             ) : (
                               <Square className="w-4 h-4 text-slate-400" />
                             )}
                           </button>
                           <div className="space-y-0.5">
                             <div className="flex items-center gap-2">
-                              <span className="text-xs font-bold text-slate-900 dark:text-white">{item.title}</span>
+                              <span className="text-xs font-bold text-slate-900">{item.title}</span>
                               <span className="text-[10px] font-semibold text-slate-400">[{item.category}]</span>
                             </div>
-                            <p className="text-xs text-slate-500 dark:text-slate-400">{item.description}</p>
+                            <p className="text-xs text-slate-500">{item.description}</p>
                           </div>
                         </div>
 
@@ -1191,10 +1191,10 @@ export default function ProjectValidationPage() {
                           onClick={() => handleToggleChecklist(item.id, item.status)}
                           className={`text-[11px] font-semibold px-2 py-0.5 rounded transition ${
                             isReady
-                              ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
+                              ? 'bg-emerald-50 text-emerald-700'
                               : isPartial
-                              ? 'bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300'
-                              : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
+                              ? 'bg-blue-50 text-blue-700'
+                              : 'bg-slate-100 text-slate-600'
                           }`}
                         >
                           {item.status}
@@ -1214,12 +1214,12 @@ export default function ProjectValidationPage() {
         {activeTab === 'presentation' && (
           <div className="space-y-6">
             {!presentationData ? (
-              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-10 text-center space-y-4">
+              <div className="bg-white border border-slate-200 rounded-2xl p-10 text-center space-y-4">
                 <Presentation className="w-12 h-12 text-indigo-500 mx-auto" />
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="text-base font-bold text-slate-900">
                   16-Slide Academic & Competition Presentation Generator
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-lg mx-auto leading-relaxed">
+                <p className="text-xs text-slate-500 max-w-lg mx-auto leading-relaxed">
                   Synthesize an evidence-backed 16-slide academic presentation outline grounded in your empirical experiments, baseline benchmarks, and recorded telemetry with verifiable speaker notes.
                 </p>
                 <button
@@ -1232,14 +1232,14 @@ export default function ProjectValidationPage() {
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 {/* Slide List Navigator */}
-                <div className="lg:col-span-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-xs space-y-2 max-h-[680px] overflow-y-auto">
-                  <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+                <div className="lg:col-span-4 bg-white border border-slate-200 rounded-2xl p-4 shadow-xs space-y-2 max-h-[680px] overflow-y-auto">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                       Slides (16 Total)
                     </span>
                     <button
                       onClick={handleGeneratePresentation}
-                      className="text-xs text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
+                      className="text-xs text-indigo-600 hover:underline flex items-center gap-1"
                     >
                       <RefreshCw className="w-3 h-3" /> Refresh
                     </button>
@@ -1251,11 +1251,11 @@ export default function ProjectValidationPage() {
                       onClick={() => setActiveSlideIndex(idx)}
                       className={`w-full text-left p-2.5 rounded-xl border transition flex items-start gap-2.5 ${
                         activeSlideIndex === idx
-                          ? 'border-indigo-500 bg-indigo-50/60 dark:bg-indigo-950/40 text-indigo-900 dark:text-indigo-200'
-                          : 'border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/40 text-slate-700 dark:text-slate-300'
+                          ? 'border-indigo-500 bg-indigo-50/60 text-indigo-900'
+                          : 'border-slate-200/60 bg-white hover:bg-slate-50 text-slate-700'
                       }`}
                     >
-                      <span className="text-[11px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200">
+                      <span className="text-[11px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800">
                         #{sl.slide_number}
                       </span>
                       <div className="truncate">
@@ -1310,9 +1310,9 @@ export default function ProjectValidationPage() {
                       </div>
 
                       {/* Grounded Speaker Notes */}
-                      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-xs space-y-3">
+                      <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-3">
                         <div className="flex items-center justify-between">
-                          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                             <MessageSquare className="w-4 h-4 text-indigo-500" /> Verified Speaker Notes & Defense Talking Points
                           </h4>
                           <button
@@ -1336,7 +1336,7 @@ export default function ProjectValidationPage() {
                           </button>
                         </div>
 
-                        <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-sans bg-slate-50 dark:bg-slate-800/40 p-3.5 rounded-xl border border-slate-100 dark:border-slate-800">
+                        <p className="text-xs text-slate-700 leading-relaxed font-sans bg-slate-50 p-3.5 rounded-xl border border-slate-100">
                           {presentationData.slides[activeSlideIndex].speaker_notes}
                         </p>
                       </div>
@@ -1353,13 +1353,13 @@ export default function ProjectValidationPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'demo' && (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-6">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-6">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                     <Play className="w-5 h-5 text-indigo-500" /> 8-Step Guided Live Demo & Subsystem Diagnostics
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-slate-500">
                     Live end-to-end walkthrough path for faculty demos and hackathon stage presentations.
                   </p>
                 </div>
@@ -1367,8 +1367,8 @@ export default function ProjectValidationPage() {
                   <span
                     className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
                       demoData?.is_demo_ready
-                        ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300'
-                        : 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300'
+                        ? 'bg-emerald-100 text-emerald-800'
+                        : 'bg-amber-100 text-amber-800'
                     }`}
                   >
                     {demoData?.is_demo_ready ? <CheckCircle2 className="w-3.5 h-3.5" /> : <AlertTriangle className="w-3.5 h-3.5" />}
@@ -1382,28 +1382,28 @@ export default function ProjectValidationPage() {
                 {demoData?.checks.map((chk) => (
                   <div
                     key={chk.key}
-                    className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/30 space-y-1"
+                    className="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-slate-900 dark:text-white">{chk.label}</span>
+                      <span className="text-xs font-bold text-slate-900">{chk.label}</span>
                       <span
                         className={`text-[10px] font-semibold px-1.5 py-0.2 rounded ${
                           chk.status === 'OPERATIONAL' || chk.status === 'READY'
-                            ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300'
-                            : 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300'
+                            ? 'bg-emerald-100 text-emerald-800'
+                            : 'bg-amber-100 text-amber-800'
                         }`}
                       >
                         {chk.status}
                       </span>
                     </div>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">{chk.details}</p>
+                    <p className="text-[11px] text-slate-500 leading-tight">{chk.details}</p>
                   </div>
                 ))}
               </div>
 
               {/* 8-Step Walkthrough Flow */}
               <div className="space-y-3 pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
                   Recommended 8-Step Live Presentation Flow
                 </h4>
 
@@ -1411,16 +1411,16 @@ export default function ProjectValidationPage() {
                   {demoData?.guided_steps.map((step) => (
                     <div
                       key={step.step_number}
-                      className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-indigo-300 dark:hover:border-indigo-700 transition"
+                      className="p-4 rounded-xl border border-slate-200 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-indigo-300 transition"
                     >
                       <div className="flex items-start gap-3.5">
                         <span className="w-7 h-7 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center shrink-0">
                           {step.step_number}
                         </span>
                         <div className="space-y-0.5">
-                          <h4 className="text-xs font-bold text-slate-900 dark:text-white">{step.title}</h4>
-                          <p className="text-xs text-slate-500 dark:text-slate-400">{step.description}</p>
-                          <span className="text-[10px] font-mono text-indigo-500 dark:text-indigo-400 block">
+                          <h4 className="text-xs font-bold text-slate-900">{step.title}</h4>
+                          <p className="text-xs text-slate-500">{step.description}</p>
+                          <span className="text-[10px] font-mono text-indigo-500 block">
                             Target Route: {step.route_target}
                           </span>
                         </div>
@@ -1428,7 +1428,7 @@ export default function ProjectValidationPage() {
 
                       <button
                         onClick={() => router.push(step.route_target)}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 transition shrink-0"
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 transition shrink-0"
                       >
                         Jump to Stage <ArrowUpRight className="w-3.5 h-3.5" />
                       </button>
@@ -1445,13 +1445,13 @@ export default function ProjectValidationPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'reviews' && (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-6">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-6">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                     <Users className="w-5 h-5 text-indigo-500" /> Stakeholder, Faculty & Mentor Evaluations
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-slate-500">
                     Formal multi-dimensional feedback from faculty advisors, industry mentors, and user study participants.
                   </p>
                 </div>
@@ -1464,8 +1464,8 @@ export default function ProjectValidationPage() {
               </div>
 
               {reviews.length === 0 ? (
-                <div className="p-8 text-center text-xs text-slate-500 dark:text-slate-400 space-y-2">
-                  <Users className="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto" />
+                <div className="p-8 text-center text-xs text-slate-500 space-y-2">
+                  <Users className="w-10 h-10 text-slate-300 mx-auto" />
                   <p>No formal evaluations recorded yet. Solicit faculty or mentor feedback to reinforce validation.</p>
                 </div>
               ) : (
@@ -1473,11 +1473,11 @@ export default function ProjectValidationPage() {
                   {reviews.map((rev) => (
                     <div
                       key={rev.id}
-                      className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/20 space-y-3"
+                      className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <div className="space-y-0.5">
-                          <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+                          <h4 className="text-xs font-bold text-slate-900">
                             {rev.reviewer_name}{' '}
                             <span className="text-slate-400 font-normal">({rev.reviewer_role})</span>
                           </h4>
@@ -1489,26 +1489,26 @@ export default function ProjectValidationPage() {
                         {/* Scores */}
                         <div className="flex items-center gap-3 text-xs">
                           {typeof rev.innovation_score === 'number' && (
-                            <span className="px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 font-semibold text-[11px]">
+                            <span className="px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 font-semibold text-[11px]">
                               Innovation: {rev.innovation_score}/10
                             </span>
                           )}
                           {typeof rev.solution_feasibility_score === 'number' && (
-                            <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 font-semibold text-[11px]">
+                            <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-semibold text-[11px]">
                               Feasibility: {rev.solution_feasibility_score}/10
                             </span>
                           )}
                         </div>
                       </div>
 
-                      <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
+                      <p className="text-xs text-slate-700 leading-relaxed font-sans">
                         {rev.feedback_text}
                       </p>
 
                       {rev.recommendations && rev.recommendations.length > 0 && (
-                        <div className="pt-2 border-t border-slate-200/60 dark:border-slate-800 text-xs">
+                        <div className="pt-2 border-t border-slate-200/60 text-xs">
                           <span className="font-semibold text-slate-500 block mb-1">Key Recommendations:</span>
-                          <ul className="list-disc list-inside space-y-0.5 text-slate-600 dark:text-slate-400">
+                          <ul className="list-disc list-inside space-y-0.5 text-slate-600">
                             {rev.recommendations.map((rec, i) => (
                               <li key={i}>{rec}</li>
                             ))}
@@ -1529,9 +1529,9 @@ export default function ProjectValidationPage() {
       {/* ------------------------------------------------------------- */}
       {isClaimModalOpen && (
         <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-              <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <div className="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-indigo-500" /> Register Innovation Claim
               </h3>
               <button
@@ -1544,7 +1544,7 @@ export default function ProjectValidationPage() {
 
             <form onSubmit={handleCreateClaim} className="space-y-4 text-xs">
               <div>
-                <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Claim Title *
                 </label>
                 <input
@@ -1553,12 +1553,12 @@ export default function ProjectValidationPage() {
                   placeholder="e.g. Sub-30ms Edge Inference Latency on ESP32"
                   value={claimForm.title}
                   onChange={(e) => setClaimForm({ ...claimForm, title: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Detailed Scientific Assertion *
                 </label>
                 <textarea
@@ -1567,17 +1567,17 @@ export default function ProjectValidationPage() {
                   placeholder="State the measurable advantage over conventional methods..."
                   value={claimForm.claim}
                   onChange={(e) => setClaimForm({ ...claimForm, claim: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Category</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Category</label>
                   <select
                     value={claimForm.category}
                     onChange={(e) => setClaimForm({ ...claimForm, category: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                   >
                     <option value="Performance">Performance / Speed</option>
                     <option value="Accuracy">Accuracy / Precision</option>
@@ -1590,11 +1590,11 @@ export default function ProjectValidationPage() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Validation Type</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Validation Type</label>
                   <select
                     value={claimForm.validation_type}
                     onChange={(e) => setClaimForm({ ...claimForm, validation_type: e.target.value as ValidationType })}
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                   >
                     <option value="SIMULATED">SIMULATED</option>
                     <option value="DIGITAL_TESTBED">DIGITAL TESTBED</option>
@@ -1607,11 +1607,11 @@ export default function ProjectValidationPage() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Initial Status</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Initial Status</label>
                   <select
                     value={claimForm.status}
                     onChange={(e) => setClaimForm({ ...claimForm, status: e.target.value as ValidationStatus })}
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                   >
                     <option value="NOT_TESTED">NOT TESTED</option>
                     <option value="SIMULATED">SIMULATED</option>
@@ -1622,7 +1622,7 @@ export default function ProjectValidationPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Empirical Validation Question *
                 </label>
                 <input
@@ -1631,12 +1631,12 @@ export default function ProjectValidationPage() {
                   placeholder="e.g. Does mean inference latency remain under 30ms across 100 trials?"
                   value={claimForm.validation_question}
                   onChange={(e) => setClaimForm({ ...claimForm, validation_question: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Observed Empirical Result
                 </label>
                 <input
@@ -1644,15 +1644,15 @@ export default function ProjectValidationPage() {
                   placeholder="e.g. Recorded mean latency of 24.2ms (+- 1.4ms) on ESP32-S3."
                   value={claimForm.observed_result}
                   onChange={(e) => setClaimForm({ ...claimForm, observed_result: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                 />
               </div>
 
-              <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+              <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setIsClaimModalOpen(false)}
-                  className="px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                  className="px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition"
                 >
                   Cancel
                 </button>
@@ -1673,9 +1673,9 @@ export default function ProjectValidationPage() {
       {/* ------------------------------------------------------------- */}
       {isEvidenceModalOpen && selectedClaimForEvidence && (
         <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+          <div className="bg-white border border-slate-200 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <h3 className="text-sm font-bold text-slate-900">
                 Attach Evidence to: {selectedClaimForEvidence.title}
               </h3>
               <button
@@ -1688,24 +1688,24 @@ export default function ProjectValidationPage() {
 
             <form onSubmit={handleAddEvidence} className="space-y-4 text-xs">
               <div>
-                <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Evidence Title *</label>
+                <label className="block font-semibold text-slate-700 mb-1">Evidence Title *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. 5-Run Confusion Matrix on 500 Samples"
                   value={evidenceForm.title}
                   onChange={(e) => setEvidenceForm({ ...evidenceForm, title: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Evidence Type</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Evidence Type</label>
                   <select
                     value={evidenceForm.evidence_type}
                     onChange={(e) => setEvidenceForm({ ...evidenceForm, evidence_type: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                   >
                     <option value="experiment_run">Experiment Run</option>
                     <option value="benchmark_comparison">Benchmark Comparison</option>
@@ -1716,11 +1716,11 @@ export default function ProjectValidationPage() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Validation Type</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Validation Type</label>
                   <select
                     value={evidenceForm.validation_type}
                     onChange={(e) => setEvidenceForm({ ...evidenceForm, validation_type: e.target.value as ValidationType })}
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                   >
                     <option value="SIMULATED">SIMULATED</option>
                     <option value="DIGITAL_TESTBED">DIGITAL TESTBED</option>
@@ -1732,21 +1732,21 @@ export default function ProjectValidationPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">URI / Source Link</label>
+                <label className="block font-semibold text-slate-700 mb-1">URI / Source Link</label>
                 <input
                   type="text"
                   placeholder="https://... or experiment_run_id"
                   value={evidenceForm.source_uri}
                   onChange={(e) => setEvidenceForm({ ...evidenceForm, source_uri: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                 />
               </div>
 
-              <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+              <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setIsEvidenceModalOpen(false)}
-                  className="px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 transition"
+                  className="px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition"
                 >
                   Cancel
                 </button>
@@ -1767,9 +1767,9 @@ export default function ProjectValidationPage() {
       {/* ------------------------------------------------------------- */}
       {isCostModalOpen && (
         <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white">Add Cost / BOM Item</h3>
+          <div className="bg-white border border-slate-200 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <h3 className="text-sm font-bold text-slate-900">Add Cost / BOM Item</h3>
               <button onClick={() => setIsCostModalOpen(false)} className="text-slate-400 hover:text-slate-600">
                 ✕
               </button>
@@ -1784,7 +1784,7 @@ export default function ProjectValidationPage() {
                   placeholder="e.g. ESP32-S3 Microcontroller"
                   value={costForm.item_name}
                   onChange={(e) => setCostForm({ ...costForm, item_name: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                 />
               </div>
 
@@ -1796,7 +1796,7 @@ export default function ProjectValidationPage() {
                     min={1}
                     value={costForm.quantity}
                     onChange={(e) => setCostForm({ ...costForm, quantity: Number(e.target.value) })}
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900 font-mono"
                   />
                 </div>
                 <div>
@@ -1807,7 +1807,7 @@ export default function ProjectValidationPage() {
                     step="0.01"
                     value={costForm.unit_cost}
                     onChange={(e) => setCostForm({ ...costForm, unit_cost: Number(e.target.value) })}
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900 font-mono"
                   />
                 </div>
               </div>
@@ -1818,7 +1818,7 @@ export default function ProjectValidationPage() {
                   <select
                     value={costForm.category}
                     onChange={(e) => setCostForm({ ...costForm, category: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                   >
                     <option value="Hardware">Hardware / Sensor</option>
                     <option value="Infrastructure">Infrastructure / Cloud</option>
@@ -1831,7 +1831,7 @@ export default function ProjectValidationPage() {
                   <select
                     value={costForm.is_recurring ? 'recurring' : 'one_time'}
                     onChange={(e) => setCostForm({ ...costForm, is_recurring: e.target.value === 'recurring' })}
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                   >
                     <option value="one_time">One-Time Prototype</option>
                     <option value="recurring">Recurring Monthly</option>
@@ -1839,11 +1839,11 @@ export default function ProjectValidationPage() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+              <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setIsCostModalOpen(false)}
-                  className="px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100"
+                  className="px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-100"
                 >
                   Cancel
                 </button>
@@ -1861,9 +1861,9 @@ export default function ProjectValidationPage() {
       {/* ------------------------------------------------------------- */}
       {isReviewModalOpen && (
         <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-xl w-full p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-              <h3 className="text-base font-bold text-slate-900 dark:text-white">Log Formal Stakeholder Review</h3>
+          <div className="bg-white border border-slate-200 rounded-2xl max-w-xl w-full p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <h3 className="text-base font-bold text-slate-900">Log Formal Stakeholder Review</h3>
               <button onClick={() => setIsReviewModalOpen(false)} className="text-slate-400 hover:text-slate-600">
                 ✕
               </button>
@@ -1879,7 +1879,7 @@ export default function ProjectValidationPage() {
                     placeholder="e.g. Dr. Sarah Johnson"
                     value={reviewForm.reviewer_name}
                     onChange={(e) => setReviewForm({ ...reviewForm, reviewer_name: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                   />
                 </div>
                 <div>
@@ -1887,7 +1887,7 @@ export default function ProjectValidationPage() {
                   <select
                     value={reviewForm.reviewer_role}
                     onChange={(e) => setReviewForm({ ...reviewForm, reviewer_role: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                   >
                     <option value="faculty">Faculty Advisor</option>
                     <option value="mentor">Industry Mentor</option>
@@ -1905,7 +1905,7 @@ export default function ProjectValidationPage() {
                   placeholder="Detailed evaluation of empirical rigor, engineering constraints, and practical utility..."
                   value={reviewForm.feedback_text}
                   onChange={(e) => setReviewForm({ ...reviewForm, feedback_text: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                 />
               </div>
 
@@ -1916,15 +1916,15 @@ export default function ProjectValidationPage() {
                   placeholder="Conduct stress tests on 10 water sources&#10;Add battery temperature telemetry"
                   value={reviewForm.recommendations}
                   onChange={(e) => setReviewForm({ ...reviewForm, recommendations: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900"
                 />
               </div>
 
-              <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+              <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setIsReviewModalOpen(false)}
-                  className="px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100"
+                  className="px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-100"
                 >
                   Cancel
                 </button>
@@ -1942,9 +1942,9 @@ export default function ProjectValidationPage() {
       {/* ------------------------------------------------------------- */}
       {isSyncModalOpen && syncResult && (
         <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-              <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <div className="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-emerald-500" /> Research Document Synchronized
               </h3>
               <button onClick={() => setIsSyncModalOpen(false)} className="text-slate-400 hover:text-slate-600">
@@ -1952,7 +1952,7 @@ export default function ProjectValidationPage() {
               </button>
             </div>
 
-            <p className="text-xs text-slate-600 dark:text-slate-300">
+            <p className="text-xs text-slate-600">
               {syncResult.message} ({syncResult.claims_synced_count} claims synced into Document #{syncResult.document_id}).
             </p>
 
@@ -1966,7 +1966,7 @@ export default function ProjectValidationPage() {
               </pre>
             </div>
 
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
               <button
                 onClick={() => {
                   setIsSyncModalOpen(false);

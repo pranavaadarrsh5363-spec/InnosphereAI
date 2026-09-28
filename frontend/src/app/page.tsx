@@ -150,23 +150,23 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900">
       {/* 1. Hero Section */}
-      <section className="pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+      <section className="pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-5xl text-center space-y-6">
           {/* Restrained Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
-            <Atom className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-100 border border-slate-200 text-[11px] font-semibold text-slate-700">
+            <Atom className="h-3.5 w-3.5 text-blue-600" />
             <span>INNOSPHERE AI · UNIVERSITY INNOVATION & RESEARCH PLATFORM</span>
           </div>
 
           {/* Disciplined Professional Heading */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight max-w-4xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-4xl mx-auto">
             Turn student ideas into evidence-backed innovations.
           </h1>
 
           {/* Supporting Text */}
-          <p className="mx-auto max-w-3xl text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p className="mx-auto max-w-3xl text-sm sm:text-base text-slate-600 leading-relaxed">
             Research relevant technologies, explore resources, run experiments, validate claims, and develop projects with AI-assisted guidance.
           </p>
 
@@ -182,15 +182,15 @@ export default function LandingPage() {
 
             <button
               onClick={() => setDemoModalOpen(true)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold text-xs transition-colors cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-800 hover:bg-slate-50 font-semibold text-xs transition-colors cursor-pointer"
             >
-              <Play className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+              <Play className="h-3.5 w-3.5 text-blue-600" />
               <span>Explore the Platform</span>
             </button>
 
             <Link
               href="/projects"
-              className="flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-xs font-medium transition-colors"
+              className="flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 text-xs font-medium transition-colors"
             >
               <span>View Projects Directory</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -198,17 +198,17 @@ export default function LandingPage() {
           </div>
 
           {/* Realistic Product Workspace Preview */}
-          <div className="mt-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-left max-w-4xl mx-auto overflow-hidden">
+          <div className="mt-10 rounded-xl bg-white border border-slate-200 shadow-sm text-left max-w-4xl mx-auto overflow-hidden">
             {/* Preview Top Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 py-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/80">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 py-3 border-b border-slate-200 bg-slate-50">
               <div className="flex items-center gap-3">
                 <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-slate-900 dark:text-white">
+                    <span className="text-xs font-bold text-slate-900">
                       Smart Community Water Quality & Early Warning Network
                     </span>
-                    <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">
+                    <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 font-medium">
                       Project #1 • Environmental IoT & AI
                     </span>
                   </div>
@@ -216,7 +216,7 @@ export default function LandingPage() {
               </div>
 
               {/* Workspace Preview Tabs */}
-              <div className="flex gap-1 bg-slate-200/70 dark:bg-slate-800 p-0.5 rounded-md text-[11px] overflow-x-auto no-scrollbar">
+              <div className="flex gap-1 bg-slate-200/70 p-0.5 rounded-md text-[11px] overflow-x-auto no-scrollbar">
                 {[
                   { id: 'overview', label: 'Project Overview' },
                   { id: 'research', label: 'Research & Evidence' },
@@ -229,8 +229,8 @@ export default function LandingPage() {
                     onClick={() => setPreviewTab(t.id as any)}
                     className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors cursor-pointer ${
                       previewTab === t.id
-                        ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-semibold shadow-2xs'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                        ? 'bg-white text-slate-900 font-semibold shadow-2xs'
+                        : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
                     {t.label}
@@ -244,23 +244,23 @@ export default function LandingPage() {
               {previewTab === 'overview' && (
                 <div className="space-y-4 text-xs">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-1">
+                    <div className="p-3.5 rounded-lg border border-slate-200 bg-slate-50 space-y-1">
                       <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Problem Statement</span>
-                      <p className="text-slate-700 dark:text-slate-300 line-clamp-3">
+                      <p className="text-slate-700 line-clamp-3">
                         Contaminated municipal water kiosks in semi-urban communities lack real-time continuous sensor monitoring, leading to delayed contamination detection.
                       </p>
                     </div>
 
-                    <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-1">
+                    <div className="p-3.5 rounded-lg border border-slate-200 bg-slate-50 space-y-1">
                       <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Technical Solution</span>
-                      <p className="text-slate-700 dark:text-slate-300 line-clamp-3">
+                      <p className="text-slate-700 line-clamp-3">
                         Solar-powered ESP32 microcontroller with analog turbidity/pH probes streaming telemetry via LoRaWAN into a FastAPI backend with 1D-CNN anomaly detection.
                       </p>
                     </div>
 
-                    <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-1">
+                    <div className="p-3.5 rounded-lg border border-slate-200 bg-slate-50 space-y-1">
                       <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Recommended Next Action</span>
-                      <div className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-semibold pt-0.5">
+                      <div className="flex items-center gap-1.5 text-blue-600 font-semibold pt-0.5">
                         <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
                         <span>Deploy INT8 quantized ONNX model on ESP32 node</span>
                       </div>
@@ -268,21 +268,21 @@ export default function LandingPage() {
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1 text-[11px]">
-                    <div className="p-2.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                    <div className="p-2.5 rounded-md border border-slate-200 bg-white">
                       <span className="text-slate-500 block">Research Citations</span>
-                      <span className="text-sm font-bold text-slate-900 dark:text-white">4 Papers Verified</span>
+                      <span className="text-sm font-bold text-slate-900">4 Papers Verified</span>
                     </div>
-                    <div className="p-2.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                    <div className="p-2.5 rounded-md border border-slate-200 bg-white">
                       <span className="text-slate-500 block">Empirical Experiments</span>
-                      <span className="text-sm font-bold text-slate-900 dark:text-white">8 Trials Recorded</span>
+                      <span className="text-sm font-bold text-slate-900">8 Trials Recorded</span>
                     </div>
-                    <div className="p-2.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                    <div className="p-2.5 rounded-md border border-slate-200 bg-white">
                       <span className="text-slate-500 block">Validation Matrix</span>
-                      <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">6/6 Claims Validated</span>
+                      <span className="text-sm font-bold text-emerald-600">6/6 Claims Validated</span>
                     </div>
-                    <div className="p-2.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                    <div className="p-2.5 rounded-md border border-slate-200 bg-white">
                       <span className="text-slate-500 block">TRL Maturity</span>
-                      <span className="text-sm font-bold text-blue-600 dark:text-blue-400">Level 5 (Validation)</span>
+                      <span className="text-sm font-bold text-blue-600">Level 5 (Validation)</span>
                     </div>
                   </div>
                 </div>
@@ -290,35 +290,35 @@ export default function LandingPage() {
 
               {previewTab === 'research' && (
                 <div className="space-y-3 text-xs">
-                  <div className="flex items-center justify-between text-[11px] text-slate-500 border-b border-slate-200 dark:border-slate-800 pb-2">
+                  <div className="flex items-center justify-between text-[11px] text-slate-500 border-b border-slate-200 pb-2">
                     <span>Indexed Scientific References (Sample from arXiv & OpenAlex)</span>
-                    <span className="font-mono text-emerald-600 dark:text-emerald-400">94.8% Mean Semantic Match</span>
+                    <span className="font-mono text-emerald-600">94.8% Mean Semantic Match</span>
                   </div>
                   <div className="space-y-2">
-                    <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 flex justify-between items-center">
+                    <div className="p-3 rounded-lg border border-slate-200 bg-slate-50 flex justify-between items-center">
                       <div>
-                        <h4 className="font-semibold text-slate-900 dark:text-white">
+                        <h4 className="font-semibold text-slate-900">
                           Lightweight 1D-CNN Telemetry Transformer for Low-Power Edge Microcontrollers
                         </h4>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                        <p className="text-[11px] text-slate-500 mt-0.5">
                           arXiv:2403.11892 &bull; IEEE Transactions on Industrial Informatics (2025)
                         </p>
                       </div>
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-semibold border border-blue-200 dark:border-blue-900 shrink-0 ml-3">
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-blue-100 text-blue-700 font-semibold border border-blue-200 shrink-0 ml-3">
                         Phase 3 Match
                       </span>
                     </div>
 
-                    <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 flex justify-between items-center">
+                    <div className="p-3 rounded-lg border border-slate-200 bg-slate-50 flex justify-between items-center">
                       <div>
-                        <h4 className="font-semibold text-slate-900 dark:text-white">
+                        <h4 className="font-semibold text-slate-900">
                           Autonomous Water Quality Anomaly Detection Using LoRaWAN Sensor Clusters
                         </h4>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                        <p className="text-[11px] text-slate-500 mt-0.5">
                           OpenAlex W438921 &bull; Environmental Science & Technology (2024)
                         </p>
                       </div>
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-semibold border border-emerald-200 dark:border-emerald-900 shrink-0 ml-3">
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-semibold border border-emerald-200 shrink-0 ml-3">
                         Baseline Reference
                       </span>
                     </div>
@@ -331,7 +331,7 @@ export default function LandingPage() {
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                       <thead>
-                        <tr className="border-b border-slate-200 dark:border-slate-800 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                        <tr className="border-b border-slate-200 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
                           <th className="py-2 px-2">Trial</th>
                           <th className="py-2 px-2">Hypothesis</th>
                           <th className="py-2 px-2">Dataset / Testbed</th>
@@ -340,22 +340,22 @@ export default function LandingPage() {
                           <th className="py-2 px-2">Status</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-[11px]">
+                      <tbody className="divide-y divide-slate-100 text-[11px]">
                         <tr>
                           <td className="py-2.5 px-2 font-mono font-semibold">EXP-001</td>
                           <td className="py-2.5 px-2">1D-CNN detects turbidity spikes in &lt;100ms</td>
                           <td className="py-2.5 px-2 font-mono">Simulated Kiosk Matrix</td>
                           <td className="py-2.5 px-2 text-slate-500">82.4% (Threshold)</td>
-                          <td className="py-2.5 px-2 font-bold text-slate-900 dark:text-white">96.8% Acc (68ms)</td>
-                          <td className="py-2.5 px-2"><span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold">CONFIRMED</span></td>
+                          <td className="py-2.5 px-2 font-bold text-slate-900">96.8% Acc (68ms)</td>
+                          <td className="py-2.5 px-2"><span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px] font-semibold">CONFIRMED</span></td>
                         </tr>
                         <tr>
                           <td className="py-2.5 px-2 font-mono font-semibold">EXP-002</td>
                           <td className="py-2.5 px-2">LoRaWAN packet loss stays &lt;2% at 5km range</td>
                           <td className="py-2.5 px-2 font-mono">SX1262 Physical Node</td>
                           <td className="py-2.5 px-2 text-slate-500">5.2% (Standard)</td>
-                          <td className="py-2.5 px-2 font-bold text-slate-900 dark:text-white">0.85% Loss</td>
-                          <td className="py-2.5 px-2"><span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold">CONFIRMED</span></td>
+                          <td className="py-2.5 px-2 font-bold text-slate-900">0.85% Loss</td>
+                          <td className="py-2.5 px-2"><span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px] font-semibold">CONFIRMED</span></td>
                         </tr>
                       </tbody>
                     </table>
@@ -365,15 +365,15 @@ export default function LandingPage() {
 
               {previewTab === 'validation' && (
                 <div className="space-y-3 text-xs">
-                  <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-2">
+                  <div className="p-3.5 rounded-lg border border-slate-200 bg-slate-50 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-slate-900 dark:text-white">Primary Claim Verification</span>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">Empirically Grounded</span>
+                      <span className="font-semibold text-slate-900">Primary Claim Verification</span>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-700">Empirically Grounded</span>
                     </div>
-                    <p className="text-[11px] text-slate-600 dark:text-slate-300">
+                    <p className="text-[11px] text-slate-600">
                       <strong>Claim:</strong> "System alerts field staff within 5 minutes of bacterial or turbidity threshold breach."
                     </p>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    <p className="text-[11px] text-slate-500">
                       <strong>Observed Evidence:</strong> 42 automated hardware trial runs observed mean alert dispatch latency of <strong>84 seconds</strong> across 3 municipal testing wells.
                     </p>
                   </div>
@@ -381,18 +381,18 @@ export default function LandingPage() {
               )}
 
               {previewTab === 'architecture' && (
-                <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs space-y-2">
+                <div className="p-3 rounded-lg border border-slate-200 bg-slate-50 text-xs space-y-2">
                   <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">End-to-End Pipeline</span>
                   <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
-                    <span className="p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">Sensors (pH/NTU)</span>
+                    <span className="p-1.5 rounded bg-white border border-slate-200">Sensors (pH/NTU)</span>
                     <span className="text-slate-400">&rarr;</span>
-                    <span className="p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">ESP32 (Quantized ONNX)</span>
+                    <span className="p-1.5 rounded bg-white border border-slate-200">ESP32 (Quantized ONNX)</span>
                     <span className="text-slate-400">&rarr;</span>
-                    <span className="p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">LoRaWAN Gateway</span>
+                    <span className="p-1.5 rounded bg-white border border-slate-200">LoRaWAN Gateway</span>
                     <span className="text-slate-400">&rarr;</span>
-                    <span className="p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">FastAPI + TimescaleDB</span>
+                    <span className="p-1.5 rounded bg-white border border-slate-200">FastAPI + TimescaleDB</span>
                     <span className="text-slate-400">&rarr;</span>
-                    <span className="p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">Next.js UI & WebSockets</span>
+                    <span className="p-1.5 rounded bg-white border border-slate-200">Next.js UI & WebSockets</span>
                   </div>
                 </div>
               )}
@@ -402,16 +402,16 @@ export default function LandingPage() {
       </section>
 
       {/* 2. How InnoSphere Works */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-slate-50/50">
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="text-center space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
               Methodology
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
               How InnoSphere Works
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+            <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
               A structured six-stage process translating unstructured concepts into verifiable, competition-ready innovations.
             </p>
           </div>
@@ -420,11 +420,11 @@ export default function LandingPage() {
             {processSteps.map((s) => (
               <div
                 key={s.step}
-                className="p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-2 hover:border-slate-300 dark:hover:border-slate-700 transition-colors shadow-2xs"
+                className="p-5 rounded-lg border border-slate-200 bg-white space-y-2 hover:border-slate-300 transition-colors shadow-2xs"
               >
-                <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">{s.step}</span>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white">{s.title}</h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{s.desc}</p>
+                <span className="text-xs font-mono font-bold text-blue-600">{s.step}</span>
+                <h3 className="text-sm font-bold text-slate-900">{s.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
@@ -432,16 +432,16 @@ export default function LandingPage() {
       </section>
 
       {/* 3. Core Capabilities */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="text-center space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
               Platform Features
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
               Core Capabilities
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+            <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
               Integrated engineering and scientific modules designed for research rigor.
             </p>
           </div>
@@ -452,13 +452,13 @@ export default function LandingPage() {
               return (
                 <div
                   key={i}
-                  className="p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/60 space-y-2.5 hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+                  className="p-5 rounded-lg border border-slate-200 bg-slate-50/50 space-y-2.5 hover:border-slate-300 transition-colors"
                 >
-                  <div className="h-8 w-8 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                  <div className="h-8 w-8 rounded-md bg-white border border-slate-200 flex items-center justify-center text-blue-600">
                     <Icon className="h-4 w-4" />
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">{c.title}</h3>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{c.desc}</p>
+                  <h3 className="text-sm font-bold text-slate-900">{c.title}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">{c.desc}</p>
                 </div>
               );
             })}
@@ -467,12 +467,12 @@ export default function LandingPage() {
       </section>
 
       {/* 4. Project Workflow Pipeline */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30">
+      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-slate-50/50">
         <div className="max-w-6xl mx-auto space-y-6 text-center">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
             Lifecycle Architecture
           </span>
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
             End-to-End Project Workflow
           </h2>
 
@@ -480,11 +480,11 @@ export default function LandingPage() {
             {workflowStages.map((wf, idx) => (
               <div
                 key={idx}
-                className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col items-center justify-center text-center shadow-2xs"
+                className="p-3 rounded-lg border border-slate-200 bg-white flex flex-col items-center justify-center text-center shadow-2xs"
               >
                 <span className="text-[10px] font-mono text-slate-400 font-bold mb-0.5">0{idx + 1}</span>
-                <span className="text-xs font-bold text-slate-900 dark:text-white tracking-tight">{wf.stage}</span>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">{wf.label}</span>
+                <span className="text-xs font-bold text-slate-900 tracking-tight">{wf.stage}</span>
+                <span className="text-[10px] text-slate-500 mt-0.5">{wf.label}</span>
               </div>
             ))}
           </div>
@@ -492,16 +492,16 @@ export default function LandingPage() {
       </section>
 
       {/* 5. Research Credibility: Build with Evidence, Not Assumptions */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="max-w-2xl space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600">
               Evidence-Backed Rigor
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
               Build with evidence, not assumptions.
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               Every insight, recommendation, and thesis draft is grounded in traceable academic literature, verified open-source implementations, and real testbed datasets.
             </p>
           </div>
@@ -512,18 +512,18 @@ export default function LandingPage() {
               return (
                 <div
                   key={i}
-                  className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 flex items-center justify-between"
+                  className="p-4 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="h-8 w-8 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300">
+                    <div className="h-8 w-8 rounded bg-white border border-slate-200 flex items-center justify-center text-slate-700">
                       <Icon className="h-4 w-4" />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-slate-900 dark:text-white">{src.name}</h4>
-                      <p className="text-[10px] text-slate-500 dark:text-slate-400">{src.type}</p>
+                      <h4 className="text-xs font-bold text-slate-900">{src.name}</h4>
+                      <p className="text-[10px] text-slate-500">{src.type}</p>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 font-medium">
+                  <span className="text-[10px] font-mono text-slate-500 font-medium">
                     {src.count}
                   </span>
                 </div>
@@ -534,20 +534,20 @@ export default function LandingPage() {
       </section>
 
       {/* 6. AI Mentor Section (Engineering Assistant, Not Sci-Fi Hype) */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-slate-50/50">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
-              <Brain className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-slate-200 text-[11px] font-semibold text-slate-700">
+              <Brain className="h-3.5 w-3.5 text-blue-600" />
               <span>Project-Aware Guidance</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
               An AI Mentor grounded in your active codebase and citations.
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               Unlike generic chatbots, the InnoSphere AI Mentor retrieves the specific context of your active project: your problem statement, logged experiments, selected hardware components, and saved literature papers.
             </p>
-            <ul className="space-y-2 text-xs text-slate-700 dark:text-slate-300">
+            <ul className="space-y-2 text-xs text-slate-700">
               <li className="flex items-center gap-2">
                 <Check className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
                 <span>Identifies literature and patent gaps to substantiate novelty claims</span>
@@ -564,24 +564,24 @@ export default function LandingPage() {
           </div>
 
           {/* AI Mentor UI Sample Preview */}
-          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm space-y-3 text-xs">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm space-y-3 text-xs">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-2">
               <div className="flex items-center gap-2">
-                <div className="h-6 w-6 rounded bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold text-[10px]">
-                  <Brain className="h-3.5 w-3.5 text-blue-400 dark:text-blue-600" />
+                <div className="h-6 w-6 rounded bg-slate-900 text-white flex items-center justify-center font-bold text-[10px]">
+                  <Brain className="h-3.5 w-3.5 text-blue-400" />
                 </div>
-                <span className="font-bold text-slate-900 dark:text-white">AI Mentor &bull; Project Advisor</span>
+                <span className="font-bold text-slate-900">AI Mentor &bull; Project Advisor</span>
               </div>
-              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">Context: ESP32 Water Kiosk Node</span>
+              <span className="text-[10px] text-emerald-600 font-medium">Context: ESP32 Water Kiosk Node</span>
             </div>
 
             <div className="space-y-2.5">
-              <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-blue-900 dark:text-blue-200 border border-blue-100 dark:border-blue-900/50">
+              <div className="p-2.5 rounded-lg bg-blue-50 text-blue-900 border border-blue-100">
                 <p className="font-medium">Student: "How can I reduce inference latency on the ESP32 while classifying turbidity anomalies?"</p>
               </div>
 
-              <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/60 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 leading-relaxed text-[11.5px]">
-                <p className="font-semibold text-slate-900 dark:text-white mb-1">Recommendation:</p>
+              <div className="p-3 rounded-lg bg-slate-50 text-slate-800 border border-slate-200 leading-relaxed text-[11.5px]">
+                <p className="font-semibold text-slate-900 mb-1">Recommendation:</p>
                 <p>
                   1. Quantize your 1D-CNN weights from FP32 to INT8 using TensorFlow Lite Micro. In published benchmarks (arXiv:2403.11892), this reduces flash footprint by <strong>74%</strong> with only <strong>0.3%</strong> loss in F1-score.
                 </p>
@@ -595,16 +595,16 @@ export default function LandingPage() {
       </section>
 
       {/* 7. Platform Dynamic Stats */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
             {stats.map((stat, i) => (
-              <div key={i} className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 space-y-1">
-                <span className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight block">
+              <div key={i} className="p-4 rounded-lg border border-slate-200 bg-slate-50 space-y-1">
+                <span className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight block">
                   {stat.value}
                 </span>
-                <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">{stat.label}</span>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 block">{stat.sub}</span>
+                <span className="text-xs font-semibold text-slate-700 block">{stat.label}</span>
+                <span className="text-[10px] text-slate-500 block">{stat.sub}</span>
               </div>
             ))}
           </div>
@@ -612,12 +612,12 @@ export default function LandingPage() {
       </section>
 
       {/* 8. Bottom Call to Action */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 text-center bg-slate-50 dark:bg-slate-900/60">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 text-center bg-slate-50">
         <div className="max-w-3xl mx-auto space-y-5">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             Ready to develop your next student innovation project?
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
             Join student innovators and faculty mentors building verified, reproducible research solutions on InnoSphere AI.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
@@ -630,13 +630,13 @@ export default function LandingPage() {
             </Link>
             <button
               onClick={() => setDemoModalOpen(true)}
-              className="px-5 py-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold text-xs transition-colors cursor-pointer"
+              className="px-5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-800 hover:bg-slate-50 font-semibold text-xs transition-colors cursor-pointer"
             >
               Explore Guided Tour
             </button>
             <Link
               href="/dashboard"
-              className="px-5 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium text-xs transition-colors"
+              className="px-5 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 font-medium text-xs transition-colors"
             >
               Enter Dashboard &rarr;
             </Link>

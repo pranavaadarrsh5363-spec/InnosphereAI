@@ -519,11 +519,11 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 flex flex-col items-center justify-center space-y-4">
+      <div className="min-h-screen bg-slate-50/50 flex flex-col items-center justify-center space-y-4">
         <div className="h-12 w-12 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center animate-spin">
           <SlidersHorizontal className="w-6 h-6" />
         </div>
-        <p className="text-sm font-semibold text-slate-600 dark:text-slate-400">
+        <p className="text-sm font-semibold text-slate-600">
           Loading AI Resource Matchmaker Workspace...
         </p>
       </div>
@@ -552,11 +552,11 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
   const risks = workspace?.risks || [];
 
   return (
-    <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-6 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50/50 text-slate-900 py-6 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Top Breadcrumb & Actions Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+          <div className="flex items-center gap-2 text-xs text-slate-500">
             <Link href="/resource-matchmaker" className="hover:text-emerald-500 transition-colors">
               Resource Matchmaker
             </Link>
@@ -565,14 +565,14 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
               {project?.title || `Project #${projectId}`}
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-slate-900 dark:text-slate-200 font-semibold">Allocation Workspace</span>
+            <span className="text-slate-900 font-semibold">Allocation Workspace</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={handleRefreshMatching}
               disabled={refreshing}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-all disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-semibold transition-all disabled:opacity-50"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
               <span>{refreshing ? 'Re-analyzing...' : 'Refresh Matching'}</span>
@@ -690,7 +690,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center gap-1 overflow-x-auto pb-2 border-b border-slate-200 dark:border-slate-800 text-xs scrollbar-none">
+        <div className="flex items-center gap-1 overflow-x-auto pb-2 border-b border-slate-200 text-xs scrollbar-none">
           {[
             { id: 'overview', label: 'Overview', icon: LayoutGridIcon },
             { id: 'requirements', label: `Requirements (${requirements.length})`, icon: CheckSquare },
@@ -713,7 +713,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 className={`flex items-center gap-1.5 px-3 py-2 rounded-xl font-semibold transition-all whitespace-nowrap ${
                   isActive
                     ? 'bg-emerald-600 text-white shadow-sm'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -727,17 +727,17 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
         {activeTab === 'overview' && (
           <div className="space-y-6">
             {/* 6-Dimension Readiness Matrix */}
-            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                  <h3 className="font-bold text-base text-slate-900">
                     Multi-Dimensional Project Readiness Matrix
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-slate-500">
                     Real-time verification across hardware availability, software compatibility, compute, and student skills.
                   </p>
                 </div>
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-500/30">
                   {readiness.overall_readiness || 'READY'}
                 </span>
               </div>
@@ -753,11 +753,11 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/70 dark:border-slate-700/60 text-center space-y-1"
+                    className="p-3 rounded-xl bg-slate-50 border border-slate-200/70 text-center space-y-1"
                   >
                     <item.icon className="w-4 h-4 mx-auto text-slate-400" />
-                    <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{item.label}</span>
-                    <p className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                    <span className="text-xs font-semibold text-slate-700">{item.label}</span>
+                    <p className="text-[11px] font-bold text-emerald-600">
                       {item.status}
                     </p>
                   </div>
@@ -773,7 +773,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     {readiness.readiness_notes.map((note: string, idx: number) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-2 p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/30 text-xs text-slate-600 dark:text-slate-300"
+                        className="flex items-start gap-2 p-2.5 rounded-lg bg-slate-50 text-xs text-slate-600"
                       >
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
                         <span>{note}</span>
@@ -787,10 +787,10 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
             {/* Waste Warnings & Optimization Insights */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Optimization Insights */}
-              <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-emerald-500" />
-                  <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                  <h3 className="font-bold text-sm text-slate-900">
                     AI Optimization & Cost-Saving Recommendations
                   </h3>
                 </div>
@@ -802,7 +802,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                   ]).map((insight: string, idx: number) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/20 text-xs text-slate-700 dark:text-slate-300 flex items-start gap-2.5"
+                      className="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/20 text-xs text-slate-700 flex items-start gap-2.5"
                     >
                       <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                       <span>{insight}</span>
@@ -812,10 +812,10 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
               </div>
 
               {/* Waste Warnings */}
-              <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
                 <div className="flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 text-amber-500" />
-                  <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                  <h3 className="font-bold text-sm text-slate-900">
                     Resource Waste & Redundancy Warnings
                   </h3>
                 </div>
@@ -826,7 +826,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                   ]).map((warning: string, idx: number) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-amber-500/5 border border-amber-500/20 text-xs text-slate-700 dark:text-slate-300 flex items-start gap-2.5"
+                      className="p-3 rounded-xl bg-amber-500/5 border border-amber-500/20 text-xs text-slate-700 flex items-start gap-2.5"
                     >
                       <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                       <span>{warning}</span>
@@ -837,8 +837,8 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
             </div>
 
             {/* Identified Risks & Mitigations */}
-            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-              <h3 className="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+              <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                 <ShieldAlert className="w-4 h-4 text-red-500" />
                 Resource Allocation Risks & Defenses
               </h3>
@@ -871,10 +871,10 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 ).map((r: any, idx: number) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 space-y-2 text-xs"
+                    className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-2 text-xs"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-slate-900 dark:text-white">
+                      <span className="font-bold text-slate-900">
                         {r.risk_category} Risk
                       </span>
                       <span
@@ -889,10 +889,10 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                         {r.severity}
                       </span>
                     </div>
-                    <p className="text-slate-500 dark:text-slate-400">
+                    <p className="text-slate-500">
                       <strong>Impact:</strong> {r.impact}
                     </p>
-                    <p className="text-emerald-600 dark:text-emerald-400 font-medium">
+                    <p className="text-emerald-600 font-medium">
                       <strong>Mitigation:</strong> {r.mitigation}
                     </p>
                   </div>
@@ -904,13 +904,13 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* TAB 2: REQUIREMENTS */}
         {activeTab === 'requirements' && (
-          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
+          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
               <div>
-                <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                <h3 className="font-bold text-base text-slate-900">
                   Structured Project Resource Requirements
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
+                <p className="text-xs text-slate-500">
                   AI-inferred from idea description and verified against hardware/software requirements.
                 </p>
               </div>
@@ -928,11 +928,11 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
               {requirements.map((req: any) => (
                 <div
                   key={req.id}
-                  className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 flex flex-col md:flex-row md:items-center justify-between gap-4"
+                  className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 flex flex-col md:flex-row md:items-center justify-between gap-4"
                 >
                   <div className="space-y-1.5 max-w-2xl">
                     <div className="flex items-center gap-2">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200 text-slate-700">
                         {req.category}
                       </span>
                       <span
@@ -949,9 +949,9 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                       </span>
                     </div>
 
-                    <h4 className="font-bold text-sm text-slate-900 dark:text-white">{req.name}</h4>
+                    <h4 className="font-bold text-sm text-slate-900">{req.name}</h4>
                     {req.description && (
-                      <p className="text-xs text-slate-500 dark:text-slate-400">{req.description}</p>
+                      <p className="text-xs text-slate-500">{req.description}</p>
                     )}
                   </div>
 
@@ -974,13 +974,13 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
         {activeTab === 'matches' && (
           <div className="space-y-4">
             {/* Filter & Search Bar */}
-            <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold text-slate-400">Category:</span>
                 <select
                   value={matchCategoryFilter}
                   onChange={(e) => setMatchCategoryFilter(e.target.value)}
-                  className="px-3 py-1.5 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="px-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 >
                   {categories.map((c) => (
                     <option key={c} value={c}>
@@ -997,7 +997,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                   placeholder="Search matches or reasons..."
                   value={matchSearch}
                   onChange={(e) => setMatchSearch(e.target.value)}
-                  className="pl-9 pr-3 py-1.5 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 w-full sm:w-64"
+                  className="pl-9 pr-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 w-full sm:w-64"
                 />
               </div>
             </div>
@@ -1007,16 +1007,16 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
               {filteredMatches.map((m: any) => (
                 <div
                   key={m.id || m.resource_name}
-                  className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 flex flex-col justify-between"
+                  className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between"
                 >
                   <div className="space-y-3">
                     {/* Header */}
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
                           {m.resource_category}
                         </span>
-                        <h4 className="font-bold text-base text-slate-900 dark:text-white mt-1">
+                        <h4 className="font-bold text-base text-slate-900 mt-1">
                           {m.resource_name}
                         </h4>
                       </div>
@@ -1032,24 +1032,24 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     </div>
 
                     {/* Cost & Price Evidence */}
-                    <div className="flex items-center gap-3 text-xs bg-slate-50 dark:bg-slate-800/40 p-2.5 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                    <div className="flex items-center gap-3 text-xs bg-slate-50 p-2.5 rounded-xl border border-slate-200/60">
                       <div>
                         <span className="text-slate-400 block text-[10px]">Estimated Outlay</span>
-                        <span className="font-bold text-slate-900 dark:text-white">
+                        <span className="font-bold text-slate-900">
                           ₹{m.estimated_cost?.toLocaleString() || '0'}
                         </span>
                       </div>
-                      <div className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+                      <div className="h-6 w-px bg-slate-200" />
                       <div>
                         <span className="text-slate-400 block text-[10px]">Price Evidence</span>
                         <span className="font-semibold text-emerald-500">
                           {m.price_evidence_status}
                         </span>
                       </div>
-                      <div className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+                      <div className="h-6 w-px bg-slate-200" />
                       <div>
                         <span className="text-slate-400 block text-[10px]">Availability</span>
-                        <span className="font-semibold text-slate-700 dark:text-slate-300">
+                        <span className="font-semibold text-slate-700">
                           {m.availability_status}
                         </span>
                       </div>
@@ -1057,13 +1057,13 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
                     {/* Multi-Dimensional Fit Bars */}
                     <div className="space-y-1.5 text-[11px]">
-                      <div className="flex justify-between text-slate-500 dark:text-slate-400">
+                      <div className="flex justify-between text-slate-500">
                         <span>Relevance: {m.project_relevance_score?.toFixed(0)}%</span>
                         <span>Budget Fit: {m.budget_fit_score?.toFixed(0)}%</span>
                         <span>Hardware Fit: {m.hardware_fit_score?.toFixed(0)}%</span>
                         <span>Skills Fit: {m.skill_fit_score?.toFixed(0)}%</span>
                       </div>
-                      <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden flex">
+                      <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden flex">
                         <div
                           style={{ width: `${(m.project_relevance_score || 80) * 0.3}%` }}
                           className="bg-indigo-500"
@@ -1089,7 +1089,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                           Why Matched:
                         </span>
-                        <ul className="space-y-1 text-xs text-slate-600 dark:text-slate-300">
+                        <ul className="space-y-1 text-xs text-slate-600">
                           {m.why_matched_json.map((w: string, idx: number) => (
                             <li key={idx} className="flex items-start gap-1.5">
                               <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
@@ -1106,7 +1106,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                           Tradeoffs:
                         </span>
-                        <ul className="space-y-1 text-xs text-slate-500 dark:text-slate-400">
+                        <ul className="space-y-1 text-xs text-slate-500">
                           {m.tradeoffs_json.map((t: string, idx: number) => (
                             <li key={idx} className="flex items-start gap-1.5">
                               <Info className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
@@ -1119,7 +1119,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                   </div>
 
                   {/* Actions */}
-                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                     <button
                       onClick={() => handleAddMatchToPlan(m)}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-sm transition-all"
@@ -1147,12 +1147,12 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* TAB 4: OPEN-SOURCE ALTERNATIVES */}
         {activeTab === 'alternatives' && (
-          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
+          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
             <div>
-              <h3 className="font-bold text-base text-slate-900 dark:text-white">
+              <h3 className="font-bold text-base text-slate-900">
                 Open-Source & Low-Cost Alternative Substitutes
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-500">
                 Identifies zero-cost open-source tools and quantized models that can replace expensive commercial items.
               </p>
             </div>
@@ -1166,30 +1166,30 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 {alternatives.map((alt: any) => (
                   <div
                     key={alt.id}
-                    className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 space-y-3"
+                    className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
                         <TrendingDown className="w-4 h-4 text-emerald-500" />
-                        <h4 className="font-bold text-sm text-slate-900 dark:text-white">
+                        <h4 className="font-bold text-sm text-slate-900">
                           {alt.alternative_name}
                         </h4>
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-600">
                           {alt.compatibility_status}
                         </span>
                       </div>
 
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-bold">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-purple-500/10 text-purple-600 text-xs font-bold">
                         Estimated Savings: ₹{alt.cost_savings?.toLocaleString() || '0'}
                       </div>
                     </div>
 
-                    <p className="text-xs text-slate-600 dark:text-slate-300">
+                    <p className="text-xs text-slate-600">
                       <strong>Reason:</strong> {alt.substitute_reason}
                     </p>
 
                     {alt.performance_comparison && (
-                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                      <p className="text-xs text-slate-500">
                         <strong>Performance vs Commercial:</strong> {alt.performance_comparison}
                       </p>
                     )}
@@ -1199,7 +1199,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                         {alt.tradeoffs_json.map((t: string, idx: number) => (
                           <span
                             key={idx}
-                            className="px-2 py-0.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-[10px]"
+                            className="px-2 py-0.5 rounded-lg bg-slate-200 text-slate-700 text-[10px]"
                           >
                             ⚠️ {t}
                           </span>
@@ -1216,13 +1216,13 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
         {/* TAB 5: BUDGET PLANNER */}
         {activeTab === 'budget' && (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                  <h3 className="font-bold text-base text-slate-900">
                     Category Spending Breakdown & Utilization
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-slate-500">
                     Tracks allocated funds against student budget limits to prevent accidental expenditure.
                   </p>
                 </div>
@@ -1246,7 +1246,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                         <span>{cat}</span>
                         <span>₹{amount?.toLocaleString()} ({pct}%)</span>
                       </div>
-                      <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                      <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                         <div
                           style={{ width: `${pct}%` }}
                           className={`h-full ${
@@ -1260,12 +1260,12 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
               </div>
 
               {/* Recurring Monthly Cost Banner */}
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between text-xs">
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/60 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-indigo-500" />
                   <span>Recurring Monthly Outlay:</span>
                 </div>
-                <span className="font-bold text-slate-900 dark:text-white">
+                <span className="font-bold text-slate-900">
                   ₹{budgetSummary.recurring_monthly_total || 0}/month (Cap: ₹{profile.monthly_recurring_budget || 500})
                 </span>
               </div>
@@ -1277,10 +1277,10 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
         {activeTab === 'bundles' && (
           <div className="space-y-4">
             <div>
-              <h3 className="font-bold text-base text-slate-900 dark:text-white">
+              <h3 className="font-bold text-base text-slate-900">
                 Curated Resource Bundles
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-500">
                 Pre-configured stacks optimized for different budgets, learning goals, and competition deadlines.
               </p>
             </div>
@@ -1292,10 +1292,10 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 return (
                   <div
                     key={b.id || b.name}
-                    className={`bg-white dark:bg-slate-900 p-6 rounded-2xl border shadow-sm flex flex-col justify-between space-y-4 relative ${
+                    className={`bg-white p-6 rounded-2xl border shadow-sm flex flex-col justify-between space-y-4 relative ${
                       isBalanced
                         ? 'border-emerald-500 ring-2 ring-emerald-500/20'
-                        : 'border-slate-200 dark:border-slate-800'
+                        : 'border-slate-200'
                     }`}
                   >
                     {isBalanced && (
@@ -1306,20 +1306,20 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
                     <div className="space-y-3">
                       <div>
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700">
                           {b.bundle_type}
                         </span>
-                        <h4 className="font-bold text-lg text-slate-900 dark:text-white mt-1">
+                        <h4 className="font-bold text-lg text-slate-900 mt-1">
                           {b.name}
                         </h4>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                        <p className="text-xs text-slate-500 mt-1">
                           {b.description}
                         </p>
                       </div>
 
-                      <div className="bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                      <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
                         <span className="text-[10px] text-slate-400 block">Total Bundle Cost</span>
-                        <p className="text-xl font-extrabold text-slate-900 dark:text-white">
+                        <p className="text-xl font-extrabold text-slate-900">
                           ₹{b.total_estimated_cost?.toLocaleString() || '0'}
                         </p>
                       </div>
@@ -1328,7 +1328,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                         <span className="font-bold text-[11px] text-slate-400 uppercase tracking-wider block">
                           Included Resources:
                         </span>
-                        <ul className="space-y-1 text-slate-600 dark:text-slate-300">
+                        <ul className="space-y-1 text-slate-600">
                           {(b.items_json || []).map((it: any, idx: number) => (
                             <li key={idx} className="flex items-center gap-1.5 text-xs">
                               <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
@@ -1344,7 +1344,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                       className={`w-full py-2 rounded-xl text-xs font-bold transition-all ${
                         isBalanced
                           ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm'
-                          : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white'
+                          : 'bg-slate-100 hover:bg-slate-200 text-slate-900'
                       }`}
                     >
                       Adopt {b.bundle_type} Stack
@@ -1359,13 +1359,13 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
         {/* TAB 7: HARDWARE & COMPUTE */}
         {activeTab === 'hardware' && (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                  <h3 className="font-bold text-base text-slate-900">
                     Student-Owned Hardware Inventory
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-slate-500">
                     Register hardware you already own or can borrow from university labs to avoid redundant purchases.
                   </p>
                 </div>
@@ -1388,20 +1388,20 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                   {ownedHardware.map((hw: any, idx: number) => (
                     <div
                       key={idx}
-                      className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 space-y-2 text-xs"
+                      className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-2 text-xs"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-slate-900 dark:text-white">{hw.name}</span>
+                        <span className="font-bold text-slate-900">{hw.name}</span>
                         <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-500/20 text-cyan-400">
                           {hw.ownership_status || 'OWNED'}
                         </span>
                       </div>
-                      <p className="text-slate-500 dark:text-slate-400">Category: {hw.category}</p>
+                      <p className="text-slate-500">Category: {hw.category}</p>
                       <div className="flex flex-wrap gap-1">
                         {(hw.interfaces_json || []).map((iface: string, i: number) => (
                           <span
                             key={i}
-                            className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-[10px] text-slate-600 dark:text-slate-300"
+                            className="px-1.5 py-0.5 rounded bg-slate-200 text-[10px] text-slate-600"
                           >
                             {iface}
                           </span>
@@ -1417,12 +1417,12 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* TAB 8: SKILLS FIT */}
         {activeTab === 'skills' && (
-          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
             <div>
-              <h3 className="font-bold text-base text-slate-900 dark:text-white">
+              <h3 className="font-bold text-base text-slate-900">
                 Student Skills & Learning-Curve Alignment
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-500">
                 Matches candidate tools and libraries to your current programming proficiency.
               </p>
             </div>
@@ -1431,15 +1431,15 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
               {skills.map((sk: any, idx: number) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 space-y-2 text-xs"
+                  className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-2 text-xs"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-slate-900 dark:text-white">{sk.skill_name}</span>
+                    <span className="font-bold text-slate-900">{sk.skill_name}</span>
                     <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500/20 text-indigo-400">
                       {sk.proficiency_level}
                     </span>
                   </div>
-                  <p className="text-slate-500 dark:text-slate-400">
+                  <p className="text-slate-500">
                     Willing to learn new tools: {sk.willing_to_learn ? 'Yes' : 'No'}
                   </p>
                 </div>
@@ -1450,13 +1450,13 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* TAB 9: ACTIONABLE RESOURCE PLAN */}
         {activeTab === 'plan' && (
-          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
+          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
               <div>
-                <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                <h3 className="font-bold text-base text-slate-900">
                   Actionable Project Resource Allocation Plan
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
+                <p className="text-xs text-slate-500">
                   Track procurement status, actual outlays, and cross-system foreign linkages (Roadmap, Hardware Lab, Experiments).
                 </p>
               </div>
@@ -1479,19 +1479,19 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 {planItems.map((item: any) => (
                   <div
                     key={item.id}
-                    className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs"
+                    className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs"
                   >
                     <div className="space-y-1 max-w-xl">
                       <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200 text-slate-700">
                           {item.resource_category}
                         </span>
-                        <h4 className="font-bold text-sm text-slate-900 dark:text-white">
+                        <h4 className="font-bold text-sm text-slate-900">
                           {item.resource_name}
                         </h4>
                       </div>
                       {item.purpose && (
-                        <p className="text-slate-500 dark:text-slate-400">{item.purpose}</p>
+                        <p className="text-slate-500">{item.purpose}</p>
                       )}
                       <div className="flex items-center gap-3 text-[11px] text-slate-400">
                         <span>Cost: ₹{item.estimated_cost || 0}</span>
@@ -1504,7 +1504,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                       <select
                         value={item.plan_status}
                         onChange={(e) => handleUpdatePlanStatus(item.id, e.target.value)}
-                        className="px-2.5 py-1.5 rounded-lg text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-medium"
+                        className="px-2.5 py-1.5 rounded-lg text-xs bg-white border border-slate-200 font-medium"
                       >
                         <option value="RECOMMENDED">RECOMMENDED</option>
                         <option value="SHORTLISTED">SHORTLISTED</option>
@@ -1532,20 +1532,20 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
         {/* TAB 10: WHAT-IF SIMULATOR */}
         {activeTab === 'whatif' && (
           <div className="space-y-6">
-            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
               <div>
-                <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                <h3 className="font-bold text-base text-slate-900">
                   Real-Time What-If Scenario Simulator
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
+                <p className="text-xs text-slate-500">
                   Simulate budget cuts, zero-cloud offline constraints, and hardware changes with dynamic capability recomputation.
                 </p>
               </div>
 
               {/* Controls */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-700/60">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200/60">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <label className="text-xs font-bold text-slate-700">
                     Hypothetical Budget: ₹{whatIfBudget.toLocaleString()}
                   </label>
                   <input
@@ -1560,7 +1560,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <label className="text-xs font-bold text-slate-700">
                     GPU Cloud Available
                   </label>
                   <button
@@ -1568,7 +1568,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     className={`w-full py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
                       whatIfGpu
                         ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
-                        : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border-transparent'
+                        : 'bg-slate-200 text-slate-600 border-transparent'
                     }`}
                   >
                     {whatIfGpu ? 'GPU Enabled' : 'No Cloud GPU'}
@@ -1576,7 +1576,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <label className="text-xs font-bold text-slate-700">
                     Strict Open-Source Only
                   </label>
                   <button
@@ -1584,7 +1584,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     className={`w-full py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
                       whatIfOpenSourceOnly
                         ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
-                        : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border-transparent'
+                        : 'bg-slate-200 text-slate-600 border-transparent'
                     }`}
                   >
                     {whatIfOpenSourceOnly ? '100% Open Source' : 'Allow Commercial'}
@@ -1607,17 +1607,17 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 <div className="space-y-4 pt-2">
                   <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20 space-y-2">
                     <h4 className="font-bold text-sm text-emerald-500">Simulation Outcome:</h4>
-                    <p className="text-xs text-slate-700 dark:text-slate-300">
+                    <p className="text-xs text-slate-700">
                       {whatIfResult.scenario_description}
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2 text-xs">
-                      <span className="font-bold text-slate-900 dark:text-white block">
+                    <div className="p-4 rounded-xl border border-slate-200 space-y-2 text-xs">
+                      <span className="font-bold text-slate-900 block">
                         Capability Adjustments:
                       </span>
-                      <ul className="space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="space-y-1 text-slate-600">
                         {whatIfResult.capability_changes?.map((c: string, i: number) => (
                           <li key={i} className="flex items-start gap-1.5">
                             <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
@@ -1627,11 +1627,11 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                       </ul>
                     </div>
 
-                    <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2 text-xs">
-                      <span className="font-bold text-slate-900 dark:text-white block">
+                    <div className="p-4 rounded-xl border border-slate-200 space-y-2 text-xs">
+                      <span className="font-bold text-slate-900 block">
                         Tradeoffs & Risk Shifts:
                       </span>
-                      <ul className="space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="space-y-1 text-slate-600">
                         {whatIfResult.tradeoffs?.map((t: string, i: number) => (
                           <li key={i} className="flex items-start gap-1.5">
                             <Info className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
@@ -1649,33 +1649,33 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* TAB 11: EVIDENCE & AUDIT */}
         {activeTab === 'evidence' && (
-          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
+          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
             <div>
-              <h3 className="font-bold text-base text-slate-900 dark:text-white">
+              <h3 className="font-bold text-base text-slate-900">
                 Data Provenance, Licensing & Anti-Hallucination Audit
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-500">
                 Full transparency into verified public sources, licenses, and pricing evidence.
               </p>
             </div>
 
             <div className="space-y-3 text-xs">
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-700/60 space-y-2">
-                <span className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <span className="font-bold text-slate-900 flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-emerald-500" />
                   Anti-Hallucination & Pricing Policy
                 </span>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed">
                   InnoSphere AI strictly categorizes all financial data as either <code>SOURCE_VERIFIED</code>, <code>USER_PROVIDED</code>, <code>ESTIMATED</code>, or <code>UNAVAILABLE</code>. The system never fabricates vendor inventory, live marketplace fluctuations, or proprietary quotes.
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-700/60 space-y-2">
-                <span className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <span className="font-bold text-slate-900 flex items-center gap-1.5">
                   <Code className="w-4 h-4 text-indigo-500" />
                   Open-Source IP & License Compliance
                 </span>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed">
                   All recommended open-source models, libraries, and hardware blueprints are filtered for student innovation IP protection under MIT, Apache 2.0, BSD, and CERN-OHL open hardware licenses.
                 </p>
               </div>
@@ -1685,18 +1685,18 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* Slide-out AI Assistant Panel */}
         {assistantOpen && (
-          <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col animate-in slide-in-from-right">
+          <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-white border-l border-slate-200 shadow-2xl flex flex-col animate-in slide-in-from-right">
             {/* Header */}
-            <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+            <div className="p-4 border-b border-slate-200 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Bot className="w-5 h-5 text-emerald-500" />
-                <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                <h3 className="font-bold text-sm text-slate-900">
                   Resource Matchmaker Assistant
                 </h3>
               </div>
               <button
                 onClick={() => setAssistantOpen(false)}
-                className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400"
+                className="p-1 rounded-lg hover:bg-slate-100 text-slate-400"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -1710,7 +1710,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                   className={`p-3 rounded-xl ${
                     msg.role === 'user'
                       ? 'bg-emerald-600 text-white ml-6'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 mr-6'
+                      : 'bg-slate-100 text-slate-800 mr-6'
                   } space-y-2`}
                 >
                   <p className="leading-relaxed">{msg.content}</p>
@@ -1722,7 +1722,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                         <button
                           key={i}
                           onClick={() => handleSendAssistantMessage(act)}
-                          className="px-2 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-[10px] font-semibold text-left transition-colors"
+                          className="px-2 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 border border-emerald-500/30 text-[10px] font-semibold text-left transition-colors"
                         >
                           {act}
                         </button>
@@ -1732,21 +1732,21 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 </div>
               ))}
               {assistantLoading && (
-                <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 animate-pulse text-xs">
+                <div className="p-3 rounded-xl bg-slate-100 text-slate-400 animate-pulse text-xs">
                   Reasoning over project budget and hardware constraints...
                 </div>
               )}
             </div>
 
             {/* Chat Input */}
-            <div className="p-4 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2">
+            <div className="p-4 border-t border-slate-200 flex items-center gap-2">
               <input
                 type="text"
                 placeholder="Ask about resources or budget..."
                 value={assistantQuery}
                 onChange={(e) => setAssistantQuery(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSendAssistantMessage()}
-                className="flex-1 px-3 py-2 rounded-xl text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="flex-1 px-3 py-2 rounded-xl text-xs bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
               <button
                 onClick={() => handleSendAssistantMessage()}
@@ -1761,15 +1761,15 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
         {/* Multi-Format Export Modal */}
         {exportModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
-            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl max-w-2xl w-full p-6 space-y-4">
+            <div className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-2xl w-full p-6 space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
                   <Download className="w-4 h-4 text-emerald-500" />
                   Export Resource Strategy Report
                 </h3>
                 <button
                   onClick={() => setExportModalOpen(false)}
-                  className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400"
+                  className="p-1 rounded-lg hover:bg-slate-100 text-slate-400"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1784,7 +1784,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold uppercase transition-all ${
                       exportFormat === fmt
                         ? 'bg-emerald-600 text-white'
-                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+                        : 'bg-slate-100 text-slate-600'
                     }`}
                   >
                     {fmt}
@@ -1793,7 +1793,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
               </div>
 
               {exportLoading ? (
-                <div className="h-64 rounded-xl bg-slate-100 dark:bg-slate-800 animate-pulse flex items-center justify-center text-xs text-slate-400">
+                <div className="h-64 rounded-xl bg-slate-100 animate-pulse flex items-center justify-center text-xs text-slate-400">
                   Generating export...
                 </div>
               ) : (
@@ -1805,7 +1805,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
               <div className="flex items-center justify-end gap-2 pt-2">
                 <button
                   onClick={handleCopyExport}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-200 text-xs font-semibold text-slate-800"
                 >
                   <Copy className="w-3.5 h-3.5" />
                   <span>{copied ? 'Copied!' : 'Copy to Clipboard'}</span>
@@ -1828,16 +1828,16 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
             <form
               onSubmit={handleCreateRequirement}
-              className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl max-w-md w-full p-6 space-y-4"
+              className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4"
             >
               <div className="flex items-center justify-between">
-                <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                <h3 className="font-bold text-base text-slate-900">
                   Add Custom Requirement
                 </h3>
                 <button
                   type="button"
                   onClick={() => setReqModalOpen(false)}
-                  className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400"
+                  className="p-1 rounded-lg hover:bg-slate-100 text-slate-400"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1845,7 +1845,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
               <div className="space-y-3 text-xs">
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Requirement Name
                   </label>
                   <input
@@ -1854,18 +1854,18 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     value={newReq.name}
                     onChange={(e) => setNewReq({ ...newReq, name: e.target.value })}
                     placeholder="e.g. DHT22 Temperature & Humidity Sensor"
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-emerald-500"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Category
                   </label>
                   <select
                     value={newReq.category}
                     onChange={(e) => setNewReq({ ...newReq, category: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   >
                     <option value="HARDWARE">HARDWARE</option>
                     <option value="SOFTWARE">SOFTWARE</option>
@@ -1878,13 +1878,13 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Priority
                   </label>
                   <select
                     value={newReq.priority}
                     onChange={(e) => setNewReq({ ...newReq, priority: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   >
                     <option value="CRITICAL">CRITICAL</option>
                     <option value="HIGH">HIGH</option>
@@ -1894,7 +1894,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Description & Target Specs
                   </label>
                   <textarea
@@ -1902,7 +1902,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     value={newReq.description}
                     onChange={(e) => setNewReq({ ...newReq, description: e.target.value })}
                     placeholder="Specifications or intended use..."
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   />
                 </div>
               </div>
@@ -1911,7 +1911,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 <button
                   type="button"
                   onClick={() => setReqModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold"
+                  className="px-4 py-2 rounded-xl bg-slate-100 text-xs font-semibold"
                 >
                   Cancel
                 </button>
@@ -1931,16 +1931,16 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
             <form
               onSubmit={handleSaveProfile}
-              className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl max-w-md w-full p-6 space-y-4"
+              className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4"
             >
               <div className="flex items-center justify-between">
-                <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                <h3 className="font-bold text-base text-slate-900">
                   Edit Budget Caps & Preferences
                 </h3>
                 <button
                   type="button"
                   onClick={() => setProfileModalOpen(false)}
-                  className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400"
+                  className="p-1 rounded-lg hover:bg-slate-100 text-slate-400"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1948,7 +1948,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
               <div className="space-y-3 text-xs">
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Total Project Budget Limit (₹)
                   </label>
                   <input
@@ -1957,12 +1957,12 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     onChange={(e) =>
                       setEditProfile({ ...editProfile, total_budget: Number(e.target.value) })
                     }
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   />
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Hardware Budget Limit (₹)
                   </label>
                   <input
@@ -1971,12 +1971,12 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     onChange={(e) =>
                       setEditProfile({ ...editProfile, hardware_budget: Number(e.target.value) })
                     }
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   />
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Monthly Recurring Budget (₹/month)
                   </label>
                   <input
@@ -1988,12 +1988,12 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                         monthly_recurring_budget: Number(e.target.value),
                       })
                     }
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   />
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Open Source Preference
                   </label>
                   <select
@@ -2001,7 +2001,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     onChange={(e) =>
                       setEditProfile({ ...editProfile, open_source_preference: e.target.value })
                     }
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   >
                     <option value="STRICT_OPEN_SOURCE">Strict 100% Open-Source Only</option>
                     <option value="PREFERRED">Open Source Preferred</option>
@@ -2014,7 +2014,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 <button
                   type="button"
                   onClick={() => setProfileModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold"
+                  className="px-4 py-2 rounded-xl bg-slate-100 text-xs font-semibold"
                 >
                   Cancel
                 </button>
@@ -2034,16 +2034,16 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
             <form
               onSubmit={handleAddOwnedHardware}
-              className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl max-w-md w-full p-6 space-y-4"
+              className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4"
             >
               <div className="flex items-center justify-between">
-                <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                <h3 className="font-bold text-base text-slate-900">
                   Register Student-Owned Hardware
                 </h3>
                 <button
                   type="button"
                   onClick={() => setHwModalOpen(false)}
-                  className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400"
+                  className="p-1 rounded-lg hover:bg-slate-100 text-slate-400"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -2051,7 +2051,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
               <div className="space-y-3 text-xs">
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Device Name
                   </label>
                   <input
@@ -2060,18 +2060,18 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     value={newHwItem.name}
                     onChange={(e) => setNewHwItem({ ...newHwItem, name: e.target.value })}
                     placeholder="e.g. ESP32-WROOM-32D Development Board"
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   />
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Category
                   </label>
                   <select
                     value={newHwItem.category}
                     onChange={(e) => setNewHwItem({ ...newHwItem, category: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   >
                     <option value="Microcontroller">Microcontroller (ESP32 / Arduino / STM32)</option>
                     <option value="SingleBoardComputer">Single Board Computer (Raspberry Pi)</option>
@@ -2082,13 +2082,13 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Ownership Status
                   </label>
                   <select
                     value={newHwItem.ownership_status}
                     onChange={(e) => setNewHwItem({ ...newHwItem, ownership_status: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   >
                     <option value="OWNED">Personal Owned</option>
                     <option value="BORROWED">Borrowed</option>
@@ -2101,7 +2101,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 <button
                   type="button"
                   onClick={() => setHwModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold"
+                  className="px-4 py-2 rounded-xl bg-slate-100 text-xs font-semibold"
                 >
                   Cancel
                 </button>
@@ -2121,16 +2121,16 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
             <form
               onSubmit={handleCreatePlanItem}
-              className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl max-w-md w-full p-6 space-y-4"
+              className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4"
             >
               <div className="flex items-center justify-between">
-                <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                <h3 className="font-bold text-base text-slate-900">
                   Add Resource to Project Plan
                 </h3>
                 <button
                   type="button"
                   onClick={() => setPlanModalOpen(false)}
-                  className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400"
+                  className="p-1 rounded-lg hover:bg-slate-100 text-slate-400"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -2138,7 +2138,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
               <div className="space-y-3 text-xs">
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Resource Name
                   </label>
                   <input
@@ -2149,12 +2149,12 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                       setNewPlanItem({ ...newPlanItem, resource_name: e.target.value })
                     }
                     placeholder="e.g. Capacitive Soil Moisture Sensor"
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   />
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Category
                   </label>
                   <select
@@ -2162,7 +2162,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     onChange={(e) =>
                       setNewPlanItem({ ...newPlanItem, resource_category: e.target.value })
                     }
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   >
                     <option value="HARDWARE">HARDWARE</option>
                     <option value="SOFTWARE">SOFTWARE</option>
@@ -2175,7 +2175,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Estimated Cost (₹)
                   </label>
                   <input
@@ -2184,12 +2184,12 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     onChange={(e) =>
                       setNewPlanItem({ ...newPlanItem, estimated_cost: Number(e.target.value) })
                     }
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   />
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  <label className="font-bold text-slate-700 block mb-1">
                     Purpose / Notes
                   </label>
                   <textarea
@@ -2197,7 +2197,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                     value={newPlanItem.purpose}
                     onChange={(e) => setNewPlanItem({ ...newPlanItem, purpose: e.target.value })}
                     placeholder="How this resource is used in the project..."
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200"
                   />
                 </div>
               </div>
@@ -2206,7 +2206,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 <button
                   type="button"
                   onClick={() => setPlanModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold"
+                  className="px-4 py-2 rounded-xl bg-slate-100 text-xs font-semibold"
                 >
                   Cancel
                 </button>

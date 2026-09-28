@@ -33,23 +33,23 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex items-center justify-center p-4 sm:p-6">
-      <div className="max-w-md w-full bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-8 space-y-6 animate-in fade-in">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex items-center justify-center p-4 sm:p-6">
+      <div className="max-w-md w-full bg-white rounded-3xl border border-slate-200 shadow-2xl p-8 space-y-6 animate-in fade-in">
         {/* Top Icon */}
         <div className="text-center space-y-2">
           <div className="h-12 w-12 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center mx-auto shadow-sm">
             <KeyRound className="w-6 h-6" />
           </div>
-          <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+          <h1 className="text-2xl font-extrabold tracking-tight text-slate-900">
             Reset Password
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          <p className="text-xs text-slate-500 leading-relaxed">
             Enter your registered academic email address to receive password recovery instructions.
           </p>
         </div>
 
         {submitted ? (
-          <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs space-y-3 animate-in fade-in">
+          <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 text-xs space-y-3 animate-in fade-in">
             <div className="flex items-center gap-2 font-bold">
               <CheckCircle2 className="w-4 h-4 text-emerald-500" />
               <span>Reset Instructions Sent</span>
@@ -59,7 +59,7 @@ export default function ForgotPasswordPage() {
             </p>
             <Link
               href="/login"
-              className="inline-flex items-center gap-1.5 font-bold text-indigo-600 dark:text-indigo-400 hover:underline pt-1"
+              className="inline-flex items-center gap-1.5 font-bold text-indigo-600 hover:underline pt-1"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Return to Sign In
             </Link>
@@ -74,7 +74,7 @@ export default function ForgotPasswordPage() {
             )}
 
             <div className="space-y-1.5">
-              <label htmlFor="recovery-email" className="font-bold text-slate-700 dark:text-slate-300">
+              <label htmlFor="recovery-email" className="font-bold text-slate-700">
                 Email Address
               </label>
               <div className="relative">
@@ -89,7 +89,7 @@ export default function ForgotPasswordPage() {
                     if (errorMsg) setErrorMsg(null);
                   }}
                   placeholder="name@university.edu"
-                  className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function ForgotPasswordPage() {
             <div className="text-center pt-2">
               <Link
                 href="/login"
-                className="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white inline-flex items-center gap-1 font-medium"
+                className="text-xs text-slate-500 hover:text-slate-900 inline-flex items-center gap-1 font-medium"
               >
                 <ArrowLeft className="w-3.5 h-3.5" /> Back to Login
               </Link>

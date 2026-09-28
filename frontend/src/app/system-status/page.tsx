@@ -65,20 +65,20 @@ export default function SystemStatusPage() {
     if (status === 'operational') {
       return {
         label: 'Operational',
-        color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+        color: 'bg-emerald-500/10 text-emerald-600 border-emerald-200',
         icon: CheckCircle2,
       };
     }
     if (status === 'rate_limited' || status === 'degraded') {
       return {
         label: 'Degraded / Rate Limited',
-        color: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+        color: 'bg-amber-500/10 text-amber-600 border-amber-200',
         icon: AlertTriangle,
       };
     }
     return {
       label: 'Offline (Fallback Active)',
-      color: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
+      color: 'bg-rose-500/10 text-rose-600 border-rose-200',
       icon: XCircle,
     };
   };
@@ -86,18 +86,18 @@ export default function SystemStatusPage() {
   return (
     <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-8 animate-in fade-in">
       {/* Top Breadcrumb & Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <Link
               href="/dashboard"
-              className="text-xs text-slate-400 hover:text-indigo-300 flex items-center gap-1"
+              className="text-xs text-slate-400 hover:text-blue-700 flex items-center gap-1"
             >
               <ArrowLeft className="h-3 w-3" /> Back to Dashboard
             </Link>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5">
-            <Activity className="h-7 w-7 text-indigo-400" />
+            <Activity className="h-7 w-7 text-blue-600" />
             System Health & Vector Engine Diagnostics
           </h1>
           <p className="text-xs sm:text-sm text-slate-400">
@@ -117,27 +117,27 @@ export default function SystemStatusPage() {
 
       {/* Summary Stats Banner */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200 flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold text-slate-400 block">Overall Platform State</span>
-            <span className="text-xl font-bold text-emerald-400 flex items-center gap-1.5 mt-1">
+            <span className="text-xl font-bold text-emerald-600 flex items-center gap-1.5 mt-1">
               <CheckCircle2 className="h-5 w-5" /> 100% Operational
             </span>
           </div>
           <Server className="h-8 w-8 text-slate-700" />
         </div>
 
-        <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200 flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold text-slate-400 block">Composite Health Latency</span>
-            <span className="text-xl font-bold text-indigo-400 mt-1 block">
+            <span className="text-xl font-bold text-blue-600 mt-1 block">
               {healthData?.total_latency_ms ? `${healthData.total_latency_ms} ms` : 'Scanning...'}
             </span>
           </div>
           <Clock className="h-8 w-8 text-slate-700" />
         </div>
 
-        <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200 flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold text-slate-400 block">Last Diagnostic Run</span>
             <span className="text-sm font-semibold text-slate-200 mt-1 block">
@@ -149,10 +149,10 @@ export default function SystemStatusPage() {
       </div>
 
       {/* Semantic Vector Engine Diagnostics Card */}
-      <div className="glass-panel p-6 rounded-3xl border border-indigo-500/30 space-y-4">
+      <div className="glass-panel p-6 rounded-3xl border border-blue-200 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-indigo-600/20 border border-indigo-500/40 text-indigo-400">
+            <div className="p-2 rounded-xl bg-indigo-600/20 border border-blue-200 text-blue-600">
               <Brain className="h-5 w-5" />
             </div>
             <div>
@@ -161,37 +161,37 @@ export default function SystemStatusPage() {
             </div>
           </div>
 
-          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">
             <CheckCircle2 className="h-3.5 w-3.5" />
             Vector Engine Active
           </span>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Embedding Provider</span>
             <span className="text-sm font-bold text-white mt-1 capitalize block">
               {vectorDiag?.embedding_provider || 'Gemini / Auto'}
             </span>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Embedding Model</span>
-            <span className="text-sm font-mono font-bold text-indigo-300 mt-1 block">
+            <span className="text-sm font-mono font-bold text-blue-700 mt-1 block">
               {vectorDiag?.embedding_model || 'text-embedding-004'}
             </span>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Vector Dimensions</span>
-            <span className="text-sm font-bold text-purple-300 mt-1 block">
+            <span className="text-sm font-bold text-purple-700 mt-1 block">
               {vectorDiag?.dimensions ? `${vectorDiag.dimensions}-D Dense` : '768-D Dense'}
             </span>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Query Cache Hit Rate</span>
-            <span className="text-sm font-bold text-emerald-400 mt-1 block">
+            <span className="text-sm font-bold text-emerald-600 mt-1 block">
               {vectorDiag?.cache_hit_rate_pct !== undefined ? `${vectorDiag.cache_hit_rate_pct}%` : '100%'}
             </span>
           </div>
@@ -199,10 +199,10 @@ export default function SystemStatusPage() {
       </div>
 
       {/* AI Project Intelligence & Health Engine Card */}
-      <div className="glass-panel p-6 rounded-3xl border border-purple-500/30 space-y-4">
+      <div className="glass-panel p-6 rounded-3xl border border-purple-200 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-purple-600/20 border border-purple-500/40 text-purple-400">
+            <div className="p-2 rounded-xl bg-purple-600/20 border border-purple-200 text-purple-600">
               <Activity className="h-5 w-5" />
             </div>
             <div>
@@ -213,7 +213,7 @@ export default function SystemStatusPage() {
 
           <Link
             href="/project-intelligence"
-            className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/20 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/10 text-blue-700 border border-blue-200 hover:bg-indigo-500/20 transition-colors"
           >
             <span>Open Command Center</span>
             <ExternalLink className="h-3 w-3" />
@@ -221,30 +221,30 @@ export default function SystemStatusPage() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Evaluated Dimensions</span>
             <span className="text-sm font-bold text-white mt-1 block">7 Core Vectors</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Risk Radar Categories</span>
             <span className="text-sm font-bold text-orange-400 mt-1 block">6 Risk Pillars</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Next Action Precision</span>
-            <span className="text-sm font-bold text-indigo-400 mt-1 block">Evidence-Backed</span>
+            <span className="text-sm font-bold text-blue-600 mt-1 block">Evidence-Backed</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Snapshot Trajectory</span>
-            <span className="text-sm font-bold text-emerald-400 mt-1 block">Active History</span>
+            <span className="text-sm font-bold text-emerald-600 mt-1 block">Active History</span>
           </div>
         </div>
       </div>
 
       {/* AI Research Workspace & LaTeX Engine Diagnostics Card */}
-      <div className="glass-panel p-6 rounded-3xl border border-cyan-500/30 space-y-4">
+      <div className="glass-panel p-6 rounded-3xl border border-cyan-200 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-cyan-600/20 border border-cyan-500/40 text-cyan-400">
+            <div className="p-2 rounded-xl bg-cyan-600/20 border border-cyan-200 text-cyan-600">
               <Atom className="h-5 w-5" />
             </div>
             <div>
@@ -255,7 +255,7 @@ export default function SystemStatusPage() {
 
           <Link
             href="/research"
-            className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/10 text-cyan-700 border border-cyan-200 hover:bg-cyan-500/20 transition-colors"
           >
             <span>Research Hub</span>
             <ExternalLink className="h-3 w-3" />
@@ -263,30 +263,30 @@ export default function SystemStatusPage() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Document Architectures</span>
             <span className="text-sm font-bold text-white mt-1 block">IEEE + Tech Report</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Export Formats</span>
-            <span className="text-sm font-bold text-cyan-400 mt-1 block">LaTeX, BibTeX, MD</span>
+            <span className="text-sm font-bold text-cyan-600 mt-1 block">LaTeX, BibTeX, MD</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Grounding Reliability</span>
-            <span className="text-sm font-bold text-indigo-400 mt-1 block">Anti-Hallucination</span>
+            <span className="text-sm font-bold text-blue-600 mt-1 block">Anti-Hallucination</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Test Verification</span>
-            <span className="text-sm font-bold text-emerald-400 mt-1 block">76/76 Unit PASS</span>
+            <span className="text-sm font-bold text-emerald-600 mt-1 block">76/76 Unit PASS</span>
           </div>
         </div>
       </div>
 
       {/* Empirical Experimentation & Reproducibility Engine Diagnostics Card */}
-      <div className="glass-panel p-6 rounded-3xl border border-indigo-500/30 space-y-4">
+      <div className="glass-panel p-6 rounded-3xl border border-blue-200 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-indigo-600/20 border border-indigo-500/40 text-indigo-400">
+            <div className="p-2 rounded-xl bg-indigo-600/20 border border-blue-200 text-blue-600">
               <FlaskConical className="h-5 w-5" />
             </div>
             <div>
@@ -297,7 +297,7 @@ export default function SystemStatusPage() {
 
           <Link
             href="/experiments"
-            className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/20 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/10 text-blue-700 border border-blue-200 hover:bg-indigo-500/20 transition-colors"
           >
             <span>Experiment Hub</span>
             <ExternalLink className="h-3 w-3" />
@@ -305,30 +305,30 @@ export default function SystemStatusPage() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Statistical Analysis</span>
             <span className="text-sm font-bold text-white mt-1 block">Multi-Run Std Dev & Mean</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Reproducibility Protocol</span>
-            <span className="text-sm font-bold text-emerald-400 mt-1 block">10-Point Scorecard</span>
+            <span className="text-sm font-bold text-emerald-600 mt-1 block">10-Point Scorecard</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Published Baselines</span>
-            <span className="text-sm font-bold text-purple-400 mt-1 block">DOI / SOTA Verified</span>
+            <span className="text-sm font-bold text-purple-600 mt-1 block">DOI / SOTA Verified</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Research Synchronization</span>
-            <span className="text-sm font-bold text-cyan-400 mt-1 block">1-Click Auto Sync</span>
+            <span className="text-sm font-bold text-cyan-600 mt-1 block">1-Click Auto Sync</span>
           </div>
         </div>
       </div>
 
       {/* Validation, Innovation Proof & Competition Readiness Engine Diagnostics Card */}
-      <div className="glass-panel p-6 rounded-3xl border border-emerald-500/30 space-y-4">
+      <div className="glass-panel p-6 rounded-3xl border border-emerald-200 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-400">
+            <div className="p-2 rounded-xl bg-emerald-600/20 border border-emerald-200 text-emerald-600">
               <ShieldCheck className="h-5 w-5" />
             </div>
             <div>
@@ -339,7 +339,7 @@ export default function SystemStatusPage() {
 
           <Link
             href="/validation"
-            className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-700 border border-emerald-200 hover:bg-emerald-500/20 transition-colors"
           >
             <span>Validation Hub</span>
             <ExternalLink className="h-3 w-3" />
@@ -347,21 +347,21 @@ export default function SystemStatusPage() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Evidence Coverage</span>
-            <span className="text-sm font-bold text-emerald-400 mt-1 block">Traceable Matrix</span>
+            <span className="text-sm font-bold text-emerald-600 mt-1 block">Traceable Matrix</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Differentiation Audit</span>
-            <span className="text-sm font-bold text-indigo-400 mt-1 block">8-Row SOTA Comparison</span>
+            <span className="text-sm font-bold text-blue-600 mt-1 block">8-Row SOTA Comparison</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Competition Deck</span>
-            <span className="text-sm font-bold text-purple-400 mt-1 block">16-Slide Speaker Notes</span>
+            <span className="text-sm font-bold text-purple-600 mt-1 block">16-Slide Speaker Notes</span>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200">
             <span className="text-[11px] font-medium text-slate-400 block">Live Demo Readiness</span>
-            <span className="text-sm font-bold text-cyan-400 mt-1 block">8-Step Guided Tour</span>
+            <span className="text-sm font-bold text-cyan-600 mt-1 block">8-Step Guided Tour</span>
           </div>
         </div>
       </div>
@@ -373,7 +373,7 @@ export default function SystemStatusPage() {
         {loading && !healthData ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
+              <div key={i} className="p-5 rounded-2xl bg-white border border-slate-200 space-y-3">
                 <div className="flex justify-between">
                   <div className="space-y-2">
                     <Skeleton className="h-4 w-36" />
@@ -381,7 +381,7 @@ export default function SystemStatusPage() {
                   </div>
                   <Skeleton className="h-6 w-24 rounded-full" />
                 </div>
-                <div className="pt-2 border-t border-slate-800/60 flex justify-between">
+                <div className="pt-2 border-t border-slate-200 flex justify-between">
                   <Skeleton className="h-3 w-28" />
                   <Skeleton className="h-3 w-12" />
                 </div>
@@ -398,7 +398,7 @@ export default function SystemStatusPage() {
                 return (
                   <div
                     key={key}
-                    className="p-5 rounded-2xl glass-panel glass-panel-hover border border-slate-800 flex flex-col justify-between space-y-3"
+                    className="p-5 rounded-2xl glass-panel glass-panel-hover border border-slate-200 flex flex-col justify-between space-y-3"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div>
@@ -413,9 +413,9 @@ export default function SystemStatusPage() {
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-800/60">
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-200">
                       <span>Target: {key.toUpperCase()} Subsystem</span>
-                      <span className="font-mono text-indigo-400 font-semibold">{item.latency_ms} ms</span>
+                      <span className="font-mono text-blue-600 font-semibold">{item.latency_ms} ms</span>
                     </div>
                   </div>
                 );

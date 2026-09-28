@@ -58,13 +58,13 @@ const ROLES: RoleConfig[] = [
     defaultEmail: 'innovator@student.edu',
     defaultPassword: 'password123',
     targetPath: '/dashboard',
-    accentColor: 'text-indigo-600 dark:text-indigo-400',
-    borderColor: 'border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-500/50',
-    bgLight: 'bg-slate-50 dark:bg-slate-900/60',
-    activeBorder: 'border-indigo-600 dark:border-indigo-500 ring-2 ring-indigo-500/20 shadow-md shadow-indigo-500/10',
-    activeBg: 'bg-indigo-50/80 dark:bg-indigo-950/40',
-    activeText: 'text-indigo-950 dark:text-white',
-    badgeStyle: 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30',
+    accentColor: 'text-indigo-600',
+    borderColor: 'border-slate-200 hover:border-indigo-400',
+    bgLight: 'bg-slate-50',
+    activeBorder: 'border-indigo-600 ring-2 ring-indigo-500/20 shadow-md shadow-indigo-500/10',
+    activeBg: 'bg-indigo-50/80',
+    activeText: 'text-indigo-950',
+    badgeStyle: 'bg-indigo-100 text-indigo-700 border border-indigo-200',
   },
   {
     id: 'mentor',
@@ -75,13 +75,13 @@ const ROLES: RoleConfig[] = [
     defaultEmail: 'mentor@university.edu',
     defaultPassword: 'password123',
     targetPath: '/mentor',
-    accentColor: 'text-purple-600 dark:text-purple-400',
-    borderColor: 'border-slate-200 dark:border-slate-800 hover:border-purple-400 dark:hover:border-purple-500/50',
-    bgLight: 'bg-slate-50 dark:bg-slate-900/60',
-    activeBorder: 'border-purple-600 dark:border-purple-500 ring-2 ring-purple-500/20 shadow-md shadow-purple-500/10',
-    activeBg: 'bg-purple-50/80 dark:bg-purple-950/40',
-    activeText: 'text-purple-950 dark:text-white',
-    badgeStyle: 'bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/30',
+    accentColor: 'text-purple-600',
+    borderColor: 'border-slate-200 hover:border-purple-400',
+    bgLight: 'bg-slate-50',
+    activeBorder: 'border-purple-600 ring-2 ring-purple-500/20 shadow-md shadow-purple-500/10',
+    activeBg: 'bg-purple-50/80',
+    activeText: 'text-purple-950',
+    badgeStyle: 'bg-purple-100 text-purple-700 border border-purple-200',
   },
   {
     id: 'admin',
@@ -92,13 +92,13 @@ const ROLES: RoleConfig[] = [
     defaultEmail: 'admin@innosphere.ai',
     defaultPassword: 'admin123',
     targetPath: '/analytics',
-    accentColor: 'text-blue-600 dark:text-blue-400',
-    borderColor: 'border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500/50',
-    bgLight: 'bg-slate-50 dark:bg-slate-900/60',
-    activeBorder: 'border-blue-600 dark:border-blue-500 ring-2 ring-blue-500/20 shadow-md shadow-blue-500/10',
-    activeBg: 'bg-blue-50/80 dark:bg-blue-950/40',
-    activeText: 'text-blue-950 dark:text-white',
-    badgeStyle: 'bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30',
+    accentColor: 'text-blue-600',
+    borderColor: 'border-slate-200 hover:border-blue-400',
+    bgLight: 'bg-slate-50',
+    activeBorder: 'border-blue-600 ring-2 ring-blue-500/20 shadow-md shadow-blue-500/10',
+    activeBg: 'bg-blue-50/80',
+    activeText: 'text-blue-950',
+    badgeStyle: 'bg-blue-100 text-blue-700 border border-blue-200',
   },
 ];
 
@@ -384,29 +384,29 @@ function LoginFormContent() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex items-center justify-center p-4 sm:p-6 lg:p-10 transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex items-center justify-center p-4 sm:p-6 lg:p-10 transition-colors duration-200">
       <Script src="https://accounts.google.com/gsi/client" strategy="afterInteractive" />
-      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden min-h-[680px]">
+      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden min-h-[680px]">
         {/* ========================================================================= */}
         {/* LEFT PANEL: Branding, Value Proposition, Innovation Graph Highlights      */}
         {/* ========================================================================= */}
-        <div className="lg:col-span-5 bg-gradient-to-br from-indigo-50/90 via-slate-50 to-purple-50/80 dark:from-indigo-950 dark:via-slate-900 dark:to-slate-950 p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800">
+        <div className="lg:col-span-5 bg-gradient-to-br from-indigo-50/90 via-slate-50 to-purple-50/80 p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-200">
           {/* Ambient Glows */}
-          <div className="absolute -top-24 -left-24 w-72 h-72 bg-indigo-400/10 dark:bg-indigo-600/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-purple-400/10 dark:bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:24px_24px] opacity-10 dark:opacity-15 pointer-events-none" />
+          <div className="absolute -top-24 -left-24 w-72 h-72 bg-indigo-400/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-purple-400/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
 
           {/* Top Logo */}
           <div className="space-y-6 relative z-10">
             <Link href="/" className="inline-flex items-center gap-2.5 group">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-500 to-purple-500 p-0.5 shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform">
-                <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-slate-900 dark:bg-slate-950">
+                <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-slate-900">
                   <Sparkles className="h-4 w-4 text-indigo-400 animate-pulse" />
                 </div>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="text-lg font-black tracking-tight text-slate-900 dark:text-white">InnoSphere</span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 font-bold border border-indigo-200 dark:border-indigo-500/30">
+                <span className="text-lg font-black tracking-tight text-slate-900">InnoSphere</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-700 font-bold border border-indigo-200">
                   AI
                 </span>
               </div>
@@ -414,13 +414,13 @@ function LoginFormContent() {
 
             {/* Headline & Description */}
             <div className="space-y-2.5 pt-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30">
-                <Atom className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" /> Dedicated Role-Based Access
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-700 border border-indigo-200">
+                <Atom className="w-3.5 h-3.5 text-indigo-600" /> Dedicated Role-Based Access
               </span>
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 leading-tight">
                 Empowering Student Innovation
               </h1>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                 Seamless role-based workspace tailored for student innovators, research faculty mentors, and academic administrators.
               </p>
             </div>
@@ -432,37 +432,37 @@ function LoginFormContent() {
                   icon: Compass,
                   title: 'Intelligent Resource Discovery',
                   desc: 'Semantic AI search across papers, datasets, and hardware sensors.',
-                  color: 'text-cyan-600 dark:text-cyan-400',
+                  color: 'text-cyan-600',
                 },
                 {
                   icon: Atom,
                   title: 'AI Research Intelligence',
                   desc: 'Literature synthesis, LaTeX authoring & automated citations.',
-                  color: 'text-purple-600 dark:text-purple-400',
+                  color: 'text-purple-600',
                 },
                 {
                   icon: FlaskConical,
                   title: 'Experiment & Validation Hub',
                   desc: 'Empirical telemetry, benchmark references & claim proofs.',
-                  color: 'text-emerald-600 dark:text-emerald-400',
+                  color: 'text-emerald-600',
                 },
                 {
                   icon: Scale,
                   title: 'Innovation & Prior-Art Analysis',
                   desc: 'Patent exploration, concept extraction & technical differentiation.',
-                  color: 'text-amber-600 dark:text-amber-400',
+                  color: 'text-amber-600',
                 },
               ].map((feat, idx) => (
                 <div
                   key={idx}
-                  className="p-3 rounded-2xl bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 shadow-xs dark:shadow-none transition-all flex items-start gap-3 backdrop-blur-xs"
+                  className="p-3 rounded-2xl bg-white/90 border border-slate-200 hover:border-slate-300 shadow-xs transition-all flex items-start gap-3 backdrop-blur-xs"
                 >
-                  <div className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 shrink-0 mt-0.5">
+                  <div className="p-2 rounded-xl bg-slate-100 shrink-0 mt-0.5">
                     <feat.icon className={`w-4 h-4 ${feat.color}`} />
                   </div>
                   <div>
-                    <h2 className="text-xs font-bold text-slate-900 dark:text-white">{feat.title}</h2>
-                    <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">{feat.desc}</p>
+                    <h2 className="text-xs font-bold text-slate-900">{feat.title}</h2>
+                    <p className="text-[11px] text-slate-600 leading-snug">{feat.desc}</p>
                   </div>
                 </div>
               ))}
@@ -470,9 +470,9 @@ function LoginFormContent() {
           </div>
 
           {/* Bottom Trust Badge */}
-          <div className="pt-6 border-t border-slate-200 dark:border-slate-800/80 text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between relative z-10">
+          <div className="pt-6 border-t border-slate-200 text-[11px] text-slate-500 flex items-center justify-between relative z-10">
             <span className="flex items-center gap-1.5 font-medium">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> PBKDF2 Encrypted & Role-Based RBAC
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> PBKDF2 Encrypted & Role-Based RBAC
             </span>
             <span className="font-mono text-[10px]">v1.0.0</span>
           </div>
@@ -481,30 +481,30 @@ function LoginFormContent() {
         {/* ========================================================================= */}
         {/* RIGHT PANEL: Role Selection, Credentials Form, 1-Click Fast Fill          */}
         {/* ========================================================================= */}
-        <div className="lg:col-span-7 bg-white dark:bg-slate-900 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+        <div className="lg:col-span-7 bg-white p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
           <div className="space-y-6 max-w-lg mx-auto w-full">
             {/* Header */}
             <div className="space-y-1">
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
                 Welcome to InnoSphere AI
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <p className="text-xs sm:text-sm text-slate-600">
                 Select your account type and sign in to access your designated workspace.
               </p>
             </div>
 
             {/* Error Notification Banner */}
             {authError && (
-              <div className="p-3.5 rounded-2xl bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 text-red-700 dark:text-red-400 text-xs font-medium flex items-start gap-2.5 animate-in fade-in">
-                <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0 mt-0.5" />
+              <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium flex items-start gap-2.5 animate-in fade-in">
+                <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{authError}</span>
               </div>
             )}
 
             {/* Success Notification Banner */}
             {authSuccessMsg && (
-              <div className="p-3.5 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs font-medium flex items-center gap-2.5 animate-in fade-in">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-500 shrink-0" />
+              <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium flex items-center gap-2.5 animate-in fade-in">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>{authSuccessMsg}</span>
               </div>
             )}
@@ -513,9 +513,9 @@ function LoginFormContent() {
             {/* 3-CARD ROLE SELECTION SECTION                                          */}
             {/* ===================================================================== */}
             <div className="space-y-2">
-              <label className="text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center justify-between">
+              <label className="text-[11px] font-bold uppercase tracking-wider text-slate-700 flex items-center justify-between">
                 <span>Select Account Type</span>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 font-normal">Choose your platform role</span>
+                <span className="text-[10px] text-slate-500 font-normal">Choose your platform role</span>
               </label>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -530,13 +530,13 @@ function LoginFormContent() {
                       className={`p-3 rounded-2xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
                         isSelected
                           ? `${r.activeBorder} ${r.activeBg}`
-                          : `${r.borderColor} ${r.bgLight} hover:bg-slate-100 dark:hover:bg-slate-800/60`
+                          : `${r.borderColor} ${r.bgLight} hover:bg-slate-100`
                       }`}
                     >
                       <div className="flex items-center justify-between mb-2">
                         <div
                           className={`p-1.5 rounded-xl ${
-                            isSelected ? 'bg-indigo-600 text-white shadow-xs' : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                            isSelected ? 'bg-indigo-600 text-white shadow-xs' : 'bg-slate-200 text-slate-700'
                           }`}
                         >
                           <Icon className="w-4 h-4" />
@@ -548,10 +548,10 @@ function LoginFormContent() {
                         )}
                       </div>
                       <div>
-                        <span className={`text-xs font-bold block ${isSelected ? r.activeText : 'text-slate-900 dark:text-white'}`}>
+                        <span className={`text-xs font-bold block ${isSelected ? r.activeText : 'text-slate-900'}`}>
                           {r.title}
                         </span>
-                        <span className={`text-[10px] line-clamp-2 mt-0.5 leading-tight ${isSelected ? 'text-slate-700 dark:text-slate-300' : 'text-slate-500 dark:text-slate-400'}`}>
+                        <span className={`text-[10px] line-clamp-2 mt-0.5 leading-tight ${isSelected ? 'text-slate-700' : 'text-slate-500'}`}>
                           {r.description}
                         </span>
                       </div>
@@ -562,8 +562,8 @@ function LoginFormContent() {
             </div>
 
             {/* Quick Test Credential Bar */}
-            <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-2.5">
-              <div className="flex items-center gap-2 text-[11px] text-slate-700 dark:text-slate-300 font-medium">
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-2.5">
+              <div className="flex items-center gap-2 text-[11px] text-slate-700 font-medium">
                 <Zap className="w-3.5 h-3.5 text-amber-500 shrink-0" />
                 <span>
                   Testing as <strong>{currentRoleConfig.title}</strong>?
@@ -573,7 +573,7 @@ function LoginFormContent() {
                 <button
                   type="button"
                   onClick={() => handleFillCredentials(selectedRole)}
-                  className="flex-1 sm:flex-none px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-600 text-[11px] font-semibold transition-colors shadow-2xs cursor-pointer"
+                  className="flex-1 sm:flex-none px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 text-[11px] font-semibold transition-colors shadow-2xs cursor-pointer"
                 >
                   Fill Credentials
                 </button>
@@ -596,13 +596,13 @@ function LoginFormContent() {
               <div className="space-y-1.5">
                 <label
                   htmlFor="login-email"
-                  className="font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between"
+                  className="font-bold text-slate-700 flex items-center justify-between"
                 >
                   <span>{currentRoleConfig.title} Email</span>
-                  {emailError && <span className="text-[11px] text-red-600 dark:text-red-400 font-normal">{emailError}</span>}
+                  {emailError && <span className="text-[11px] text-red-600 font-normal">{emailError}</span>}
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                   <input
                     id="login-email"
                     type="email"
@@ -616,11 +616,11 @@ function LoginFormContent() {
                       if (emailError) setEmailError(null);
                     }}
                     placeholder={currentRoleConfig.defaultEmail}
-                    className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-950 border ${
+                    className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border ${
                       emailError
                         ? 'border-red-500 focus:ring-red-500'
-                        : 'border-slate-300 dark:border-slate-800 focus:border-indigo-500 focus:ring-indigo-500'
-                    } text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-colors`}
+                        : 'border-slate-300 focus:border-indigo-500 focus:ring-indigo-500'
+                    } text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 transition-colors`}
                   />
                 </div>
               </div>
@@ -628,7 +628,7 @@ function LoginFormContent() {
               {/* Password Field */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label htmlFor="login-password" className="font-bold text-slate-700 dark:text-slate-300">
+                  <label htmlFor="login-password" className="font-bold text-slate-700">
                     Password
                   </label>
                   <button
@@ -638,13 +638,13 @@ function LoginFormContent() {
                       setForgotFeedback(null);
                       setForgotModalOpen(true);
                     }}
-                    className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold focus:outline-none cursor-pointer"
+                    className="text-indigo-600 hover:underline font-semibold focus:outline-none cursor-pointer"
                   >
                     Forgot password?
                   </button>
                 </div>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                   <input
                     id="login-password"
                     type={showPassword ? 'text' : 'password'}
@@ -658,22 +658,22 @@ function LoginFormContent() {
                       if (passwordError) setPasswordError(null);
                     }}
                     placeholder="••••••••••••"
-                    className={`w-full pl-10 pr-10 py-2.5 rounded-xl bg-white dark:bg-slate-950 border ${
+                    className={`w-full pl-10 pr-10 py-2.5 rounded-xl bg-white border ${
                       passwordError
                         ? 'border-red-500 focus:ring-red-500'
-                        : 'border-slate-300 dark:border-slate-800 focus:border-indigo-500 focus:ring-indigo-500'
-                    } text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-colors`}
+                        : 'border-slate-300 focus:border-indigo-500 focus:ring-indigo-500'
+                    } text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 transition-colors`}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     aria-label={showPassword ? 'Hide password' : 'Show password'}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 focus:outline-none cursor-pointer"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 focus:outline-none cursor-pointer"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
-                {passwordError && <p className="text-[11px] text-red-600 dark:text-red-400 font-normal">{passwordError}</p>}
+                {passwordError && <p className="text-[11px] text-red-600 font-normal">{passwordError}</p>}
               </div>
 
               {/* Remember Me Checkbox */}
@@ -683,9 +683,9 @@ function LoginFormContent() {
                     type="checkbox"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 cursor-pointer"
+                    className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 bg-white cursor-pointer"
                   />
-                  <span className="text-slate-600 dark:text-slate-400 font-medium">Remember me for 7 days</span>
+                  <span className="text-slate-600 font-medium">Remember me for 7 days</span>
                 </label>
               </div>
 
@@ -711,11 +711,11 @@ function LoginFormContent() {
 
             {/* Divider */}
             <div className="relative flex items-center justify-center">
-              <div className="border-t border-slate-200 dark:border-slate-800 w-full" />
-              <span className="bg-white dark:bg-slate-900 px-3 text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider shrink-0">
+              <div className="border-t border-slate-200 w-full" />
+              <span className="bg-white px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider shrink-0">
                 OR
               </span>
-              <div className="border-t border-slate-200 dark:border-slate-800 w-full" />
+              <div className="border-t border-slate-200 w-full" />
             </div>
 
             {/* Continue with Google */}
@@ -723,7 +723,7 @@ function LoginFormContent() {
               type="button"
               disabled={submitting || googleSubmitting || !!demoSubmitting}
               onClick={handleGoogleLogin}
-              className="w-full py-2.5 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-200 text-xs font-semibold shadow-xs transition-all flex items-center justify-center gap-2.5 disabled:opacity-60 cursor-pointer"
+              className="w-full py-2.5 px-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold shadow-xs transition-all flex items-center justify-center gap-2.5 disabled:opacity-60 cursor-pointer"
             >
               {googleSubmitting ? (
                 <>
@@ -757,11 +757,11 @@ function LoginFormContent() {
             </button>
 
             {/* Registration link */}
-            <p className="text-center text-xs text-slate-600 dark:text-slate-400">
+            <p className="text-center text-xs text-slate-600">
               Don&apos;t have an account?{' '}
               <Link
                 href="/register"
-                className="font-bold text-indigo-600 dark:text-indigo-400 hover:underline inline-flex items-center gap-0.5"
+                className="font-bold text-indigo-600 hover:underline inline-flex items-center gap-0.5"
               >
                 Create account <ArrowRight className="w-3 h-3" />
               </Link>
@@ -769,7 +769,7 @@ function LoginFormContent() {
           </div>
 
           {/* Minimal Footer */}
-          <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80 text-center text-[11px] text-slate-500 dark:text-slate-400">
+          <div className="pt-4 border-t border-slate-200 text-center text-[11px] text-slate-500">
             © 2026 InnoSphere AI. Built for Student Innovators, Mentors & Administrators.
           </div>
         </div>
@@ -780,39 +780,39 @@ function LoginFormContent() {
       {/* ========================================================================= */}
       {forgotModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl max-w-md w-full p-6 space-y-4">
+          <div className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="p-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400">
+                <div className="p-2 rounded-xl bg-indigo-50 text-indigo-600">
                   <KeyRound className="w-4 h-4" />
                 </div>
-                <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                <h3 className="font-bold text-base text-slate-900">
                   Reset Account Password
                 </h3>
               </div>
               <button
                 type="button"
                 onClick={() => setForgotModalOpen(false)}
-                className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p className="text-xs text-slate-600 leading-relaxed">
               Enter your registered academic email address. We will verify your account and dispatch secure recovery instructions.
             </p>
 
             {forgotFeedback && (
-              <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800/60 text-xs text-indigo-700 dark:text-indigo-300 flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
+              <div className="p-3 rounded-xl bg-indigo-50 border border-indigo-200 text-xs text-indigo-700 flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
                 <span>{forgotFeedback}</span>
               </div>
             )}
 
             <form onSubmit={handleForgotPasswordSubmit} className="space-y-3 text-xs">
               <div className="space-y-1">
-                <label htmlFor="forgot-email" className="font-semibold text-slate-700 dark:text-slate-300">
+                <label htmlFor="forgot-email" className="font-semibold text-slate-700">
                   Email Address
                 </label>
                 <input
@@ -822,7 +822,7 @@ function LoginFormContent() {
                   value={forgotEmail}
                   onChange={(e) => setForgotEmail(e.target.value)}
                   placeholder="name@university.edu"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
@@ -830,7 +830,7 @@ function LoginFormContent() {
                 <button
                   type="button"
                   onClick={() => setForgotModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition-colors cursor-pointer"
                 >
                   Close
                 </button>
@@ -854,7 +854,7 @@ export default function LoginPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center">
           <div className="h-8 w-8 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin" />
         </div>
       }

@@ -24,12 +24,12 @@ export function PageHeader({
   children,
 }: PageHeaderProps) {
   return (
-    <div className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-7 shadow-xs relative overflow-hidden transition-all duration-200">
+    <div className="rounded-xl bg-white border border-slate-200 p-6 sm:p-7 shadow-xs relative overflow-hidden transition-all duration-200">
       {backHref && (
         <div className="mb-3">
           <Link
             href={backHref}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-blue-600 transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             <span>{backLabel || 'Back'}</span>
@@ -40,16 +40,16 @@ export function PageHeader({
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
         <div className="space-y-1.5 flex-1">
           {(badge || Icon) && (
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
-              {Icon && <Icon className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400 shrink-0" />}
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-[11px] font-semibold text-slate-700">
+              {Icon && <Icon className="h-3.5 w-3.5 text-blue-600 shrink-0" />}
               {badge && <span>{badge}</span>}
             </div>
           )}
 
-          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
             {title}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 max-w-3xl leading-relaxed">
             {description}
           </p>
         </div>

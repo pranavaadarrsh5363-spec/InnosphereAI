@@ -227,7 +227,7 @@ export default function ProjectSkillsPage() {
     switch (status) {
       case 'READY':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">
             <CheckCircle2 className="h-3 w-3" /> READY
           </span>
         );
@@ -239,26 +239,26 @@ export default function ProjectSkillsPage() {
         );
       case 'LEARNING_REQUIRED':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-500/10 text-rose-400 border border-rose-500/30">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-500/10 text-rose-600 border border-rose-200">
             <AlertCircle className="h-3 w-3" /> LEARNING REQUIRED
           </span>
         );
       case 'PREREQUISITE_REQUIRED':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-500/10 text-purple-400 border border-purple-500/30">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-500/10 text-purple-600 border border-purple-200">
             <GitPullRequest className="h-3 w-3" /> PREREQUISITE REQUIRED
           </span>
         );
       case 'OPTIONAL':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-800 text-slate-400 border border-slate-700">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-800 text-slate-400 border border-slate-200">
             OPTIONAL
           </span>
         );
       case 'NOT_ASSESSED':
       default:
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/10 text-amber-600 border border-amber-200">
             <HelpCircle className="h-3 w-3" /> NOT ASSESSED
           </span>
         );
@@ -268,11 +268,11 @@ export default function ProjectSkillsPage() {
   const getPriorityBadge = (priority: string) => {
     switch (priority) {
       case 'CRITICAL':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-rose-950/80 text-rose-300 border border-rose-500/40">CRITICAL</span>;
+        return <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-rose-50 text-rose-700 border border-rose-200">CRITICAL</span>;
       case 'HIGH':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-950/80 text-amber-300 border border-amber-500/40">HIGH</span>;
+        return <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">HIGH</span>;
       case 'MEDIUM':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-indigo-950/80 text-indigo-300 border border-indigo-500/40">MEDIUM</span>;
+        return <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-blue-50 text-blue-700 border border-blue-200">MEDIUM</span>;
       default:
         return <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-800 text-slate-400">LOW</span>;
     }
@@ -281,9 +281,9 @@ export default function ProjectSkillsPage() {
   const getEffortBadge = (effort: string) => {
     switch (effort) {
       case 'HIGH':
-        return <span className="text-[10px] font-mono text-amber-400 font-bold">Effort: High</span>;
+        return <span className="text-[10px] font-mono text-amber-600 font-bold">Effort: High</span>;
       case 'LOW':
-        return <span className="text-[10px] font-mono text-emerald-400 font-bold">Effort: Low</span>;
+        return <span className="text-[10px] font-mono text-emerald-600 font-bold">Effort: Low</span>;
       default:
         return <span className="text-[10px] font-mono text-blue-400 font-bold">Effort: Med</span>;
     }
@@ -309,9 +309,9 @@ export default function ProjectSkillsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white p-6">
-        <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-indigo-600/20 border border-indigo-500/40 mb-4 animate-pulse">
-          <Brain className="h-7 w-7 text-indigo-400 animate-spin" />
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 text-slate-900 p-6">
+        <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-indigo-600/20 border border-blue-200 mb-4 animate-pulse">
+          <Brain className="h-7 w-7 text-blue-600 animate-spin" />
         </div>
         <h2 className="text-xl font-bold tracking-tight">Analyzing Project Skills & Prerequisites...</h2>
         <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-md text-center">
@@ -323,9 +323,9 @@ export default function ProjectSkillsPage() {
 
   if (error || !skillsData) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white p-6">
-        <div className="max-w-md w-full rounded-3xl bg-slate-900 border border-slate-800 p-8 text-center space-y-4 shadow-2xl">
-          <AlertTriangle className="h-12 w-12 text-amber-400 mx-auto" />
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 text-slate-900 p-6">
+        <div className="max-w-md w-full rounded-3xl bg-white border border-slate-200 p-8 text-center space-y-4 shadow-2xl">
+          <AlertTriangle className="h-12 w-12 text-amber-600 mx-auto" />
           <h3 className="text-lg font-bold text-white">Skills Gap Analysis Notice</h3>
           <p className="text-xs text-slate-300 leading-relaxed">{error || 'Project skill data could not be computed.'}</p>
           <div className="flex justify-center gap-3 pt-2">
@@ -350,21 +350,21 @@ export default function ProjectSkillsPage() {
   const summary = skillsData.summary;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 pb-16">
+    <div className="min-h-screen bg-slate-50 text-slate-900 pb-16">
       {/* ------------------------------------------------------------- */}
       {/* 1. TOP HEADER & WORKSPACE BANNER                              */}
       {/* ------------------------------------------------------------- */}
-      <div className="bg-gradient-to-b from-indigo-950/40 via-slate-900/80 to-slate-950 border-b border-slate-800/80 pt-8 pb-6 px-4 sm:px-6 lg:px-8 shadow-xl">
+      <div className="bg-gradient-to-b from-indigo-950/40 via-slate-900/80 to-slate-950 border-b border-slate-200 pt-8 pb-6 px-4 sm:px-6 lg:px-8 shadow-xl">
         <div className="max-w-7xl mx-auto space-y-4">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="space-y-1.5">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-500/10 text-indigo-300 border border-indigo-500/30">
-                  <Brain className="h-3.5 w-3.5 text-indigo-400" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-500/10 text-blue-700 border border-blue-200">
+                  <Brain className="h-3.5 w-3.5 text-blue-600" />
                   SKILLS & PREREQUISITES GAP MAP
                 </span>
                 <span className="text-xs font-bold text-slate-400">•</span>
-                <span className="text-xs font-mono font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                <span className="text-xs font-mono font-semibold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-200">
                   {skillsData.domain || 'Engineering Project'}
                 </span>
               </div>
@@ -389,36 +389,36 @@ export default function ProjectSkillsPage() {
               <button
                 onClick={handleSyncRoadmap}
                 disabled={syncingRoadmap}
-                className="px-3.5 py-2 rounded-xl bg-slate-850 hover:bg-slate-800 border border-slate-750 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-all disabled:opacity-50"
+                className="px-3.5 py-2 rounded-xl bg-slate-50 hover:bg-slate-800 border border-slate-200 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-all disabled:opacity-50"
               >
-                <GitPullRequest className={`h-3.5 w-3.5 text-teal-400 ${syncingRoadmap ? 'animate-spin' : ''}`} />
+                <GitPullRequest className={`h-3.5 w-3.5 text-teal-600 ${syncingRoadmap ? 'animate-spin' : ''}`} />
                 <span>Sync Roadmap</span>
               </button>
 
               <button
                 onClick={() => handleOpenExport('markdown')}
-                className="px-3 py-2 rounded-xl bg-slate-850 hover:bg-slate-800 border border-slate-750 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-all"
+                className="px-3 py-2 rounded-xl bg-slate-50 hover:bg-slate-800 border border-slate-200 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-all"
                 title="Export Learning Plan"
               >
-                <Download className="h-3.5 w-3.5 text-cyan-400" />
+                <Download className="h-3.5 w-3.5 text-cyan-600" />
                 <span>Export Plan</span>
               </button>
 
               <button
                 onClick={() => loadSkillsData(true)}
                 disabled={refreshing}
-                className="p-2 rounded-xl bg-slate-850 hover:bg-slate-800 border border-slate-750 text-slate-400 hover:text-white transition-all"
+                className="p-2 rounded-xl bg-slate-50 hover:bg-slate-800 border border-slate-200 text-slate-400 hover:text-white transition-all"
                 title="Refresh Analysis"
               >
-                <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin text-indigo-400' : ''}`} />
+                <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin text-blue-600' : ''}`} />
               </button>
             </div>
           </div>
 
           {/* Sync Success Alert */}
           {syncSuccessMsg && (
-            <div className="p-3 rounded-xl bg-teal-950/60 border border-teal-500/40 text-teal-300 text-xs flex items-center gap-2 animate-in fade-in">
-              <CheckCircle2 className="h-4 w-4 text-teal-400 shrink-0" />
+            <div className="p-3 rounded-xl bg-teal-50 border border-teal-200 text-teal-700 text-xs flex items-center gap-2 animate-in fade-in">
+              <CheckCircle2 className="h-4 w-4 text-teal-600 shrink-0" />
               <span>{syncSuccessMsg}</span>
             </div>
           )}
@@ -427,22 +427,22 @@ export default function ProjectSkillsPage() {
           {/* VISUAL WORKFLOW FLOW CHART BAR                              */}
           {/* ----------------------------------------------------------- */}
           <div className="pt-2 overflow-x-auto scrollbar-none">
-            <div className="flex items-center gap-1 text-[11px] font-bold text-slate-400 min-w-[850px] p-2 rounded-2xl bg-slate-900/90 border border-slate-800">
-              <span className="px-2.5 py-1 rounded-lg bg-indigo-950 text-indigo-300 border border-indigo-500/30">1. Student Idea</span>
+            <div className="flex items-center gap-1 text-[11px] font-bold text-slate-400 min-w-[850px] p-2 rounded-2xl bg-white border border-slate-200">
+              <span className="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200">1. Student Idea</span>
               <ChevronRight className="h-3.5 w-3.5 text-slate-600 shrink-0" />
-              <span className="px-2.5 py-1 rounded-lg bg-slate-850 text-slate-200">2. Required Tech</span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-50 text-slate-200">2. Required Tech</span>
               <ChevronRight className="h-3.5 w-3.5 text-slate-600 shrink-0" />
-              <span className="px-2.5 py-1 rounded-lg bg-slate-850 text-slate-200">3. Required Skills</span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-50 text-slate-200">3. Required Skills</span>
               <ChevronRight className="h-3.5 w-3.5 text-slate-600 shrink-0" />
-              <span className="px-2.5 py-1 rounded-lg bg-slate-850 text-slate-200">4. Current Level</span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-50 text-slate-200">4. Current Level</span>
               <ChevronRight className="h-3.5 w-3.5 text-slate-600 shrink-0" />
-              <span className="px-2.5 py-1 rounded-lg bg-rose-950/70 text-rose-300 border border-rose-500/30">5. Skill Gaps</span>
+              <span className="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-700 border border-rose-200">5. Skill Gaps</span>
               <ChevronRight className="h-3.5 w-3.5 text-slate-600 shrink-0" />
-              <span className="px-2.5 py-1 rounded-lg bg-slate-850 text-slate-200">6. Learning Resources</span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-50 text-slate-200">6. Learning Resources</span>
               <ChevronRight className="h-3.5 w-3.5 text-slate-600 shrink-0" />
-              <span className="px-2.5 py-1 rounded-lg bg-cyan-950/70 text-cyan-300 border border-cyan-500/30">7. Learning Roadmap</span>
+              <span className="px-2.5 py-1 rounded-lg bg-cyan-50 text-cyan-700 border border-cyan-200">7. Learning Roadmap</span>
               <ChevronRight className="h-3.5 w-3.5 text-slate-600 shrink-0" />
-              <span className="px-2.5 py-1 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-500/30">8. Project Build</span>
+              <span className="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200">8. Project Build</span>
             </div>
           </div>
         </div>
@@ -454,44 +454,44 @@ export default function ProjectSkillsPage() {
         {/* ------------------------------------------------------------- */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {/* Summary Breakdown Card */}
-          <div className="lg:col-span-1 rounded-3xl bg-slate-900 border border-slate-800 p-5 space-y-4 shadow-xl flex flex-col justify-between">
+          <div className="lg:col-span-1 rounded-3xl bg-white border border-slate-200 p-5 space-y-4 shadow-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Skill Gap Breakdown</span>
-                <span className="text-xs font-mono font-bold text-indigo-400">{summary.total_required_skills} Required</span>
+                <span className="text-xs font-mono font-bold text-blue-600">{summary.total_required_skills} Required</span>
               </div>
 
               <div className="grid grid-cols-2 gap-2.5 mt-3.5">
-                <div className="p-3 rounded-2xl bg-emerald-950/30 border border-emerald-500/30">
-                  <div className="text-[10px] font-bold uppercase text-emerald-400">Ready</div>
+                <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200">
+                  <div className="text-[10px] font-bold uppercase text-emerald-600">Ready</div>
                   <div className="text-2xl font-black text-white mt-0.5">{summary.ready_count}</div>
                   <div className="text-[10px] text-slate-400">Competence verified</div>
                 </div>
 
-                <div className="p-3 rounded-2xl bg-blue-950/30 border border-blue-500/30">
+                <div className="p-3 rounded-2xl bg-blue-50 border border-blue-500/30">
                   <div className="text-[10px] font-bold uppercase text-blue-400">Partially Ready</div>
                   <div className="text-2xl font-black text-white mt-0.5">{summary.partially_ready_count}</div>
                   <div className="text-[10px] text-slate-400">Needs minor brush-up</div>
                 </div>
 
-                <div className="p-3 rounded-2xl bg-rose-950/30 border border-rose-500/30">
-                  <div className="text-[10px] font-bold uppercase text-rose-400">Learning Required</div>
+                <div className="p-3 rounded-2xl bg-rose-50 border border-rose-200">
+                  <div className="text-[10px] font-bold uppercase text-rose-600">Learning Required</div>
                   <div className="text-2xl font-black text-white mt-0.5">{summary.learning_required_count}</div>
                   <div className="text-[10px] text-slate-400">Core gaps identified</div>
                 </div>
 
-                <div className="p-3 rounded-2xl bg-purple-950/30 border border-purple-500/30">
-                  <div className="text-[10px] font-bold uppercase text-purple-400">Prereq Required</div>
+                <div className="p-3 rounded-2xl bg-purple-50 border border-purple-200">
+                  <div className="text-[10px] font-bold uppercase text-purple-600">Prereq Required</div>
                   <div className="text-2xl font-black text-white mt-0.5">{summary.prerequisite_required_count}</div>
                   <div className="text-[10px] text-slate-400">Learn foundation first</div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-800">
+            <div className="pt-3 border-t border-slate-200">
               <div className="flex items-center justify-between text-xs font-semibold mb-1.5">
                 <span className="text-slate-300">Composite Readiness</span>
-                <span className="text-indigo-400 font-bold">{summary.readiness_percentage}%</span>
+                <span className="text-blue-600 font-bold">{summary.readiness_percentage}%</span>
               </div>
               <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
                 <div
@@ -503,14 +503,14 @@ export default function ProjectSkillsPage() {
           </div>
 
           {/* "Am I Ready to Start?" Panel */}
-          <div className="lg:col-span-2 rounded-3xl bg-slate-900 border border-slate-800 p-5 space-y-3.5 shadow-xl flex flex-col justify-between">
+          <div className="lg:col-span-2 rounded-3xl bg-white border border-slate-200 p-5 space-y-3.5 shadow-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Target className="h-4 w-4 text-emerald-400" />
+                  <Target className="h-4 w-4 text-emerald-600" />
                   <h3 className="text-sm font-bold text-white">Can I Start Building? — Transparent Readiness Guidance</h3>
                 </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-bold">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-blue-700 border border-blue-200 font-bold">
                   Guided Milestones
                 </span>
               </div>
@@ -520,15 +520,15 @@ export default function ProjectSkillsPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
                 {/* Immediate */}
-                <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 space-y-1.5">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
+                <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600">
                     <CheckCircle className="h-3.5 w-3.5 shrink-0" />
                     <span>You Can Begin Immediately</span>
                   </div>
                   <ul className="space-y-1 text-[11px] text-slate-300">
                     {skillsData.am_i_ready.can_begin_immediately.map((item: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-1">
-                        <span className="text-emerald-400">•</span>
+                        <span className="text-emerald-600">•</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -536,15 +536,15 @@ export default function ProjectSkillsPage() {
                 </div>
 
                 {/* Recommended */}
-                <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 space-y-1.5">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-amber-400">
+                <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-amber-600">
                     <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
                     <span>Before Core Model Dev</span>
                   </div>
                   <ul className="space-y-1 text-[11px] text-slate-300">
                     {skillsData.am_i_ready.recommended_before_development.map((item: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-1">
-                        <span className="text-amber-400">•</span>
+                        <span className="text-amber-600">•</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -552,15 +552,15 @@ export default function ProjectSkillsPage() {
                 </div>
 
                 {/* Required Before Deployment */}
-                <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 space-y-1.5">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-rose-400">
+                <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-rose-600">
                     <AlertCircle className="h-3.5 w-3.5 shrink-0" />
                     <span>Before Final Deployment</span>
                   </div>
                   <ul className="space-y-1 text-[11px] text-slate-300">
                     {skillsData.am_i_ready.required_before_deployment.map((item: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-1">
-                        <span className="text-rose-400">•</span>
+                        <span className="text-rose-600">•</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -571,7 +571,7 @@ export default function ProjectSkillsPage() {
 
             <div className="text-[11px] text-slate-400 flex items-center justify-between pt-1">
               <span>* InnoSphere AI provides transparent guidance without hard-blocking your development creativity.</span>
-              <Link href="/experiments" className="text-indigo-400 hover:underline flex items-center gap-1 font-semibold">
+              <Link href="/experiments" className="text-blue-600 hover:underline flex items-center gap-1 font-semibold">
                 <span>Go to Experiments</span>
                 <ArrowRight className="h-3 w-3" />
               </Link>
@@ -582,13 +582,13 @@ export default function ProjectSkillsPage() {
         {/* ------------------------------------------------------------- */}
         {/* 3. NAVIGATION TABS                                            */}
         {/* ------------------------------------------------------------- */}
-        <div className="flex flex-wrap items-center gap-2 border-b border-slate-800 pb-2">
+        <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
           <button
             onClick={() => setActiveTab('matrix')}
             className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
               activeTab === 'matrix'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                : 'bg-white text-slate-400 hover:text-slate-200 border border-slate-200'
             }`}
           >
             <Layers className="h-3.5 w-3.5" />
@@ -600,7 +600,7 @@ export default function ProjectSkillsPage() {
             className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
               activeTab === 'technologies'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                : 'bg-white text-slate-400 hover:text-slate-200 border border-slate-200'
             }`}
           >
             <Cpu className="h-3.5 w-3.5" />
@@ -612,7 +612,7 @@ export default function ProjectSkillsPage() {
             className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
               activeTab === 'graph'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                : 'bg-white text-slate-400 hover:text-slate-200 border border-slate-200'
             }`}
           >
             <GitPullRequest className="h-3.5 w-3.5" />
@@ -624,7 +624,7 @@ export default function ProjectSkillsPage() {
             className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
               activeTab === 'roadmap'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                : 'bg-white text-slate-400 hover:text-slate-200 border border-slate-200'
             }`}
           >
             <Compass className="h-3.5 w-3.5" />
@@ -636,7 +636,7 @@ export default function ProjectSkillsPage() {
             className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
               activeTab === 'resources'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                : 'bg-white text-slate-400 hover:text-slate-200 border border-slate-200'
             }`}
           >
             <BookOpen className="h-3.5 w-3.5" />
@@ -648,10 +648,10 @@ export default function ProjectSkillsPage() {
             className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
               activeTab === 'mentor'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                : 'bg-white text-slate-400 hover:text-slate-200 border border-slate-200'
             }`}
           >
-            <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+            <Sparkles className="h-3.5 w-3.5 text-amber-600" />
             <span>AI Mentor Guidance</span>
           </button>
         </div>
@@ -662,20 +662,20 @@ export default function ProjectSkillsPage() {
         {activeTab === 'matrix' && (
           <div className="space-y-4 animate-in fade-in">
             {/* Search & Filter Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-slate-900 border border-slate-800">
+            <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-white border border-slate-200">
               <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
                 <input
                   type="text"
                   placeholder="Search skills, categories..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 placeholder-slate-500 focus:outline-hidden focus:border-indigo-500 w-full sm:w-56"
+                  className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-200 placeholder-slate-500 focus:outline-hidden focus:border-indigo-500 w-full sm:w-56"
                 />
 
                 <select
                   value={filterCategory}
                   onChange={(e) => setFilterCategory(e.target.value)}
-                  className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 focus:outline-hidden"
+                  className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-300 focus:outline-hidden"
                 >
                   <option value="ALL">All Categories</option>
                   {categories.map((c) => (
@@ -686,7 +686,7 @@ export default function ProjectSkillsPage() {
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
-                  className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 focus:outline-hidden"
+                  className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-300 focus:outline-hidden"
                 >
                   <option value="ALL">All Statuses</option>
                   <option value="READY">Ready</option>
@@ -708,7 +708,7 @@ export default function ProjectSkillsPage() {
               {filteredGaps.map((gap: any) => (
                 <div
                   key={gap.id}
-                  className="rounded-3xl bg-slate-900 border border-slate-800 p-5 space-y-3.5 shadow-lg hover:border-slate-700 transition-all flex flex-col justify-between"
+                  className="rounded-3xl bg-white border border-slate-200 p-5 space-y-3.5 shadow-lg hover:border-slate-200 transition-all flex flex-col justify-between"
                 >
                   <div className="space-y-2.5">
                     <div className="flex items-start justify-between gap-2">
@@ -725,10 +725,10 @@ export default function ProjectSkillsPage() {
                     <p className="text-xs text-slate-300 leading-relaxed">{gap.reason}</p>
 
                     {/* Level Comparator Box */}
-                    <div className="grid grid-cols-2 gap-2 p-2.5 rounded-2xl bg-slate-950 border border-slate-800/80">
+                    <div className="grid grid-cols-2 gap-2 p-2.5 rounded-2xl bg-slate-50 border border-slate-200">
                       <div>
                         <span className="text-[9px] uppercase font-bold text-slate-400 block">Required Level</span>
-                        <span className="text-xs font-bold text-indigo-400">{gap.required_level}</span>
+                        <span className="text-xs font-bold text-blue-600">{gap.required_level}</span>
                       </div>
                       <div>
                         <span className="text-[9px] uppercase font-bold text-slate-400 block">My Current Level</span>
@@ -737,12 +737,12 @@ export default function ProjectSkillsPage() {
                           onChange={(e) => handleQuickLevelChange(gap.skill_name, e.target.value)}
                           className="bg-transparent text-xs font-bold text-slate-200 border-none p-0 focus:outline-hidden cursor-pointer"
                         >
-                          <option value="NONE" className="bg-slate-900">None</option>
-                          <option value="BEGINNER" className="bg-slate-900">Beginner</option>
-                          <option value="INTERMEDIATE" className="bg-slate-900">Intermediate</option>
-                          <option value="ADVANCED" className="bg-slate-900">Advanced</option>
-                          <option value="EXPERT" className="bg-slate-900">Expert</option>
-                          <option value="NOT_SURE" className="bg-slate-900">Not sure</option>
+                          <option value="NONE" className="bg-white">None</option>
+                          <option value="BEGINNER" className="bg-white">Beginner</option>
+                          <option value="INTERMEDIATE" className="bg-white">Intermediate</option>
+                          <option value="ADVANCED" className="bg-white">Advanced</option>
+                          <option value="EXPERT" className="bg-white">Expert</option>
+                          <option value="NOT_SURE" className="bg-white">Not sure</option>
                         </select>
                       </div>
                     </div>
@@ -751,7 +751,7 @@ export default function ProjectSkillsPage() {
                     {gap.prerequisites_chain && gap.prerequisites_chain.length > 0 && (
                       <div className="space-y-1.5">
                         <span className="text-[10px] font-bold uppercase text-slate-400 flex items-center gap-1">
-                          <GitPullRequest className="h-3 w-3 text-purple-400" /> Prerequisite Chain
+                          <GitPullRequest className="h-3 w-3 text-purple-600" /> Prerequisite Chain
                         </span>
                         <div className="flex flex-wrap gap-1.5">
                           {gap.prerequisites_chain.map((p: any, idx: number) => (
@@ -759,8 +759,8 @@ export default function ProjectSkillsPage() {
                               key={idx}
                               className={`text-[10px] px-2 py-0.5 rounded-lg border font-mono flex items-center gap-1 ${
                                 p.is_satisfied
-                                  ? 'bg-emerald-950/40 text-emerald-300 border-emerald-500/30'
-                                  : 'bg-rose-950/40 text-rose-300 border-rose-500/30'
+                                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                                  : 'bg-rose-50 text-rose-700 border-rose-200'
                               }`}
                             >
                               {p.is_satisfied ? '✓' : '⚠'} {p.skill_name}
@@ -772,7 +772,7 @@ export default function ProjectSkillsPage() {
                   </div>
 
                   {/* Card Bottom Actions */}
-                  <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+                  <div className="pt-3 border-t border-slate-200 flex items-center justify-between text-xs">
                     <div className="flex items-center gap-2">
                       {getEffortBadge(gap.learning_effort)}
                       <span className="text-slate-500">•</span>
@@ -788,13 +788,13 @@ export default function ProjectSkillsPage() {
                         className="text-[11px] text-slate-400 hover:text-white flex items-center gap-1"
                         title="Attach evidence / certificate / repo"
                       >
-                        <ShieldCheck className="h-3 w-3 text-emerald-400" />
+                        <ShieldCheck className="h-3 w-3 text-emerald-600" />
                         <span>Add Evidence</span>
                       </button>
 
                       <button
                         onClick={() => setSelectedSkill(gap)}
-                        className="px-2.5 py-1 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 border border-indigo-500/30 font-semibold text-[11px] flex items-center gap-1"
+                        className="px-2.5 py-1 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/40 text-blue-700 border border-blue-200 font-semibold text-[11px] flex items-center gap-1"
                       >
                         <span>Inspect</span>
                         <ArrowRight className="h-3 w-3" />
@@ -812,7 +812,7 @@ export default function ProjectSkillsPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'technologies' && (
           <div className="space-y-4 animate-in fade-in">
-            <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+            <div className="p-4 rounded-2xl bg-white border border-slate-200 flex items-center justify-between">
               <div>
                 <h3 className="text-sm font-bold text-white">Recommended Technology Stack Requirements</h3>
                 <p className="text-xs text-slate-400 mt-0.5">Every technology recommendation in InnoSphere AI is mapped to its exact required skill competencies.</p>
@@ -828,25 +828,25 @@ export default function ProjectSkillsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {skillsData.required_technologies.map((tech: any, idx: number) => (
-                <div key={idx} className="p-5 rounded-3xl bg-slate-900 border border-slate-800 space-y-3.5">
+                <div key={idx} className="p-5 rounded-3xl bg-white border border-slate-200 space-y-3.5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Cpu className="h-4 w-4 text-indigo-400" />
+                      <Cpu className="h-4 w-4 text-blue-600" />
                       <h4 className="text-base font-bold text-white font-mono">{tech.technology}</h4>
                     </div>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/30">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500/10 text-blue-700 border border-blue-200">
                       {tech.category}
                     </span>
                   </div>
 
                   <p className="text-xs text-slate-300 leading-relaxed">{tech.description}</p>
 
-                  <div className="space-y-1.5 pt-2 border-t border-slate-800">
+                  <div className="space-y-1.5 pt-2 border-t border-slate-200">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Required Skills to Master:</span>
                     <div className="flex flex-wrap gap-1.5">
                       {tech.required_skills.map((sk: string, i: number) => (
-                        <span key={i} className="text-xs px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 flex items-center gap-1">
-                          <Check className="h-3 w-3 text-indigo-400" /> {sk}
+                        <span key={i} className="text-xs px-2.5 py-1 rounded-xl bg-slate-50 border border-slate-200 text-slate-200 flex items-center gap-1">
+                          <Check className="h-3 w-3 text-blue-600" /> {sk}
                         </span>
                       ))}
                     </div>
@@ -862,11 +862,11 @@ export default function ProjectSkillsPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'graph' && (
           <div className="space-y-4 animate-in fade-in">
-            <div className="p-5 rounded-3xl bg-slate-900 border border-slate-800 space-y-3">
+            <div className="p-5 rounded-3xl bg-white border border-slate-200 space-y-3">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                    <GitPullRequest className="h-4 w-4 text-purple-400" />
+                    <GitPullRequest className="h-4 w-4 text-purple-600" />
                     Topological Skill Dependency Graph
                   </h3>
                   <p className="text-xs text-slate-400 mt-0.5">
@@ -881,8 +881,8 @@ export default function ProjectSkillsPage() {
               {/* Topological Layer Columns */}
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 pt-3">
                 {/* Level 0: Foundations */}
-                <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-950 border border-slate-800">
-                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-800 flex items-center justify-between">
+                <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-200 flex items-center justify-between">
                     <span>Level 0: Foundations</span>
                     <span className="text-[10px] font-mono text-slate-500">Prereq Layer</span>
                   </div>
@@ -891,7 +891,7 @@ export default function ProjectSkillsPage() {
                     .map((node: any) => (
                       <div
                         key={node.id}
-                        className="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all space-y-1"
+                        className="p-3 rounded-xl bg-white border border-slate-200 hover:border-indigo-500/50 transition-all space-y-1"
                       >
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold text-white">{node.label}</span>
@@ -903,8 +903,8 @@ export default function ProjectSkillsPage() {
                 </div>
 
                 {/* Level 1: AI & Data Basics */}
-                <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-950 border border-slate-800">
-                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-800 flex items-center justify-between">
+                <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-200 flex items-center justify-between">
                     <span>Level 1: AI & Data</span>
                     <span className="text-[10px] font-mono text-slate-500">Intermediate</span>
                   </div>
@@ -913,7 +913,7 @@ export default function ProjectSkillsPage() {
                     .map((node: any) => (
                       <div
                         key={node.id}
-                        className="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all space-y-1"
+                        className="p-3 rounded-xl bg-white border border-slate-200 hover:border-indigo-500/50 transition-all space-y-1"
                       >
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold text-white">{node.label}</span>
@@ -925,8 +925,8 @@ export default function ProjectSkillsPage() {
                 </div>
 
                 {/* Level 2: Frameworks */}
-                <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-950 border border-slate-800">
-                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-800 flex items-center justify-between">
+                <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-200 flex items-center justify-between">
                     <span>Level 2: Frameworks</span>
                     <span className="text-[10px] font-mono text-slate-500">Core Tools</span>
                   </div>
@@ -935,7 +935,7 @@ export default function ProjectSkillsPage() {
                     .map((node: any) => (
                       <div
                         key={node.id}
-                        className="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all space-y-1"
+                        className="p-3 rounded-xl bg-white border border-slate-200 hover:border-indigo-500/50 transition-all space-y-1"
                       >
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold text-white">{node.label}</span>
@@ -947,8 +947,8 @@ export default function ProjectSkillsPage() {
                 </div>
 
                 {/* Level 3+: Specialized & Deployment */}
-                <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-950 border border-slate-800">
-                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-800 flex items-center justify-between">
+                <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-200 flex items-center justify-between">
                     <span>Level 3+: Specialized</span>
                     <span className="text-[10px] font-mono text-slate-500">Project Output</span>
                   </div>
@@ -957,7 +957,7 @@ export default function ProjectSkillsPage() {
                     .map((node: any) => (
                       <div
                         key={node.id}
-                        className="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all space-y-1"
+                        className="p-3 rounded-xl bg-white border border-slate-200 hover:border-indigo-500/50 transition-all space-y-1"
                       >
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold text-white">{node.label}</span>
@@ -977,7 +977,7 @@ export default function ProjectSkillsPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'roadmap' && (
           <div className="space-y-6 animate-in fade-in">
-            <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-slate-900 border border-slate-800">
+            <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-white border border-slate-200">
               <div>
                 <h3 className="text-sm font-bold text-white">Personalized Prerequisite-Aware Learning Roadmap</h3>
                 <p className="text-xs text-slate-400 mt-0.5">
@@ -996,26 +996,26 @@ export default function ProjectSkillsPage() {
 
             <div className="space-y-6">
               {skillsData.learning_roadmap.phases.map((phase: any) => (
-                <div key={phase.phase_number} className="rounded-3xl bg-slate-900 border border-slate-800 p-6 space-y-4 shadow-xl">
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                <div key={phase.phase_number} className="rounded-3xl bg-white border border-slate-200 p-6 space-y-4 shadow-xl">
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-200">
                     <div>
-                      <span className="text-[10px] font-mono font-bold uppercase text-indigo-400 tracking-wider">
+                      <span className="text-[10px] font-mono font-bold uppercase text-blue-600 tracking-wider">
                         Phase {phase.phase_number}
                       </span>
                       <h4 className="text-lg font-bold text-white">{phase.phase_name}</h4>
                       <p className="text-xs text-slate-400 mt-0.5">{phase.description}</p>
                     </div>
-                    <span className="px-3 py-1 rounded-full bg-slate-950 border border-slate-800 text-xs font-mono font-bold text-slate-300">
+                    <span className="px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-mono font-bold text-slate-300">
                       {phase.skills_count} Skills
                     </span>
                   </div>
 
                   <div className="space-y-3">
                     {phase.items.map((item: any) => (
-                      <div key={item.id} className="p-4 rounded-2xl bg-slate-950 border border-slate-850 space-y-3">
+                      <div key={item.id} className="p-4 rounded-2xl bg-slate-50 border border-slate-850 space-y-3">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <div className="flex items-center gap-2.5">
-                            <span className="h-6 w-6 rounded-full bg-indigo-600/20 text-indigo-300 font-bold text-xs flex items-center justify-center">
+                            <span className="h-6 w-6 rounded-full bg-indigo-600/20 text-blue-700 font-bold text-xs flex items-center justify-center">
                               {item.sequence_order}
                             </span>
                             <div>
@@ -1041,10 +1041,10 @@ export default function ProjectSkillsPage() {
                                   href={r.url || '#'}
                                   target={r.url?.startsWith('http') ? '_blank' : '_self'}
                                   rel="noopener noreferrer"
-                                  className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-850 border border-slate-800 flex items-start justify-between gap-2 group transition-colors"
+                                  className="p-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 flex items-start justify-between gap-2 group transition-colors"
                                 >
                                   <div>
-                                    <div className="text-xs font-semibold text-white group-hover:text-indigo-300 flex items-center gap-1">
+                                    <div className="text-xs font-semibold text-white group-hover:text-blue-700 flex items-center gap-1">
                                       <span>{r.title}</span>
                                       <ExternalLink className="h-3 w-3 opacity-60" />
                                     </div>
@@ -1062,12 +1062,12 @@ export default function ProjectSkillsPage() {
                         {/* Unlocked Project Tasks */}
                         {item.project_tasks && item.project_tasks.length > 0 && (
                           <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
-                            <span className="text-[10px] font-bold text-amber-400 uppercase">⚡ Unlocks Project Action:</span>
+                            <span className="text-[10px] font-bold text-amber-600 uppercase">⚡ Unlocks Project Action:</span>
                             {item.project_tasks.map((t: any, tIdx: number) => (
                               <Link
                                 key={tIdx}
                                 href={t.action || '#'}
-                                className="px-2.5 py-1 rounded-lg bg-indigo-950/60 hover:bg-indigo-950 border border-indigo-500/30 text-indigo-300 text-xs font-semibold flex items-center gap-1 transition-colors"
+                                className="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold flex items-center gap-1 transition-colors"
                               >
                                 <span>{t.title}</span>
                                 <ArrowRight className="h-3 w-3" />
@@ -1089,7 +1089,7 @@ export default function ProjectSkillsPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'resources' && (
           <div className="space-y-4 animate-in fade-in">
-            <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+            <div className="p-4 rounded-2xl bg-white border border-slate-200 flex items-center justify-between">
               <div>
                 <h3 className="text-sm font-bold text-white">Grounded Open-Access Learning Resources</h3>
                 <p className="text-xs text-slate-400 mt-0.5">Matched from arXiv papers, official documentation, GitHub repositories, and Kaggle open datasets.</p>
@@ -1105,7 +1105,7 @@ export default function ProjectSkillsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {skillsData.skill_gaps.map((gap: any) => (
-                <div key={gap.id} className="p-5 rounded-3xl bg-slate-900 border border-slate-800 space-y-3">
+                <div key={gap.id} className="p-5 rounded-3xl bg-white border border-slate-200 space-y-3">
                   <div className="flex items-center justify-between">
                     <div>
                       <span className="text-[10px] font-mono text-slate-400">{gap.category}</span>
@@ -1116,29 +1116,29 @@ export default function ProjectSkillsPage() {
 
                   <p className="text-xs text-slate-300 italic">&ldquo;{gap.reason}&rdquo;</p>
 
-                  <div className="pt-2 border-t border-slate-800 space-y-2">
+                  <div className="pt-2 border-t border-slate-200 space-y-2">
                     <span className="text-[10px] font-bold uppercase text-slate-400">Available Learning Links:</span>
                     <div className="space-y-1.5">
                       <a
                         href={`https://github.com/topics/${gap.skill_name.toLowerCase().replace(/\s+/g, '-')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2.5 rounded-xl bg-slate-950 hover:bg-slate-850 border border-slate-800 flex items-center justify-between text-xs text-slate-200 group"
+                        className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-50 border border-slate-200 flex items-center justify-between text-xs text-slate-200 group"
                       >
                         <div className="flex items-center gap-2">
-                          <Terminal className="h-4 w-4 text-indigo-400" />
-                          <span className="font-semibold group-hover:text-indigo-300">GitHub Open Source Implementations</span>
+                          <Terminal className="h-4 w-4 text-blue-600" />
+                          <span className="font-semibold group-hover:text-blue-700">GitHub Open Source Implementations</span>
                         </div>
                         <ExternalLink className="h-3.5 w-3.5 text-slate-500" />
                       </a>
 
                       <Link
                         href={`/discover?query=${encodeURIComponent(gap.skill_name)}`}
-                        className="p-2.5 rounded-xl bg-slate-950 hover:bg-slate-850 border border-slate-800 flex items-center justify-between text-xs text-slate-200 group"
+                        className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-50 border border-slate-200 flex items-center justify-between text-xs text-slate-200 group"
                       >
                         <div className="flex items-center gap-2">
-                          <Atom className="h-4 w-4 text-cyan-400" />
-                          <span className="font-semibold group-hover:text-cyan-300">Explore Scientific Papers on arXiv / OpenAlex</span>
+                          <Atom className="h-4 w-4 text-cyan-600" />
+                          <span className="font-semibold group-hover:text-cyan-700">Explore Scientific Papers on arXiv / OpenAlex</span>
                         </div>
                         <ArrowRight className="h-3.5 w-3.5 text-slate-500" />
                       </Link>
@@ -1155,9 +1155,9 @@ export default function ProjectSkillsPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'mentor' && (
           <div className="space-y-6 animate-in fade-in">
-            <div className="p-6 rounded-3xl bg-gradient-to-r from-indigo-950/60 via-slate-900 to-purple-950/60 border border-indigo-500/30 space-y-4 shadow-xl">
+            <div className="p-6 rounded-3xl bg-gradient-to-r from-indigo-950/60 via-slate-900 to-purple-950/60 border border-blue-200 space-y-4 shadow-xl">
               <div className="flex items-center gap-3">
-                <div className="p-3 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 text-indigo-400">
+                <div className="p-3 rounded-2xl bg-indigo-600/20 border border-blue-200 text-blue-600">
                   <Sparkles className="h-6 w-6" />
                 </div>
                 <div>
@@ -1170,7 +1170,7 @@ export default function ProjectSkillsPage() {
 
               {/* Pre-Populated Prompt Chips */}
               <div className="space-y-2">
-                <span className="text-xs font-bold uppercase text-indigo-300">Suggested Questions for Your Project:</span>
+                <span className="text-xs font-bold uppercase text-blue-700">Suggested Questions for Your Project:</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {skillsData.mentor_prompts.map((prompt: string, idx: number) => (
                     <button
@@ -1179,10 +1179,10 @@ export default function ProjectSkillsPage() {
                         setMentorQuery(prompt);
                         router.push(`/mentor?query=${encodeURIComponent(prompt)}`);
                       }}
-                      className="p-3 rounded-2xl bg-slate-900 hover:bg-slate-850 border border-slate-800 text-left text-xs text-slate-200 hover:text-white transition-all flex items-center justify-between group"
+                      className="p-3 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 text-left text-xs text-slate-200 hover:text-white transition-all flex items-center justify-between group"
                     >
                       <span className="font-medium pr-2">&ldquo;{prompt}&rdquo;</span>
-                      <Send className="h-3.5 w-3.5 text-indigo-400 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                      <Send className="h-3.5 w-3.5 text-blue-600 group-hover:translate-x-0.5 transition-transform shrink-0" />
                     </button>
                   ))}
                 </div>
@@ -1207,10 +1207,10 @@ export default function ProjectSkillsPage() {
       {/* ------------------------------------------------------------- */}
       {questionnaireModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
-          <div className="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 max-h-[85vh] flex flex-col justify-between">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="w-full max-w-2xl bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 max-h-[85vh] flex flex-col justify-between">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <div className="flex items-center gap-2">
-                <Sliders className="h-5 w-5 text-indigo-400" />
+                <Sliders className="h-5 w-5 text-blue-600" />
                 <h3 className="text-base font-bold text-white">Student Skill Self-Assessment Questionnaire</h3>
               </div>
               <button
@@ -1227,7 +1227,7 @@ export default function ProjectSkillsPage() {
               </p>
 
               {skillsData.skill_requirements.map((req: any) => (
-                <div key={req.id} className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                <div key={req.id} className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                   <div className="flex items-center justify-between">
                     <div>
                       <h5 className="text-xs font-bold text-white">{req.skill_name}</h5>
@@ -1247,7 +1247,7 @@ export default function ProjectSkillsPage() {
                           className={`px-2 py-1.5 rounded-xl text-[11px] font-semibold border transition-all text-center ${
                             isSelected
                               ? 'bg-indigo-600 text-white border-indigo-400 shadow-sm'
-                              : 'bg-slate-900 hover:bg-slate-850 text-slate-300 border-slate-800'
+                              : 'bg-white hover:bg-slate-50 text-slate-300 border-slate-200'
                           }`}
                         >
                           {lvl === 'NOT_SURE' ? 'Not sure' : lvl.charAt(0) + lvl.slice(1).toLowerCase()}
@@ -1259,7 +1259,7 @@ export default function ProjectSkillsPage() {
               ))}
             </div>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+            <div className="flex justify-end gap-3 pt-3 border-t border-slate-200">
               <button
                 onClick={() => setQuestionnaireModalOpen(false)}
                 className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold"
@@ -1283,10 +1283,10 @@ export default function ProjectSkillsPage() {
       {/* ------------------------------------------------------------- */}
       {exportModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
-          <div className="w-full max-w-3xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 max-h-[85vh] flex flex-col justify-between">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="w-full max-w-3xl bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 max-h-[85vh] flex flex-col justify-between">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <div className="flex items-center gap-2">
-                <Download className="h-5 w-5 text-cyan-400" />
+                <Download className="h-5 w-5 text-cyan-600" />
                 <h3 className="text-base font-bold text-white">Export Skills & Learning Plan</h3>
               </div>
               <button onClick={() => setExportModalOpen(false)} className="text-slate-400 hover:text-white text-sm">
@@ -1298,7 +1298,7 @@ export default function ProjectSkillsPage() {
               <button
                 onClick={() => handleOpenExport('markdown')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold ${
-                  exportFormat === 'markdown' ? 'bg-cyan-600 text-white' : 'bg-slate-950 text-slate-400 border border-slate-800'
+                  exportFormat === 'markdown' ? 'bg-cyan-600 text-white' : 'bg-slate-50 text-slate-400 border border-slate-200'
                 }`}
               >
                 Markdown Format
@@ -1306,14 +1306,14 @@ export default function ProjectSkillsPage() {
               <button
                 onClick={() => handleOpenExport('json')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold ${
-                  exportFormat === 'json' ? 'bg-cyan-600 text-white' : 'bg-slate-950 text-slate-400 border border-slate-800'
+                  exportFormat === 'json' ? 'bg-cyan-600 text-white' : 'bg-slate-50 text-slate-400 border border-slate-200'
                 }`}
               >
                 JSON Payload
               </button>
             </div>
 
-            <div className="my-2 overflow-y-auto bg-slate-950 p-4 rounded-2xl border border-slate-800 text-xs font-mono text-slate-200 whitespace-pre-wrap max-h-[48vh]">
+            <div className="my-2 overflow-y-auto bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs font-mono text-slate-200 whitespace-pre-wrap max-h-[48vh]">
               {exportLoading
                 ? 'Generating export...'
                 : exportFormat === 'markdown'
@@ -1321,7 +1321,7 @@ export default function ProjectSkillsPage() {
                 : JSON.stringify(exportData?.json_data, null, 2)}
             </div>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+            <div className="flex justify-end gap-3 pt-3 border-t border-slate-200">
               <button
                 onClick={() => {
                   const text = exportFormat === 'markdown' ? exportData?.content_markdown : JSON.stringify(exportData?.json_data, null, 2);
@@ -1350,10 +1350,10 @@ export default function ProjectSkillsPage() {
       {/* ------------------------------------------------------------- */}
       {evidenceModalOpen && evidenceSkillTarget && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
-          <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="w-full max-w-md bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="h-5 w-5 text-emerald-400" />
+                <ShieldCheck className="h-5 w-5 text-emerald-600" />
                 <h3 className="text-base font-bold text-white">Attach Skill Evidence</h3>
               </div>
               <button onClick={() => setEvidenceModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
@@ -1370,7 +1370,7 @@ export default function ProjectSkillsPage() {
                 <select
                   value={evidenceForm.type}
                   onChange={(e) => setEvidenceForm({ ...evidenceForm, type: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 focus:outline-hidden"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-200 focus:outline-hidden"
                 >
                   <option value="PROJECT_EVIDENCE">Project Implementation / Code</option>
                   <option value="SELF_REPORTED">Course Completion / Certificate</option>
@@ -1385,7 +1385,7 @@ export default function ProjectSkillsPage() {
                   placeholder="e.g. GitHub repo link or course certificate"
                   value={evidenceForm.title}
                   onChange={(e) => setEvidenceForm({ ...evidenceForm, title: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 focus:outline-hidden"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-200 focus:outline-hidden"
                 />
               </div>
 
@@ -1396,12 +1396,12 @@ export default function ProjectSkillsPage() {
                   placeholder="Brief explanation of what was implemented or verified..."
                   value={evidenceForm.description}
                   onChange={(e) => setEvidenceForm({ ...evidenceForm, description: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 focus:outline-hidden"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-200 focus:outline-hidden"
                 />
               </div>
             </div>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+            <div className="flex justify-end gap-3 pt-3 border-t border-slate-200">
               <button
                 onClick={() => setEvidenceModalOpen(false)}
                 className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold"

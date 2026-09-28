@@ -1,28 +1,19 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import {
   Layers,
   PlusCircle,
-  Sparkles,
-  MapPin,
-  Bookmark,
-  Calendar,
-  ExternalLink,
   Search,
-  Filter,
   ArrowRight,
-  TrendingUp,
-  Cpu,
-  Loader2,
   Trash2,
+  X,
+  Plus,
 } from 'lucide-react';
 import { api } from '@/lib/api';
 import { useProject } from '@/lib/project-context';
 import { getDomainColor } from '@/lib/utils';
-import { Project } from '@/types';
-import { SkeletonList } from '@/components/ui/skeleton';
 import { EmptyState } from '@/components/ui/empty-state';
 
 export default function ProjectsManagementPage() {
@@ -108,25 +99,25 @@ export default function ProjectsManagementPage() {
 
   return (
     <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 animate-in fade-in duration-300">
-      {/* Header Banner */}
-      <div className="rounded-3xl bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 border border-slate-800 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
+      {/* Header Banner - Clean Professional Light Mode Design */}
+      <div className="rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50/60 to-slate-50 border border-blue-100 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-[11px] font-semibold text-indigo-300">
-            <Layers className="h-3 w-3 text-indigo-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-[11px] font-semibold text-blue-800">
+            <Layers className="h-3.5 w-3.5 text-blue-600" />
             <span>Multi-Project Portfolio Management</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             My Innovation Projects
           </h1>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
             Manage your innovation initiatives across domains, monitor 10-phase milestone velocity, and coordinate AI analysis for each project.
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0">
           <button
             onClick={() => setShowCreateModal(true)}
-            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow transition-colors"
+            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
           >
             <PlusCircle className="h-4 w-4" />
             <span>Create New Project</span>
@@ -134,8 +125,8 @@ export default function ProjectsManagementPage() {
         </div>
       </div>
 
-      {/* Search & Filters */}
-      <div className="glass-panel rounded-2xl p-4 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+      {/* Search & Filters - Light Mode Input and Dropdowns */}
+      <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="w-full sm:w-80 relative">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
@@ -143,17 +134,17 @@ export default function ProjectsManagementPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search projects by title or keywords..."
-            className="w-full bg-slate-950 border border-slate-700/80 rounded-xl pl-10 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-white border border-slate-300 rounded-xl pl-10 pr-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 shadow-2xs"
           />
         </div>
 
         <div className="flex flex-wrap items-center gap-3 text-xs w-full sm:w-auto">
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-400 font-medium">Domain:</span>
+            <span className="text-slate-600 font-medium">Domain:</span>
             <select
               value={selectedDomain}
               onChange={(e) => setSelectedDomain(e.target.value)}
-              className="bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-white focus:outline-none focus:border-indigo-500"
+              className="bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 shadow-2xs"
             >
               {domains.map((d) => (
                 <option key={d} value={d}>
@@ -164,11 +155,11 @@ export default function ProjectsManagementPage() {
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-400 font-medium">Lifecycle Stage:</span>
+            <span className="text-slate-600 font-medium">Lifecycle Stage:</span>
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-white focus:outline-none focus:border-indigo-500 capitalize"
+              className="bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 capitalize shadow-2xs"
             >
               {statuses.map((s) => (
                 <option key={s} value={s}>
@@ -180,7 +171,7 @@ export default function ProjectsManagementPage() {
         </div>
       </div>
 
-      {/* Projects Grid */}
+      {/* Projects Grid - Light Cards, Tags, and Badges */}
       {filteredProjects.length === 0 ? (
         <EmptyState
           icon={Layers}
@@ -209,32 +200,32 @@ export default function ProjectsManagementPage() {
             return (
               <div
                 key={p.id}
-                className="glass-panel glass-panel-hover rounded-2xl p-6 border border-slate-800 flex flex-col justify-between space-y-4 relative group"
+                className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between space-y-4 relative group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-semibold border ${domainColor.bg} ${domainColor.text} ${domainColor.border}`}>
                       {p.domain}
                     </span>
-                    <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] font-medium border border-slate-700 capitalize">
+                    <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-blue-700 text-[10px] font-semibold border border-blue-200 capitalize">
                       Stage: {p.status}
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-white group-hover:text-indigo-300 transition-colors leading-snug">
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
                     {p.title}
                   </h3>
-                  <p className="text-xs text-slate-400 line-clamp-3 leading-relaxed">
+                  <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
                     {p.problem_statement}
                   </p>
 
-                  {/* Tech Badges */}
+                  {/* Tech Badges in Light Mode */}
                   {p.technologies && p.technologies.length > 0 && (
-                    <div className="flex flex-wrap gap-1 pt-1">
+                    <div className="flex flex-wrap gap-1.5 pt-1">
                       {p.technologies.slice(0, 4).map((tech, i) => (
                         <span
                           key={i}
-                          className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-[10px] text-indigo-300 font-mono"
+                          className="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-[10.5px] text-slate-700 font-medium font-mono"
                         >
                           {tech}
                         </span>
@@ -244,15 +235,15 @@ export default function ProjectsManagementPage() {
                 </div>
 
                 {/* Progress and Actions */}
-                <div className="space-y-3 pt-3 border-t border-slate-800/80">
+                <div className="space-y-3 pt-3 border-t border-slate-100">
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-400 font-medium">Roadmap Velocity</span>
-                      <span className="font-bold text-indigo-400">{p.progress}%</span>
+                      <span className="text-slate-500 font-medium">Roadmap Velocity</span>
+                      <span className="font-bold text-blue-700">{p.progress}%</span>
                     </div>
-                    <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                    <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-200">
                       <div
-                        className="h-full bg-gradient-to-r from-indigo-500 to-emerald-400"
+                        className="h-full bg-blue-600 rounded-full"
                         style={{ width: `${p.progress}%` }}
                       />
                     </div>
@@ -261,7 +252,7 @@ export default function ProjectsManagementPage() {
                   <div className="flex items-center justify-between pt-1">
                     <button
                       onClick={() => handleDeleteProject(p.id)}
-                      className="p-1.5 text-slate-500 hover:text-red-400 transition-colors"
+                      className="p-1.5 text-slate-400 hover:text-red-600 transition-colors cursor-pointer"
                       title="Delete project"
                     >
                       <Trash2 className="h-4 w-4" />
@@ -270,14 +261,14 @@ export default function ProjectsManagementPage() {
                     <div className="flex items-center gap-2">
                       <Link
                         href={`/roadmap/${p.id}`}
-                        className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors"
+                        className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-xs font-semibold transition-colors"
                       >
                         Roadmap
                       </Link>
                       <Link
                         href={`/projects/${p.id}`}
                         onClick={() => setActiveProjectId(p.id)}
-                        className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow transition-colors flex items-center gap-1"
+                        className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-2xs transition-colors flex items-center gap-1"
                       >
                         <span>Open Workspace</span>
                         <ArrowRight className="h-3 w-3" />
@@ -291,43 +282,47 @@ export default function ProjectsManagementPage() {
         </div>
       )}
 
-      {/* Create Project Modal */}
+      {/* Create Project Modal - Light Mode */}
       {showCreateModal && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-slate-700 max-w-xl w-full space-y-5 animate-in zoom-in-95">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl max-w-xl w-full space-y-5 animate-in zoom-in-95">
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <PlusCircle className="h-4 w-4 text-indigo-400" />
-                Create Innovation Project
+              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <PlusCircle className="h-4 w-4 text-blue-600" />
+                <span>Create New Innovation Project</span>
               </h3>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-600 p-1 rounded-lg hover:bg-slate-100 cursor-pointer"
               >
-                ✕
+                <X className="h-4 w-4" />
               </button>
             </div>
 
-            <form onSubmit={handleCreateProject} className="space-y-4 text-xs">
+            <form onSubmit={handleCreateProject} className="space-y-4">
               <div>
-                <label className="text-slate-300 font-semibold block mb-1">Project Title *</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Project Title *
+                </label>
                 <input
                   type="text"
                   required
                   value={newProject.title}
                   onChange={(e) => setNewProject({ ...newProject, title: e.target.value })}
-                  placeholder="e.g. AI-Powered Autonomous Crop Monitoring"
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-500"
+                  placeholder="e.g., IoT Solar Irrigation & Moisture Telemetry"
+                  className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-slate-300 font-semibold block mb-1">Domain</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Domain *
+                  </label>
                   <select
                     value={newProject.domain}
                     onChange={(e) => setNewProject({ ...newProject, domain: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white"
+                    className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                   >
                     {domains.filter((d) => d !== 'all').map((d) => (
                       <option key={d} value={d}>
@@ -336,12 +331,15 @@ export default function ProjectsManagementPage() {
                     ))}
                   </select>
                 </div>
+
                 <div>
-                  <label className="text-slate-300 font-semibold block mb-1">Project Stage</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Initial Stage
+                  </label>
                   <select
                     value={newProject.status}
                     onChange={(e) => setNewProject({ ...newProject, status: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white capitalize"
+                    className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 capitalize"
                   >
                     {statuses.filter((s) => s !== 'all').map((s) => (
                       <option key={s} value={s}>
@@ -353,53 +351,58 @@ export default function ProjectsManagementPage() {
               </div>
 
               <div>
-                <label className="text-slate-300 font-semibold block mb-1">Problem Statement *</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Problem Statement
+                </label>
                 <textarea
-                  rows={3}
-                  required
+                  rows={2}
                   value={newProject.problem_statement}
                   onChange={(e) => setNewProject({ ...newProject, problem_statement: e.target.value })}
-                  placeholder="Explain the real-world challenge you are addressing..."
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-white"
+                  placeholder="What core scientific or practical problem are you trying to solve?"
+                  className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               <div>
-                <label className="text-slate-300 font-semibold block mb-1">Proposed Solution *</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Proposed Solution
+                </label>
                 <textarea
-                  rows={3}
-                  required
+                  rows={2}
                   value={newProject.proposed_solution}
                   onChange={(e) => setNewProject({ ...newProject, proposed_solution: e.target.value })}
-                  placeholder="Describe your technical methodology and planned prototype..."
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-white"
+                  placeholder="Describe your technical methodology, hardware, or algorithmic approach."
+                  className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               <div>
-                <label className="text-slate-300 font-semibold block mb-1">Target Technologies (comma-separated)</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Technologies (comma-separated)
+                </label>
                 <input
                   type="text"
                   value={newProject.technologies}
                   onChange={(e) => setNewProject({ ...newProject, technologies: e.target.value })}
-                  placeholder="FastAPI, PyTorch, React, PostgreSQL"
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-white font-mono"
+                  placeholder="Python, ESP32, PyTorch, LoRaWAN, Next.js"
+                  className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 font-mono"
                 />
               </div>
 
-              <div className="flex justify-end gap-2 pt-2 border-t border-slate-800">
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="px-4 py-2 rounded-xl text-slate-400 hover:text-white"
+                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold"
+                  className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer flex items-center gap-1.5"
                 >
-                  Create Project & Roadmap
+                  <Plus className="h-3.5 w-3.5" />
+                  <span>Create Project</span>
                 </button>
               </div>
             </form>

@@ -52,20 +52,20 @@ export default function RegisterPage() {
         <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white mx-auto shadow-lg shadow-indigo-500/25">
           <Sparkles className="h-5 w-5" />
         </div>
-        <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">Create Innovator Account</h1>
-        <p className="text-xs text-slate-600 dark:text-slate-400">Join InnoSphere to discover resources and build real-world AI solutions</p>
+        <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Create Innovator Account</h1>
+        <p className="text-xs text-slate-600">Join InnoSphere to discover resources and build real-world AI solutions</p>
       </div>
 
       {errorMsg && (
-        <div className="p-3.5 rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 text-red-700 dark:text-red-400 text-xs font-medium">
+        <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium">
           {errorMsg}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 space-y-4 shadow-xl text-xs">
+      <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 space-y-4 shadow-xl text-xs">
         <div className="space-y-1.5">
-          <label className="text-slate-700 dark:text-slate-300 font-semibold flex items-center gap-1.5">
-            <User className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+          <label className="text-slate-700 font-semibold flex items-center gap-1.5">
+            <User className="h-3.5 w-3.5 text-indigo-600" />
             Full Name *
           </label>
           <input
@@ -74,13 +74,13 @@ export default function RegisterPage() {
             value={formData.full_name}
             onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
             placeholder="Aarav Sharma"
-            className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700/80 rounded-xl px-3.5 py-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-slate-700 dark:text-slate-300 font-semibold flex items-center gap-1.5">
-            <Mail className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+          <label className="text-slate-700 font-semibold flex items-center gap-1.5">
+            <Mail className="h-3.5 w-3.5 text-indigo-600" />
             Email Address *
           </label>
           <input
@@ -89,13 +89,13 @@ export default function RegisterPage() {
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="innovator@student.edu"
-            className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700/80 rounded-xl px-3.5 py-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-slate-700 dark:text-slate-300 font-semibold flex items-center gap-1.5">
-            <Lock className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
+          <label className="text-slate-700 font-semibold flex items-center gap-1.5">
+            <Lock className="h-3.5 w-3.5 text-purple-600" />
             Password *
           </label>
           <input
@@ -104,55 +104,55 @@ export default function RegisterPage() {
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             placeholder="••••••••"
-            className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700/80 rounded-xl px-3.5 py-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           />
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1.5">
-            <label className="text-slate-700 dark:text-slate-300 font-semibold flex items-center gap-1.5">
-              <School className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+            <label className="text-slate-700 font-semibold flex items-center gap-1.5">
+              <School className="h-3.5 w-3.5 text-blue-600" />
               Institution
             </label>
             <input
               type="text"
               value={formData.institution}
               onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700/80 rounded-xl px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-slate-700 dark:text-slate-300 font-semibold flex items-center gap-1.5">
-              <BookOpen className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+            <label className="text-slate-700 font-semibold flex items-center gap-1.5">
+              <BookOpen className="h-3.5 w-3.5 text-emerald-600" />
               Course / Degree
             </label>
             <input
               type="text"
               value={formData.course}
               onChange={(e) => setFormData({ ...formData, course: e.target.value })}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700/80 rounded-xl px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-slate-700 dark:text-slate-300 font-semibold block">Skills (comma-separated)</label>
+          <label className="text-slate-700 font-semibold block">Skills (comma-separated)</label>
           <input
             type="text"
             value={formData.skills}
             onChange={(e) => setFormData({ ...formData, skills: e.target.value })}
-            className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700/80 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white font-mono"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-mono"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-slate-700 dark:text-slate-300 font-semibold block">Interests & Innovation Domains</label>
+          <label className="text-slate-700 font-semibold block">Interests & Innovation Domains</label>
           <input
             type="text"
             value={formData.interests}
             onChange={(e) => setFormData({ ...formData, interests: e.target.value })}
-            className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700/80 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white font-mono"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-mono"
           />
         </div>
 
@@ -166,9 +166,9 @@ export default function RegisterPage() {
         </button>
       </form>
 
-      <div className="text-center text-xs text-slate-600 dark:text-slate-400">
+      <div className="text-center text-xs text-slate-600">
         Already have an account?{' '}
-        <Link href="/login" className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline">
+        <Link href="/login" className="text-indigo-600 font-bold hover:underline">
           Sign In
         </Link>
       </div>

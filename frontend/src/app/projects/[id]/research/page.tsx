@@ -387,8 +387,8 @@ export default function ResearchWorkspacePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center text-slate-300">
-        <RefreshCw className="w-10 h-10 text-emerald-400 animate-spin mb-4" />
+      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center text-slate-300">
+        <RefreshCw className="w-10 h-10 text-emerald-600 animate-spin mb-4" />
         <h2 className="text-xl font-bold tracking-tight text-white">Loading InnoSphere Research Workspace...</h2>
         <p className="text-sm text-slate-400 mt-1">Grounding evidence, citations, and experiment matrices...</p>
       </div>
@@ -396,9 +396,9 @@ export default function ResearchWorkspacePage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
       {/* ---------------- Top Command Bar ---------------- */}
-      <header className="border-b border-slate-800/80 bg-slate-900/90 backdrop-blur sticky top-0 z-40 px-4 py-3">
+      <header className="border-b border-slate-200 bg-white backdrop-blur sticky top-0 z-40 px-4 py-3">
         <div className="max-w-[1700px] mx-auto flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <button
@@ -411,7 +411,7 @@ export default function ResearchWorkspacePage() {
 
             <div>
               <div className="flex items-center gap-2">
-                <span className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider flex items-center gap-1">
+                <span className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-200 text-emerald-600 text-xs font-semibold uppercase tracking-wider flex items-center gap-1">
                   <Atom className="w-3 h-3" /> AI Research Workspace
                 </span>
                 <span className="text-xs text-slate-400 font-mono">v{document?.version || '1.0'}</span>
@@ -423,21 +423,21 @@ export default function ResearchWorkspacePage() {
           </div>
 
           {/* Center Meta Indicators */}
-          <div className="hidden lg:flex items-center gap-4 bg-slate-950/60 border border-slate-800 px-3 py-1.5 rounded-xl">
+          <div className="hidden lg:flex items-center gap-4 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-xl">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-xs text-slate-300">Citation Coverage:</span>
-              <span className="text-xs font-bold text-emerald-400">{qualityReport?.citation_coverage_pct || 85.0}%</span>
+              <span className="text-xs font-bold text-emerald-600">{qualityReport?.citation_coverage_pct || 85.0}%</span>
             </div>
             <div className="h-4 w-px bg-slate-800" />
             <div className="flex items-center gap-2">
-              <Award className="w-3.5 h-3.5 text-amber-400" />
+              <Award className="w-3.5 h-3.5 text-amber-600" />
               <span className="text-xs text-slate-300">Readiness Score:</span>
-              <span className="text-xs font-bold text-amber-400">{qualityReport?.overall_readiness_score || 88}/100</span>
+              <span className="text-xs font-bold text-amber-600">{qualityReport?.overall_readiness_score || 88}/100</span>
             </div>
             <div className="h-4 w-px bg-slate-800" />
             <div className="flex items-center gap-1.5 text-xs text-slate-400">
-              <span className={saveStatus === 'saved' ? 'text-emerald-400' : saveStatus === 'saving' ? 'text-amber-400' : 'text-slate-400'}>
+              <span className={saveStatus === 'saved' ? 'text-emerald-600' : saveStatus === 'saving' ? 'text-amber-600' : 'text-slate-400'}>
                 {saveStatus === 'saved' ? '✓ Saved' : saveStatus === 'saving' ? 'Saving...' : '● Unsaved'}
               </span>
             </div>
@@ -447,10 +447,10 @@ export default function ResearchWorkspacePage() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => router.push(`/projects/${projectId}/experiments`)}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-indigo-950/80 hover:bg-indigo-900 border border-indigo-500/40 text-indigo-300 transition-colors shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-50 hover:bg-indigo-900 border border-blue-200 text-blue-700 transition-colors shadow-sm"
               title="Open Empirical Experimentation & Benchmarking Command Center"
             >
-              <FlaskConical className="w-3.5 h-3.5 text-indigo-400" />
+              <FlaskConical className="w-3.5 h-3.5 text-blue-600" />
               <span>Experiments & Multi-Runs</span>
             </button>
 
@@ -481,10 +481,10 @@ export default function ResearchWorkspacePage() {
         <div className="col-span-12 lg:col-span-3 flex flex-col gap-4">
           
           {/* Section List */}
-          <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-3 flex flex-col shadow-sm">
+          <div className="bg-white/70 border border-slate-200 rounded-2xl p-3 flex flex-col shadow-sm">
             <div className="flex items-center justify-between mb-2 px-2">
               <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-indigo-400" /> IEEE Paper Sections
+                <Layers className="w-3.5 h-3.5 text-blue-600" /> IEEE Paper Sections
               </span>
               <span className="text-[11px] text-slate-400 font-mono">13 Sections</span>
             </div>
@@ -501,12 +501,12 @@ export default function ResearchWorkspacePage() {
                     onClick={() => handleSelectSection(sec.key)}
                     className={`w-full text-left p-2.5 rounded-xl text-xs font-medium transition-all flex items-center justify-between gap-2 border ${
                       isSelected
-                        ? 'bg-indigo-600/20 border-indigo-500/50 text-indigo-300'
-                        : 'bg-slate-950/40 border-slate-800/60 hover:bg-slate-800/60 text-slate-300'
+                        ? 'bg-indigo-600/20 border-indigo-500/50 text-blue-700'
+                        : 'bg-slate-50 border-slate-200 hover:bg-slate-800/60 text-slate-300'
                     }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <Icon className={`w-4 h-4 shrink-0 ${isSelected ? 'text-indigo-400' : 'text-slate-400'}`} />
+                      <Icon className={`w-4 h-4 shrink-0 ${isSelected ? 'text-blue-600' : 'text-slate-400'}`} />
                       <span className="truncate">{sec.label}</span>
                     </div>
                     {hasContent ? (
@@ -522,12 +522,12 @@ export default function ResearchWorkspacePage() {
 
           {/* Research Quality Radar Breakdown */}
           {qualityReport && (
-            <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-4 shadow-sm">
+            <div className="bg-white/70 border border-slate-200 rounded-2xl p-4 shadow-sm">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                  <Award className="w-3.5 h-3.5 text-emerald-400" /> Quality & Radar Audit
+                  <Award className="w-3.5 h-3.5 text-emerald-600" /> Quality & Radar Audit
                 </span>
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">
                   {qualityReport.readiness_label}
                 </span>
               </div>
@@ -545,7 +545,7 @@ export default function ResearchWorkspacePage() {
                       <span className="text-slate-400">{item.label}</span>
                       <span className="font-mono text-slate-200 font-semibold">{item.data?.score || 80}%</span>
                     </div>
-                    <div className="h-1.5 w-full bg-slate-950 rounded-full overflow-hidden">
+                    <div className="h-1.5 w-full bg-slate-50 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-gradient-to-r from-indigo-500 to-emerald-400 rounded-full transition-all"
                         style={{ width: `${item.data?.score || 80}%` }}
@@ -555,9 +555,9 @@ export default function ResearchWorkspacePage() {
                 ))}
               </div>
 
-              <div className="mt-3 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
-                <span>Supported Claims: <strong className="text-emerald-400">{qualityReport.supported_claims_count}</strong></span>
-                <span>Unsupported: <strong className="text-amber-400">{qualityReport.unsupported_claims_count}</strong></span>
+              <div className="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-400">
+                <span>Supported Claims: <strong className="text-emerald-600">{qualityReport.supported_claims_count}</strong></span>
+                <span>Unsupported: <strong className="text-amber-600">{qualityReport.unsupported_claims_count}</strong></span>
               </div>
             </div>
           )}
@@ -566,18 +566,18 @@ export default function ResearchWorkspacePage() {
 
         {/* ================= Center Column: Live Section Editor with Split Preview ================= */}
         <div className="col-span-12 lg:col-span-5 flex flex-col gap-4">
-          <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 flex flex-col flex-1 shadow-sm">
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col flex-1 shadow-sm">
             
             {/* Section Header Toolbar */}
-            <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-800">
+            <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200">
               <div>
-                <span className="text-xs text-indigo-400 font-mono uppercase tracking-wider">Active Section</span>
+                <span className="text-xs text-blue-600 font-mono uppercase tracking-wider">Active Section</span>
                 <h2 className="text-base font-bold text-white capitalize">
                   {activeSectionKey.replace(/_/g, ' ')}
                 </h2>
               </div>
 
-              <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+              <div className="flex items-center gap-1 bg-slate-50 p-1 rounded-xl border border-slate-200">
                 <button
                   onClick={() => setPreviewMode('edit')}
                   className={`px-2.5 py-1 text-xs rounded-lg font-medium transition-colors ${
@@ -606,8 +606,8 @@ export default function ResearchWorkspacePage() {
             </div>
 
             {/* AI Refiner Sub-Bar */}
-            <div className="my-3 p-2.5 rounded-xl bg-slate-950/80 border border-slate-800/80 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
+            <div className="my-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-emerald-600 shrink-0" />
               <input
                 type="text"
                 value={customPrompt}
@@ -631,12 +631,12 @@ export default function ResearchWorkspacePage() {
                   value={sectionContent}
                   onChange={(e) => handleContentChange(e.target.value)}
                   placeholder={`Draft content for ${activeSectionKey.replace(/_/g, ' ')} here...`}
-                  className="w-full h-full min-h-[380px] bg-slate-950/60 border border-slate-800 rounded-xl p-3.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 resize-y leading-relaxed"
+                  className="w-full h-full min-h-[380px] bg-slate-100 border border-slate-200 rounded-xl p-3.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 resize-y leading-relaxed"
                 />
               )}
 
               {(previewMode === 'preview' || previewMode === 'split') && (
-                <div className="w-full h-full min-h-[380px] bg-slate-950/90 border border-slate-800 rounded-xl p-4 overflow-y-auto text-xs text-slate-200 leading-relaxed space-y-3 prose prose-invert prose-xs max-w-none">
+                <div className="w-full h-full min-h-[380px] bg-slate-50/90 border border-slate-200 rounded-xl p-4 overflow-y-auto text-xs text-slate-200 leading-relaxed space-y-3 prose prose-invert prose-xs max-w-none">
                   {sectionContent ? (
                     <div className="whitespace-pre-wrap">{sectionContent}</div>
                   ) : (
@@ -647,7 +647,7 @@ export default function ResearchWorkspacePage() {
             </div>
 
             {/* Editor Footer Status & Quick Actions */}
-            <div className="pt-3 mt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+            <div className="pt-3 mt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
               <div className="flex items-center gap-3">
                 <span>Words: <strong className="text-slate-200">{wordCount}</strong></span>
                 <span>Characters: <strong className="text-slate-200">{charCount}</strong></span>
@@ -659,7 +659,7 @@ export default function ResearchWorkspacePage() {
                   className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors flex items-center gap-1.5"
                   title="Save immutable version snapshot"
                 >
-                  <History className="w-3.5 h-3.5 text-indigo-400" /> Save Version Snapshot
+                  <History className="w-3.5 h-3.5 text-blue-600" /> Save Version Snapshot
                 </button>
                 <button
                   onClick={() => handleSaveSection(false)}
@@ -675,10 +675,10 @@ export default function ResearchWorkspacePage() {
 
         {/* ================= Right Column: Citations, Experiments, Evidence & Co-Pilot ================= */}
         <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
-          <div className="bg-slate-900/80 border border-slate-800 rounded-2xl flex flex-col shadow-sm overflow-hidden min-h-[600px]">
+          <div className="bg-white border border-slate-200 rounded-2xl flex flex-col shadow-sm overflow-hidden min-h-[600px]">
             
             {/* Multi-Tab Navigation */}
-            <div className="flex items-center border-b border-slate-800 bg-slate-950/60 p-1.5 gap-1 overflow-x-auto">
+            <div className="flex items-center border-b border-slate-200 bg-slate-100 p-1.5 gap-1 overflow-x-auto">
               {[
                 { key: 'citations', label: `Citations (${citations.length})`, icon: BookMarked },
                 { key: 'experiments', label: `Experiments (${experiments.length})`, icon: Cpu },
@@ -695,7 +695,7 @@ export default function ResearchWorkspacePage() {
                     className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                       isSelected
                         ? 'bg-indigo-600 text-white shadow-sm'
-                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
+                        : 'text-slate-400 hover:text-slate-200 hover:bg-white'
                     }`}
                   >
                     <Icon className="w-3.5 h-3.5" />
@@ -721,7 +721,7 @@ export default function ResearchWorkspacePage() {
                         className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] flex items-center gap-1 transition-colors"
                         title="Sync with discovered research resources"
                       >
-                        <RefreshCw className="w-3 h-3 text-emerald-400" /> Sync Resources
+                        <RefreshCw className="w-3 h-3 text-emerald-600" /> Sync Resources
                       </button>
                       <button
                         onClick={() => setShowAddCitationModal(true)}
@@ -736,16 +736,16 @@ export default function ResearchWorkspacePage() {
                     {citations.map((c, idx) => (
                       <div
                         key={c.id}
-                        className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 transition-colors space-y-2"
+                        className="p-3 rounded-xl bg-slate-100 border border-slate-200 hover:border-slate-200 transition-colors space-y-2"
                       >
                         <div className="flex items-start justify-between gap-2">
-                          <span className="px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono text-[10px] font-bold">
+                          <span className="px-1.5 py-0.5 rounded bg-indigo-500/20 text-blue-700 font-mono text-[10px] font-bold">
                             [{idx + 1}]
                           </span>
                           <span className="text-xs font-semibold text-white flex-1 line-clamp-2">{c.title}</span>
                           <button
                             onClick={() => handleDeleteCitation(c.id)}
-                            className="text-slate-500 hover:text-rose-400 p-1 transition-colors"
+                            className="text-slate-500 hover:text-rose-600 p-1 transition-colors"
                             title="Remove Citation"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
@@ -759,7 +759,7 @@ export default function ResearchWorkspacePage() {
                         <div className="flex flex-wrap items-center justify-between gap-2 pt-1.5 border-t border-slate-900 text-[11px]">
                           <div className="flex items-center gap-1.5">
                             {c.doi && (
-                              <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px]">
+                              <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 border border-emerald-200 text-[10px]">
                                 DOI Verified
                               </span>
                             )}
@@ -769,7 +769,7 @@ export default function ResearchWorkspacePage() {
                           <div className="flex items-center gap-1">
                             <button
                               onClick={() => handleInsertCitation(c, idx)}
-                              className="px-2 py-0.5 rounded bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 text-[10px] font-mono transition-colors"
+                              className="px-2 py-0.5 rounded bg-indigo-600/30 hover:bg-indigo-600/50 text-blue-700 text-[10px] font-mono transition-colors"
                               title="Insert in-text citation marker into current section"
                             >
                               + Insert [{idx + 1}]
@@ -779,7 +779,7 @@ export default function ResearchWorkspacePage() {
                               className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px]"
                               title="Copy BibTeX entry"
                             >
-                              {copiedKey === `bib-${c.id}` ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                              {copiedKey === `bib-${c.id}` ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
                             </button>
                           </div>
                         </div>
@@ -814,11 +814,11 @@ export default function ResearchWorkspacePage() {
                     {experiments.map((exp) => (
                       <div
                         key={exp.id}
-                        className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2.5"
+                        className="p-3.5 rounded-xl bg-slate-50/70 border border-slate-200 space-y-2.5"
                       >
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold text-white">{exp.name}</span>
-                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200 uppercase">
                             {exp.status}
                           </span>
                         </div>
@@ -827,14 +827,14 @@ export default function ResearchWorkspacePage() {
                           "{exp.hypothesis}"
                         </p>
 
-                        <div className="grid grid-cols-2 gap-2 text-[11px] bg-slate-900/60 p-2 rounded-lg border border-slate-800/80">
+                        <div className="grid grid-cols-2 gap-2 text-[11px] bg-white p-2 rounded-lg border border-slate-200">
                           <div>
                             <span className="text-slate-500 block">Baseline Model:</span>
                             <span className="text-slate-300 font-medium">{exp.baseline_model}</span>
                           </div>
                           <div>
                             <span className="text-slate-500 block">Proposed Method:</span>
-                            <span className="text-emerald-400 font-medium">{exp.proposed_method}</span>
+                            <span className="text-emerald-600 font-medium">{exp.proposed_method}</span>
                           </div>
                         </div>
 
@@ -842,7 +842,7 @@ export default function ResearchWorkspacePage() {
                           <div className="flex flex-wrap items-center gap-2 text-[11px]">
                             {Object.entries(exp.metrics).map(([k, v]) => (
                               <span key={k} className="px-2 py-0.5 rounded bg-slate-800 text-slate-200 font-mono text-[10px]">
-                                {k}: <strong className="text-emerald-400">{String(v)}</strong>
+                                {k}: <strong className="text-emerald-600">{String(v)}</strong>
                               </span>
                             ))}
                           </div>
@@ -868,12 +868,12 @@ export default function ResearchWorkspacePage() {
 
                   <div className="space-y-2.5 flex-1 overflow-y-auto pr-1">
                     {evidenceItems.map((item, idx) => (
-                      <div key={idx} className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 space-y-1.5 text-xs">
+                      <div key={idx} className="p-3 rounded-xl bg-slate-50/70 border border-slate-200 space-y-1.5 text-xs">
                         <div className="flex items-center justify-between text-[10px]">
-                          <span className="px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-medium uppercase">
+                          <span className="px-1.5 py-0.5 rounded bg-indigo-500/20 text-blue-700 font-medium uppercase">
                             {item.section}
                           </span>
-                          <span className={`font-bold ${item.confidence_level === 'HIGH' ? 'text-emerald-400' : 'text-amber-400'}`}>
+                          <span className={`font-bold ${item.confidence_level === 'HIGH' ? 'text-emerald-600' : 'text-amber-600'}`}>
                             {item.confidence_level}
                           </span>
                         </div>
@@ -897,8 +897,8 @@ export default function ResearchWorkspacePage() {
                         key={i}
                         className={`p-3 rounded-xl text-xs leading-relaxed ${
                           msg.role === 'assistant'
-                            ? 'bg-slate-950/80 border border-slate-800 text-slate-200'
-                            : 'bg-indigo-600/20 border border-indigo-500/30 text-indigo-200 ml-4'
+                            ? 'bg-slate-50 border border-slate-200 text-slate-200'
+                            : 'bg-indigo-600/20 border border-blue-200 text-indigo-200 ml-4'
                         }`}
                       >
                         <div className="text-[10px] font-bold text-slate-400 mb-1">
@@ -909,13 +909,13 @@ export default function ResearchWorkspacePage() {
                     ))}
                   </div>
 
-                  <form onSubmit={handleSendChatMessage} className="mt-3 pt-3 border-t border-slate-800 flex gap-2">
+                  <form onSubmit={handleSendChatMessage} className="mt-3 pt-3 border-t border-slate-200 flex gap-2">
                     <input
                       type="text"
                       value={chatInput}
                       onChange={(e) => setChatInput(e.target.value)}
                       placeholder="Ask for LaTeX equations, abstract edits, or metrics..."
-                      className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                      className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
                     />
                     <button
                       type="submit"
@@ -939,11 +939,11 @@ export default function ResearchWorkspacePage() {
                     {versions.map((ver) => (
                       <div
                         key={ver.id}
-                        className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center justify-between gap-2 text-xs"
+                        className="p-3 rounded-xl bg-slate-50/70 border border-slate-200 flex items-center justify-between gap-2 text-xs"
                       >
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="font-mono font-bold text-indigo-400">v{ver.version_number}</span>
+                            <span className="font-mono font-bold text-blue-600">v{ver.version_number}</span>
                             <span className="text-slate-200 font-semibold">{ver.version_label}</span>
                           </div>
                           <span className="text-[10px] text-slate-500">
@@ -978,12 +978,12 @@ export default function ResearchWorkspacePage() {
 
       {/* ================= Export Center Modal ================= */}
       {showExportModal && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] flex flex-col">
+        <div className="fixed inset-0 bg-slate-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-slate-200 rounded-2xl max-w-4xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] flex flex-col">
             
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <div className="flex items-center gap-2.5">
-                <Download className="w-5 h-5 text-indigo-400" />
+                <Download className="w-5 h-5 text-blue-600" />
                 <h3 className="text-lg font-bold text-white">Research & Technical Document Export Center</h3>
               </div>
               <button
@@ -995,7 +995,7 @@ export default function ResearchWorkspacePage() {
             </div>
 
             {/* Export Format Selector */}
-            <div className="flex items-center gap-2 border-b border-slate-800 pb-2 overflow-x-auto">
+            <div className="flex items-center gap-2 border-b border-slate-200 pb-2 overflow-x-auto">
               {[
                 { key: 'latex', label: 'IEEEtran LaTeX Package (main.tex + bib)', icon: Code },
                 { key: 'bibtex', label: 'BibTeX Bibliography (references.bib)', icon: BookMarked },
@@ -1008,7 +1008,7 @@ export default function ResearchWorkspacePage() {
                   className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors flex items-center gap-2 ${
                     exportTab === fmt.key
                       ? 'bg-indigo-600 text-white'
-                      : 'bg-slate-950/60 text-slate-400 hover:text-slate-200'
+                      : 'bg-slate-100 text-slate-400 hover:text-slate-200'
                   }`}
                 >
                   <fmt.icon className="w-3.5 h-3.5" />
@@ -1018,16 +1018,16 @@ export default function ResearchWorkspacePage() {
             </div>
 
             {/* Content Preview */}
-            <div className="flex-1 overflow-y-auto bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-200 min-h-[300px] max-h-[440px]">
+            <div className="flex-1 overflow-y-auto bg-slate-50 border border-slate-200 rounded-xl p-4 font-mono text-xs text-slate-200 min-h-[300px] max-h-[440px]">
               {exportTab === 'latex' && (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-900">
-                    <span className="text-indigo-400 font-bold">📄 main.tex (IEEE Conference Format)</span>
+                    <span className="text-blue-600 font-bold">📄 main.tex (IEEE Conference Format)</span>
                     <button
                       onClick={() => copyToClipboard(latexExport?.main_tex || '', 'latex-tex')}
                       className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] flex items-center gap-1"
                     >
-                      {copiedKey === 'latex-tex' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      {copiedKey === 'latex-tex' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
                       Copy main.tex
                     </button>
                   </div>
@@ -1038,12 +1038,12 @@ export default function ResearchWorkspacePage() {
               {exportTab === 'bibtex' && (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-900">
-                    <span className="text-indigo-400 font-bold">📚 references.bib ({bibtexExport?.total_citations || 0} citations)</span>
+                    <span className="text-blue-600 font-bold">📚 references.bib ({bibtexExport?.total_citations || 0} citations)</span>
                     <button
                       onClick={() => copyToClipboard(bibtexExport?.bibtex_content || '', 'bibtex-content')}
                       className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] flex items-center gap-1"
                     >
-                      {copiedKey === 'bibtex-content' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      {copiedKey === 'bibtex-content' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
                       Copy BibTeX
                     </button>
                   </div>
@@ -1054,12 +1054,12 @@ export default function ResearchWorkspacePage() {
               {exportTab === 'markdown' && (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-900">
-                    <span className="text-indigo-400 font-bold">📝 paper_draft.md</span>
+                    <span className="text-blue-600 font-bold">📝 paper_draft.md</span>
                     <button
                       onClick={() => copyToClipboard(markdownExport?.markdown_content || '', 'md-content')}
                       className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] flex items-center gap-1"
                     >
-                      {copiedKey === 'md-content' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      {copiedKey === 'md-content' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
                       Copy Markdown
                     </button>
                   </div>
@@ -1070,12 +1070,12 @@ export default function ResearchWorkspacePage() {
               {exportTab === 'tech_report' && (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-900">
-                    <span className="text-emerald-400 font-bold">🏛️ technical_report.md (19 Sections & BOM)</span>
+                    <span className="text-emerald-600 font-bold">🏛️ technical_report.md (19 Sections & BOM)</span>
                     <button
                       onClick={() => copyToClipboard(techReportExport?.report_markdown || '', 'tech-report-content')}
                       className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] flex items-center gap-1"
                     >
-                      {copiedKey === 'tech-report-content' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      {copiedKey === 'tech-report-content' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
                       Copy Report
                     </button>
                   </div>
@@ -1084,7 +1084,7 @@ export default function ResearchWorkspacePage() {
               )}
             </div>
 
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-800">
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-200">
               <button
                 onClick={() => setShowExportModal(false)}
                 className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium transition-colors"
@@ -1099,10 +1099,10 @@ export default function ResearchWorkspacePage() {
 
       {/* ================= Add Citation Modal ================= */}
       {showAddCitationModal && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <form onSubmit={handleAddCitationSubmit} className="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+        <div className="fixed inset-0 bg-slate-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <form onSubmit={handleAddCitationSubmit} className="bg-white border border-slate-200 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
-              <Plus className="w-4 h-4 text-indigo-400" /> Add Verified Scientific Citation
+              <Plus className="w-4 h-4 text-blue-600" /> Add Verified Scientific Citation
             </h3>
 
             <div className="space-y-3 text-xs">
@@ -1114,7 +1114,7 @@ export default function ResearchWorkspacePage() {
                   value={newCitation.title}
                   onChange={(e) => setNewCitation({ ...newCitation, title: e.target.value })}
                   placeholder="e.g. Deep Learning Approaches for Water Quality Outlier Detection"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
@@ -1126,7 +1126,7 @@ export default function ResearchWorkspacePage() {
                     value={newCitation.authors}
                     onChange={(e) => setNewCitation({ ...newCitation, authors: e.target.value })}
                     placeholder="e.g. J. Vaswani, A. Kumar"
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
@@ -1135,7 +1135,7 @@ export default function ResearchWorkspacePage() {
                     type="number"
                     value={newCitation.year}
                     onChange={(e) => setNewCitation({ ...newCitation, year: Number(e.target.value) })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
@@ -1147,7 +1147,7 @@ export default function ResearchWorkspacePage() {
                   value={newCitation.venue}
                   onChange={(e) => setNewCitation({ ...newCitation, venue: e.target.value })}
                   placeholder="e.g. IEEE Transactions on Neural Networks"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
@@ -1159,7 +1159,7 @@ export default function ResearchWorkspacePage() {
                     value={newCitation.doi}
                     onChange={(e) => setNewCitation({ ...newCitation, doi: e.target.value })}
                     placeholder="10.1109/..."
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
@@ -1169,13 +1169,13 @@ export default function ResearchWorkspacePage() {
                     value={newCitation.arxiv_id}
                     onChange={(e) => setNewCitation({ ...newCitation, arxiv_id: e.target.value })}
                     placeholder="2403.01829"
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-800">
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-200">
               <button
                 type="button"
                 onClick={() => setShowAddCitationModal(false)}
@@ -1196,10 +1196,10 @@ export default function ResearchWorkspacePage() {
 
       {/* ================= Record Experiment Modal ================= */}
       {showNewExperimentModal && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <form onSubmit={handleAddExperimentSubmit} className="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+        <div className="fixed inset-0 bg-slate-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <form onSubmit={handleAddExperimentSubmit} className="bg-white border border-slate-200 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
-              <Cpu className="w-4 h-4 text-emerald-400" /> Record Empirical Experiment Trial
+              <Cpu className="w-4 h-4 text-emerald-600" /> Record Empirical Experiment Trial
             </h3>
 
             <div className="space-y-3 text-xs">
@@ -1211,7 +1211,7 @@ export default function ResearchWorkspacePage() {
                   value={newExp.name}
                   onChange={(e) => setNewExp({ ...newExp, name: e.target.value })}
                   placeholder="e.g. Benchmarking 1D-CNN vs Random Forest Baseline"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-emerald-500"
                 />
               </div>
 
@@ -1222,7 +1222,7 @@ export default function ResearchWorkspacePage() {
                   value={newExp.hypothesis}
                   onChange={(e) => setNewExp({ ...newExp, hypothesis: e.target.value })}
                   placeholder="e.g. 1D-CNN with temporal attention achieves >5% gain in F1-score over baseline..."
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-emerald-500 h-16 resize-none"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-emerald-500 h-16 resize-none"
                 />
               </div>
 
@@ -1233,7 +1233,7 @@ export default function ResearchWorkspacePage() {
                     type="text"
                     value={newExp.baseline_model}
                     onChange={(e) => setNewExp({ ...newExp, baseline_model: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-200"
                   />
                 </div>
                 <div>
@@ -1242,7 +1242,7 @@ export default function ResearchWorkspacePage() {
                     type="text"
                     value={newExp.proposed_method}
                     onChange={(e) => setNewExp({ ...newExp, proposed_method: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-200"
                   />
                 </div>
               </div>
@@ -1254,7 +1254,7 @@ export default function ResearchWorkspacePage() {
                     type="text"
                     value={newExp.metrics_accuracy}
                     onChange={(e) => setNewExp({ ...newExp, metrics_accuracy: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-slate-200 font-mono text-center"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-slate-200 font-mono text-center"
                   />
                 </div>
                 <div>
@@ -1263,7 +1263,7 @@ export default function ResearchWorkspacePage() {
                     type="text"
                     value={newExp.metrics_f1}
                     onChange={(e) => setNewExp({ ...newExp, metrics_f1: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-slate-200 font-mono text-center"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-slate-200 font-mono text-center"
                   />
                 </div>
                 <div>
@@ -1272,13 +1272,13 @@ export default function ResearchWorkspacePage() {
                     type="text"
                     value={newExp.metrics_latency}
                     onChange={(e) => setNewExp({ ...newExp, metrics_latency: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-slate-200 font-mono text-center"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-slate-200 font-mono text-center"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-800">
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-200">
               <button
                 type="button"
                 onClick={() => setShowNewExperimentModal(false)}

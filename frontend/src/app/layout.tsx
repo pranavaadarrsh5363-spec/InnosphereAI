@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { ThemeProvider } from '@/lib/theme-context';
 import { AuthProvider } from '@/lib/auth-context';
 import { ProjectProvider } from '@/lib/project-context';
 import { Navbar } from '@/components/navbar';
@@ -19,45 +18,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var stored = localStorage.getItem('innosphere-theme') || 'system';
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  var isDark = stored === 'dark' || (stored === 'system' && prefersDark);
-                  var root = document.documentElement;
-                  if (isDark) {
-                    root.classList.add('dark');
-                    root.classList.remove('light');
-                    root.setAttribute('data-theme', 'dark');
-                    root.style.colorScheme = 'dark';
-                  } else {
-                    root.classList.add('light');
-                    root.classList.remove('dark');
-                    root.setAttribute('data-theme', 'light');
-                    root.style.colorScheme = 'light';
-                  }
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
-      </head>
-      <body className="min-h-screen bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 antialiased flex flex-col selection:bg-indigo-500 selection:text-white transition-colors duration-200">
-        <ThemeProvider>
-          <AuthProvider>
-            <ProjectProvider>
-              <Navbar />
-              <main className="flex-1">{children}</main>
-              <Footer />
-              <FloatingAssistant />
-            </ProjectProvider>
-          </AuthProvider>
-        </ThemeProvider>
+    <html lang="en">
+      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased flex flex-col selection:bg-blue-600 selection:text-white">
+        <AuthProvider>
+          <ProjectProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <FloatingAssistant />
+          </ProjectProvider>
+        </AuthProvider>
       </body>
     </html>
   );
