@@ -49,21 +49,31 @@ class Settings:
     EXTERNAL_API_TIMEOUT_SECONDS: float = float(os.getenv("EXTERNAL_API_TIMEOUT_SECONDS", "8.0"))
     
     # CORS Configuration
-    _cors_env: str = os.getenv("CORS_ORIGINS", "")
-    if _cors_env:
-        CORS_ORIGINS: List[str] = [origin.strip() for origin in _cors_env.split(",") if origin.strip()]
-    elif ENVIRONMENT == "production":
-        CORS_ORIGINS: List[str] = [
-            "https://innosphere.ai",
-            "https://app.innosphere.ai"
-        ]
-    else:
-        CORS_ORIGINS: List[str] = [
-            "http://localhost:3000",
-            "http://127.0.0.1:3000",
-            "http://localhost:3001",
-            "http://127.0.0.1:3001"
-        ]
+    # Collects origins from CORS_ORIGINS, ALLOWED_ORIGINS, FRONTEND_URL, and VERCEL_URL
+    _origins_set = {
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3001",
+        "https://innosphere.ai",
+        "https://app.innosphere.ai",
+        "https://innosphere-ai.vercel.app",
+        "https://innosphereai.vercel.app",
+    }
+    
+    for _env_key in ("CORS_ORIGINS", "ALLOWED_ORIGINS", "FRONTEND_URL", "VERCEL_URL"):
+        _val = os.getenv(_env_key, "").strip()
+        if _val:
+            for _item in _val.split(","):
+                _clean_item = _item.strip().rstrip("/")
+                if _clean_item:
+                    if not _clean_item.startswith("http://") and not _clean_item.startswith("https://"):
+                        _origins_set.add(f"https://{_clean_item}")
+                    else:
+                        _origins_set.add(_clean_item)
+                        
+    CORS_ORIGINS: List[str] = sorted(list(_origins_set))
+    CORS_ORIGIN_REGEX: str = os.getenv("CORS_ORIGIN_REGEX", r"^https://.*\.vercel\.app$")
     
     # Rate Limiting & Safety (requests per minute)
     RATE_LIMIT_ENABLED: bool = os.getenv("RATE_LIMIT_ENABLED", "true").lower() in ("true", "1", "yes")
