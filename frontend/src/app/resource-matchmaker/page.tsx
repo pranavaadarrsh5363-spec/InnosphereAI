@@ -1,355 +1,259 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import React, { useState, useEffect } from'react';
+import { useRouter } from'next/navigation';
+import Link from'next/link';
 import {
-  SlidersHorizontal,
-  Search,
-  Sparkles,
-  ArrowRight,
-  ExternalLink,
-  Layers,
-  CheckCircle2,
-  AlertTriangle,
-  FileText,
-  Activity,
-  Cpu,
-  RefreshCw,
-  Award,
-  Bookmark,
-  Share2,
-  Atom,
-  DollarSign,
-  TrendingDown,
-  ShieldCheck,
-  Zap,
-  HelpCircle,
-  Filter,
-  Check,
-  ChevronRight,
-  Database,
-  Code,
-  Gauge,
-  Sliders,
-  Wallet
-} from 'lucide-react';
-import { api, resourceMatchmakerApi } from '@/lib/api';
-import { Project } from '@/types';
+ SlidersHorizontal,
+ Search,
+ ArrowRight,
+ RefreshCw,
+ DollarSign,
+ TrendingDown,
+ Cpu,
+ Gauge,
+ Wallet,
+ ChevronRight,
+} from'lucide-react';
+import { api, resourceMatchmakerApi } from'@/lib/api';
+import { Project } from'@/types';
 
 export default function GlobalResourceMatchmakerHubPage() {
-  const router = useRouter();
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [healthData, setHealthData] = useState<any>(null);
-  const [flagshipData, setFlagshipData] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedDomain, setSelectedDomain] = useState('ALL');
+ const router = useRouter();
+ const [projects, setProjects] = useState<Project[]>([]);
+ const [healthData, setHealthData] = useState<any>(null);
+ const [flagshipData, setFlagshipData] = useState<any>(null);
+ const [loading, setLoading] = useState(true);
+ const [searchQuery, setSearchQuery] = useState('');
+ const [selectedDomain, setSelectedDomain] = useState('ALL');
 
-  useEffect(() => {
-    async function loadData() {
-      setLoading(true);
-      try {
-        const [projRes, healthRes, flagRes] = await Promise.allSettled([
-          api.getProjects({ page: 1, page_size: 50 }),
-          resourceMatchmakerApi.getHealth(),
-          resourceMatchmakerApi.getFlagship(),
-        ]);
+ useEffect(() => {
+ async function loadData() {
+ setLoading(true);
+ try {
+ const [projRes, healthRes, flagRes] = await Promise.allSettled([
+ api.getProjects({ page: 1, page_size: 50 }),
+ resourceMatchmakerApi.getHealth(),
+ resourceMatchmakerApi.getFlagship(),
+ ]);
 
-        if (projRes.status === 'fulfilled') {
-          const res = projRes.value;
-          setProjects(Array.isArray(res) ? res : (res as any)?.items || []);
-        }
-        if (healthRes.status === 'fulfilled') {
-          setHealthData(healthRes.value || null);
-        }
-        if (flagRes.status === 'fulfilled') {
-          setFlagshipData(flagRes.value || null);
-        }
-      } catch (err) {
-        console.error('Failed to load resource matchmaker hub data:', err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadData();
-  }, []);
+ if (projRes.status ==='fulfilled') {
+ const res = projRes.value;
+ setProjects(Array.isArray(res) ? res : (res as any)?.items || []);
+ }
+ if (healthRes.status ==='fulfilled') {
+ setHealthData(healthRes.value || null);
+ }
+ if (flagRes.status ==='fulfilled') {
+ setFlagshipData(flagRes.value || null);
+ }
+ } catch (err) {
+ console.error('Failed to load resource matchmaker hub data:', err);
+ } finally {
+ setLoading(false);
+ }
+ }
+ loadData();
+ }, []);
 
-  const domains = ['ALL', ...Array.from(new Set(projects.map((p) => p.domain).filter(Boolean)))];
+ const domains = ['ALL', ...Array.from(new Set(projects.map((p) => p.domain).filter(Boolean)))];
 
-  const filteredProjects = projects.filter((p) => {
-    const matchesSearch =
-      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.problem_statement.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.domain.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesDomain = selectedDomain === 'ALL' || p.domain === selectedDomain;
-    return matchesSearch && matchesDomain;
-  });
+ const filteredProjects = projects.filter((p) => {
+ const matchesSearch =
+ p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+ p.problem_statement.toLowerCase().includes(searchQuery.toLowerCase()) ||
+ p.domain.toLowerCase().includes(searchQuery.toLowerCase());
+ const matchesDomain = selectedDomain ==='ALL' || p.domain === selectedDomain;
+ return matchesSearch && matchesDomain;
+ });
 
-  return (
-    <div className="min-h-screen bg-slate-50/50 text-slate-900 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto space-y-8">
-        {/* Academic Page Header */}
-        <div className="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-xs">
-          <div className="max-w-3xl space-y-2">
-            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-              <SlidersHorizontal className="w-3.5 h-3.5 text-emerald-600" /> Resource Matchmaker & Allocation Engine
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-              Resource Matchmaker
-            </h1>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Match your innovation project with verified open-source models, edge hardware, sensor specs, benchmark datasets, and institutional cloud tiers based on budget and skill constraints.
-            </p>
+ return (
+ <div className="min-h-screen bg-slate-50 py-6 px-4 sm:px-6 lg:px-8">
+ <div className="max-w-6xl mx-auto space-y-6">
+ {/* Header */}
+ <div className="bg-white rounded-lg p-6 border border-slate-200 shadow-sm">
+ <div className="max-w-3xl space-y-2">
+ <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">
+ <SlidersHorizontal className="w-3.5 h-3.5 text-slate-500" /> Resource Matchmaker
+ </div>
+ <h1 className="text-xl font-semibold text-slate-900">
+ Resource Allocation Engine
+ </h1>
+ <p className="text-sm text-slate-600">
+ Match your innovation project with verified open-source models, edge hardware, sensor specs, benchmark datasets, and institutional cloud tiers.
+ </p>
+ </div>
+ </div>
 
-            {healthData && (
-              <div className="pt-2 flex flex-wrap items-center gap-3">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md text-xs bg-slate-50 border border-slate-200 text-slate-600">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  <span className="font-mono text-emerald-600 font-semibold">{healthData.status}</span>
-                  <span className="text-slate-400">|</span>
-                  <span>Latency: {healthData.latency_ms}ms</span>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+ {/* 4 Pillars Grid */}
+ <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm space-y-2">
+ <DollarSign className="w-5 h-5 text-slate-500" />
+ <h3 className="font-semibold text-sm text-slate-900">Budget Guardrails</h3>
+ <p className="text-xs text-slate-600">
+ Evaluates hard spending limits across Hardware and Cloud.
+ </p>
+ </div>
+ <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm space-y-2">
+ <Cpu className="w-5 h-5 text-slate-500" />
+ <h3 className="font-semibold text-sm text-slate-900">Hardware Sizing</h3>
+ <p className="text-xs text-slate-600">
+ Matches workloads against microcontrollers and edge devices.
+ </p>
+ </div>
+ <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm space-y-2">
+ <TrendingDown className="w-5 h-5 text-slate-500" />
+ <h3 className="font-semibold text-sm text-slate-900">Open-Source</h3>
+ <p className="text-xs text-slate-600">
+ Identifies zero-cost tools and quantized models.
+ </p>
+ </div>
+ <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm space-y-2">
+ <Gauge className="w-5 h-5 text-slate-500" />
+ <h3 className="font-semibold text-sm text-slate-900">Simulations</h3>
+ <p className="text-xs text-slate-600">
+ Simulate hypothetical cuts and edge constraints.
+ </p>
+ </div>
+ </div>
 
-        {/* 4 Pillars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-            <div className="h-9 w-9 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold">
-              <DollarSign className="w-5 h-5" />
-            </div>
-            <h3 className="font-semibold text-sm">Strict Budget Guardrails</h3>
-            <p className="text-xs text-slate-500">
-              Evaluates hard spending limits across Hardware, Cloud, Software, and Recurring APIs to eliminate student debt.
-            </p>
-          </div>
+ {/* Flagship Demonstration */}
+ {flagshipData && (
+ <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-4">
+ <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
+ <div>
+ <h2 className="text-sm font-semibold text-slate-900">
+ {flagshipData.project_title}
+ </h2>
+ <p className="text-xs text-slate-600 mt-1">
+ Budget: ₹{flagshipData.profile?.total_budget?.toLocaleString() ||'10,000'} | Target: {flagshipData.profile?.open_source_preference ||'Open Source'}
+ </p>
+ </div>
+ <Link
+ href={`/projects/${flagshipData.project_id}/resource-matchmaker`}
+ className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium shadow-sm"
+ >
+ <span>View Allocation</span>
+ <ArrowRight className="w-3.5 h-3.5" />
+ </Link>
+ </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-            <div className="h-9 w-9 rounded-xl bg-cyan-500/10 text-cyan-600 flex items-center justify-center font-bold">
-              <Cpu className="w-5 h-5" />
-            </div>
-            <h3 className="font-semibold text-sm">Hardware & Compute Sizing</h3>
-            <p className="text-xs text-slate-500">
-              Matches workloads against student-owned microcontrollers (ESP32, Arduino) and laptops without redundant hardware buys.
-            </p>
-          </div>
+ {flagshipData.matches && flagshipData.matches.length > 0 && (
+ <div className="space-y-2">
+ <span className="text-xs font-semibold text-slate-500">
+ Top Resources:
+ </span>
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+ {flagshipData.matches.slice(0, 3).map((m: any) => (
+ <div
+ key={m.id || m.resource_name}
+ className="p-3 rounded-md border border-slate-200 bg-slate-50 space-y-2"
+ >
+ <div className="flex items-center justify-between">
+ <span className="text-xs font-semibold text-slate-900 truncate">
+ {m.resource_name}
+ </span>
+ <span className="text-xs text-slate-500 font-medium">
+ {m.overall_match_score?.toFixed(0) ||'90'}% Match
+ </span>
+ </div>
+ <div className="text-xs text-slate-600">
+ ₹{m.estimated_cost || 0} ({m.price_evidence_status})
+ </div>
+ </div>
+ ))}
+ </div>
+ </div>
+ )}
+ </div>
+ )}
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-            <div className="h-9 w-9 rounded-xl bg-purple-500/10 text-purple-600 flex items-center justify-center font-bold">
-              <TrendingDown className="w-5 h-5" />
-            </div>
-            <h3 className="font-semibold text-sm">Open-Source Substitutes</h3>
-            <p className="text-xs text-slate-500">
-              Automatically identifies zero-cost open-source tools and quantized models to replace expensive commercial APIs.
-            </p>
-          </div>
+ {/* Project Selector Grid */}
+ <div className="space-y-4">
+ <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+ <h2 className="text-sm font-semibold text-slate-900">
+ Select a Project
+ </h2>
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-            <div className="h-9 w-9 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center font-bold">
-              <Gauge className="w-5 h-5" />
-            </div>
-            <h3 className="font-semibold text-sm">Interactive What-If Engine</h3>
-            <p className="text-xs text-slate-500">
-              Simulate hypothetical budget cuts, offline deployments, and edge constraints with real-time capability recomputation.
-            </p>
-          </div>
-        </div>
+ <div className="flex items-center gap-2">
+ <div className="relative">
+ <Search className="w-4 h-4 text-slate-400 absolute left-2.5 top-1.5" />
+ <input
+ type="text"
+ placeholder="Search..."
+ value={searchQuery}
+ onChange={(e) => setSearchQuery(e.target.value)}
+ className="pl-8 pr-3 py-1.5 rounded-md text-xs bg-white border border-slate-200 focus:outline-none focus:border-indigo-500 w-40 sm:w-56"
+ />
+ </div>
 
-        {/* Flagship Demonstration Workspace Preview */}
-        {flagshipData && (
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-5">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
-              <div>
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 mb-1">
-                  <Sparkles className="w-3.5 h-3.5" /> Flagship Demonstration Workspace
-                </div>
-                <h2 className="text-lg font-bold text-slate-900">
-                  {flagshipData.project_title}
-                </h2>
-                <p className="text-xs text-slate-500">
-                  Total Budget: ₹{flagshipData.profile?.total_budget?.toLocaleString() || '10,000'} | Target: {flagshipData.profile?.open_source_preference || 'Open Source Preferred'}
-                </p>
-              </div>
+ <select
+ value={selectedDomain}
+ onChange={(e) => setSelectedDomain(e.target.value)}
+ className="px-2 py-1.5 rounded-md text-xs bg-white border border-slate-200 focus:outline-none focus:border-indigo-500"
+ >
+ {domains.map((d) => (
+ <option key={d} value={d}>
+ {d}
+ </option>
+ ))}
+ </select>
+ </div>
+ </div>
 
-              <Link
-                href={`/projects/${flagshipData.project_id}/resource-matchmaker`}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-sm transition-all"
-              >
-                <span>Open Full Matchmaker Workspace</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+ {loading ? (
+ <div className="py-12 text-center text-sm text-slate-500">
+ Loading projects...
+ </div>
+ ) : filteredProjects.length === 0 ? (
+ <div className="text-center py-10 bg-white rounded-lg border border-slate-200 p-6 space-y-2">
+ <p className="text-sm text-slate-600">No projects found.</p>
+ <Link
+ href="/submit-idea"
+ className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-indigo-600 text-white text-xs font-medium"
+ >
+ Submit Project
+ </Link>
+ </div>
+ ) : (
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ {filteredProjects.map((p) => (
+ <Link
+ key={p.id}
+ href={`/projects/${p.id}/resource-matchmaker`}
+ className="bg-white rounded-lg border border-slate-200 hover:border-slate-300 p-4 shadow-sm flex flex-col justify-between space-y-4"
+ >
+ <div className="space-y-2">
+ <div className="flex items-center justify-between gap-2">
+ <span className="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">
+ {p.domain}
+ </span>
+ <span className="text-xs text-slate-500">
+ Stage: {(p as any).stage || p.status ||'Prototyping'}
+ </span>
+ </div>
 
-            {/* Quick KPI Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/60 text-center">
-                <span className="text-xs text-slate-500">Requirements Extracted</span>
-                <p className="text-lg font-bold text-slate-900 mt-0.5">
-                  {flagshipData.requirements?.length || 0}
-                </p>
-              </div>
-              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/60 text-center">
-                <span className="text-xs text-slate-500">Ranked Matches</span>
-                <p className="text-lg font-bold text-emerald-600 mt-0.5">
-                  {flagshipData.matches?.length || 0}
-                </p>
-              </div>
-              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/60 text-center">
-                <span className="text-xs text-slate-500">Curated Bundles</span>
-                <p className="text-lg font-bold text-indigo-600 mt-0.5">
-                  {flagshipData.bundles?.length || 3}
-                </p>
-              </div>
-              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/60 text-center">
-                <span className="text-xs text-slate-500">Allocated Outlay</span>
-                <p className="text-lg font-bold text-cyan-600 mt-0.5">
-                  ₹{flagshipData.budget_summary?.allocated_budget?.toLocaleString() || '0'}
-                </p>
-              </div>
-            </div>
+ <h3 className="font-semibold text-sm text-slate-900 line-clamp-1">
+ {p.title}
+ </h3>
+ </div>
 
-            {/* Top Match Sample Preview */}
-            {flagshipData.matches && flagshipData.matches.length > 0 && (
-              <div className="space-y-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  Top Matched Candidate Resources:
-                </span>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                  {flagshipData.matches.slice(0, 3).map((m: any) => (
-                    <div
-                      key={m.id || m.resource_name}
-                      className="p-3.5 rounded-xl border border-slate-200 bg-slate-50/50 space-y-2"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-slate-900 truncate">
-                          {m.resource_name}
-                        </span>
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                          {m.overall_match_score?.toFixed(0) || '90'}%
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2 text-[11px] text-slate-500">
-                        <span className="px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 text-[10px]">
-                          {m.resource_category}
-                        </span>
-                        <span>₹{m.estimated_cost || 0}</span>
-                        <span className="text-emerald-500 font-medium">({m.price_evidence_status})</span>
-                      </div>
-                      <p className="text-[11px] text-slate-600 line-clamp-2">
-                        {m.why_matched_json?.[0] || 'Matches project tech stack requirements.'}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
+ <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+ <div className="flex items-center gap-1 text-slate-500">
+ <Wallet className="w-3.5 h-3.5" />
+ <span>Budget Allocator</span>
+ </div>
 
-        {/* Project Selector Grid */}
-        <div className="space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <h2 className="text-xl font-bold text-slate-900">
-                Select a Project to Allocate Resources
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-500">
-                Each project has an isolated resource profile, owned hardware inventory, and budget allocation plan.
-              </p>
-            </div>
-
-            {/* Search & Domain Filter */}
-            <div className="flex items-center gap-2">
-              <div className="relative">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                <input
-                  type="text"
-                  placeholder="Search projects..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 pr-3 py-1.5 rounded-xl text-xs bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 w-44 sm:w-56"
-                />
-              </div>
-
-              <select
-                value={selectedDomain}
-                onChange={(e) => setSelectedDomain(e.target.value)}
-                className="px-3 py-1.5 rounded-xl text-xs bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              >
-                {domains.map((d) => (
-                  <option key={d} value={d}>
-                    {d}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="h-44 rounded-2xl bg-slate-200 animate-pulse" />
-              ))}
-            </div>
-          ) : filteredProjects.length === 0 ? (
-            <div className="text-center py-12 bg-white rounded-2xl border border-slate-200 p-8 space-y-3">
-              <SlidersHorizontal className="w-10 h-10 text-slate-400 mx-auto" />
-              <p className="text-sm font-medium text-slate-600">
-                No innovation projects found matching your filter criteria.
-              </p>
-              <Link
-                href="/submit-idea"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-semibold"
-              >
-                Submit a New Project Idea
-              </Link>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredProjects.map((p) => (
-                <Link
-                  key={p.id}
-                  href={`/projects/${p.id}/resource-matchmaker`}
-                  className="group bg-white rounded-2xl border border-slate-200 hover:border-emerald-500/50 p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4 relative overflow-hidden"
-                >
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-600">
-                        {p.domain}
-                      </span>
-                      <span className="text-[11px] text-slate-400">
-                        Stage: {(p as any).stage || p.status || 'Prototyping'}
-                      </span>
-                    </div>
-
-                    <h3 className="font-bold text-sm sm:text-base text-slate-900 group-hover:text-emerald-500 transition-colors line-clamp-1">
-                      {p.title}
-                    </h3>
-
-                    <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
-                      {p.proposed_solution || p.problem_statement}
-                    </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-1 text-slate-500">
-                      <Wallet className="w-3.5 h-3.5 text-emerald-500" />
-                      <span>Budget Allocator</span>
-                    </div>
-
-                    <span className="inline-flex items-center gap-1 font-semibold text-emerald-600 group-hover:translate-x-0.5 transition-transform">
-                      Open Workspace <ChevronRight className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+ <span className="inline-flex items-center gap-1 font-medium text-indigo-600">
+ Open <ChevronRight className="w-3.5 h-3.5" />
+ </span>
+ </div>
+ </Link>
+ ))}
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
+ );
 }
