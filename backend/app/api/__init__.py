@@ -3,7 +3,7 @@ from app.api import (
     insights, assistant, mentor, analytics, system, hardware,
     intelligence, research, experiments, validation, showcase,
     skills, architecture, knowledge_graph, patents, resource_matchmaker,
-    ai
+    ai, preview
 )
 
 __all__ = [
@@ -11,7 +11,7 @@ __all__ = [
     "insights", "assistant", "mentor", "analytics", "system", "hardware",
     "intelligence", "research", "experiments", "validation", "showcase",
     "skills", "architecture", "knowledge_graph", "patents", "resource_matchmaker",
-    "ai"
+    "ai", "preview"
 ]
 
 

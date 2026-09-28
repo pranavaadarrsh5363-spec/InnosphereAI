@@ -89,6 +89,19 @@ export const api = {
     return request<any[]>(`/ideas${qs}`);
   },
   submitIdea: (data: any) => request<any>('/ideas/submit', { method: 'POST', body: JSON.stringify(data) }),
+  previewIdea: (idea: string) => request<{
+    refined_summary: string;
+    suggested_keywords: string[];
+    top_resources: { title: string; source: string; link: string }[];
+    detected_innovation_gap: string;
+    summary?: string;
+    keywords?: string[];
+    resources?: { title: string; source: string; link: string }[];
+    innovation_gap?: string;
+  }>('/preview', {
+    method: 'POST',
+    body: JSON.stringify({ idea }),
+  }),
   getIdea: (id: number) => request<any>(`/ideas/${id}`),
   getAnalysis: (ideaId: number) => request<any>(`/analysis/${ideaId}`),
   reanalyzeIdea: (ideaId: number) => request<any>(`/analysis/re-analyze/${ideaId}`, { method: 'POST' }),

@@ -35,8 +35,9 @@ import {
  ChevronRight,
  Radio,
 } from'lucide-react';
-import { api } from'@/lib/api';
-import { GuidedDemoModal } from'@/components/guided-demo-modal';
+import { api } from '@/lib/api';
+import { GuidedDemoModal } from '@/components/guided-demo-modal';
+import { InstantTryIt } from '@/components/instant-try-it';
 
 export default function LandingPage() {
  const [analytics, setAnalytics] = useState<any>(null);
@@ -195,6 +196,11 @@ export default function LandingPage() {
  <span>View Projects Directory</span>
  <ArrowRight className="h-3.5 w-3.5" />
  </Link>
+ </div>
+
+ {/* Instant Try-It Box */}
+ <div className="pt-6 max-w-4xl mx-auto">
+   <InstantTryIt />
  </div>
 
  {/* Realistic Product Workspace Preview */}
