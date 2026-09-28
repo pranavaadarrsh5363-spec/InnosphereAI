@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
-  Sparkles,
   Compass,
   Lightbulb,
   MapPin,
@@ -29,6 +28,12 @@ import {
   Database,
   AlertCircle,
   ExternalLink,
+  Atom,
+  FlaskConical,
+  FileText,
+  SlidersHorizontal,
+  ChevronRight,
+  Radio,
 } from 'lucide-react';
 import { api } from '@/lib/api';
 import { GuidedDemoModal } from '@/components/guided-demo-modal';
@@ -36,161 +41,196 @@ import { GuidedDemoModal } from '@/components/guided-demo-modal';
 export default function LandingPage() {
   const [analytics, setAnalytics] = useState<any>(null);
   const [demoModalOpen, setDemoModalOpen] = useState(false);
-  const [previewTab, setPreviewTab] = useState<'analysis' | 'discovery' | 'scoring' | 'roadmap' | 'hardware'>('analysis');
+  const [previewTab, setPreviewTab] = useState<'overview' | 'research' | 'experiments' | 'validation' | 'architecture'>('overview');
 
   useEffect(() => {
     api.getAnalytics().then(setAnalytics).catch(() => {});
   }, []);
 
-  const differentiators = [
+  // 1. Process Steps (How InnoSphere Works)
+  const processSteps = [
     {
-      num: '01',
-      title: 'Beyond Search',
-      subtitle: 'Conceptual Natural Language Understanding',
-      desc: 'Does not simply return keyword matches; it deeply understands your problem statement, target users, and engineering constraints.',
-      icon: Brain,
-      color: 'from-blue-500/20 to-indigo-500/20 border-indigo-500/30 text-indigo-400',
+      step: '01',
+      title: 'Define the problem',
+      desc: 'Formulate your scientific hypothesis, target stakeholders, and engineering constraints with structured problem decomposition.',
     },
     {
-      num: '02',
-      title: 'Multi-Source Intelligence',
-      subtitle: 'Unified Scientific & Engineering Discovery',
-      desc: 'Concurrently queries and aggregates arXiv, OpenAlex, Semantic Scholar, Crossref, GitHub, Hugging Face, and benchmark datasets.',
-      icon: Network,
-      color: 'from-purple-500/20 to-pink-500/20 border-purple-500/30 text-purple-400',
+      step: '02',
+      title: 'Explore research & resources',
+      desc: 'Discover relevant peer-reviewed papers, preprints, benchmark datasets, and open-source implementations across 7 scientific indices.',
     },
     {
-      num: '03',
-      title: 'Explainable AI',
-      subtitle: 'Transparent Multi-Factor Scoring',
-      desc: 'Explains exactly why each retrieved resource is relevant to your idea, breaking down problem match, domain match, and tech compatibility.',
-      icon: Sparkles,
-      color: 'from-emerald-500/20 to-teal-500/20 border-emerald-500/30 text-emerald-400',
+      step: '03',
+      title: 'Design the solution',
+      desc: 'Map hardware components, machine learning model architectures, and database requirements with technical explainability.',
     },
     {
-      num: '04',
-      title: 'Innovation Gap Detection',
-      subtitle: 'Uncovering Unsolved Research Gaps',
-      desc: 'Analyzes literature to detect unaddressed limitations in current approaches, highlighting high-novelty vectors for your project.',
-      icon: TrendingUp,
-      color: 'from-amber-500/20 to-orange-500/20 border-amber-500/30 text-amber-400',
+      step: '04',
+      title: 'Run experiments',
+      desc: 'Record deterministic trials, parameter configurations, edge telemetry, and comparative baselines in an empirical ledger.',
     },
     {
-      num: '05',
-      title: 'Idea-to-Roadmap',
-      subtitle: 'Actionable 10-Phase Engineering Plan',
-      desc: 'Transforms raw conceptual ideas into a milestone-by-milestone development lifecycle from literature review to defense and publishing.',
-      icon: MapPin,
-      color: 'from-indigo-500/20 to-cyan-500/20 border-indigo-500/30 text-cyan-400',
+      step: '05',
+      title: 'Validate evidence',
+      desc: 'Link each innovation claim to measured experimental results to substantiate novelty and defense readiness.',
     },
     {
-      num: '06',
-      title: 'Human + AI Collaboration',
-      subtitle: 'Faculty Mentorship & Rubric Evaluation',
-      desc: 'Combines AI-assisted resource recommendations with faculty mentor review rubrics, feedback threads, and student responses.',
-      icon: Users,
-      color: 'from-rose-500/20 to-red-500/20 border-rose-500/30 text-rose-400',
+      step: '06',
+      title: 'Prepare the innovation',
+      desc: 'Generate IEEE-compliant research drafts, jury presentation decks, and deployment blueprints for evaluation.',
     },
   ];
 
-  const visualFlowSteps = [
-    { name: 'IDEA', desc: 'Problem Definition', color: 'bg-indigo-600/20 border-indigo-500/40 text-indigo-300' },
-    { name: 'AI UNDERSTANDING', desc: 'Decomposition', color: 'bg-blue-600/20 border-blue-500/40 text-blue-300' },
-    { name: 'MULTI-SOURCE DISCOVERY', desc: '7 Scientific APIs', color: 'bg-purple-600/20 border-purple-500/40 text-purple-300' },
-    { name: 'EXPLAINABLE ANALYSIS', desc: 'Transparent Scoring', color: 'bg-emerald-600/20 border-emerald-500/40 text-emerald-300' },
-    { name: 'INSIGHTS & GAPS', desc: 'Novelty Frontiers', color: 'bg-amber-600/20 border-amber-500/40 text-amber-300' },
-    { name: 'ROADMAP', desc: '10 Execution Phases', color: 'bg-teal-600/20 border-teal-500/40 text-teal-300' },
-    { name: 'INNOVATION', desc: 'Verified MVP Solution', color: 'bg-rose-600/20 border-rose-500/40 text-rose-300' },
+  // 2. Core Capabilities Grid
+  const capabilities = [
+    {
+      title: 'Research Discovery',
+      desc: 'Identify relevant research papers, preprints, and citation graphs across arXiv, OpenAlex, and Semantic Scholar.',
+      icon: BookOpen,
+    },
+    {
+      title: 'Resource Intelligence',
+      desc: 'Catalog open-source code repositories, model weights on Hugging Face, and public benchmark datasets.',
+      icon: Database,
+    },
+    {
+      title: 'Experiment Management',
+      desc: 'Plan, execute, and record reproducible empirical trials with controlled baselines and metric logging.',
+      icon: FlaskConical,
+    },
+    {
+      title: 'Validation Matrix',
+      desc: 'Connect technical claims directly to observable experimental data and testbed measurements.',
+      icon: ShieldCheck,
+    },
+    {
+      title: 'Project Intelligence',
+      desc: 'Evaluate innovation readiness, identify research gaps, and prioritize actionable engineering milestones.',
+      icon: Activity,
+    },
+    {
+      title: 'Hardware Lab',
+      desc: 'Monitor real-time microcontroller telemetry, sensor thresholds, and digital testbeds with anomaly detection.',
+      icon: Cpu,
+    },
+    {
+      title: 'AI Mentor',
+      desc: 'Receive project-aware technical guidance, literature synthesis, and roadmap suggestions grounded in your active workspace.',
+      icon: Brain,
+    },
+  ];
+
+  // 3. Workflow Pipeline
+  const workflowStages = [
+    { stage: 'IDEA', label: 'Concept Intake' },
+    { stage: 'PROBLEM', label: 'Decomposition' },
+    { stage: 'RESEARCH', label: 'Literature & Data' },
+    { stage: 'SOLUTION', label: 'Architecture' },
+    { stage: 'EXPERIMENT', label: 'Empirical Trials' },
+    { stage: 'VALIDATION', label: 'Evidence Matrix' },
+    { stage: 'INNOVATION', label: 'Defended Project' },
+  ];
+
+  // 4. Evidence Sources
+  const evidenceSources = [
+    { name: 'arXiv Preprints', type: 'Peer-Reviewed & Preprints', count: '2.4M+ Papers', icon: BookOpen },
+    { name: 'OpenAlex', type: 'Scholarly Knowledge Graph', count: '250M+ Works', icon: Database },
+    { name: 'GitHub Open Source', type: 'Code Repositories', count: '100M+ Repos', icon: GitBranch },
+    { name: 'Hugging Face Hub', type: 'Pretrained AI Models', count: '500K+ Models', icon: Cpu },
+    { name: 'Kaggle & Open Data', type: 'Benchmark Datasets', count: '150K+ Datasets', icon: Layers },
+    { name: 'USPTO Patent Index', type: 'Prior Art & Novelty', count: '11M+ Patents', icon: ShieldCheck },
   ];
 
   const stats = [
-    { label: 'Resources Discovered', value: analytics?.metrics?.resources_discovered ? `${analytics.metrics.resources_discovered}+` : '2,450+', sub: 'Indexed & Semantically Ranked' },
+    { label: 'Resources Indexed', value: analytics?.metrics?.resources_discovered ? `${analytics.metrics.resources_discovered}+` : '2,450+', sub: 'Semantically Ranked' },
     { label: 'Ideas Analyzed', value: analytics?.metrics?.ideas_analyzed ? `${analytics.metrics.ideas_analyzed}+` : '380+', sub: 'Multi-Vector Evaluated' },
-    { label: 'Technologies Explored', value: '84+', sub: 'Frameworks, Models & Tools' },
-    { label: 'Research Sources', value: '7+', sub: 'Live Public APIs' },
-    { label: 'Student Projects', value: analytics?.metrics?.student_projects ? `${analytics.metrics.student_projects}+` : '120+', sub: 'Across 15 Domains' },
+    { label: 'Active Projects', value: analytics?.metrics?.student_projects ? `${analytics.metrics.student_projects}+` : '120+', sub: 'University Cohorts' },
+    { label: 'Scientific Sources', value: '7 Connectors', sub: 'Live Public APIs' },
+    { label: 'Research Domains', value: '15 Fields', sub: 'HealthTech to Edge AI' },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 pb-20 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[700px] h-[400px] bg-gradient-to-tr from-indigo-600/20 via-purple-600/20 to-blue-600/20 blur-[130px] pointer-events-none -z-10" />
-
-        <div className="mx-auto max-w-5xl text-center space-y-8">
-          {/* Top Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-xs font-semibold text-indigo-300 backdrop-blur-sm animate-in fade-in">
-            <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
-            <span>AI-Powered Student Innovation & Intelligent Discovery</span>
+    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+      {/* 1. Hero Section */}
+      <section className="pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+        <div className="mx-auto max-w-5xl text-center space-y-6">
+          {/* Restrained Eyebrow */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+            <Atom className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+            <span>INNOSPHERE AI · UNIVERSITY INNOVATION & RESEARCH PLATFORM</span>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.1]">
-            Turn Your Ideas Into <br />
-            <span className="gradient-text">Verified Innovation with AI</span>
+          {/* Disciplined Professional Heading */}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight max-w-4xl mx-auto">
+            Turn student ideas into evidence-backed innovations.
           </h1>
 
-          {/* Subheading */}
-          <p className="mx-auto max-w-3xl text-base sm:text-lg text-slate-300 leading-relaxed">
-            Students have ambitious ideas but struggle to discover and connect the right <strong>research papers, open-source repositories, datasets, and milestone roadmaps</strong>. InnoSphere AI transforms unstructured concepts into research-backed, explainable innovation pathways.
+          {/* Supporting Text */}
+          <p className="mx-auto max-w-3xl text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            Research relevant technologies, explore resources, run experiments, validate claims, and develop projects with AI-assisted guidance.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <Link
               href="/submit-idea"
-              className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-xl shadow-indigo-500/25 hover:scale-105 transition-all"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition-colors shadow-xs"
             >
-              <Lightbulb className="h-4 w-4 text-white" />
-              <span>Start Your Innovation</span>
+              <Lightbulb className="h-4 w-4" />
+              <span>Start a Project</span>
             </Link>
 
             <button
               onClick={() => setDemoModalOpen(true)}
-              className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-sm transition-all hover:text-white"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold text-xs transition-colors cursor-pointer"
             >
-              <Play className="h-4 w-4 fill-white" />
-              <span>Explore Guided Demo</span>
+              <Play className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+              <span>Explore the Platform</span>
             </button>
 
             <Link
-              href="/presentation"
-              className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-slate-200 text-xs font-semibold transition-all"
+              href="/projects"
+              className="flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-xs font-medium transition-colors"
             >
-              <Monitor className="h-3.5 w-3.5 text-purple-400" />
-              <span>Presentation Slides</span>
+              <span>View Projects Directory</span>
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
-          {/* Interactive Live Product Preview Canvas */}
-          <div className="mt-12 rounded-3xl bg-slate-950 border border-slate-800 shadow-2xl p-4 sm:p-6 text-left max-w-4xl mx-auto space-y-4">
-            {/* Preview Header & Tabs */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
-              <div className="flex items-center gap-2">
-                <div className="flex gap-1.5">
-                  <span className="h-3 w-3 rounded-full bg-rose-500/80 inline-block" />
-                  <span className="h-3 w-3 rounded-full bg-amber-500/80 inline-block" />
-                  <span className="h-3 w-3 rounded-full bg-emerald-500/80 inline-block" />
+          {/* Realistic Product Workspace Preview */}
+          <div className="mt-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-left max-w-4xl mx-auto overflow-hidden">
+            {/* Preview Top Bar */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 py-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/80">
+              <div className="flex items-center gap-3">
+                <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-slate-900 dark:text-white">
+                      Smart Community Water Quality & Early Warning Network
+                    </span>
+                    <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">
+                      Project #1 • Environmental IoT & AI
+                    </span>
+                  </div>
                 </div>
-                <span className="text-xs font-bold text-slate-300 ml-2">InnoSphere Intelligence Canvas</span>
               </div>
 
-              {/* Tabs */}
-              <div className="flex gap-1 bg-slate-900 p-1 rounded-xl border border-slate-800 text-[11px] overflow-x-auto max-w-full no-scrollbar">
+              {/* Workspace Preview Tabs */}
+              <div className="flex gap-1 bg-slate-200/70 dark:bg-slate-800 p-0.5 rounded-md text-[11px] overflow-x-auto no-scrollbar">
                 {[
-                  { id: 'analysis', label: 'AI Idea Analysis' },
-                  { id: 'discovery', label: '7-Source Discovery' },
-                  { id: 'scoring', label: 'Explainable Scoring' },
-                  { id: 'roadmap', label: '10-Phase Roadmap' },
-                  { id: 'hardware', label: 'Hardware Lab' },
+                  { id: 'overview', label: 'Project Overview' },
+                  { id: 'research', label: 'Research & Evidence' },
+                  { id: 'experiments', label: 'Experiments' },
+                  { id: 'validation', label: 'Validation Matrix' },
+                  { id: 'architecture', label: 'Architecture' },
                 ].map((t) => (
                   <button
                     key={t.id}
                     onClick={() => setPreviewTab(t.id as any)}
-                    className={`px-2.5 py-1 rounded-lg font-medium whitespace-nowrap transition-colors ${
+                    className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors cursor-pointer ${
                       previewTab === t.id
-                        ? 'bg-indigo-600 text-white font-bold'
-                        : 'text-slate-400 hover:text-white'
+                        ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-semibold shadow-2xs'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     {t.label}
@@ -200,94 +240,159 @@ export default function LandingPage() {
             </div>
 
             {/* Dynamic Preview Content */}
-            <div className="py-2">
-              {previewTab === 'analysis' && (
-                <div className="space-y-3 animate-in fade-in">
-                  <div className="p-3.5 rounded-2xl bg-indigo-950/30 border border-indigo-500/20 text-xs flex justify-between items-center">
-                    <div>
-                      <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-wider block">Target Domain</span>
-                      <h4 className="text-sm font-bold text-white">Smart Community Health & Early Warning</h4>
+            <div className="p-5">
+              {previewTab === 'overview' && (
+                <div className="space-y-4 text-xs">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-1">
+                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Problem Statement</span>
+                      <p className="text-slate-700 dark:text-slate-300 line-clamp-3">
+                        Contaminated municipal water kiosks in semi-urban communities lack real-time continuous sensor monitoring, leading to delayed contamination detection.
+                      </p>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20">
-                      Feasibility: 88%
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-[11px]">
-                    <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
-                      <span className="font-bold text-indigo-400">Technical Novelty: 94%</span>
-                      <p className="text-slate-400 text-[10px]">Bridges edge IoT telemetry with Spatio-Temporal GNNs.</p>
-                    </div>
-                    <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
-                      <span className="font-bold text-purple-400">Market Potential: 85%</span>
-                      <p className="text-slate-400 text-[10px]">High demand in primary rural clinics and district health hubs.</p>
-                    </div>
-                    <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
-                      <span className="font-bold text-emerald-400">Risk Assessment: Low</span>
-                      <p className="text-slate-400 text-[10px]">Quantized edge models minimize compute requirements.</p>
-                    </div>
-                  </div>
-                </div>
-              )}
 
-              {previewTab === 'discovery' && (
-                <div className="space-y-2.5 animate-in fade-in">
-                  <div className="flex items-center gap-2 overflow-x-auto pb-1 text-[10px] text-slate-400">
-                    <span className="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">arXiv (4 Papers)</span>
-                    <span className="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">GitHub (6 Repos)</span>
-                    <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">HuggingFace (3 Models)</span>
-                    <span className="px-2 py-0.5 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20">Kaggle (2 Datasets)</span>
-                  </div>
-                  <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 flex justify-between items-center text-xs">
-                    <div>
-                      <h4 className="font-bold text-white">Lightweight 1D-CNN Telemetry Transformer for Low-Power Edge Devices</h4>
-                      <p className="text-[10px] text-slate-400">Retrieved from arXiv (2025) &bull; 94% Relevance Match</p>
+                    <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-1">
+                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Technical Solution</span>
+                      <p className="text-slate-700 dark:text-slate-300 line-clamp-3">
+                        Solar-powered ESP32 microcontroller with analog turbidity/pH probes streaming telemetry via LoRaWAN into a FastAPI backend with 1D-CNN anomaly detection.
+                      </p>
                     </div>
-                    <span className="text-[10px] px-2 py-1 rounded bg-indigo-600/20 text-indigo-300 font-bold">Phase 3/4 Match</span>
-                  </div>
-                </div>
-              )}
 
-              {previewTab === 'scoring' && (
-                <div className="space-y-2 text-xs animate-in fade-in">
-                  <div className="p-3 rounded-xl bg-indigo-950/40 border border-indigo-500/30 space-y-2 text-[11px]">
-                    <div className="flex justify-between font-bold">
-                      <span className="text-indigo-300">Multi-Vector Semantic Match Breakdown</span>
-                      <span className="text-emerald-400">Overall: 94%</span>
-                    </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px]">
-                      <div className="p-2 rounded bg-slate-900 border border-slate-800">Problem Match: <strong className="text-white">96%</strong></div>
-                      <div className="p-2 rounded bg-slate-900 border border-slate-800">Domain Match: <strong className="text-white">92%</strong></div>
-                      <div className="p-2 rounded bg-slate-900 border border-slate-800">Tech Compatibility: <strong className="text-white">95%</strong></div>
-                      <div className="p-2 rounded bg-slate-900 border border-slate-800">Open Access: <strong className="text-emerald-400">100%</strong></div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {previewTab === 'roadmap' && (
-                <div className="space-y-2 animate-in fade-in">
-                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 text-[10px]">
-                    {['1. Literature', '2. Formulation', '3. Data Prep', '4. Core Dev', '5. Validation'].map((p, i) => (
-                      <div key={i} className={`p-2 rounded-lg border text-center ${i <= 2 ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-300' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
-                        <span className="font-bold block">{p}</span>
-                        <span className="text-[9px]">{i <= 2 ? 'Completed' : 'In Progress'}</span>
+                    <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-1">
+                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Recommended Next Action</span>
+                      <div className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-semibold pt-0.5">
+                        <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                        <span>Deploy INT8 quantized ONNX model on ESP32 node</span>
                       </div>
-                    ))}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1 text-[11px]">
+                    <div className="p-2.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                      <span className="text-slate-500 block">Research Citations</span>
+                      <span className="text-sm font-bold text-slate-900 dark:text-white">4 Papers Verified</span>
+                    </div>
+                    <div className="p-2.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                      <span className="text-slate-500 block">Empirical Experiments</span>
+                      <span className="text-sm font-bold text-slate-900 dark:text-white">8 Trials Recorded</span>
+                    </div>
+                    <div className="p-2.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                      <span className="text-slate-500 block">Validation Matrix</span>
+                      <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">6/6 Claims Validated</span>
+                    </div>
+                    <div className="p-2.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                      <span className="text-slate-500 block">TRL Maturity</span>
+                      <span className="text-sm font-bold text-blue-600 dark:text-blue-400">Level 5 (Validation)</span>
+                    </div>
                   </div>
                 </div>
               )}
 
-              {previewTab === 'hardware' && (
-                <div className="space-y-2 animate-in fade-in text-xs">
-                  <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 flex justify-between items-center">
-                    <div className="flex items-center gap-2">
-                      <Cpu className="h-4 w-4 text-indigo-400" />
+              {previewTab === 'research' && (
+                <div className="space-y-3 text-xs">
+                  <div className="flex items-center justify-between text-[11px] text-slate-500 border-b border-slate-200 dark:border-slate-800 pb-2">
+                    <span>Indexed Scientific References (Sample from arXiv & OpenAlex)</span>
+                    <span className="font-mono text-emerald-600 dark:text-emerald-400">94.8% Mean Semantic Match</span>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 flex justify-between items-center">
                       <div>
-                        <span className="font-bold text-white block">Water Kiosk IoT Node (ESP32)</span>
-                        <span className="text-[10px] text-emerald-400 font-mono">Telemetry Streaming (LoRaWAN &bull; 915 MHz)</span>
+                        <h4 className="font-semibold text-slate-900 dark:text-white">
+                          Lightweight 1D-CNN Telemetry Transformer for Low-Power Edge Microcontrollers
+                        </h4>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                          arXiv:2403.11892 &bull; IEEE Transactions on Industrial Informatics (2025)
+                        </p>
                       </div>
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-semibold border border-blue-200 dark:border-blue-900 shrink-0 ml-3">
+                        Phase 3 Match
+                      </span>
                     </div>
-                    <span className="text-xs font-mono font-bold text-emerald-400">Turbidity: 4.8 NTU</span>
+
+                    <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 flex justify-between items-center">
+                      <div>
+                        <h4 className="font-semibold text-slate-900 dark:text-white">
+                          Autonomous Water Quality Anomaly Detection Using LoRaWAN Sensor Clusters
+                        </h4>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                          OpenAlex W438921 &bull; Environmental Science & Technology (2024)
+                        </p>
+                      </div>
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-semibold border border-emerald-200 dark:border-emerald-900 shrink-0 ml-3">
+                        Baseline Reference
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {previewTab === 'experiments' && (
+                <div className="space-y-3 text-xs">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="border-b border-slate-200 dark:border-slate-800 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                          <th className="py-2 px-2">Trial</th>
+                          <th className="py-2 px-2">Hypothesis</th>
+                          <th className="py-2 px-2">Dataset / Testbed</th>
+                          <th className="py-2 px-2">Baseline</th>
+                          <th className="py-2 px-2">Result</th>
+                          <th className="py-2 px-2">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-[11px]">
+                        <tr>
+                          <td className="py-2.5 px-2 font-mono font-semibold">EXP-001</td>
+                          <td className="py-2.5 px-2">1D-CNN detects turbidity spikes in &lt;100ms</td>
+                          <td className="py-2.5 px-2 font-mono">Simulated Kiosk Matrix</td>
+                          <td className="py-2.5 px-2 text-slate-500">82.4% (Threshold)</td>
+                          <td className="py-2.5 px-2 font-bold text-slate-900 dark:text-white">96.8% Acc (68ms)</td>
+                          <td className="py-2.5 px-2"><span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold">CONFIRMED</span></td>
+                        </tr>
+                        <tr>
+                          <td className="py-2.5 px-2 font-mono font-semibold">EXP-002</td>
+                          <td className="py-2.5 px-2">LoRaWAN packet loss stays &lt;2% at 5km range</td>
+                          <td className="py-2.5 px-2 font-mono">SX1262 Physical Node</td>
+                          <td className="py-2.5 px-2 text-slate-500">5.2% (Standard)</td>
+                          <td className="py-2.5 px-2 font-bold text-slate-900 dark:text-white">0.85% Loss</td>
+                          <td className="py-2.5 px-2"><span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold">CONFIRMED</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {previewTab === 'validation' && (
+                <div className="space-y-3 text-xs">
+                  <div className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-slate-900 dark:text-white">Primary Claim Verification</span>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">Empirically Grounded</span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 dark:text-slate-300">
+                      <strong>Claim:</strong> "System alerts field staff within 5 minutes of bacterial or turbidity threshold breach."
+                    </p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                      <strong>Observed Evidence:</strong> 42 automated hardware trial runs observed mean alert dispatch latency of <strong>84 seconds</strong> across 3 municipal testing wells.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {previewTab === 'architecture' && (
+                <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs space-y-2">
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">End-to-End Pipeline</span>
+                  <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
+                    <span className="p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">Sensors (pH/NTU)</span>
+                    <span className="text-slate-400">&rarr;</span>
+                    <span className="p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">ESP32 (Quantized ONNX)</span>
+                    <span className="text-slate-400">&rarr;</span>
+                    <span className="p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">LoRaWAN Gateway</span>
+                    <span className="text-slate-400">&rarr;</span>
+                    <span className="p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">FastAPI + TimescaleDB</span>
+                    <span className="text-slate-400">&rarr;</span>
+                    <span className="p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">Next.js UI & WebSockets</span>
                   </div>
                 </div>
               )}
@@ -296,125 +401,64 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Visual Innovation Flow Diagram */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80 bg-slate-950/40">
-        <div className="max-w-6xl mx-auto space-y-6 text-center">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-400">
-            End-to-End Innovation Pipeline
-          </span>
+      {/* 2. How InnoSphere Works */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30">
+        <div className="max-w-6xl mx-auto space-y-8">
+          <div className="text-center space-y-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Methodology
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+              How InnoSphere Works
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+              A structured six-stage process translating unstructured concepts into verifiable, competition-ready innovations.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 pt-2">
-            {visualFlowSteps.map((step, idx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {processSteps.map((s) => (
               <div
-                key={idx}
-                className={`p-3 rounded-2xl border ${step.color} flex flex-col items-center justify-center text-center relative group transition-all hover:scale-105`}
+                key={s.step}
+                className="p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-2 hover:border-slate-300 dark:hover:border-slate-700 transition-colors shadow-2xs"
               >
-                <span className="text-[10px] font-mono text-slate-400 mb-0.5 font-bold">0{idx + 1}</span>
-                <span className="text-xs font-extrabold text-white tracking-tight">{step.name}</span>
-                <span className="text-[10px] text-slate-400 mt-1">{step.desc}</span>
+                <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">{s.step}</span>
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white">{s.title}</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Problem & Solution Comparison Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* The Problem */}
-          <div className="p-8 rounded-3xl bg-rose-950/20 border border-rose-500/20 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 text-xs font-bold border border-rose-500/30">
-              <AlertCircle className="h-3.5 w-3.5" />
-              <span>The Problem Students Face</span>
-            </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white">
-              Valuable Resources Are Fragmented & Overwhelming
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Students frequently develop ambitious technical ideas but struggle to locate relevant peer-reviewed papers, open-source code repositories, clean datasets, and deployment frameworks. Standard search engines return unstructured links without contextual relevance or engineering roadmaps.
-            </p>
-            <ul className="space-y-2 text-xs text-slate-400 pt-2">
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-rose-400" />
-                Disconnected literature, code repos, and dataset repositories
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-rose-400" />
-                No explanation of why a particular tool or paper is applicable
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-rose-400" />
-                Difficulty identifying genuine innovation gaps and novelty
-              </li>
-            </ul>
-          </div>
-
-          {/* The Solution */}
-          <div className="p-8 rounded-3xl bg-emerald-950/20 border border-emerald-500/20 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/30">
-              <CheckCircle2 className="h-3.5 w-3.5" />
-              <span>The InnoSphere AI Solution</span>
-            </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white">
-              Structured, Explainable Innovation Pathways
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              InnoSphere AI leverages natural language understanding to decompose ideas, concurrently query 7 global scientific sources, score relevance with transparent multi-factor metrics, detect innovation gaps, and generate structured 10-phase milestone roadmaps.
-            </p>
-            <ul className="space-y-2 text-xs text-slate-400 pt-2">
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                Real-time multi-source discovery (arXiv, OpenAlex, GitHub, HF, Kaggle)
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                Transparent AI Explainability and multi-factor relevance estimates
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                Integrated 10-phase roadmaps + faculty mentor review workflows
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Section: Why InnoSphere AI? */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80 bg-slate-950/60">
-        <div className="max-w-6xl mx-auto space-y-12">
-          <div className="text-center space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">
-              Core Architectural Advantages
+      {/* 3. Core Capabilities */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+        <div className="max-w-6xl mx-auto space-y-8">
+          <div className="text-center space-y-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Platform Features
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              Why InnoSphere AI?
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+              Core Capabilities
             </h2>
-            <p className="text-sm text-slate-400 max-w-2xl mx-auto">
-              Six foundational pillars that distinguish our platform from generic search engines and chatbot assistants.
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+              Integrated engineering and scientific modules designed for research rigor.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {differentiators.map((item) => {
-              const Icon = item.icon;
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {capabilities.map((c, i) => {
+              const Icon = c.icon;
               return (
                 <div
-                  key={item.num}
-                  className={`p-6 rounded-3xl bg-slate-900/90 border ${item.color} space-y-4 flex flex-col justify-between hover:scale-[1.02] transition-transform`}
+                  key={i}
+                  className="p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/60 space-y-2.5 hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
                 >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <span className="text-xs font-mono font-bold text-slate-500">{item.num}</span>
-                    </div>
-                    <div>
-                      <h3 className="text-base font-extrabold text-white">{item.title}</h3>
-                      <p className="text-xs text-indigo-300 font-medium mt-0.5">{item.subtitle}</p>
-                    </div>
-                    <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                  <div className="h-8 w-8 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                    <Icon className="h-4 w-4" />
                   </div>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">{c.title}</h3>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{c.desc}</p>
                 </div>
               );
             })}
@@ -422,51 +466,185 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Platform Dynamic Stats */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
-            {stats.map((stat, i) => (
-              <div key={i} className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-1">
-                <span className="text-2xl sm:text-3xl font-black text-white tracking-tight block">
-                  {stat.value}
-                </span>
-                <span className="text-xs font-semibold text-indigo-300 block">{stat.label}</span>
-                <span className="text-[10px] text-slate-500 block">{stat.sub}</span>
+      {/* 4. Project Workflow Pipeline */}
+      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30">
+        <div className="max-w-6xl mx-auto space-y-6 text-center">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            Lifecycle Architecture
+          </span>
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+            End-to-End Project Workflow
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-2 pt-2">
+            {workflowStages.map((wf, idx) => (
+              <div
+                key={idx}
+                className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col items-center justify-center text-center shadow-2xs"
+              >
+                <span className="text-[10px] font-mono text-slate-400 font-bold mb-0.5">0{idx + 1}</span>
+                <span className="text-xs font-bold text-slate-900 dark:text-white tracking-tight">{wf.stage}</span>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">{wf.label}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Bottom CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-b from-slate-950 to-indigo-950/40">
-        <div className="max-w-4xl mx-auto space-y-6">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Ready to Accelerate Your Student Innovation?
+      {/* 5. Research Credibility: Build with Evidence, Not Assumptions */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+        <div className="max-w-6xl mx-auto space-y-8">
+          <div className="max-w-2xl space-y-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+              Evidence-Backed Rigor
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+              Build with evidence, not assumptions.
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Every insight, recommendation, and thesis draft is grounded in traceable academic literature, verified open-source implementations, and real testbed datasets.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {evidenceSources.map((src, i) => {
+              const Icon = src.icon;
+              return (
+                <div
+                  key={i}
+                  className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 flex items-center justify-between"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="h-8 w-8 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300">
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900 dark:text-white">{src.name}</h4>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400">{src.type}</p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 font-medium">
+                    {src.count}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. AI Mentor Section (Engineering Assistant, Not Sci-Fi Hype) */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+              <Brain className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+              <span>Project-Aware Guidance</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+              An AI Mentor grounded in your active codebase and citations.
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Unlike generic chatbots, the InnoSphere AI Mentor retrieves the specific context of your active project: your problem statement, logged experiments, selected hardware components, and saved literature papers.
+            </p>
+            <ul className="space-y-2 text-xs text-slate-700 dark:text-slate-300">
+              <li className="flex items-center gap-2">
+                <Check className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                <span>Identifies literature and patent gaps to substantiate novelty claims</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Check className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                <span>Recommends relevant ML frameworks, loss functions, and sensor models</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Check className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                <span>Assists with 10-phase execution roadmaps and competition defense rubrics</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* AI Mentor UI Sample Preview */}
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm space-y-3 text-xs">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+              <div className="flex items-center gap-2">
+                <div className="h-6 w-6 rounded bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center font-bold text-[10px]">
+                  <Brain className="h-3.5 w-3.5 text-blue-400 dark:text-blue-600" />
+                </div>
+                <span className="font-bold text-slate-900 dark:text-white">AI Mentor &bull; Project Advisor</span>
+              </div>
+              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">Context: ESP32 Water Kiosk Node</span>
+            </div>
+
+            <div className="space-y-2.5">
+              <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-blue-900 dark:text-blue-200 border border-blue-100 dark:border-blue-900/50">
+                <p className="font-medium">Student: "How can I reduce inference latency on the ESP32 while classifying turbidity anomalies?"</p>
+              </div>
+
+              <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/60 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 leading-relaxed text-[11.5px]">
+                <p className="font-semibold text-slate-900 dark:text-white mb-1">Recommendation:</p>
+                <p>
+                  1. Quantize your 1D-CNN weights from FP32 to INT8 using TensorFlow Lite Micro. In published benchmarks (arXiv:2403.11892), this reduces flash footprint by <strong>74%</strong> with only <strong>0.3%</strong> loss in F1-score.
+                </p>
+                <p className="mt-1">
+                  2. Use a fixed circular buffer in SRAM rather than dynamic heap allocations to avoid memory fragmentation during 24/7 continuous telemetry streaming.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Platform Dynamic Stats */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+            {stats.map((stat, i) => (
+              <div key={i} className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 space-y-1">
+                <span className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight block">
+                  {stat.value}
+                </span>
+                <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">{stat.label}</span>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 block">{stat.sub}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Bottom Call to Action */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 text-center bg-slate-50 dark:bg-slate-900/60">
+        <div className="max-w-3xl mx-auto space-y-5">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Ready to develop your next student innovation project?
           </h2>
-          <p className="text-sm text-slate-300 max-w-xl mx-auto">
-            Experience how InnoSphere AI connects research, open code, datasets, and milestone roadmaps.
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
+            Join student innovators and faculty mentors building verified, reproducible research solutions on InnoSphere AI.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <Link
+              href="/submit-idea"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition-colors shadow-xs"
+            >
+              <Lightbulb className="h-4 w-4" />
+              <span>Submit Innovation Idea</span>
+            </Link>
             <button
               onClick={() => setDemoModalOpen(true)}
-              className="flex items-center gap-2 px-8 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-xl shadow-indigo-500/25 hover:scale-105 transition-all"
+              className="px-5 py-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold text-xs transition-colors cursor-pointer"
             >
-              <Play className="h-4 w-4 fill-white" />
-              <span>Start 5-Minute Guided Demo</span>
+              Explore Guided Tour
             </button>
             <Link
               href="/dashboard"
-              className="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-sm transition-all"
+              className="px-5 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium text-xs transition-colors"
             >
-              Enter Dashboard
+              Enter Dashboard &rarr;
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Guided Demo Modal */}
+      {/* Guided Tour Modal */}
       <GuidedDemoModal isOpen={demoModalOpen} onClose={() => setDemoModalOpen(false)} />
     </div>
   );

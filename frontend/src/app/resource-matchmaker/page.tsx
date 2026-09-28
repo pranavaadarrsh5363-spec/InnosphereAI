@@ -89,35 +89,30 @@ export default function GlobalResourceMatchmakerHubPage() {
   return (
     <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
-        {/* Header Hero */}
-        <div className="bg-gradient-to-r from-emerald-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 sm:p-10 border border-emerald-900/50 shadow-xl relative overflow-hidden">
-          <div className="max-w-3xl space-y-3 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-              <SlidersHorizontal className="w-4 h-4 text-emerald-400" /> AI Resource Matchmaker & Allocation Engine
+        {/* Academic Page Header */}
+        <div className="bg-white dark:bg-slate-900 rounded-xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xs">
+          <div className="max-w-3xl space-y-2">
+            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+              <SlidersHorizontal className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> Resource Matchmaker & Allocation Engine
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-              Project-Aware Resource Matchmaker
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Resource Matchmaker
             </h1>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              <span className="text-emerald-300 font-semibold">Transform raw resource discovery into realistic, budget-capped, hardware-compatible, and skill-aligned allocation plans.</span> Match your student project with verified open-source models, edge microcontrollers, sensors, free datasets, and zero-cost cloud tiers.
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Match your innovation project with verified open-source models, edge hardware, sensor specs, benchmark datasets, and institutional cloud tiers based on budget and skill constraints.
             </p>
 
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              {healthData && (
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs bg-slate-800/80 border border-slate-700 text-slate-300">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="font-mono text-emerald-400">{healthData.status}</span>
-                  <span className="text-slate-500">|</span>
-                  <span>Engine Latency: {healthData.latency_ms}ms</span>
+            {healthData && (
+              <div className="pt-2 flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  <span className="font-mono text-emerald-600 dark:text-emerald-400 font-semibold">{healthData.status}</span>
+                  <span className="text-slate-400">|</span>
+                  <span>Latency: {healthData.latency_ms}ms</span>
                 </div>
-              )}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 font-medium">
-                <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" />
-                Anti-Hallucinated Pricing with Evidence Verification
               </div>
-            </div>
+            )}
           </div>
-          <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-emerald-600/10 to-transparent pointer-events-none" />
         </div>
 
         {/* 4 Pillars Grid */}

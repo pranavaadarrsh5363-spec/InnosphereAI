@@ -84,21 +84,20 @@ export default function GlobalResearchHubPage() {
   return (
     <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 animate-in fade-in">
       {/* Top Banner */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 dark:border-slate-800">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 flex items-center gap-1.5">
-              <Sparkles className="h-3 w-3 text-indigo-400" />
+            <span className="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-1.5">
+              <Atom className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
               Academic Research Suite
             </span>
-            <span className="text-xs text-slate-500">•</span>
-            <span className="text-xs text-slate-400 font-mono">IEEEtran & ACM Compliant</span>
+            <span className="text-xs text-slate-400">•</span>
+            <span className="text-xs text-slate-500 font-mono">IEEEtran & ACM Standard</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-3">
-            <Atom className="h-8 w-8 text-indigo-400" />
-            AI Research Workspace & Paper Generator
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+            Research Workspace & Paper Generator
           </h1>
-          <p className="text-sm text-slate-400 max-w-3xl">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
             Transform student ideas, multi-source literature, empirical telemetry, and innovation gaps into publication-ready IEEE conference papers and institutional technical reports with mathematical grounding.
           </p>
         </div>
@@ -106,55 +105,55 @@ export default function GlobalResearchHubPage() {
         {activeProject && (
           <Link
             href={`/projects/${activeProject.id}/research`}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:brightness-110 text-white text-xs font-bold shadow-lg shadow-indigo-500/20 transition-all shrink-0 self-start lg:self-center"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs transition-colors shrink-0 self-start lg:self-center"
           >
-            <FileText className="h-4 w-4" />
+            <FileText className="h-3.5 w-3.5" />
             <span>Open Active Project Paper</span>
-            <ArrowRight className="h-4 w-4 ml-1" />
+            <ArrowRight className="h-3.5 w-3.5 ml-0.5" />
           </Link>
         )}
       </div>
 
       {/* Aggregate Telemetry Stats */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between shadow-2xs">
           <div>
-            <span className="text-xs font-medium text-slate-400">Total Projects</span>
-            <span className="text-xl font-bold text-white block mt-0.5">{projects.length}</span>
+            <span className="text-xs font-medium text-slate-500">Total Projects</span>
+            <span className="text-lg font-bold text-slate-900 dark:text-white block mt-0.5">{projects.length}</span>
           </div>
-          <Layers className="h-6 w-6 text-slate-600" />
+          <Layers className="h-5 w-5 text-slate-400" />
         </div>
 
-        <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between shadow-2xs">
           <div>
-            <span className="text-xs font-medium text-slate-400">Verified Citations</span>
-            <span className="text-xl font-bold text-indigo-400 block mt-0.5">{totalCitations}</span>
+            <span className="text-xs font-medium text-slate-500">Verified Citations</span>
+            <span className="text-lg font-bold text-blue-600 dark:text-blue-400 block mt-0.5">{totalCitations}</span>
           </div>
-          <BookMarked className="h-6 w-6 text-indigo-500/50" />
+          <BookMarked className="h-5 w-5 text-blue-500/60" />
         </div>
 
-        <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between shadow-2xs">
           <div>
-            <span className="text-xs font-medium text-slate-400">Empirical Experiments</span>
-            <span className="text-xl font-bold text-purple-400 block mt-0.5">{totalExperiments}</span>
+            <span className="text-xs font-medium text-slate-500">Empirical Trials</span>
+            <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400 block mt-0.5">{totalExperiments}</span>
           </div>
-          <Cpu className="h-6 w-6 text-purple-500/50" />
+          <Cpu className="h-5 w-5 text-indigo-500/60" />
         </div>
 
-        <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between shadow-2xs">
           <div>
-            <span className="text-xs font-medium text-slate-400">Avg Quality Score</span>
-            <span className="text-xl font-bold text-emerald-400 block mt-0.5">{avgQualityScore}%</span>
+            <span className="text-xs font-medium text-slate-500">Avg Quality Readiness</span>
+            <span className="text-lg font-bold text-emerald-600 dark:text-emerald-400 block mt-0.5">{avgQualityScore}%</span>
           </div>
-          <Award className="h-6 w-6 text-emerald-500/50" />
+          <Award className="h-5 w-5 text-emerald-500/60" />
         </div>
       </div>
 
       {/* Workflow Steps Banner */}
-      <div className="p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-indigo-500/20">
-        <div className="flex items-center gap-2 mb-3">
-          <Sparkles className="h-4 w-4 text-indigo-400" />
-          <h2 className="text-xs font-bold text-white uppercase tracking-wider">End-to-End Academic Pipeline</h2>
+      <div className="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 shadow-2xs">
+        <div className="flex items-center gap-2">
+          <Atom className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+          <h2 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">End-to-End Academic Pipeline</h2>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 text-center text-xs">
           <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300">

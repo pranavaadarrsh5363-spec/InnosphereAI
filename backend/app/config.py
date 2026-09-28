@@ -50,7 +50,8 @@ class Settings:
     HYBRID_WEIGHT_QUALITY: float = float(os.getenv("HYBRID_WEIGHT_QUALITY", "0.10"))
     AI_RERANK_TOP_N: int = int(os.getenv("AI_RERANK_TOP_N", "10"))
 
-    # External APIs
+    # External APIs & Authentication
+    GOOGLE_CLIENT_ID: str = os.getenv("GOOGLE_CLIENT_ID", "")
     GITHUB_TOKEN: str = os.getenv("GITHUB_TOKEN", "")
     SEMANTIC_SCHOLAR_KEY: str = os.getenv("SEMANTIC_SCHOLAR_KEY", "")
     EXTERNAL_API_TIMEOUT_SECONDS: float = float(os.getenv("EXTERNAL_API_TIMEOUT_SECONDS", "8.0"))

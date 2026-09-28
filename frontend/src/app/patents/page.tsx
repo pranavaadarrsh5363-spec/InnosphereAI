@@ -83,20 +83,19 @@ export default function GlobalPatentHubPage() {
   return (
     <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
-        {/* Header Hero */}
-        <div className="bg-gradient-to-r from-amber-950 via-slate-900 to-slate-900 text-white rounded-3xl p-8 sm:p-10 border border-amber-900/50 shadow-xl relative overflow-hidden">
-          <div className="max-w-3xl space-y-3 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
-              <Scale className="w-4 h-4 text-amber-400" /> Evidence-Grounded Patent & Prior-Art Intelligence
+        {/* Academic Page Header */}
+        <div className="bg-white dark:bg-slate-900 rounded-xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xs">
+          <div className="max-w-3xl space-y-2">
+            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+              <Scale className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" /> Evidence-Grounded Patent & Prior-Art Intelligence
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-              AI Patent & Prior-Art Explorer
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Patent & Prior-Art Explorer
             </h1>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              <span className="text-amber-300 font-semibold">Discover related patent publications, extract technical features, analyze potential overlaps, and uncover genuine differentiation opportunities</span> for your innovation project.
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Discover related patent publications, extract technical features, analyze potential overlaps, and identify technical differentiation opportunities for your innovation project.
             </p>
           </div>
-          <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-amber-600/10 to-transparent pointer-events-none" />
         </div>
 
         {/* Mandatory Legal & Scientific Safety Disclaimer */}

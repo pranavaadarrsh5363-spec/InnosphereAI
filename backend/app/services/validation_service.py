@@ -1111,15 +1111,15 @@ class ValidationService:
                 {
                     "id": c.id,
                     "title": c.title,
-                    "authors": c.authors or "Research Authors",
+                    "authors": c.authors if c.authors else "Research Authors",
                     "year": c.year or 2024,
                     "venue": c.venue or "IEEE / ACM Conference",
                     "doi": c.doi,
                     "arxiv_id": c.arxiv_id,
-                    "relevance_score": c.relevance_score or 92,
-                    "source_type": "RESEARCH_SUPPORTED",
-                    "key_insights": c.key_insights or "Empirical methodology supports edge temporal filtering.",
-                    "abstract": c.abstract or ""
+                    "relevance_score": getattr(c, "relevance_score", None) or 92,
+                    "source_type": getattr(c, "resource_type", "RESEARCH_SUPPORTED"),
+                    "key_insights": getattr(c, "key_insights", None) or "Empirical methodology supports edge temporal filtering.",
+                    "abstract": getattr(c, "abstract", None) or ""
                 }
                 for c in citations
             ] if citations else [

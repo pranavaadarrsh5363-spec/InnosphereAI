@@ -16,22 +16,25 @@ class TestHealthAndSecurityHeaders(unittest.TestCase):
         self.assertIn("version", data)
 
     def test_health_liveness_probe(self):
-        """Verify GET /health and /health/live."""
-        res = self.client.get("/health")
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(res.json()["status"], "healthy")
+        """Verify GET /health, /api/v1/health, and /api/v1/health/live."""
+        for ep in ["/health", "/api/v1/health"]:
+            res = self.client.get(ep)
+            self.assertEqual(res.status_code, 200)
+            self.assertEqual(res.json()["status"], "healthy")
 
-        res_live = self.client.get("/health/live")
-        self.assertEqual(res_live.status_code, 200)
-        self.assertEqual(res_live.json()["status"], "alive")
+        for ep in ["/health/live", "/api/v1/health/live"]:
+            res_live = self.client.get(ep)
+            self.assertEqual(res_live.status_code, 200)
+            self.assertEqual(res_live.json()["status"], "alive")
 
     def test_readiness_probe(self):
-        """Verify GET /health/ready checks DB connectivity."""
-        res = self.client.get("/health/ready")
-        self.assertEqual(res.status_code, 200)
-        data = res.json()
-        self.assertEqual(data["status"], "ready")
-        self.assertEqual(data["database"], "connected")
+        """Verify GET /health/ready and /api/v1/health/ready check DB connectivity."""
+        for ep in ["/health/ready", "/api/v1/health/ready"]:
+            res = self.client.get(ep)
+            self.assertEqual(res.status_code, 200)
+            data = res.json()
+            self.assertEqual(data["status"], "ready")
+            self.assertEqual(data["database"], "connected")
 
     def test_security_headers_present(self):
         """Verify HTTP security headers are attached to responses."""

@@ -68,6 +68,11 @@ class TestAuthSecurity(unittest.TestCase):
         self.assertIn("access_token", data)
         self.assertEqual(data["user"]["email"], "google_test_student@university.edu")
 
+    def test_google_login_invalid_credential_rejection(self):
+        """Verify empty or invalid Google token without email is rejected."""
+        res = self.client.post("/api/v1/auth/google", json={})
+        self.assertEqual(res.status_code, 400)
+
     def test_forgot_password_protection(self):
         """Verify password reset returns anti-enumeration response."""
         res = self.client.post("/api/v1/auth/forgot-password", json={

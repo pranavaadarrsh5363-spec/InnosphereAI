@@ -64,35 +64,34 @@ export default function GlobalKnowledgeGraphHubPage() {
   return (
     <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
-        {/* Header Hero */}
-        <div className="bg-gradient-to-r from-indigo-950 via-slate-900 to-slate-900 text-white rounded-3xl p-8 sm:p-10 border border-indigo-900/50 shadow-xl relative overflow-hidden">
-          <div className="max-w-3xl space-y-3 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-              <Share2 className="w-4 h-4 text-indigo-400" /> Evidence-Grounded Cross-System Intelligence
+        {/* Academic Page Header */}
+        <div className="bg-white dark:bg-slate-900 rounded-xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xs">
+          <div className="max-w-3xl space-y-2">
+            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
+              <Share2 className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" /> Evidence-Grounded Cross-System Intelligence
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
               Knowledge Graph
             </h1>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              <span className="text-indigo-300 font-semibold">Explore the relationships between your idea, research, technologies, datasets, hardware, experiments, validation evidence, skills, and architecture.</span> A real, dynamic graph generated from authentic project telemetry that lets students, mentors, and judges navigate innovation connections.
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Explore the relationships between ideas, research literature, technologies, datasets, hardware, experiments, validation evidence, and architecture. Generated from project telemetry for students, mentors, and academic reviewers.
             </p>
           </div>
-          <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-indigo-600/10 to-transparent pointer-events-none" />
         </div>
 
         {/* Flagship Graph Spotlight Banner */}
         {flagshipGraph && (
-          <div className="bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900/60 rounded-2xl p-6 shadow-md relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-xs relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
                   FLAGSHIP INNOVATION GRAPH
                 </span>
                 <span className="text-xs text-slate-500 dark:text-slate-400">
                   Version {flagshipGraph.version} • {flagshipGraph.stats?.total_nodes || 0} Entities • {flagshipGraph.stats?.total_edges || 0} Relationships
                 </span>
               </div>
-              <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
                 {flagshipGraph.name}
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
@@ -101,7 +100,7 @@ export default function GlobalKnowledgeGraphHubPage() {
             </div>
             <button
               onClick={() => router.push(`/projects/${flagshipGraph.project_id}/knowledge-graph`)}
-              className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-sm shrink-0 transition-colors"
+              className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-xs shrink-0 transition-colors"
             >
               <Share2 className="w-4 h-4" /> Open Flagship Graph <ArrowRight className="w-4 h-4" />
             </button>

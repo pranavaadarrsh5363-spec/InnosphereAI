@@ -342,55 +342,56 @@ export default function HardwareLabPage() {
       )}
 
       {/* Top Banner & Project Sync */}
-      <div className="rounded-3xl bg-gradient-to-r from-slate-950 via-indigo-950/70 to-slate-950 border border-slate-800 p-6 sm:p-8 shadow-2xl relative overflow-hidden space-y-4">
+      <div className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-7 shadow-xs relative overflow-hidden space-y-4">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-[11px] font-bold text-indigo-300">
-                <Cpu className="h-3.5 w-3.5 text-indigo-400" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+                <Cpu className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
                 <span>Hardware Lab & Edge Telemetry Studio</span>
               </span>
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                SIMULATED TELEMETRY
+              <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                DIGITAL TESTBED • SIMULATED TELEMETRY
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
               Virtual Hardware & Sensor Innovation Lab
             </h1>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
               Simulate microcontrollers (ESP32 / Arduino / RPi), configure IoT sensor networks, inject real-time anomalies, and validate telemetry pipelines for{' '}
-              <span className="text-white font-bold">{activeProject?.title || 'your innovation project'}</span>.
+              <span className="text-slate-900 dark:text-white font-semibold">{activeProject?.title || 'your innovation project'}</span>.
             </p>
           </div>
 
           {/* Quick Action Controls */}
-          <div className="flex flex-wrap items-center gap-2.5">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setExperimentModalOpen(true)}
-              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold shadow-lg shadow-purple-500/25 transition-all"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
             >
-              <Award className="h-4 w-4" />
+              <Award className="h-3.5 w-3.5" />
               <span>Log Experiment</span>
             </button>
             <button
               onClick={() => setSensorModalOpen(true)}
-              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-lg shadow-indigo-500/25 transition-all"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 text-xs font-semibold shadow-xs transition-colors cursor-pointer"
             >
-              <Plus className="h-4 w-4" />
-              <span>Add Sensor</span>
+              <Plus className="h-3.5 w-3.5" />
+              <span>Attach Sensor</span>
             </button>
           </div>
         </div>
 
         {/* Project Selector Sync Dropdown */}
         {projects.length > 1 && (
-          <div className="flex items-center gap-2 text-xs pt-2 border-t border-slate-800/80">
-            <span className="text-slate-400 font-medium">Active Project:</span>
+          <div className="flex items-center gap-2 text-xs pt-2 border-t border-slate-100 dark:border-slate-800">
+            <span className="text-slate-500 dark:text-slate-400 font-medium">Active Project:</span>
             <select
               value={activeProject?.id}
               onChange={(e) => setActiveProjectId(Number(e.target.value))}
-              className="bg-slate-900 border border-slate-700 text-indigo-300 rounded-lg px-2.5 py-1 text-xs font-semibold focus:outline-none focus:border-indigo-500"
+              aria-label="Select Active Project for Hardware Lab"
+              className="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 rounded-lg px-2.5 py-1 text-xs font-semibold focus:outline-hidden focus:border-indigo-500"
             >
               {projects.map((p) => (
                 <option key={p.id} value={p.id}>

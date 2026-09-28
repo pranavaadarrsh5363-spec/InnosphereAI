@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
+import Script from 'next/script';
 import { useRouter, useSearchParams } from 'next/navigation';
 import {
   Sparkles,
@@ -170,6 +171,56 @@ function LoginFormContent() {
     }
   }, [user, isLoading, router, rawRedirect]);
 
+  // Google Identity Services (GIS) SDK Initialization
+  useEffect(() => {
+    const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+    if (googleClientId && typeof window !== 'undefined') {
+      const initGsi = () => {
+        if ((window as any).google?.accounts?.id) {
+          try {
+            (window as any).google.accounts.id.initialize({
+              client_id: googleClientId,
+              callback: async (response: any) => {
+                if (response?.credential) {
+                  setGoogleSubmitting(true);
+                  setAuthError(null);
+                  try {
+                    const authUser = await googleLogin({ credential: response.credential }, rememberMe);
+                    setAuthSuccessMsg(`Signed in with Google as ${authUser.full_name || authUser.email}! Redirecting...`);
+                    const destination = getSafeRedirectUrl(rawRedirect, authUser.role);
+                    setTimeout(() => {
+                      router.push(destination);
+                    }, 350);
+                  } catch (err: any) {
+                    setAuthError(err.message || 'Google Sign-In failed to verify with the server.');
+                  } finally {
+                    setGoogleSubmitting(false);
+                  }
+                }
+              },
+              auto_select: false,
+              cancel_on_tap_outside: true,
+            });
+          } catch (e) {
+            console.warn('Google Identity Services initialization notice:', e);
+          }
+        }
+      };
+
+      if ((window as any).google?.accounts?.id) {
+        initGsi();
+      } else {
+        const timer = setInterval(() => {
+          if ((window as any).google?.accounts?.id) {
+            clearInterval(timer);
+            initGsi();
+          }
+        }, 300);
+        return () => clearInterval(timer);
+      }
+    }
+  }, [googleLogin, rawRedirect, rememberMe, router]);
+
   // Client-side Validation
   const validateInputs = () => {
     let isValid = true;
@@ -259,6 +310,12 @@ function LoginFormContent() {
   };
 
   const handleGoogleLogin = async () => {
+    const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+    if (googleClientId && typeof window !== 'undefined' && (window as any).google?.accounts?.id) {
+      (window as any).google.accounts.id.prompt();
+      return;
+    }
+
     setGoogleSubmitting(true);
     setAuthError(null);
     setAuthSuccessMsg(null);
@@ -277,7 +334,7 @@ function LoginFormContent() {
         router.push(destination);
       }, 350);
     } catch (err: any) {
-      setAuthError('Google Sign-In failed. Please try again or use standard credentials.');
+      setAuthError(err.message || 'Google Sign-In failed. Please try again or use standard credentials.');
     } finally {
       setGoogleSubmitting(false);
     }
@@ -328,6 +385,7 @@ function LoginFormContent() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex items-center justify-center p-4 sm:p-6 lg:p-10 transition-colors duration-200">
+      <Script src="https://accounts.google.com/gsi/client" strategy="afterInteractive" />
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden min-h-[680px]">
         {/* ========================================================================= */}
         {/* LEFT PANEL: Branding, Value Proposition, Innovation Graph Highlights      */}
