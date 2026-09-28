@@ -37,8 +37,9 @@ class Settings:
     AI_TIMEOUT_SECONDS: float = float(os.getenv("AI_TIMEOUT_SECONDS", "15.0"))
     
     # Semantic & Embedding Configuration
+    GEMINI_EMBEDDING_MODEL: str = os.getenv("GEMINI_EMBEDDING_MODEL") or os.getenv("EMBEDDING_MODEL") or "text-embedding-004"
+    EMBEDDING_MODEL: str = GEMINI_EMBEDDING_MODEL
     EMBEDDING_PROVIDER: str = os.getenv("EMBEDDING_PROVIDER", "auto") # auto | gemini | deterministic
-    EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "text-embedding-004")
     EMBEDDING_DIMENSIONS: int = int(os.getenv("EMBEDDING_DIMENSIONS", "768"))
     VECTOR_SEARCH_BACKEND: str = os.getenv("VECTOR_SEARCH_BACKEND", "auto") # auto | pgvector | in_memory
     
