@@ -39,20 +39,20 @@ def get_analytics_overview(db: Session = Depends(get_db)):
 
     return {
         "metrics": {
-            "resources_discovered": max(total_resources, 2450),
-            "ideas_analyzed": max(total_ideas, 380),
-            "technologies_explored": 84,
+            "resources_discovered": total_resources,
+            "ideas_analyzed": total_ideas,
+            "technologies_explored": len(set([t for p in db.query(Project.technologies).all() if p[0] for t in p[0]])),
             "research_sources": 8,
-            "student_projects": max(total_projects, 120),
-            "active_innovators": max(total_users, 450),
+            "student_projects": total_projects,
+            "active_innovators": total_users,
             "tasks_completed": completed_tasks,
             "total_roadmap_tasks": total_tasks,
-            "hardware_devices_active": max(total_devices, 14),
-            "hardware_sensors_configured": max(total_sensors, 48),
-            "experiments_completed": max(total_experiments, 26),
-            "anomalies_detected": max(total_anomalies, 12),
-            "telemetry_packets_simulated": max(total_telemetry_points, 5820),
-            "innovation_velocity": "88.4%"
+            "hardware_devices_active": total_devices,
+            "hardware_sensors_configured": total_sensors,
+            "experiments_completed": total_experiments,
+            "anomalies_detected": total_anomalies,
+            "telemetry_packets_simulated": total_telemetry_points,
+            "innovation_velocity": f"{round((completed_tasks / max(total_tasks, 1)) * 100, 1)}%"
         },
         "domain_distribution": domains_data,
         "status_distribution": statuses_data,

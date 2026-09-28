@@ -161,7 +161,8 @@ export const api = {
   },
   submitMentorReview: (data: any) => request<any>('/mentor/review', { method: 'POST', body: JSON.stringify(data) }),
 
-  // Analytics & System Health
+  // Analytics & Live Stats
+  getStats: () => request<any>('/stats'),
   getAnalytics: () => request<any>('/analytics/overview'),
   getUserStats: () => request<any>('/analytics/user-stats'),
   getSystemHealth: () => request<any>('/system/health'),
