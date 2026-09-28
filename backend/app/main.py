@@ -212,6 +212,7 @@ def root():
     }
 
 @app.get("/health")
+@app.get("/healthz")
 @app.get("/api/v1/health")
 def healthcheck():
     """Simple operational liveness probe."""
@@ -222,11 +223,13 @@ def healthcheck():
     }
 
 @app.get("/health/live")
+@app.get("/livez")
 def liveness_probe():
     """Kubernetes / container liveness check."""
     return {"status": "alive"}
 
 @app.get("/health/ready")
+@app.get("/readyz")
 def readiness_probe():
     """Readiness probe: verifies database connectivity and core subsystems."""
     try:
