@@ -14,7 +14,7 @@ out/
 build/
 dist/
 
-# Python
+# Python virtualenvs & distribution
 __pycache__/
 *.py[cod]
 *$py.class
@@ -24,14 +24,12 @@ env/
 venv/
 .venv/
 ENV/
-build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+/lib/
+/lib64/
 parts/
 sdist/
 var/
@@ -41,6 +39,9 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
+# Ensure frontend source lib is never ignored
+!frontend/src/lib/
 
 # Testing & Coverage
 coverage/
@@ -56,7 +57,7 @@ htmlcov/
 .env.development.local
 .env.test.local
 .env.production.local
-!.env.example
+!**/.env.example
 
 # IDE & OS files
 .DS_Store
