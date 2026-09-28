@@ -254,7 +254,7 @@ def get_innovation_differentiation_matrix(
 
 
 # -------------------------------------------------------------
-# 5. Competition Readiness & Checklist
+# 5. Competition Readiness & Innovation Proof Workspace
 # -------------------------------------------------------------
 @router.get("/projects/{project_id}/competition-readiness", response_model=CompetitionReadinessResponse)
 def get_competition_readiness(
@@ -265,6 +265,29 @@ def get_competition_readiness(
     """Evaluate 8 competition pillars and customizable checklist."""
     _verify_project_access(project_id, current_user, db)
     return validation_service.evaluate_competition_readiness(db, project_id)
+
+
+@router.get("/projects/{project_id}/competition/workspace")
+@router.get("/projects/{project_id}/competition-workspace")
+def get_competition_workspace(
+    project_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Retrieve full Competition Readiness & Innovation Proof workspace consolidating all 17 subsystems."""
+    _verify_project_access(project_id, current_user, db)
+    return validation_service.get_competition_workspace(db, project_id)
+
+
+@router.post("/projects/{project_id}/competition/ai-review")
+async def generate_competition_ai_review(
+    project_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Generate grounded Gemini AI mentor critique for competition evaluation."""
+    _verify_project_access(project_id, current_user, db)
+    return await validation_service.generate_ai_competition_review(db, project_id)
 
 
 @router.post("/projects/{project_id}/competition-checklist/{item_id}/toggle", response_model=CompetitionChecklistItemResponse)
@@ -307,13 +330,14 @@ def get_demo_readiness(
     return validation_service.check_demo_readiness(db, project_id)
 
 
+@router.get("/projects/{project_id}/presentation/outline", response_model=PresentationOutlineResponse)
 @router.post("/projects/{project_id}/presentation/generate", response_model=PresentationOutlineResponse)
 def generate_presentation_outline(
     project_id: int,
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
-    """Generate 16-slide academic presentation outline with verified speaker notes grounded in project evidence."""
+    """Generate 21-slide academic presentation outline with verified speaker notes grounded in project evidence."""
     _verify_project_access(project_id, current_user, db)
     return validation_service.generate_presentation_outline_and_speaker_notes(db, project_id)
 

@@ -113,6 +113,7 @@ async def http_exception_handler(request: Request, exc: HTTPException):
         headers=getattr(exc, "headers", None),
         content={
             "success": False,
+            "detail": exc.detail,
             "error": {
                 "code": f"HTTP_{exc.status_code}",
                 "message": exc.detail,

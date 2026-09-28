@@ -28,6 +28,7 @@ import {
   AlertTriangle,
   Radio,
   FlaskConical,
+  Trophy,
 } from 'lucide-react';
 import { api } from '@/lib/api';
 import { getDomainColor } from '@/lib/utils';
@@ -113,6 +114,13 @@ export default function ProjectWorkspaceDetailPage() {
         {/* Action Controls & Progress Tracker */}
         <div className="flex flex-col sm:flex-row md:flex-col items-end gap-2.5 shrink-0">
           <div className="flex flex-wrap items-center gap-1.5">
+            <Link
+              href={`/projects/${projectId}/competition`}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold shadow transition-colors"
+            >
+              <Trophy className="h-3.5 w-3.5 text-slate-950" />
+              <span>Competition & Proof</span>
+            </Link>
             <Link
               href={`/projects/${projectId}/validation`}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow transition-colors"

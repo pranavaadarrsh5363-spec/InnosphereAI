@@ -155,8 +155,8 @@ class TestCompetitionAndPresentation(unittest.TestCase):
         res = self.client.post("/api/v1/projects/1/presentation/generate", headers=self.student_headers)
         self.assertEqual(res.status_code, 200)
         data = res.json()
-        self.assertEqual(data["total_slides"], 16)
-        self.assertEqual(len(data["slides"]), 16)
+        self.assertEqual(data["total_slides"], 21)
+        self.assertEqual(len(data["slides"]), 21)
 
         # Verify Slide Structure & Grounded Speaker Notes
         for slide in data["slides"]:
@@ -167,12 +167,68 @@ class TestCompetitionAndPresentation(unittest.TestCase):
             self.assertGreater(len(slide["bullet_points"]), 0)
             self.assertGreater(len(slide["speaker_notes"]), 0)
 
-        # Verify Slide 8 is Technology Stack & Slide 11 is Empirical Results
-        slide_8 = next(s for s in data["slides"] if s["slide_number"] == 8)
-        self.assertIn("Technology Stack", slide_8["title"])
+        # Verify Slide 10 is Technology Stack & Slide 13 is Empirical Results
+        slide_10 = next(s for s in data["slides"] if s["slide_number"] == 10)
+        self.assertIn("Technology Stack", slide_10["title"])
 
-        slide_11 = next(s for s in data["slides"] if s["slide_number"] == 11)
-        self.assertIn("Empirical Results", slide_11["title"])
+        slide_13 = next(s for s in data["slides"] if s["slide_number"] == 13)
+        self.assertIn("Empirical Results", slide_13["title"])
+
+    def test_competition_workspace_full_consolidation(self):
+        res = self.client.get("/api/v1/projects/1/competition/workspace", headers=self.student_headers)
+        self.assertEqual(res.status_code, 200)
+        ws = res.json()
+
+        # Check all core sections exist
+        self.assertIn("project_overview", ws)
+        self.assertIn("problem_definition", ws)
+        self.assertIn("research_foundation", ws)
+        self.assertIn("innovation_gap", ws)
+        self.assertIn("proposed_solution", ws)
+        self.assertIn("experimental_proof", ws)
+        self.assertIn("validation_matrix", ws)
+        self.assertIn("innovation_proof", ws)
+        self.assertIn("hardware_readiness", ws)
+        self.assertIn("impact", ws)
+        self.assertIn("project_readiness", ws)
+        self.assertIn("readiness_gaps", ws)
+        self.assertIn("evaluator_questions", ws)
+        self.assertIn("presentation", ws)
+        self.assertIn("final_report", ws)
+        self.assertIn("exports", ws)
+
+        # Verify 21 slides in presentation
+        self.assertEqual(ws["presentation"]["total_slides"], 21)
+        self.assertEqual(len(ws["presentation"]["slides"]), 21)
+
+        # Verify 16 sections in final report
+        self.assertEqual(len(ws["final_report"]["sections"]), 16)
+
+        # Verify hardware simulation disclaimer
+        self.assertIn("simulation_disclaimer", ws["hardware_readiness"])
+
+    def test_competition_workspace_idor_protection(self):
+        # Create Student B
+        db = self.TestingSessionLocal()
+        student_b = User(
+            id=2,
+            email="other_student@innosphere.edu",
+            full_name="Bob Other",
+            hashed_password="hashed_pw_test",
+            role="student",
+            is_active=True
+        )
+        db.add(student_b)
+        db.commit()
+        db.close()
+
+        b_token = create_access_token(data={"sub": "2", "email": "other_student@innosphere.edu", "role": "student"})
+        b_headers = {"Authorization": f"Bearer {b_token}"}
+
+        # Student B attempts to access Student A's project (ID: 1)
+        res = self.client.get("/api/v1/projects/1/competition/workspace", headers=b_headers)
+        self.assertEqual(res.status_code, 403)
+        self.assertIn("not authorized", res.json()["detail"].lower())
 
     def test_research_paper_sync(self):
         # Execute Sync

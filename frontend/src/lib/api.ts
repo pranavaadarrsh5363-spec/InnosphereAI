@@ -434,6 +434,30 @@ export const validationApi = {
     request<any>(`/projects/${projectId}/showcase/evidence-summary`),
   getFlagshipShowcase: () =>
     request<any>(`/showcase/flagship`),
+
+  // Competition Readiness & Innovation Proof Workspace
+  getCompetitionWorkspace: (projectId: number) =>
+    request<any>(`/projects/${projectId}/competition/workspace`),
+  getCompetitionAiReview: (projectId: number) =>
+    request<any>(`/projects/${projectId}/competition/ai-review`, { method: 'POST' }),
+  getPresentationOutline: (projectId: number) =>
+    request<any>(`/projects/${projectId}/presentation/outline`),
+};
+
+export const competitionApi = {
+  getWorkspace: (projectId: number) =>
+    request<any>(`/projects/${projectId}/competition/workspace`),
+  requestAiReview: (projectId: number) =>
+    request<any>(`/projects/${projectId}/competition/ai-review`, { method: 'POST' }),
+  getPresentationOutline: (projectId: number) =>
+    request<any>(`/projects/${projectId}/presentation/outline`),
+  generatePresentationOutline: (projectId: number) =>
+    request<any>(`/projects/${projectId}/presentation/generate`, { method: 'POST' }),
+  toggleChecklistItem: (projectId: number, itemId: number, status: string, evidenceLink?: string) =>
+    request<any>(`/projects/${projectId}/competition-checklist/${itemId}/toggle`, {
+      method: 'POST',
+      body: JSON.stringify({ status, evidence_link: evidenceLink }),
+    }),
 };
 
 // -----------------------------------------------------------------------------
