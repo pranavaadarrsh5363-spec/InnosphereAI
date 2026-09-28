@@ -15,7 +15,8 @@ from app.api import (
     auth, projects, ideas, resources, analysis, roadmaps,
     insights, assistant, mentor, analytics, system, hardware,
     intelligence, research, experiments, validation, showcase,
-    skills, architecture, knowledge_graph, patents, resource_matchmaker
+    skills, architecture, knowledge_graph, patents, resource_matchmaker,
+    ai
 )
 
 from app.utils.seed_data import seed_database
@@ -198,6 +199,7 @@ app.include_router(architecture.router, prefix=settings.API_V1_STR)
 app.include_router(knowledge_graph.router, prefix=settings.API_V1_STR)
 app.include_router(patents.router, prefix=settings.API_V1_STR)
 app.include_router(resource_matchmaker.router, prefix=settings.API_V1_STR)
+app.include_router(ai.router, prefix=settings.API_V1_STR)
 
 # ------------------------------------------------------------------------------
 # 6. Operational Liveness & Readiness Endpoints

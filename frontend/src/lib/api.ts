@@ -129,9 +129,13 @@ export const api = {
   getInsights: (projectId: number) => request<any>(`/insights/project/${projectId}`),
   generateInsights: (projectId: number) => request<any>(`/insights/generate/${projectId}`, { method: 'POST' }),
 
-  // Floating AI Assistant
+  // Floating AI Assistant & Gemini Mentor
   queryAssistant: (message: string, projectId?: number, contextType?: string) =>
     request<any>('/assistant/query', { method: 'POST', body: JSON.stringify({ message, project_id: projectId, context_type: contextType }) }),
+  chatAiMentor: (message: string, projectId?: number, contextType?: string, history?: Array<{ role: string; content: string }>) =>
+    request<any>('/ai/mentor/chat', { method: 'POST', body: JSON.stringify({ message, project_id: projectId, context_type: contextType, history }) }),
+  getAiStatus: () => request<any>('/ai/status'),
+  testAiConnection: () => request<any>('/ai/test-connection', { method: 'POST' }),
   getChatHistory: (projectId?: number) => {
     const qs = projectId ? `?project_id=${projectId}` : '';
     return request<any[]>(`/assistant/history${qs}`);

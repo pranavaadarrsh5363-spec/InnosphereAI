@@ -4,13 +4,14 @@ import logging
 from typing import Dict, Any, List, Optional
 from app.config import settings
 from app.utils.validators import sanitize_text, wrap_untrusted_prompt_data
+from app.services.gemini_service import gemini_service
 
 logger = logging.getLogger("inno_sphere.ai_service")
 
 class AIService:
     """
-    AI Service layer supporting Google Gemini API with fallback to structured
-    domain-specific intelligent heuristics.
+    AI Service layer supporting Google Gemini API via central gemini_service
+    with fallback to structured domain-specific intelligent heuristics.
     """
 
     def __init__(self):
@@ -20,31 +21,10 @@ class AIService:
 
     async def _call_gemini_json(self, prompt: str, system_instruction: str) -> Optional[Dict[str, Any]]:
         """Attempt to call Gemini API with strict timeout and safe JSON parsing."""
-        if not self.api_key:
-            return None
-        try:
-            from google import genai
-
-            async def _invoke():
-                client = genai.Client(api_key=self.api_key)
-                response = client.models.generate_content(
-                    model=self.model or "gemini-2.5-flash",
-                    contents=prompt,
-                    config={
-                        "response_mime_type": "application/json",
-                        "system_instruction": system_instruction
-                    }
-                )
-                if response and response.text:
-                    return json.loads(response.text)
-                return None
-
-            return await asyncio.wait_for(_invoke(), timeout=self.timeout_seconds)
-        except asyncio.TimeoutError:
-            logger.warning("Gemini API call timed out, activating deterministic fallback engine.")
-        except Exception as e:
-            logger.warning(f"Gemini API call failed, activating deterministic fallback engine: {e}")
-        return None
+        return await gemini_service.generate_json(
+            prompt=prompt,
+            system_instruction=system_instruction
+        )
 
     async def analyze_idea(self, idea_data: Dict[str, Any]) -> Dict[str, Any]:
         """Generate comprehensive deep AI analysis for a submitted idea with prompt injection defense."""
@@ -455,36 +435,15 @@ Return valid JSON only with keys:
         except Exception as rag_err:
             logger.warning(f"RAG retrieval for assistant chat encountered an error (continuing): {rag_err}")
 
-        # If Gemini API is available, invoke with full context and RAG grounding
-        if self.api_key:
-            try:
-                from google import genai
-                clean_msg = sanitize_text(message, max_length=3000)
-                sys_inst = """You are InnoSphere's Senior AI Innovation Mentor and Research Fellow.
-Assist the student with actionable, concrete, technical, and research advice.
-IMPORTANT GROUNDING RULES:
-1. When citing facts or tools from retrieved research, explicitly say: 'Based on retrieved resources: [Resource Title](URL)...'
-2. When offering conceptual advice, explicitly say: 'Suggested by AI Mentor: ...'
-3. Never fabricate URLs or citations. Keep answers structured with markdown headers, bullet points, and code snippets."""
-
-                prompt = f"Project Context:\n{ctx_str}\n\nRetrieved Scientific Evidence & Tools (RAG):\n{retrieved_evidence_str}\n\n{wrap_untrusted_prompt_data('student_query', clean_msg)}"
-                
-                async def _invoke_chat():
-                    client = genai.Client(api_key=self.api_key)
-                    res = client.models.generate_content(
-                        model=self.model or "gemini-2.5-flash",
-                        contents=prompt,
-                        config={"system_instruction": sys_inst}
-                    )
-                    if res and res.text:
-                        return res.text
-                    return None
-
-                llm_response = await asyncio.wait_for(_invoke_chat(), timeout=self.timeout_seconds)
-                if llm_response:
-                    return llm_response
-            except Exception as e:
-                logger.warning(f"Assistant LLM call failed or timed out: {e}")
+        # If Gemini API is available, invoke with full context and RAG grounding via central gemini_service
+        gemini_reply = await gemini_service.generate_mentor_advice(
+            student_query=message,
+            project_context=project_context,
+            retrieved_evidence=retrieved_items,
+            chat_history=chat_history
+        )
+        if gemini_reply:
+            return gemini_reply
 
         # Intelligent structured responses based on query intent & project context
         q_lower = message.lower()

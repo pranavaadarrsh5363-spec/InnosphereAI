@@ -35,11 +35,13 @@ async def ask_assistant(
             if proj.user_id != current_user.id and current_user.role not in ["mentor", "admin"]:
                 raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to access this project's context.")
             project_ctx = {
+                "id": proj.id,
                 "title": proj.title,
                 "domain": proj.domain,
                 "problem_statement": proj.problem_statement,
                 "proposed_solution": proj.proposed_solution,
                 "status": proj.status,
+                "progress": proj.progress,
                 "technologies": proj.technologies
             }
 

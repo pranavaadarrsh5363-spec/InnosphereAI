@@ -2,6 +2,12 @@ import os
 import logging
 from typing import List
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except Exception:
+    pass
+
 logger = logging.getLogger("inno_sphere.config")
 
 class Settings:
