@@ -1271,40 +1271,40 @@ export default function ProjectValidationPage() {
                   {presentationData.slides[activeSlideIndex] && (
                     <>
                       {/* Visual Slide Mockup */}
-                      <div className="bg-slate-900 text-white rounded-2xl p-8 border border-slate-800 shadow-xl space-y-6 relative overflow-hidden">
+                      <div className="bg-gradient-to-br from-indigo-50/40 via-white to-slate-50 text-slate-900 rounded-2xl p-8 border border-indigo-200/80 shadow-xs space-y-6 relative overflow-hidden">
                         <div className="absolute top-4 right-4 flex items-center gap-2">
-                          <span className="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-slate-800 text-slate-300 border border-slate-700">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-slate-100 text-slate-700 border border-slate-200">
                             Layout: {presentationData.slides[activeSlideIndex].visual_layout}
                           </span>
-                          <span className="text-xs font-bold text-slate-400">
+                          <span className="text-xs font-bold text-slate-500">
                             Slide {presentationData.slides[activeSlideIndex].slide_number} of 16
                           </span>
                         </div>
 
                         <div>
-                          <span className="text-xs font-semibold text-indigo-400 uppercase tracking-widest">
+                          <span className="text-xs font-semibold text-indigo-600 uppercase tracking-widest">
                             InnoSphere AI Academic Presentation
                           </span>
-                          <h2 className="text-2xl font-black mt-1">
+                          <h2 className="text-2xl font-black mt-1 text-slate-900">
                             {presentationData.slides[activeSlideIndex].title}
                           </h2>
-                          <p className="text-sm text-slate-400 mt-1">
+                          <p className="text-sm text-slate-600 mt-1">
                             {presentationData.slides[activeSlideIndex].subtitle}
                           </p>
                         </div>
 
-                        <div className="bg-slate-800/60 rounded-xl p-5 border border-slate-700/60 space-y-3">
+                        <div className="bg-white rounded-xl p-5 border border-slate-200/80 space-y-3 shadow-2xs">
                           {presentationData.slides[activeSlideIndex].bullet_points.map((pt, i) => (
-                            <div key={i} className="flex items-start gap-2.5 text-xs text-slate-200 leading-relaxed">
-                              <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 shrink-0" />
+                            <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700 leading-relaxed">
+                              <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 mt-1.5 shrink-0" />
                               <span>{pt}</span>
                             </div>
                           ))}
                         </div>
 
                         {presentationData.slides[activeSlideIndex].evidence_source && (
-                          <div className="text-[11px] text-slate-400 font-mono">
-                            Evidence Grounding: <strong className="text-emerald-400">{presentationData.slides[activeSlideIndex].evidence_source}</strong>
+                          <div className="text-[11px] text-slate-500 font-mono">
+                            Evidence Grounding: <strong className="text-emerald-700">{presentationData.slides[activeSlideIndex].evidence_source}</strong>
                           </div>
                         )}
                       </div>
@@ -1528,7 +1528,7 @@ export default function ProjectValidationPage() {
       {/* Modal: Register Innovation Claim */}
       {/* ------------------------------------------------------------- */}
       {isClaimModalOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
           <div className="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
@@ -1672,7 +1672,7 @@ export default function ProjectValidationPage() {
       {/* Modal: Attach Evidence */}
       {/* ------------------------------------------------------------- */}
       {isEvidenceModalOpen && selectedClaimForEvidence && (
-        <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white border border-slate-200 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="text-sm font-bold text-slate-900">
@@ -1766,7 +1766,7 @@ export default function ProjectValidationPage() {
       {/* Modal: Add Cost BOM Item */}
       {/* ------------------------------------------------------------- */}
       {isCostModalOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white border border-slate-200 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="text-sm font-bold text-slate-900">Add Cost / BOM Item</h3>
@@ -1860,7 +1860,7 @@ export default function ProjectValidationPage() {
       {/* Modal: Log Stakeholder Review */}
       {/* ------------------------------------------------------------- */}
       {isReviewModalOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white border border-slate-200 rounded-2xl max-w-xl w-full p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="text-base font-bold text-slate-900">Log Formal Stakeholder Review</h3>
@@ -1941,7 +1941,7 @@ export default function ProjectValidationPage() {
       {/* Modal: Research Paper Synchronization Result */}
       {/* ------------------------------------------------------------- */}
       {isSyncModalOpen && syncResult && (
-        <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
           <div className="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">

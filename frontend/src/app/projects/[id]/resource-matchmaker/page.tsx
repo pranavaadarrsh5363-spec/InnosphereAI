@@ -597,26 +597,26 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
         </div>
 
         {/* Hero Header Card with Live Budget KPIs */}
-        <div className="bg-gradient-to-r from-emerald-950 via-slate-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 border border-emerald-900/50 shadow-xl relative overflow-hidden space-y-6">
+        <div className="bg-gradient-to-br from-emerald-50/60 via-white to-slate-50 text-slate-900 rounded-3xl p-6 sm:p-8 border border-emerald-200/80 shadow-xs relative overflow-hidden space-y-6">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
             <div className="space-y-2 max-w-2xl">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                   {project?.domain || 'Innovation Project'}
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-xs bg-slate-800 text-slate-300 border border-slate-700">
+                <span className="px-2.5 py-0.5 rounded-full text-xs bg-slate-100 text-slate-700 border border-slate-200">
                   Stage: {profile.project_stage || 'Prototyping'}
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-xs bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                <span className="px-2.5 py-0.5 rounded-full text-xs bg-indigo-50 text-indigo-700 border border-indigo-200">
                   Preference: {profile.open_source_preference || 'Open Source Preferred'}
                 </span>
               </div>
 
-              <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight text-white">
+              <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
                 {project?.title || workspace?.project_title}
               </h1>
 
-              <p className="text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
                 {project?.proposed_solution || project?.problem_statement || 'Intelligent resource allocation & matching plan.'}
               </p>
             </div>
@@ -626,67 +626,67 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                 setEditProfile(profile);
                 setProfileModalOpen(true);
               }}
-              className="self-start lg:self-center inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700 text-slate-200 text-xs font-semibold transition-all shrink-0"
+              className="self-start lg:self-center inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold transition-all shrink-0 cursor-pointer shadow-2xs"
             >
-              <Edit3 className="w-3.5 h-3.5 text-emerald-400" />
+              <Edit3 className="w-3.5 h-3.5 text-emerald-600" />
               <span>Edit Budget & Constraints</span>
             </button>
           </div>
 
           {/* KPI Mini-Dashboard */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3 pt-2 border-t border-slate-800/80 relative z-10">
-            <div className="bg-slate-900/80 p-3 rounded-2xl border border-slate-800 space-y-1">
-              <div className="flex items-center justify-between text-slate-400 text-xs">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3 pt-2 border-t border-slate-200/80 relative z-10">
+            <div className="bg-white p-3 rounded-2xl border border-slate-200/80 space-y-1 shadow-2xs">
+              <div className="flex items-center justify-between text-slate-500 text-xs">
                 <span>Total Budget Cap</span>
-                <Wallet className="w-3.5 h-3.5 text-emerald-400" />
+                <Wallet className="w-3.5 h-3.5 text-emerald-600" />
               </div>
-              <p className="text-lg font-extrabold text-white">
+              <p className="text-lg font-extrabold text-slate-900">
                 ₹{budgetSummary.total_budget?.toLocaleString() || '0'}
               </p>
             </div>
 
-            <div className="bg-slate-900/80 p-3 rounded-2xl border border-slate-800 space-y-1">
-              <div className="flex items-center justify-between text-slate-400 text-xs">
+            <div className="bg-white p-3 rounded-2xl border border-slate-200/80 space-y-1 shadow-2xs">
+              <div className="flex items-center justify-between text-slate-500 text-xs">
                 <span>Allocated Outlay</span>
-                <DollarSign className="w-3.5 h-3.5 text-cyan-400" />
+                <DollarSign className="w-3.5 h-3.5 text-cyan-600" />
               </div>
-              <p className="text-lg font-extrabold text-cyan-300">
+              <p className="text-lg font-extrabold text-cyan-700">
                 ₹{budgetSummary.allocated_budget?.toLocaleString() || '0'}
               </p>
             </div>
 
-            <div className="bg-slate-900/80 p-3 rounded-2xl border border-slate-800 space-y-1">
-              <div className="flex items-center justify-between text-slate-400 text-xs">
+            <div className="bg-white p-3 rounded-2xl border border-slate-200/80 space-y-1 shadow-2xs">
+              <div className="flex items-center justify-between text-slate-500 text-xs">
                 <span>Remaining Funds</span>
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
               </div>
-              <p className="text-lg font-extrabold text-emerald-400">
+              <p className="text-lg font-extrabold text-emerald-700">
                 ₹{budgetSummary.remaining_budget?.toLocaleString() || '0'}
               </p>
             </div>
 
-            <div className="bg-slate-900/80 p-3 rounded-2xl border border-slate-800 space-y-1">
-              <div className="flex items-center justify-between text-slate-400 text-xs">
+            <div className="bg-white p-3 rounded-2xl border border-slate-200/80 space-y-1 shadow-2xs">
+              <div className="flex items-center justify-between text-slate-500 text-xs">
                 <span>Potential Savings</span>
-                <TrendingDown className="w-3.5 h-3.5 text-purple-400" />
+                <TrendingDown className="w-3.5 h-3.5 text-purple-600" />
               </div>
-              <p className="text-lg font-extrabold text-purple-300">
+              <p className="text-lg font-extrabold text-purple-700">
                 ₹{budgetSummary.potential_savings_via_alternatives?.toLocaleString() || '0'}
               </p>
             </div>
 
-            <div className="bg-slate-900/80 p-3 rounded-2xl border border-slate-800 space-y-1 col-span-2 sm:col-span-4 lg:col-span-1">
-              <div className="flex items-center justify-between text-slate-400 text-xs">
+            <div className="bg-white p-3 rounded-2xl border border-slate-200/80 space-y-1 col-span-2 sm:col-span-4 lg:col-span-1 shadow-2xs">
+              <div className="flex items-center justify-between text-slate-500 text-xs">
                 <span>Overall Readiness</span>
-                <Activity className="w-3.5 h-3.5 text-amber-400" />
+                <Activity className="w-3.5 h-3.5 text-amber-600" />
               </div>
-              <p className="text-lg font-extrabold text-amber-300">
+              <p className="text-lg font-extrabold text-amber-700">
                 {readiness.overall_readiness || 'READY'}
               </p>
             </div>
           </div>
 
-          <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-emerald-600/10 to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-emerald-600/5 to-transparent pointer-events-none" />
         </div>
 
         {/* Tab Navigation */}
@@ -1760,11 +1760,11 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* Multi-Format Export Modal */}
         {exportModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
             <div className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-2xl w-full p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
-                  <Download className="w-4 h-4 text-emerald-500" />
+                  <Download className="w-4 h-4 text-emerald-600" />
                   Export Resource Strategy Report
                 </h3>
                 <button
@@ -1797,7 +1797,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
                   Generating export...
                 </div>
               ) : (
-                <pre className="h-64 overflow-y-auto p-3 rounded-xl bg-slate-950 text-slate-200 text-xs font-mono">
+                <pre className="h-64 overflow-y-auto p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-xs font-mono">
                   {exportData?.data}
                 </pre>
               )}
@@ -1805,7 +1805,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
               <div className="flex items-center justify-end gap-2 pt-2">
                 <button
                   onClick={handleCopyExport}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-200 text-xs font-semibold text-slate-800"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-800 transition-colors"
                 >
                   <Copy className="w-3.5 h-3.5" />
                   <span>{copied ? 'Copied!' : 'Copy to Clipboard'}</span>
@@ -1813,7 +1813,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
                 <button
                   onClick={handleDownloadExport}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-semibold"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-xs transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download File</span>
@@ -1825,7 +1825,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* Add Custom Requirement Modal */}
         {reqModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
             <form
               onSubmit={handleCreateRequirement}
               className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4"
@@ -1928,7 +1928,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* Edit Profile & Budget Modal */}
         {profileModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
             <form
               onSubmit={handleSaveProfile}
               className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4"
@@ -2031,7 +2031,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* Register Owned Hardware Modal */}
         {hwModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
             <form
               onSubmit={handleAddOwnedHardware}
               className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4"
@@ -2118,7 +2118,7 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* Custom Plan Item Modal */}
         {planModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
             <form
               onSubmit={handleCreatePlanItem}
               className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4"
@@ -2223,9 +2223,9 @@ export default function ProjectResourceMatchmakerWorkspacePage() {
 
         {/* Toast Notification */}
         {toastMessage && (
-          <div className="fixed bottom-6 right-6 z-50 p-4 rounded-2xl bg-slate-900 text-white border border-emerald-500/40 shadow-2xl flex items-center gap-3 text-xs animate-in slide-in-from-bottom">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>{toastMessage}</span>
+          <div className="fixed bottom-6 right-6 z-50 p-4 rounded-2xl bg-white text-slate-900 border border-emerald-200 shadow-xl flex items-center gap-3 text-xs animate-in slide-in-from-bottom">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span className="font-medium">{toastMessage}</span>
           </div>
         )}
       </div>

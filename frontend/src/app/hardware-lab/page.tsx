@@ -404,53 +404,53 @@ export default function HardwareLabPage() {
       </div>
 
       {/* 1. Visual IoT Network Transmission Flow */}
-      <div className="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
+      <div className="rounded-2xl bg-white border border-slate-200/80 shadow-xs p-6 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-bold text-white flex items-center gap-2">
-            <Radio className="h-4 w-4 text-indigo-400" />
+          <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <Radio className="h-4 w-4 text-indigo-600" />
             IoT End-to-End Network Transmission Pipeline
           </h2>
-          <span className="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-xs font-mono font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full flex items-center gap-1.5">
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
             Live Data Stream Active
           </span>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 text-center text-xs">
-          <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-            <span className="text-[10px] text-slate-400 font-bold block">1. SENSORS</span>
-            <span className="text-xs font-bold text-indigo-300 block">{activeDevice?.sensors?.length || 4} Channels</span>
-            <span className="text-[9px] text-emerald-400 block font-mono">● Sampling</span>
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 text-center text-xs">
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1">
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">1. Sensors</span>
+            <span className="text-xs font-bold text-indigo-700 block">{activeDevice?.sensors?.length || 4} Channels</span>
+            <span className="text-[10px] text-emerald-700 block font-semibold">● Sampling</span>
           </div>
-          <div className="p-3 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 space-y-1">
-            <span className="text-[10px] text-indigo-300 font-bold block">2. EDGE NODE</span>
-            <span className="text-xs font-bold text-white block">{activeDevice?.name || 'ESP32 Node'}</span>
-            <span className="text-[9px] text-emerald-400 block font-mono">● Online</span>
+          <div className="p-3 rounded-xl bg-indigo-50/70 border border-indigo-200 space-y-1">
+            <span className="text-[10px] text-indigo-700 font-bold uppercase tracking-wider block">2. Edge Node</span>
+            <span className="text-xs font-bold text-indigo-950 block">{activeDevice?.name || 'ESP32 Node'}</span>
+            <span className="text-[10px] text-emerald-700 block font-semibold">● Online</span>
           </div>
-          <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-            <span className="text-[10px] text-slate-400 font-bold block">3. PROTOCOL</span>
-            <span className="text-xs font-bold text-white block">{activeDevice?.network_protocol || 'LoRaWAN'}</span>
-            <span className="text-[9px] text-emerald-400 block font-mono">● Stable (-64 dBm)</span>
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1">
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">3. Protocol</span>
+            <span className="text-xs font-bold text-slate-900 block">{activeDevice?.network_protocol || 'LoRaWAN'}</span>
+            <span className="text-[10px] text-emerald-700 block font-semibold">● Stable (-64 dBm)</span>
           </div>
-          <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-            <span className="text-[10px] text-slate-400 font-bold block">4. GATEWAY</span>
-            <span className="text-xs font-bold text-white block">LoRa Gateway A</span>
-            <span className="text-[9px] text-emerald-400 block font-mono">● Connected</span>
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1">
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">4. Gateway</span>
+            <span className="text-xs font-bold text-slate-900 block">LoRa Gateway A</span>
+            <span className="text-[10px] text-emerald-700 block font-semibold">● Connected</span>
           </div>
-          <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-            <span className="text-[10px] text-slate-400 font-bold block">5. BACKEND API</span>
-            <span className="text-xs font-bold text-white block">FastAPI / Timescale</span>
-            <span className="text-[9px] text-emerald-400 block font-mono">● 200 OK</span>
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1">
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">5. Backend API</span>
+            <span className="text-xs font-bold text-slate-900 block">FastAPI / Timescale</span>
+            <span className="text-[10px] text-emerald-700 block font-semibold">● 200 OK</span>
           </div>
-          <div className="p-3 rounded-2xl bg-purple-950/30 border border-purple-500/30 space-y-1">
-            <span className="text-[10px] text-purple-300 font-bold block">6. AI ENGINE</span>
-            <span className="text-xs font-bold text-white block">Gemini 2.5 Flash</span>
-            <span className="text-[9px] text-purple-300 block font-mono">● Ready</span>
+          <div className="p-3 rounded-xl bg-purple-50/70 border border-purple-200 space-y-1">
+            <span className="text-[10px] text-purple-700 font-bold uppercase tracking-wider block">6. AI Engine</span>
+            <span className="text-xs font-bold text-purple-950 block">Gemini 2.5 Flash</span>
+            <span className="text-[10px] text-purple-700 block font-semibold">● Ready</span>
           </div>
-          <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-            <span className="text-[10px] text-slate-400 font-bold block">7. ALERT / ACTION</span>
-            <span className="text-xs font-bold text-white block">Dispatcher</span>
-            <span className="text-[9px] text-indigo-400 block font-mono">{alerts.length} Triggered</span>
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1">
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">7. Dispatch</span>
+            <span className="text-xs font-bold text-slate-900 block">Alert Manager</span>
+            <span className="text-[10px] text-indigo-700 block font-semibold">{alerts.length} Triggered</span>
           </div>
         </div>
       </div>
@@ -458,22 +458,22 @@ export default function HardwareLabPage() {
       {/* 2. Device Health & Simulation Control Bar */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Device Health Deck */}
-        <div className="lg:col-span-2 glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="lg:col-span-2 rounded-2xl bg-white border border-slate-200/80 shadow-xs p-6 space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
             <div className="flex items-center gap-2">
-              <Activity className="h-4 w-4 text-emerald-400" />
-              <h3 className="text-sm font-bold text-white">Device Telemetry & Health Deck</h3>
+              <Activity className="h-4 w-4 text-emerald-600" />
+              <h3 className="text-sm font-bold text-slate-900">Device Telemetry & Health Deck</h3>
             </div>
-            <span className="text-[11px] font-mono text-slate-400">Firmware: {activeDevice?.firmware_version}</span>
+            <span className="text-[11px] font-mono text-slate-500 font-medium">Firmware: {activeDevice?.firmware_version}</span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-            <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-              <span className="text-[10px] text-slate-400 flex items-center gap-1 font-semibold">
-                <Battery className="h-3.5 w-3.5 text-emerald-400" /> Battery Level
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+              <span className="text-[10px] text-slate-500 flex items-center gap-1 font-semibold uppercase tracking-wider">
+                <Battery className="h-3.5 w-3.5 text-emerald-600" /> Battery Level
               </span>
-              <p className="text-base font-black text-white">{batteryLevel.toFixed(1)}%</p>
-              <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <p className="text-lg font-black text-slate-900">{batteryLevel.toFixed(1)}%</p>
+              <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                 <div
                   className={`h-full rounded-full ${batteryLevel > 20 ? 'bg-emerald-500' : 'bg-rose-500'}`}
                   style={{ width: `${batteryLevel}%` }}
@@ -481,54 +481,54 @@ export default function HardwareLabPage() {
               </div>
             </div>
 
-            <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-              <span className="text-[10px] text-slate-400 flex items-center gap-1 font-semibold">
-                <Wifi className="h-3.5 w-3.5 text-indigo-400" /> Signal Strength
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+              <span className="text-[10px] text-slate-500 flex items-center gap-1 font-semibold uppercase tracking-wider">
+                <Wifi className="h-3.5 w-3.5 text-indigo-600" /> Signal Strength
               </span>
-              <p className="text-base font-black text-white">{activeDevice?.signal_strength_dbm || -64} dBm</p>
-              <span className="text-[10px] text-indigo-300 font-mono">RSSI: Excellent</span>
+              <p className="text-lg font-black text-slate-900">{activeDevice?.signal_strength_dbm || -64} dBm</p>
+              <span className="text-[10px] text-indigo-700 font-semibold">RSSI: Excellent</span>
             </div>
 
-            <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-              <span className="text-[10px] text-slate-400 flex items-center gap-1 font-semibold">
-                <Server className="h-3.5 w-3.5 text-purple-400" /> Packet Loss
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+              <span className="text-[10px] text-slate-500 flex items-center gap-1 font-semibold uppercase tracking-wider">
+                <Server className="h-3.5 w-3.5 text-purple-600" /> Packet Loss
               </span>
-              <p className="text-base font-black text-white">{packetLossRate.toFixed(2)}%</p>
-              <span className="text-[10px] text-slate-400 font-mono">
+              <p className="text-lg font-black text-slate-900">{packetLossRate.toFixed(2)}%</p>
+              <span className="text-[10px] text-slate-500 font-mono">
                 {packetsReceived}/{packetsSent} pkts
               </span>
             </div>
 
-            <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-              <span className="text-[10px] text-slate-400 flex items-center gap-1 font-semibold">
-                <Clock className="h-3.5 w-3.5 text-amber-400" /> Active Uptime
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+              <span className="text-[10px] text-slate-500 flex items-center gap-1 font-semibold uppercase tracking-wider">
+                <Clock className="h-3.5 w-3.5 text-amber-600" /> Active Uptime
               </span>
-              <p className="text-base font-black text-white font-mono">
+              <p className="text-base font-black text-slate-900 font-mono">
                 {Math.floor(uptime / 3600)}h {Math.floor((uptime % 3600) / 60)}m {uptime % 60}s
               </p>
-              <span className="text-[10px] text-slate-400">Node Temp: 31.5°C</span>
+              <span className="text-[10px] text-slate-500">Node Temp: 31.5°C</span>
             </div>
           </div>
         </div>
 
         {/* Simulation Execution Controls */}
-        <div className="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4 flex flex-col justify-between">
+        <div className="rounded-2xl bg-white border border-slate-200/80 shadow-xs p-6 space-y-4 flex flex-col justify-between">
           <div className="space-y-1">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <Sliders className="h-4 w-4 text-indigo-400" />
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <Sliders className="h-4 w-4 text-indigo-600" />
               Simulation Engine Controls
             </h3>
-            <p className="text-xs text-slate-400">Control virtual telemetry stream sampling rate</p>
+            <p className="text-xs text-slate-500">Control virtual telemetry stream sampling rate</p>
           </div>
 
           <div className="space-y-3">
             <div className="flex items-center justify-between gap-2">
               <button
                 onClick={() => setIsRunning(!isRunning)}
-                className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold transition-all shadow-md ${
+                className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold transition-all shadow-xs cursor-pointer ${
                   isRunning
-                    ? 'bg-amber-600 hover:bg-amber-500 text-white'
-                    : 'bg-emerald-600 hover:bg-emerald-500 text-white'
+                    ? 'bg-amber-600 hover:bg-amber-700 text-white'
+                    : 'bg-emerald-600 hover:bg-emerald-700 text-white'
                 }`}
               >
                 {isRunning ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 fill-white" />}
@@ -544,7 +544,7 @@ export default function HardwareLabPage() {
                   setToastMessage('Simulation stream reset.');
                   setTimeout(() => setToastMessage(null), 2000);
                 }}
-                className="p-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 text-slate-300 transition-colors"
+                className="p-2.5 rounded-xl bg-slate-100 border border-slate-200 hover:bg-slate-200 text-slate-700 transition-colors cursor-pointer"
                 title="Reset Counters"
               >
                 <RotateCcw className="h-4 w-4" />
@@ -552,16 +552,16 @@ export default function HardwareLabPage() {
             </div>
 
             <div className="flex items-center justify-between text-xs pt-1">
-              <span className="text-slate-400 font-medium">Clock Speed:</span>
+              <span className="text-slate-500 font-medium">Clock Speed:</span>
               <div className="flex items-center gap-1">
                 {([1, 5, 10] as const).map((spd) => (
                   <button
                     key={spd}
                     onClick={() => setSimSpeed(spd)}
-                    className={`px-3 py-1 rounded-lg font-mono font-bold text-xs transition-colors ${
+                    className={`px-3 py-1 rounded-lg font-mono font-bold text-xs transition-colors cursor-pointer ${
                       simSpeed === spd
-                        ? 'bg-indigo-600 text-white'
-                        : 'bg-slate-900 text-slate-400 hover:bg-slate-800'
+                        ? 'bg-indigo-600 text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                   >
                     {spd}x
@@ -577,17 +577,17 @@ export default function HardwareLabPage() {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-base font-bold text-white flex items-center gap-2">
-              <Activity className="h-4 w-4 text-indigo-400" />
+            <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <Activity className="h-4 w-4 text-indigo-600" />
               Live Sensor Telemetry Streams ({activeDevice?.sensors?.length || 0} Configured)
             </h2>
-            <p className="text-xs text-slate-400">Real-time sampling with warning & critical threshold boundaries</p>
+            <p className="text-xs text-slate-500">Real-time sampling with warning & critical threshold boundaries</p>
           </div>
           <button
             onClick={() => setSensorModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 text-xs font-semibold text-slate-200 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-slate-200/80 hover:bg-slate-50 text-xs font-semibold text-slate-800 shadow-xs transition-colors cursor-pointer"
           >
-            <Plus className="h-3.5 w-3.5 text-indigo-400" />
+            <Plus className="h-3.5 w-3.5 text-indigo-600" />
             <span>Add Virtual Sensor</span>
           </button>
         </div>
@@ -605,27 +605,27 @@ export default function HardwareLabPage() {
             return (
               <div
                 key={sensor.id}
-                className={`glass-panel rounded-3xl p-5 border flex flex-col justify-between space-y-4 transition-all relative overflow-hidden ${
+                className={`rounded-2xl p-5 border flex flex-col justify-between space-y-4 transition-all shadow-xs hover:shadow-md relative overflow-hidden bg-white ${
                   isCritical
-                    ? 'border-rose-500/50 bg-rose-950/20 shadow-lg shadow-rose-500/10 animate-pulse'
+                    ? 'border-rose-300 bg-rose-50/40 ring-1 ring-rose-500/20'
                     : isWarning
-                    ? 'border-amber-500/40 bg-amber-950/10'
-                    : 'border-slate-800 bg-slate-900/90'
+                    ? 'border-amber-300 bg-amber-50/40 ring-1 ring-amber-500/20'
+                    : 'border-slate-200/80'
                 }`}
               >
                 <div className="space-y-2">
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <h3 className="text-sm font-bold text-white">{sensor.name}</h3>
-                      <span className="text-[10px] text-slate-400 font-mono">{sensor.pin_interface}</span>
+                      <h3 className="text-sm font-bold text-slate-900">{sensor.name}</h3>
+                      <span className="text-[10px] text-slate-500 font-mono">{sensor.pin_interface}</span>
                     </div>
                     <span
                       className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                         isCritical
-                          ? 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
+                          ? 'bg-rose-100 text-rose-800 border border-rose-200'
                           : isWarning
-                          ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
-                          : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
+                          ? 'bg-amber-100 text-amber-800 border border-amber-200'
+                          : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
                       }`}
                     >
                       {sensor.status}
@@ -636,12 +636,12 @@ export default function HardwareLabPage() {
                   <div className="flex items-baseline gap-1.5 pt-1">
                     <span
                       className={`text-3xl font-black font-mono ${
-                        isCritical ? 'text-rose-400' : isWarning ? 'text-amber-400' : 'text-emerald-400'
+                        isCritical ? 'text-rose-600' : isWarning ? 'text-amber-600' : 'text-emerald-600'
                       }`}
                     >
                       {sensor.current_val}
                     </span>
-                    <span className="text-xs font-semibold text-slate-400">{sensor.unit}</span>
+                    <span className="text-xs font-semibold text-slate-500">{sensor.unit}</span>
                   </div>
 
                   {/* Mini Sparkline Chart */}
@@ -649,7 +649,7 @@ export default function HardwareLabPage() {
                     <svg className="w-full h-full overflow-hidden" viewBox="0 0 100 30" preserveAspectRatio="none">
                       <polyline
                         fill="none"
-                        stroke={isCritical ? '#f43f5e' : isWarning ? '#f59e0b' : '#10b981'}
+                        stroke={isCritical ? '#e11d48' : isWarning ? '#d97706' : '#059669'}
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -667,20 +667,20 @@ export default function HardwareLabPage() {
                 </div>
 
                 {/* Threshold & Statistics Footer */}
-                <div className="space-y-1.5 pt-2 border-t border-slate-800/80 text-[10px]">
-                  <div className="flex justify-between text-slate-400">
+                <div className="space-y-1.5 pt-2 border-t border-slate-100 text-[10px]">
+                  <div className="flex justify-between text-slate-500">
                     <span>Normal Range:</span>
-                    <span className="text-slate-200 font-mono">
+                    <span className="text-slate-800 font-mono font-medium">
                       {sensor.normal_range_min} - {sensor.normal_range_max} {sensor.unit}
                     </span>
                   </div>
-                  <div className="flex justify-between text-slate-400">
+                  <div className="flex justify-between text-slate-500">
                     <span>Critical Limit:</span>
-                    <span className="text-rose-400 font-bold font-mono">
+                    <span className="text-rose-700 font-bold font-mono">
                       &gt; {sensor.critical_threshold} {sensor.unit}
                     </span>
                   </div>
-                  <div className="flex justify-between text-slate-500 pt-0.5">
+                  <div className="flex justify-between text-slate-400 pt-0.5">
                     <span>Min: {minV.toFixed(1)}</span>
                     <span>Avg: {avgV}</span>
                     <span>Max: {maxV.toFixed(1)}</span>
@@ -693,13 +693,13 @@ export default function HardwareLabPage() {
       </div>
 
       {/* 4. Inject Anomaly Lab Matrix */}
-      <div className="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
+      <div className="rounded-2xl bg-white border border-slate-200/80 shadow-xs p-6 space-y-4">
         <div className="space-y-1">
-          <h2 className="text-base font-bold text-white flex items-center gap-2">
-            <Zap className="h-4 w-4 text-amber-400" />
+          <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+            <Zap className="h-4 w-4 text-amber-600" />
             Hardware Anomaly Injection Studio
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500">
             Simulate realistic edge hardware failures, physical water contamination, and radio transmission dropouts
           </p>
         </div>
@@ -707,71 +707,71 @@ export default function HardwareLabPage() {
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 text-xs">
           <button
             onClick={() => handleInjectAnomaly('turbidity_spike')}
-            className="p-3 rounded-2xl bg-slate-900 border border-slate-700 hover:border-amber-500/50 text-slate-200 hover:text-white transition-all text-left flex flex-col justify-between space-y-2 group"
+            className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 text-slate-800 transition-all text-left flex flex-col justify-between space-y-2 group cursor-pointer shadow-2xs"
           >
             <span className="text-lg">💧</span>
-            <span className="font-bold text-[11px] leading-tight">Turbidity Surge (38 NTU)</span>
+            <span className="font-bold text-[11px] leading-tight text-slate-900">Turbidity Surge (38 NTU)</span>
           </button>
 
           <button
             onClick={() => handleInjectAnomaly('temperature_spike')}
-            className="p-3 rounded-2xl bg-slate-900 border border-slate-700 hover:border-rose-500/50 text-slate-200 hover:text-white transition-all text-left flex flex-col justify-between space-y-2 group"
+            className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-rose-400 hover:bg-rose-50/50 text-slate-800 transition-all text-left flex flex-col justify-between space-y-2 group cursor-pointer shadow-2xs"
           >
             <span className="text-lg">🌡️</span>
-            <span className="font-bold text-[11px] leading-tight">Temp Spike (52 °C)</span>
+            <span className="font-bold text-[11px] leading-tight text-slate-900">Temp Spike (52 °C)</span>
           </button>
 
           <button
             onClick={() => handleInjectAnomaly('ph_acidic_drift')}
-            className="p-3 rounded-2xl bg-slate-900 border border-slate-700 hover:border-purple-500/50 text-slate-200 hover:text-white transition-all text-left flex flex-col justify-between space-y-2 group"
+            className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-purple-400 hover:bg-purple-50/50 text-slate-800 transition-all text-left flex flex-col justify-between space-y-2 group cursor-pointer shadow-2xs"
           >
             <span className="text-lg">🧪</span>
-            <span className="font-bold text-[11px] leading-tight">Acidic Drift (3.4 pH)</span>
+            <span className="font-bold text-[11px] leading-tight text-slate-900">Acidic Drift (3.4 pH)</span>
           </button>
 
           <button
             onClick={() => handleInjectAnomaly('sensor_failure')}
-            className="p-3 rounded-2xl bg-slate-900 border border-slate-700 hover:border-rose-500/50 text-slate-200 hover:text-white transition-all text-left flex flex-col justify-between space-y-2 group"
+            className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-rose-400 hover:bg-rose-50/50 text-slate-800 transition-all text-left flex flex-col justify-between space-y-2 group cursor-pointer shadow-2xs"
           >
             <span className="text-lg">🔌</span>
-            <span className="font-bold text-[11px] leading-tight">Sensor Disconnect (0.0)</span>
+            <span className="font-bold text-[11px] leading-tight text-slate-900">Sensor Disconnect (0.0)</span>
           </button>
 
           <button
             onClick={() => handleInjectAnomaly('battery_drop')}
-            className="p-3 rounded-2xl bg-slate-900 border border-slate-700 hover:border-amber-500/50 text-slate-200 hover:text-white transition-all text-left flex flex-col justify-between space-y-2 group"
+            className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 text-slate-800 transition-all text-left flex flex-col justify-between space-y-2 group cursor-pointer shadow-2xs"
           >
             <span className="text-lg">🔋</span>
-            <span className="font-bold text-[11px] leading-tight">Low Battery (12%)</span>
+            <span className="font-bold text-[11px] leading-tight text-slate-900">Low Battery (12%)</span>
           </button>
 
           <button
             onClick={() => handleInjectAnomaly('packet_loss_burst')}
-            className="p-3 rounded-2xl bg-slate-900 border border-slate-700 hover:border-indigo-500/50 text-slate-200 hover:text-white transition-all text-left flex flex-col justify-between space-y-2 group"
+            className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/50 text-slate-800 transition-all text-left flex flex-col justify-between space-y-2 group cursor-pointer shadow-2xs"
           >
             <span className="text-lg">📡</span>
-            <span className="font-bold text-[11px] leading-tight">Packet Loss (22%)</span>
+            <span className="font-bold text-[11px] leading-tight text-slate-900">Packet Loss (22%)</span>
           </button>
 
           <button
             onClick={() => handleInjectAnomaly('out_of_range')}
-            className="p-3 rounded-2xl bg-slate-900 border border-slate-700 hover:border-purple-500/50 text-slate-200 hover:text-white transition-all text-left flex flex-col justify-between space-y-2 group"
+            className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-purple-400 hover:bg-purple-50/50 text-slate-800 transition-all text-left flex flex-col justify-between space-y-2 group cursor-pointer shadow-2xs"
           >
             <span className="text-lg">⚡</span>
-            <span className="font-bold text-[11px] leading-tight">ADC Noise Burst</span>
+            <span className="font-bold text-[11px] leading-tight text-slate-900">ADC Noise Burst</span>
           </button>
         </div>
       </div>
 
       {/* 5. AI Telemetry Interpretation Studio */}
-      <div className="glass-panel rounded-3xl p-6 border border-indigo-500/30 bg-indigo-950/20 space-y-4">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <div className="rounded-2xl bg-indigo-50/50 border border-indigo-200/80 shadow-xs p-6 space-y-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-indigo-100 pb-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-indigo-400" />
-              <h2 className="text-base font-bold text-white">AI Telemetry Interpretation & Guidance</h2>
+              <Sparkles className="h-5 w-5 text-indigo-600" />
+              <h2 className="text-base font-bold text-indigo-950">AI Telemetry Interpretation & Guidance</h2>
             </div>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-slate-600">
               Real-time reasoning on raw sensor payloads, anomaly mechanisms, and firmware mitigation actions
             </p>
           </div>
@@ -779,7 +779,7 @@ export default function HardwareLabPage() {
           <button
             onClick={() => handleInterpretTelemetry()}
             disabled={interpreting}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow transition-all"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold shadow-xs transition-all cursor-pointer disabled:opacity-50"
           >
             {interpreting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
             <span>{interpreting ? 'Analyzing Telemetry...' : 'Interpret Telemetry with AI'}</span>
@@ -790,15 +790,15 @@ export default function HardwareLabPage() {
           <div className="space-y-4 animate-in fade-in">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Box 1: RAW SENSOR DATA */}
-              <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-2xs space-y-2">
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
                   RAW SENSOR DATA
                 </span>
-                <div className="space-y-1 text-xs text-slate-300 pt-1 font-mono">
+                <div className="space-y-1 text-xs text-slate-700 pt-1 font-mono">
                   {Object.entries(aiInterpretation.raw_sensor_data || {}).map(([sName, sData]: [string, any]) => (
                     <div key={sName} className="flex justify-between">
-                      <span className="truncate max-w-[120px]">{sName}:</span>
-                      <span className="font-bold text-white">
+                      <span className="truncate max-w-[120px] text-slate-600">{sName}:</span>
+                      <span className="font-bold text-slate-900">
                         {sData.current} {sData.unit}
                       </span>
                     </div>
@@ -807,35 +807,35 @@ export default function HardwareLabPage() {
               </div>
 
               {/* Box 2: AI INTERPRETATION */}
-              <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+              <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-2xs space-y-2">
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
                   AI INTERPRETATION
                 </span>
-                <p className="text-xs text-slate-300 leading-relaxed pt-1">
+                <p className="text-xs text-slate-700 leading-relaxed pt-1">
                   {aiInterpretation.ai_interpretation}
                 </p>
               </div>
 
               {/* Box 3: RECOMMENDED ACTION */}
-              <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-2xs space-y-2">
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                   RECOMMENDED ACTION
                 </span>
-                <p className="text-xs text-emerald-200 leading-relaxed pt-1">
+                <p className="text-xs text-emerald-800 font-medium leading-relaxed pt-1">
                   {aiInterpretation.recommended_action}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-slate-800">
-              <span>Overall State: <strong className="text-white">{aiInterpretation.overall_system_health}</strong></span>
-              <span>Severity Level: <strong className="text-indigo-400">{aiInterpretation.severity_level}</strong></span>
+            <div className="flex items-center justify-between text-[11px] text-slate-600 pt-2 border-t border-indigo-100">
+              <span>Overall State: <strong className="text-slate-900">{aiInterpretation.overall_system_health}</strong></span>
+              <span>Severity Level: <strong className="text-indigo-700 font-bold">{aiInterpretation.severity_level}</strong></span>
             </div>
           </div>
         ) : (
-          <div className="p-6 text-center rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
-            <p className="text-xs text-slate-400">
-              Click <strong>"Interpret Telemetry with AI"</strong> or inject a sensor anomaly to see real-time AI reasoning.
+          <div className="p-6 text-center rounded-xl bg-white/70 border border-dashed border-indigo-200 space-y-2">
+            <p className="text-xs text-slate-600">
+              Click <strong>&quot;Interpret Telemetry with AI&quot;</strong> or inject a sensor anomaly to see real-time AI reasoning.
             </p>
           </div>
         )}
@@ -844,13 +844,13 @@ export default function HardwareLabPage() {
       {/* 6. Hardware Alerts & Experiment History (2 Columns) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Live Hardware Alert Stream */}
-        <div className="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
+        <div className="rounded-2xl bg-white border border-slate-200/80 shadow-xs p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <ShieldAlert className="h-4 w-4 text-rose-400" />
-              <h2 className="text-base font-bold text-white">Live Alert Dispatch Stream</h2>
+              <ShieldAlert className="h-4 w-4 text-rose-600" />
+              <h2 className="text-base font-bold text-slate-900">Live Alert Dispatch Stream</h2>
             </div>
-            <span className="text-xs text-slate-400">{alerts.filter((a) => !a.is_resolved).length} Active</span>
+            <span className="text-xs text-slate-500 font-medium">{alerts.filter((a) => !a.is_resolved).length} Active</span>
           </div>
 
           <div className="space-y-2.5 max-h-80 overflow-y-auto pr-1">
@@ -858,28 +858,30 @@ export default function HardwareLabPage() {
               alerts.map((alert) => (
                 <div
                   key={alert.id}
-                  className={`p-3 rounded-2xl border flex items-center justify-between gap-3 text-xs transition-colors ${
+                  className={`p-3.5 rounded-xl border flex items-center justify-between gap-3 text-xs transition-colors ${
                     alert.is_resolved
-                      ? 'bg-slate-950/40 border-slate-800 text-slate-500'
+                      ? 'bg-slate-50 border-slate-200 text-slate-500'
                       : alert.alert_level === 'CRITICAL'
-                      ? 'bg-rose-950/30 border-rose-500/40 text-rose-200'
-                      : 'bg-amber-950/30 border-amber-500/40 text-amber-200'
+                      ? 'bg-rose-50 border-rose-200 text-rose-900'
+                      : 'bg-amber-50 border-amber-200 text-amber-900'
                   }`}
                 >
                   <div className="space-y-0.5 flex-1">
                     <div className="flex items-center gap-1.5">
-                      <span className="font-bold uppercase text-[9px] px-1.5 py-0.2 rounded bg-slate-950">
+                      <span className={`font-bold uppercase text-[9px] px-2 py-0.5 rounded-md ${
+                        alert.alert_level === 'CRITICAL' ? 'bg-rose-100 text-rose-800' : 'bg-amber-100 text-amber-800'
+                      }`}>
                         {alert.alert_level}
                       </span>
-                      <span className="font-semibold text-white">{alert.sensor_name}</span>
+                      <span className="font-bold text-slate-900">{alert.sensor_name}</span>
                     </div>
-                    <p className="text-[11px] leading-relaxed">{alert.message}</p>
+                    <p className="text-[11px] leading-relaxed text-slate-700">{alert.message}</p>
                   </div>
 
                   {!alert.is_resolved && (
                     <button
                       onClick={() => handleResolveAlert(alert.id)}
-                      className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:bg-slate-800 text-[10px] font-bold text-slate-300 shrink-0"
+                      className="px-3 py-1 rounded-lg bg-white border border-slate-300 hover:bg-slate-50 text-[10px] font-bold text-slate-800 shrink-0 cursor-pointer shadow-2xs"
                     >
                       Resolve
                     </button>
@@ -893,15 +895,15 @@ export default function HardwareLabPage() {
         </div>
 
         {/* Experiment History & Roadmap Evidence */}
-        <div className="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
+        <div className="rounded-2xl bg-white border border-slate-200/80 shadow-xs p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Award className="h-4 w-4 text-purple-400" />
-              <h2 className="text-base font-bold text-white">Hardware Experiment Logs ({experiments.length})</h2>
+              <Award className="h-4 w-4 text-purple-600" />
+              <h2 className="text-base font-bold text-slate-900">Hardware Experiment Logs ({experiments.length})</h2>
             </div>
             <button
               onClick={() => setExperimentModalOpen(true)}
-              className="text-xs text-purple-400 hover:underline flex items-center gap-1 font-semibold"
+              className="text-xs text-purple-700 hover:text-purple-800 flex items-center gap-1 font-semibold cursor-pointer"
             >
               <span>+ New Benchmark</span>
             </button>
@@ -910,25 +912,25 @@ export default function HardwareLabPage() {
           <div className="space-y-3 max-h-80 overflow-y-auto pr-1">
             {experiments.length > 0 ? (
               experiments.map((exp) => (
-                <div key={exp.id} className="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2 text-xs">
+                <div key={exp.id} className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2 text-xs">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-bold text-white">{exp.name}</h3>
-                    <span className="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20 text-[10px] font-semibold">
+                    <h3 className="font-bold text-slate-900">{exp.name}</h3>
+                    <span className="px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-200 text-[10px] font-semibold">
                       {exp.status}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-400">{exp.objective}</p>
-                  <div className="flex flex-wrap items-center gap-3 text-[10px] text-slate-500 pt-1 border-t border-slate-800">
+                  <p className="text-[11px] text-slate-600">{exp.objective}</p>
+                  <div className="flex flex-wrap items-center gap-3 text-[10px] text-slate-500 pt-1 border-t border-slate-200">
                     <span>Duration: {exp.duration_seconds}s</span>
                     <span>Anomalies: {exp.anomalies_detected}</span>
                     <span>Loss: {exp.packet_loss_pct}%</span>
-                    <span className="text-emerald-400 font-semibold">{exp.result_summary}</span>
+                    <span className="text-emerald-700 font-bold">{exp.result_summary}</span>
                   </div>
                 </div>
               ))
             ) : (
               <div className="py-8 text-center text-xs text-slate-500">
-                No experiments saved yet. Click "Log Experiment" to document benchmarks.
+                No experiments saved yet. Click &quot;Log Experiment&quot; to document benchmarks.
               </div>
             )}
           </div>
@@ -937,9 +939,9 @@ export default function HardwareLabPage() {
 
       {/* 7. Hardware Contextual Resources */}
       {hardwareData?.recommended_hardware_resources && hardwareData.recommended_hardware_resources.length > 0 && (
-        <div className="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
-          <h2 className="text-base font-bold text-white flex items-center gap-2">
-            <BookOpen className="h-4 w-4 text-emerald-400" />
+        <div className="rounded-2xl bg-white border border-slate-200/80 shadow-xs p-6 space-y-4">
+          <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+            <BookOpen className="h-4 w-4 text-emerald-600" />
             Recommended Firmware Libraries & Hardware Stack
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -949,19 +951,19 @@ export default function HardwareLabPage() {
                 href={res.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition-colors space-y-2 flex flex-col justify-between"
+                className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-emerald-300 hover:bg-emerald-50/30 transition-all space-y-2 flex flex-col justify-between shadow-2xs hover:shadow-xs group"
               >
                 <div className="space-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold text-emerald-400">{res.category}</span>
-                    <ExternalLink className="h-3.5 w-3.5 text-slate-500" />
+                    <span className="text-[10px] font-bold text-emerald-700">{res.category}</span>
+                    <ExternalLink className="h-3.5 w-3.5 text-slate-400 group-hover:text-slate-600" />
                   </div>
-                  <h3 className="text-xs font-bold text-white">{res.title}</h3>
-                  <p className="text-[11px] text-slate-400 line-clamp-2">{res.description}</p>
+                  <h3 className="text-xs font-bold text-slate-900">{res.title}</h3>
+                  <p className="text-[11px] text-slate-600 line-clamp-2">{res.description}</p>
                 </div>
                 <div className="flex flex-wrap gap-1 pt-2">
                   {res.tags.map((t, idx) => (
-                    <span key={idx} className="px-1.5 py-0.2 rounded bg-slate-950 text-[9px] text-slate-400 font-mono">
+                    <span key={idx} className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-[9px] text-slate-600 font-mono">
                       {t}
                     </span>
                   ))}
@@ -974,33 +976,38 @@ export default function HardwareLabPage() {
 
       {/* Add Sensor Modal */}
       {sensorModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in overflow-y-auto">
-          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl sm:rounded-3xl bg-slate-900 border border-slate-700 shadow-2xl p-5 sm:p-7 space-y-4 sm:space-y-5">
-            <h2 className="text-base font-bold text-white flex items-center gap-2">
-              <Plus className="h-4 w-4 text-indigo-400" />
-              Attach Virtual Sensor to {activeDevice?.name}
-            </h2>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in overflow-y-auto">
+          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white border border-slate-200 shadow-xl p-6 space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <Plus className="h-4 w-4 text-indigo-600" />
+                Attach Virtual Sensor to {activeDevice?.name}
+              </h2>
+              <button onClick={() => setSensorModalOpen(false)} className="text-slate-400 hover:text-slate-700 cursor-pointer">
+                <XCircle className="h-4 w-4" />
+              </button>
+            </div>
 
             <form onSubmit={handleAddSensor} className="space-y-3.5 text-xs">
               <div>
-                <label className="text-slate-300 font-semibold block mb-1">Sensor Name *</label>
+                <label className="text-slate-700 font-semibold block mb-1">Sensor Name *</label>
                 <input
                   type="text"
                   required
                   value={newSensorName}
                   onChange={(e) => setNewSensorName(e.target.value)}
                   placeholder="e.g. Dissolved Oxygen Sensor"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500"
+                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-slate-300 font-semibold block mb-1">Sensor Type</label>
+                  <label className="text-slate-700 font-semibold block mb-1">Sensor Type</label>
                   <select
                     value={newSensorType}
                     onChange={(e) => setNewSensorType(e.target.value)}
-                    className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 cursor-pointer"
                   >
                     <option value="turbidity">Turbidity (NTU)</option>
                     <option value="ph">pH Probe</option>
@@ -1013,66 +1020,66 @@ export default function HardwareLabPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="text-slate-300 font-semibold block mb-1">Unit</label>
+                  <label className="text-slate-700 font-semibold block mb-1">Unit</label>
                   <input
                     type="text"
                     required
                     value={newSensorUnit}
                     onChange={(e) => setNewSensorUnit(e.target.value)}
                     placeholder="e.g. mg/L"
-                    className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-slate-300 font-semibold block mb-1">Normal Range (Min / Max)</label>
+                  <label className="text-slate-700 font-semibold block mb-1">Normal Range (Min / Max)</label>
                   <div className="flex gap-2">
                     <input
                       type="number"
                       value={newSensorNormalMin}
                       onChange={(e) => setNewSensorNormalMin(Number(e.target.value))}
-                      className="w-1/2 p-2 bg-slate-950 border border-slate-800 rounded-lg text-white"
+                      className="w-1/2 p-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
                     />
                     <input
                       type="number"
                       value={newSensorNormalMax}
                       onChange={(e) => setNewSensorNormalMax(Number(e.target.value))}
-                      className="w-1/2 p-2 bg-slate-950 border border-slate-800 rounded-lg text-white"
+                      className="w-1/2 p-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="text-slate-300 font-semibold block mb-1">Thresholds (Warn / Crit)</label>
+                  <label className="text-slate-700 font-semibold block mb-1">Thresholds (Warn / Crit)</label>
                   <div className="flex gap-2">
                     <input
                       type="number"
                       value={newSensorWarning}
                       onChange={(e) => setNewSensorWarning(Number(e.target.value))}
-                      className="w-1/2 p-2 bg-slate-950 border border-slate-800 rounded-lg text-white"
+                      className="w-1/2 p-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
                     />
                     <input
                       type="number"
                       value={newSensorCritical}
                       onChange={(e) => setNewSensorCritical(Number(e.target.value))}
-                      className="w-1/2 p-2 bg-slate-950 border border-slate-800 rounded-lg text-white"
+                      className="w-1/2 p-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="flex justify-end gap-2 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setSensorModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-slate-400 hover:text-white"
+                  className="px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 font-semibold cursor-pointer transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold"
+                  className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-xs cursor-pointer transition-all"
                 >
                   Attach Sensor
                 </button>
@@ -1084,60 +1091,65 @@ export default function HardwareLabPage() {
 
       {/* Log Experiment Modal */}
       {experimentModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in overflow-y-auto">
-          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl sm:rounded-3xl bg-slate-900 border border-slate-700 shadow-2xl p-5 sm:p-7 space-y-4 sm:space-y-5">
-            <h2 className="text-base font-bold text-white flex items-center gap-2">
-              <Award className="h-4 w-4 text-purple-400" />
-              Document Hardware Experiment Benchmark
-            </h2>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in overflow-y-auto">
+          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white border border-slate-200 shadow-xl p-6 space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <Award className="h-4 w-4 text-purple-600" />
+                Document Hardware Experiment Benchmark
+              </h2>
+              <button onClick={() => setExperimentModalOpen(false)} className="text-slate-400 hover:text-slate-700 cursor-pointer">
+                <XCircle className="h-4 w-4" />
+              </button>
+            </div>
 
             <form onSubmit={handleSaveExperiment} className="space-y-3.5 text-xs">
               <div>
-                <label className="text-slate-300 font-semibold block mb-1">Experiment Title *</label>
+                <label className="text-slate-700 font-semibold block mb-1">Experiment Title *</label>
                 <input
                   type="text"
                   required
                   value={expName}
                   onChange={(e) => setExpName(e.target.value)}
                   placeholder="e.g. 72-Hour Water Turbidity Spike & LoRa Retransmission Test"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500"
+                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="text-slate-300 font-semibold block mb-1">Objective *</label>
+                <label className="text-slate-700 font-semibold block mb-1">Objective *</label>
                 <textarea
                   rows={2}
                   required
                   value={expObjective}
                   onChange={(e) => setExpObjective(e.target.value)}
                   placeholder="Define the technical benchmark or hypothesis..."
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500"
+                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="text-slate-300 font-semibold block mb-1">Observations & Results</label>
+                <label className="text-slate-700 font-semibold block mb-1">Observations & Results</label>
                 <textarea
                   rows={3}
                   value={expObservations}
                   onChange={(e) => setExpObservations(e.target.value)}
                   placeholder="Record packet loss, jitter, false positives, or ADC calibration notes..."
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500"
+                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
                 />
               </div>
 
-              <div className="flex justify-end gap-2 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setExperimentModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-slate-400 hover:text-white"
+                  className="px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 font-semibold cursor-pointer transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold"
+                  className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold shadow-xs cursor-pointer transition-all"
                 >
                   Save & Link to Roadmap
                 </button>

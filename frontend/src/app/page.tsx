@@ -567,8 +567,8 @@ export default function LandingPage() {
           <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm space-y-3 text-xs">
             <div className="flex items-center justify-between border-b border-slate-100 pb-2">
               <div className="flex items-center gap-2">
-                <div className="h-6 w-6 rounded bg-slate-900 text-white flex items-center justify-center font-bold text-[10px]">
-                  <Brain className="h-3.5 w-3.5 text-blue-400" />
+                <div className="h-6 w-6 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center font-bold text-[10px]">
+                  <Brain className="h-3.5 w-3.5 text-indigo-600" />
                 </div>
                 <span className="font-bold text-slate-900">AI Mentor &bull; Project Advisor</span>
               </div>

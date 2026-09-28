@@ -262,7 +262,7 @@ export default function CompetitionReadinessWorkspacePage() {
 
             <button
               onClick={() => setActiveSection('exports')}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition-colors shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-700 transition-colors shadow-xs cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Export Package</span>
@@ -1210,47 +1210,47 @@ export default function CompetitionReadinessWorkspacePage() {
               {/* Slide Preview Stage */}
               {currentSlide && (
                 <div className="space-y-4">
-                  <div className="rounded-2xl border-2 border-purple-200 bg-slate-950 text-white p-6 sm:p-8 min-h-[340px] flex flex-col justify-between relative shadow-xl">
+                  <div className="rounded-2xl border-2 border-purple-200/80 bg-gradient-to-br from-purple-50/40 via-white to-slate-50 text-slate-900 p-6 sm:p-8 min-h-[340px] flex flex-col justify-between relative shadow-xs">
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold text-purple-400">
+                        <span className="text-xs font-mono font-bold text-purple-700">
                           SLIDE {currentSlide.slide_number} OF {presentation.slides.length}
                         </span>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-900/60 text-purple-300 border border-purple-700">
+                        <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-purple-50 text-purple-700 border border-purple-200 font-semibold">
                           {currentSlide.visual_layout || 'Split Content / Diagram'}
                         </span>
                       </div>
 
-                      <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white">
+                      <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900">
                         {currentSlide.title}
                       </h2>
 
-                      <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300 max-w-3xl">
+                      <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700 max-w-3xl">
                         {currentSlide.key_bullet_points?.map((pt: string, idx: number) => (
                           <li key={idx} className="flex items-start gap-2.5">
-                            <span className="text-purple-400 font-bold mt-0.5">•</span>
+                            <span className="text-purple-600 font-bold mt-0.5">•</span>
                             <span>{pt}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+                    <div className="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
                       <div>
-                        <strong>Evidence Provenance:</strong> {currentSlide.verifiable_evidence_citations || 'Project Intelligence Baseline'}
+                        <strong className="text-slate-700">Evidence Provenance:</strong> {currentSlide.verifiable_evidence_citations || 'Project Intelligence Baseline'}
                       </div>
                       <div className="flex items-center gap-2">
                         <button
                           disabled={activeSlideIndex === 0}
                           onClick={() => setActiveSlideIndex((prev) => Math.max(0, prev - 1))}
-                          className="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-200 text-xs disabled:opacity-40"
+                          className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs disabled:opacity-40 cursor-pointer"
                         >
                           Previous
                         </button>
                         <button
                           disabled={activeSlideIndex === presentation.slides.length - 1}
                           onClick={() => setActiveSlideIndex((prev) => Math.min(presentation.slides.length - 1, prev + 1))}
-                          className="px-2.5 py-1 rounded-lg bg-purple-600 text-white text-xs disabled:opacity-40"
+                          className="px-2.5 py-1 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-xs disabled:opacity-40 cursor-pointer shadow-xs"
                         >
                           Next
                         </button>
@@ -1439,7 +1439,7 @@ export default function CompetitionReadinessWorkspacePage() {
                   </p>
                   <button
                     onClick={() => handleExport('tech_report')}
-                    className="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors"
+                    className="w-full py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition-colors shadow-xs cursor-pointer"
                   >
                     Generate Full Technical Report
                   </button>

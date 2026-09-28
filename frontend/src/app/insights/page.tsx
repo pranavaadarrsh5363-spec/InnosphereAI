@@ -75,10 +75,10 @@ export default function AIInsightsPage() {
   if (loading) {
     return (
       <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6">
-        <div className="rounded-3xl bg-slate-900/60 border border-slate-800 p-8 space-y-4 animate-pulse">
-          <div className="h-6 w-48 bg-slate-800 rounded-full" />
-          <div className="h-9 w-2/3 bg-slate-800 rounded-xl" />
-          <div className="h-4 w-1/2 bg-slate-800 rounded" />
+        <div className="rounded-3xl bg-slate-100 border border-slate-200 p-8 space-y-4 animate-pulse">
+          <div className="h-6 w-48 bg-slate-200 rounded-full" />
+          <div className="h-9 w-2/3 bg-slate-200 rounded-xl" />
+          <div className="h-4 w-1/2 bg-slate-200 rounded" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <SkeletonCard />
@@ -105,18 +105,18 @@ export default function AIInsightsPage() {
   return (
     <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 animate-in fade-in duration-300">
       {/* Header Banner */}
-      <div className="rounded-3xl bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 border border-slate-800 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
+      <div className="rounded-3xl bg-gradient-to-br from-indigo-50/70 via-white to-slate-50 border border-slate-200/80 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs relative overflow-hidden">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-[11px] font-semibold text-indigo-300">
-            <Sparkles className="h-3 w-3 text-indigo-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200/80 text-[11px] font-semibold text-indigo-700">
+            <Sparkles className="h-3 w-3 text-indigo-600" />
             <span>Domain Intelligence & Strategic Gaps</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             AI Insights & Innovation Gaps
           </h1>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
             AI-synthesized research directions, market trends, architectural patterns, and verified gap analysis for{' '}
-            <span className="text-white font-semibold">{activeProject?.title || 'your innovation project'}</span>.
+            <span className="text-slate-900 font-semibold">{activeProject?.title || 'your innovation project'}</span>.
           </p>
         </div>
 
@@ -124,9 +124,9 @@ export default function AIInsightsPage() {
           <button
             onClick={handleRefresh}
             disabled={refreshing}
-            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold transition-colors disabled:opacity-50"
+            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold shadow-2xs transition-colors disabled:opacity-50"
           >
-            <RefreshCw className={`h-3.5 w-3.5 ${refreshing ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`h-3.5 w-3.5 text-slate-500 ${refreshing ? 'animate-spin' : ''}`} />
             <span>{refreshing ? 'Refreshing AI Models...' : 'Refresh Insights'}</span>
           </button>
         </div>
@@ -135,49 +135,49 @@ export default function AIInsightsPage() {
       {/* Section 1: Innovation Gaps (Highlighted Feature) */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-base font-bold text-white flex items-center gap-2">
-            <AlertTriangle className="h-4 w-4 text-amber-400" />
+          <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+            <AlertTriangle className="h-4 w-4 text-amber-600" />
             Identified Innovation Gaps & Novelty Vectors
           </h2>
-          <span className="text-xs text-slate-400">Derived from 2024-2025 Literature & GitHub Repos</span>
+          <span className="text-xs text-slate-500 font-medium">Derived from 2024-2025 Literature & GitHub Repos</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {(insights?.innovation_gaps || []).map((gap, i) => (
-            <div key={i} className="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4 flex flex-col justify-between">
+            <div key={i} className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-2xs space-y-4 flex flex-col justify-between">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 uppercase tracking-wider">
+                  <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200 uppercase tracking-wider">
                     Unaddressed Research Gap #{i + 1}
                   </span>
-                  <span className="text-[10px] text-slate-500 font-mono">High Novelty Potential</span>
+                  <span className="text-[10px] text-slate-500 font-mono font-medium">High Novelty Potential</span>
                 </div>
-                <h3 className="text-base font-bold text-white leading-snug">{gap.gap}</h3>
+                <h3 className="text-base font-bold text-slate-900 leading-snug">{gap.gap}</h3>
 
                 <div className="space-y-2 text-xs">
-                  <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800">
-                    <span className="text-[10px] font-bold uppercase text-slate-400 block mb-0.5">Existing Approach</span>
-                    <p className="text-slate-300 leading-relaxed text-[11px]">{gap.current_state}</p>
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                    <span className="text-[10px] font-bold uppercase text-slate-500 block mb-0.5">Existing Approach</span>
+                    <p className="text-slate-700 leading-relaxed text-[11px]">{gap.current_state}</p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-rose-950/20 border border-rose-500/20">
-                    <span className="text-[10px] font-bold uppercase text-rose-400 block mb-0.5">Observed Limitation</span>
-                    <p className="text-slate-300 leading-relaxed text-[11px]">
+                  <div className="p-3 rounded-xl bg-rose-50/70 border border-rose-200">
+                    <span className="text-[10px] font-bold uppercase text-rose-700 block mb-0.5">Observed Limitation</span>
+                    <p className="text-rose-900 leading-relaxed text-[11px]">
                       High latency, single points of failure in centralized cloud pipelines, or lack of affordable edge sensors.
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/30">
-                    <span className="text-[10px] font-bold uppercase text-emerald-400 block mb-0.5">Potential Student Opportunity</span>
-                    <p className="text-emerald-200 leading-relaxed text-[11px]">{gap.your_advantage}</p>
+                  <div className="p-3 rounded-xl bg-emerald-50/80 border border-emerald-200">
+                    <span className="text-[10px] font-bold uppercase text-emerald-700 block mb-0.5">Potential Student Opportunity</span>
+                    <p className="text-emerald-900 leading-relaxed text-[11px] font-medium">{gap.your_advantage}</p>
                   </div>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-[10px] text-slate-400 flex items-center justify-between">
+                <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 text-[10px] text-slate-600 flex items-center justify-between">
                   <span>Supporting Literature Evidence: arXiv:2403.09112, OpenAlex:W42857</span>
                   <Link
                     href={`/discover?query=${encodeURIComponent(gap.gap)}`}
-                    className="text-indigo-400 hover:underline flex items-center gap-1 font-semibold"
+                    className="text-indigo-600 hover:text-indigo-700 hover:underline flex items-center gap-1 font-semibold"
                   >
                     <span>Inspect Sources</span>
                     <ArrowRight className="h-3 w-3" />
@@ -185,7 +185,7 @@ export default function AIInsightsPage() {
                 </div>
               </div>
 
-              <p className="text-[9px] text-slate-500 italic pt-2 border-t border-slate-800/80">
+              <p className="text-[10px] text-slate-400 italic pt-2 border-t border-slate-100">
                 * Note: Potential research opportunity identified from the analyzed sources.
               </p>
             </div>
@@ -195,22 +195,22 @@ export default function AIInsightsPage() {
 
       {/* Section 2: Key Strategic Insights */}
       <div className="space-y-4">
-        <h2 className="text-base font-bold text-white flex items-center gap-2">
-          <Sparkles className="h-4 w-4 text-indigo-400" />
+        <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+          <Sparkles className="h-4 w-4 text-indigo-600" />
           Key Strategic Insights
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {(insights?.key_insights || []).map((ki, i) => (
-            <div key={i} className="glass-panel rounded-2xl p-5 border border-slate-800 flex flex-col justify-between space-y-3">
+            <div key={i} className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs flex flex-col justify-between space-y-3">
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20 text-[10px] font-bold text-indigo-400">
+                  <span className="px-2 py-0.5 rounded bg-indigo-50 border border-indigo-200 text-[10px] font-bold text-indigo-700">
                     Impact: {ki.impact || 'High'}
                   </span>
-                  <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
+                  <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
                 </div>
-                <h3 className="text-sm font-bold text-white">{ki.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{ki.detail}</p>
+                <h3 className="text-sm font-bold text-slate-900">{ki.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">{ki.detail}</p>
               </div>
             </div>
           ))}
@@ -221,25 +221,25 @@ export default function AIInsightsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Technology Trends */}
         <div className="space-y-4">
-          <h2 className="text-base font-bold text-white flex items-center gap-2">
-            <Cpu className="h-4 w-4 text-amber-400" />
+          <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+            <Cpu className="h-4 w-4 text-amber-600" />
             Emerging Technology Trends
           </h2>
-          <div className="glass-panel rounded-2xl p-5 border border-slate-800 space-y-4">
+          <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs space-y-4">
             {(insights?.technology_trends || []).map((tt, i) => (
-              <div key={i} className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1.5">
+              <div key={i} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-white font-mono">{tt.tech}</span>
-                  <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-semibold">
+                  <span className="text-xs font-bold text-slate-900 font-mono">{tt.tech}</span>
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-semibold">
                     {tt.adoption || 'Growing'}
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 leading-relaxed">{tt.reason}</p>
-                <div className="pt-2 border-t border-slate-800/60 flex items-center justify-between">
-                  <span className="text-[10px] text-slate-500 font-mono">Skill Mapping Ready</span>
+                <p className="text-xs text-slate-600 leading-relaxed">{tt.reason}</p>
+                <div className="pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                  <span className="text-[10px] text-slate-500 font-mono font-medium">Skill Mapping Ready</span>
                   <Link
                     href={activeProject ? `/projects/${activeProject.id}/skills` : '/skills'}
-                    className="text-[11px] text-indigo-400 hover:text-indigo-300 hover:underline flex items-center gap-1 font-semibold"
+                    className="text-[11px] text-indigo-600 hover:text-indigo-700 hover:underline flex items-center gap-1 font-semibold"
                   >
                     <Brain className="h-3 w-3" />
                     <span>View Skill Gap</span>
@@ -253,18 +253,18 @@ export default function AIInsightsPage() {
 
         {/* Research Trends */}
         <div className="space-y-4">
-          <h2 className="text-base font-bold text-white flex items-center gap-2">
-            <BookOpen className="h-4 w-4 text-emerald-400" />
+          <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+            <BookOpen className="h-4 w-4 text-emerald-600" />
             Academic & Research Frontiers
           </h2>
-          <div className="glass-panel rounded-2xl p-5 border border-slate-800 space-y-4">
+          <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs space-y-4">
             {(insights?.research_trends || []).map((rt, i) => (
-              <div key={i} className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1.5">
-                <h3 className="text-xs font-bold text-white">{rt.topic}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{rt.recent_breakthrough}</p>
+              <div key={i} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                <h3 className="text-xs font-bold text-slate-900">{rt.topic}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">{rt.recent_breakthrough}</p>
                 <Link
                   href={`/discover?resource_type=research_paper&query=${encodeURIComponent(rt.topic)}`}
-                  className="text-[11px] text-emerald-400 hover:underline flex items-center gap-1 pt-1 font-medium"
+                  className="text-[11px] text-emerald-600 hover:text-emerald-700 hover:underline flex items-center gap-1 pt-1 font-medium"
                 >
                   <span>Search Literature on arXiv</span>
                   <ArrowRight className="h-3 w-3" />
@@ -277,33 +277,33 @@ export default function AIInsightsPage() {
 
       {/* Section 4: Similar Existing Solutions Matrix */}
       <div className="space-y-4">
-        <h2 className="text-base font-bold text-white flex items-center gap-2">
-          <Layers className="h-4 w-4 text-purple-400" />
+        <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+          <Layers className="h-4 w-4 text-purple-600" />
           Related Solutions & Comparative Breakdown
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {(insights?.similar_solutions || []).map((sol, i) => (
-            <div key={i} className="glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+            <div key={i} className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-2xs space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-bold text-white">{sol.name}</h3>
+                <h3 className="text-sm font-bold text-slate-900">{sol.name}</h3>
                 {sol.url && (
                   <a
                     href={sol.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-white"
+                    className="text-slate-400 hover:text-slate-700 transition-colors"
                   >
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 )}
               </div>
               <div className="space-y-2 text-xs">
-                <div className="text-slate-400">
-                  <span className="font-semibold text-slate-300">Similarity: </span>
+                <div className="text-slate-600">
+                  <span className="font-semibold text-slate-700">Similarity: </span>
                   {sol.similarity}
                 </div>
-                <div className="text-indigo-300 font-medium">
-                  <span className="font-semibold text-indigo-200">How your idea differs: </span>
+                <div className="text-indigo-700 font-medium">
+                  <span className="font-semibold text-indigo-900">How your idea differs: </span>
                   {sol.difference}
                 </div>
               </div>

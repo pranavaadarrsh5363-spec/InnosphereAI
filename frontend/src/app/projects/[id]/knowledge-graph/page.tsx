@@ -559,7 +559,7 @@ export default function ProjectKnowledgeGraphPage() {
           /* ========================================================================= */
           /* 1. VISUAL INTERACTIVE GRAPH CANVAS                                        */
           /* ========================================================================= */
-          <div className="relative w-full h-[650px] bg-slate-950 rounded-3xl border border-slate-800 overflow-hidden shadow-xl select-none">
+          <div className="relative w-full h-[650px] bg-slate-50/70 rounded-3xl border border-slate-200/80 overflow-hidden shadow-xs select-none">
             {/* Canvas SVG */}
             <svg
               id="canvas-bg"
@@ -582,7 +582,7 @@ export default function ProjectKnowledgeGraphPage() {
                   markerHeight="6"
                   orient="auto-start-reverse"
                 >
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#6366F1" />
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#4F46E5" />
                 </marker>
               </defs>
 
@@ -614,9 +614,9 @@ export default function ProjectKnowledgeGraphPage() {
                         y1={src.y}
                         x2={tgt.x}
                         y2={tgt.y}
-                        stroke={isSelected ? '#A855F7' : '#475569'}
+                        stroke={isSelected ? '#7C3AED' : '#CBD5E1'}
                         strokeWidth={isSelected ? 2.5 : 1.5}
-                        strokeOpacity={isSelected ? 1.0 : 0.6}
+                        strokeOpacity={isSelected ? 1.0 : 0.8}
                         markerEnd="url(#arrow-end)"
                       />
                       {/* Edge Label Pill */}
@@ -626,20 +626,20 @@ export default function ProjectKnowledgeGraphPage() {
                         width={70}
                         height={16}
                         rx={4}
-                        fill="#0F172A"
-                        stroke="#334155"
+                        fill="#FFFFFF"
+                        stroke="#E2E8F0"
                         strokeWidth={1}
-                        className="group-hover:stroke-indigo-500 transition-colors"
+                        className="group-hover:stroke-indigo-500 transition-colors shadow-2xs"
                       />
                       <text
                         x={midX}
                         y={midY + 3.5}
                         textAnchor="middle"
-                        fill="#94A3B8"
+                        fill="#475569"
                         fontSize={9}
                         fontFamily="system-ui, sans-serif"
                         fontWeight="600"
-                        className="group-hover:fill-indigo-300 transition-colors"
+                        className="group-hover:fill-indigo-700 transition-colors"
                       >
                         {edge.relationship_type.replace('_', ' ').slice(0, 10)}
                       </text>
@@ -656,8 +656,8 @@ export default function ProjectKnowledgeGraphPage() {
                   const isSelected = selectedNode?.node_key === node.node_key;
                   const style = categoryColorLUT[node.category] || {
                     color: '#64748B',
-                    bg: '#1E293B',
-                    border: '#475569',
+                    bg: '#F8FAFC',
+                    border: '#CBD5E1',
                   };
 
                   const r = isIdea ? 38 : 26;
@@ -678,7 +678,7 @@ export default function ProjectKnowledgeGraphPage() {
                         <circle
                           r={r + 6}
                           fill="none"
-                          stroke={isIdea ? '#6366F1' : '#A855F7'}
+                          stroke={isIdea ? '#4F46E5' : '#7C3AED'}
                           strokeWidth={2}
                           strokeDasharray={isIdea ? '4 4' : 'none'}
                           className="animate-pulse"
@@ -688,10 +688,10 @@ export default function ProjectKnowledgeGraphPage() {
                       {/* Main Node Circle */}
                       <circle
                         r={r}
-                        fill="#0F172A"
-                        stroke={isSelected ? '#A855F7' : style.color}
+                        fill="#FFFFFF"
+                        stroke={isSelected ? '#7C3AED' : style.color}
                         strokeWidth={isSelected ? 3 : 2}
-                        className="group-hover:scale-110 transition-transform origin-center"
+                        className="group-hover:scale-110 transition-transform origin-center shadow-xs"
                       />
 
                       {/* Category Label Pill inside Node */}
@@ -707,13 +707,13 @@ export default function ProjectKnowledgeGraphPage() {
                       </text>
 
                       {/* Degree badge */}
-                      <circle cx={r - 4} cy={-r + 4} r={7} fill="#1E293B" stroke="#475569" strokeWidth={1} />
+                      <circle cx={r - 4} cy={-r + 4} r={7} fill="#F1F5F9" stroke="#CBD5E1" strokeWidth={1} />
                       <text
                         x={r - 4}
                         y={-r + 7}
                         textAnchor="middle"
                         fontSize={8}
-                        fill="#CBD5E1"
+                        fill="#475569"
                         fontFamily="system-ui, sans-serif"
                         fontWeight="bold"
                       >
@@ -726,9 +726,9 @@ export default function ProjectKnowledgeGraphPage() {
                         y={r + 14}
                         fontSize={11}
                         fontWeight="600"
-                        fill="#F1F5F9"
+                        fill="#0F172A"
                         fontFamily="system-ui, sans-serif"
-                        className="drop-shadow-md"
+                        className="drop-shadow-xs"
                       >
                         {node.label.length > 22 ? `${node.label.slice(0, 20)}...` : node.label}
                       </text>
@@ -739,15 +739,15 @@ export default function ProjectKnowledgeGraphPage() {
             </svg>
 
             {/* Bottom Floating Legend Bar */}
-            <div className="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-2xl p-3 flex items-center justify-between gap-4 overflow-x-auto text-[11px] text-slate-400">
+            <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md border border-slate-200/80 rounded-2xl p-3 flex items-center justify-between gap-4 overflow-x-auto text-[11px] text-slate-600 shadow-sm">
               <div className="flex items-center gap-3 shrink-0">
-                <span className="font-semibold text-slate-300">Category Colors:</span>
+                <span className="font-semibold text-slate-800">Category Colors:</span>
                 {['IDEA', 'PROBLEM', 'RESEARCH_PAPER', 'TECHNOLOGY', 'HARDWARE', 'EXPERIMENT', 'VALIDATION_EVIDENCE', 'SKILL'].map((cat) => {
                   const st = categoryColorLUT[cat] || { color: '#64748B' };
                   return (
                     <div key={cat} className="flex items-center gap-1 shrink-0">
                       <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: st.color }} />
-                      <span>{cat.replace('_', ' ').toLowerCase()}</span>
+                      <span className="capitalize">{cat.replace('_', ' ').toLowerCase()}</span>
                     </div>
                   );
                 })}
@@ -1131,15 +1131,15 @@ export default function ProjectKnowledgeGraphPage() {
 
         {/* Multi-Format Export Modal */}
         {exportModalOpen && (
-          <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
             <div className="bg-white border border-slate-200 rounded-3xl p-6 max-w-2xl w-full shadow-2xl space-y-4">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <Download className="w-4 h-4 text-indigo-500" /> Export Knowledge Graph ({exportFormat.toUpperCase()})
+                  <Download className="w-4 h-4 text-indigo-600" /> Export Knowledge Graph ({exportFormat.toUpperCase()})
                 </h3>
                 <button
                   onClick={() => setExportModalOpen(false)}
-                  className="p-1 rounded-lg text-slate-400 hover:text-slate-600"
+                  className="p-1 rounded-lg text-slate-400 hover:text-slate-600 cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1151,10 +1151,10 @@ export default function ProjectKnowledgeGraphPage() {
                   <button
                     key={fmt}
                     onClick={() => handleExport(fmt)}
-                    className={`px-3 py-1.5 text-xs font-semibold rounded-xl border transition-all ${
+                    className={`px-3 py-1.5 text-xs font-semibold rounded-xl border transition-all cursor-pointer ${
                       exportFormat === fmt
                         ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
-                        : 'bg-slate-50 border-slate-200 text-slate-700'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                     }`}
                   >
                     {fmt.toUpperCase()}
@@ -1164,8 +1164,8 @@ export default function ProjectKnowledgeGraphPage() {
 
               {/* Export Content Preview */}
               {exportLoading ? (
-                <div className="p-12 text-center text-xs text-slate-400">
-                  <RefreshCw className="w-6 h-6 animate-spin mx-auto mb-2 text-indigo-500" />
+                <div className="p-12 text-center text-xs text-slate-500">
+                  <RefreshCw className="w-6 h-6 animate-spin mx-auto mb-2 text-indigo-600" />
                   Generating {exportFormat.toUpperCase()} export data...
                 </div>
               ) : (
@@ -1174,13 +1174,13 @@ export default function ProjectKnowledgeGraphPage() {
                     readOnly
                     value={exportData}
                     rows={12}
-                    className="w-full p-3 font-mono text-[11px] rounded-xl bg-slate-950 text-slate-200 border border-slate-800 focus:outline-hidden"
+                    className="w-full p-3 font-mono text-[11px] rounded-xl bg-slate-50 text-slate-800 border border-slate-200 focus:outline-hidden"
                   />
                   <button
                     onClick={() => handleCopy(exportData)}
-                    className="absolute top-3 right-3 px-2.5 py-1 text-xs rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold flex items-center gap-1 shadow-sm"
+                    className="absolute top-3 right-3 px-3 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold flex items-center gap-1.5 border border-slate-200 shadow-xs cursor-pointer transition-colors"
                   >
-                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
                     {copied ? 'Copied' : 'Copy'}
                   </button>
                 </div>

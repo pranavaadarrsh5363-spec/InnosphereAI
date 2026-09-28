@@ -77,24 +77,24 @@ export default function AnalyticsPage() {
   return (
     <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 animate-in fade-in duration-300">
       {/* Header Banner */}
-      <div className="rounded-3xl bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 border border-slate-800 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
+      <div className="rounded-3xl bg-gradient-to-br from-indigo-50/70 via-white to-slate-50 border border-slate-200/80 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs relative overflow-hidden">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-[11px] font-semibold text-indigo-300">
-            <BarChart3 className="h-3 w-3 text-indigo-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200/80 text-[11px] font-semibold text-indigo-700">
+            <BarChart3 className="h-3 w-3 text-indigo-600" />
             <span>Real-Time Innovation Analytics</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             Platform Impact & Metrics
           </h1>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
             Quantitative telemetry measuring discovered resources, completed roadmap phases, domain distributions, and active student projects.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="px-4 py-2 rounded-xl bg-slate-950/80 border border-slate-800 text-center">
-            <span className="text-[10px] text-slate-400 block uppercase tracking-wider font-semibold">Innovation Velocity</span>
-            <span className="text-lg font-black text-emerald-400">{metrics.innovation_velocity}</span>
+          <div className="px-4 py-2.5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs text-center">
+            <span className="text-[10px] text-slate-500 block uppercase tracking-wider font-semibold">Innovation Velocity</span>
+            <span className="text-xl font-bold text-emerald-600">{metrics.innovation_velocity}</span>
           </div>
         </div>
       </div>
@@ -102,23 +102,23 @@ export default function AnalyticsPage() {
       {/* 6 Key Impact Stat Cards */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {[
-          { label: 'Discovered Resources', val: `${metrics.resources_discovered}+`, icon: Compass, color: 'text-indigo-400 bg-indigo-500/10' },
-          { label: 'Ideas Analyzed', val: `${metrics.ideas_analyzed}+`, icon: Sparkles, color: 'text-purple-400 bg-purple-500/10' },
-          { label: 'Technologies Explored', val: `${metrics.technologies_explored}+`, icon: Cpu, color: 'text-blue-400 bg-blue-500/10' },
-          { label: 'Live Data Sources', val: `${metrics.research_sources}`, icon: Layers, color: 'text-amber-400 bg-amber-500/10' },
-          { label: 'Student Projects', val: `${metrics.student_projects}+`, icon: Award, color: 'text-emerald-400 bg-emerald-500/10' },
-          { label: 'Milestones Completed', val: `${metrics.tasks_completed}`, icon: CheckCircle2, color: 'text-teal-400 bg-teal-500/10' },
+          { label: 'Discovered Resources', val: `${metrics.resources_discovered}+`, icon: Compass, color: 'text-indigo-600 bg-indigo-50 border border-indigo-200/60' },
+          { label: 'Ideas Analyzed', val: `${metrics.ideas_analyzed}+`, icon: Sparkles, color: 'text-purple-600 bg-purple-50 border border-purple-200/60' },
+          { label: 'Technologies Explored', val: `${metrics.technologies_explored}+`, icon: Cpu, color: 'text-blue-600 bg-blue-50 border border-blue-200/60' },
+          { label: 'Live Data Sources', val: `${metrics.research_sources}`, icon: Layers, color: 'text-amber-600 bg-amber-50 border border-amber-200/60' },
+          { label: 'Student Projects', val: `${metrics.student_projects}+`, icon: Award, color: 'text-emerald-600 bg-emerald-50 border border-emerald-200/60' },
+          { label: 'Milestones Completed', val: `${metrics.tasks_completed}`, icon: CheckCircle2, color: 'text-teal-600 bg-teal-50 border border-teal-200/60' },
         ].map((item, i) => {
           const Icon = item.icon;
           return (
-            <div key={i} className="glass-panel rounded-2xl p-4 border border-slate-800 flex flex-col justify-between space-y-2">
+            <div key={i} className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-2xs flex flex-col justify-between space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xl font-extrabold text-white gradient-text">{item.val}</span>
+                <span className="text-xl font-bold text-slate-900">{item.val}</span>
                 <div className={`h-8 w-8 rounded-lg flex items-center justify-center ${item.color}`}>
                   <Icon className="h-4 w-4" />
                 </div>
               </div>
-              <p className="text-xs font-semibold text-slate-300">{item.label}</p>
+              <p className="text-xs font-semibold text-slate-600">{item.label}</p>
             </div>
           );
         })}
@@ -127,13 +127,13 @@ export default function AnalyticsPage() {
       {/* 2-Column Visual Distribution Graphs */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Domain Distribution Chart */}
-        <div className="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
+        <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-2xs space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <Layers className="h-4 w-4 text-indigo-400" />
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <Layers className="h-4 w-4 text-indigo-600" />
               Innovation Domains Breakdown
             </h3>
-            <span className="text-xs text-slate-400">Total Projects</span>
+            <span className="text-xs text-slate-500 font-medium">Total Projects</span>
           </div>
 
           <div className="space-y-3 pt-2">
@@ -143,10 +143,10 @@ export default function AnalyticsPage() {
               return (
                 <div key={i} className="space-y-1.5">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-300 font-medium">{item.domain}</span>
-                    <span className="text-indigo-400 font-bold">{item.count} projects</span>
+                    <span className="text-slate-700 font-medium">{item.domain}</span>
+                    <span className="text-indigo-600 font-bold">{item.count} projects</span>
                   </div>
-                  <div className="h-2 w-full bg-slate-900 rounded-full overflow-hidden">
+                  <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
                       style={{ width: `${pct}%` }}
@@ -159,13 +159,13 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Project Lifecycle Status Breakdown */}
-        <div className="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
+        <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-2xs space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <TrendingUp className="h-4 w-4 text-emerald-400" />
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <TrendingUp className="h-4 w-4 text-emerald-600" />
               Project Development Pipeline Stages
             </h3>
-            <span className="text-xs text-slate-400">Lifecycle</span>
+            <span className="text-xs text-slate-500 font-medium">Lifecycle</span>
           </div>
 
           <div className="space-y-3 pt-2">
@@ -175,10 +175,10 @@ export default function AnalyticsPage() {
               return (
                 <div key={i} className="space-y-1.5">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-300 font-medium capitalize">{item.status}</span>
-                    <span className="text-emerald-400 font-bold">{item.count} initiatives</span>
+                    <span className="text-slate-700 font-medium capitalize">{item.status}</span>
+                    <span className="text-emerald-600 font-bold">{item.count} initiatives</span>
                   </div>
-                  <div className="h-2 w-full bg-slate-900 rounded-full overflow-hidden">
+                  <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full"
                       style={{ width: `${pct}%` }}
@@ -192,18 +192,18 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Featured Technologies Leaderboard */}
-      <div className="glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
-        <h3 className="text-sm font-bold text-white flex items-center gap-2">
-          <Cpu className="h-4 w-4 text-amber-400" />
+      <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-2xs space-y-4">
+        <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+          <Cpu className="h-4 w-4 text-amber-600" />
           Most Adopted Technologies Across Student Projects
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pt-2">
           {featuredTechs.map((tech, i) => (
-            <div key={i} className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+            <div key={i} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 shadow-2xs space-y-1.5">
               <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">{tech.domain}</span>
-              <h4 className="text-xs font-bold text-white font-mono">{tech.name}</h4>
-              <p className="text-[11px] text-indigo-400 font-medium">{tech.projects_using} active projects</p>
+              <h4 className="text-xs font-bold text-slate-900 font-mono">{tech.name}</h4>
+              <p className="text-[11px] text-indigo-600 font-medium">{tech.projects_using} active projects</p>
             </div>
           ))}
         </div>

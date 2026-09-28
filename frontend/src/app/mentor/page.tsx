@@ -17,6 +17,7 @@ import {
   BarChart3,
   Loader2,
   Check,
+  X,
 } from 'lucide-react';
 import { api } from '@/lib/api';
 import { getDomainColor } from '@/lib/utils';
@@ -118,22 +119,22 @@ export default function MentorDashboardPage() {
     <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 animate-in fade-in duration-300">
       {/* Toast */}
       {successToast && (
-        <div className="fixed top-20 right-8 z-50 px-4 py-2.5 bg-emerald-600 text-white text-xs font-semibold rounded-xl shadow-2xl animate-in fade-in">
+        <div className="fixed top-20 right-8 z-50 px-4 py-2.5 bg-emerald-600 text-white text-xs font-semibold rounded-xl shadow-xl animate-in fade-in">
           {successToast}
         </div>
       )}
 
       {/* Header Banner */}
-      <div className="rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 border border-slate-800 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
+      <div className="rounded-3xl bg-gradient-to-br from-purple-50/70 via-white to-slate-50 border border-slate-200/80 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs relative overflow-hidden">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-[11px] font-semibold text-purple-300">
-            <GraduationCap className="h-3.5 w-3.5 text-purple-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200/80 text-[11px] font-semibold text-purple-700">
+            <GraduationCap className="h-3.5 w-3.5 text-purple-600" />
             <span>Faculty Mentor & Evaluator Cockpit</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             Student Innovation Evaluation Portal
           </h1>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
             Review student project roadmaps, evaluate technology architecture choices, leave rubric feedback, and guide student innovators toward practical deployment.
           </p>
         </div>
@@ -142,7 +143,7 @@ export default function MentorDashboardPage() {
         {user?.role !== 'mentor' && (
           <button
             onClick={() => demoLogin('mentor')}
-            className="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold shadow transition-colors flex items-center gap-1.5"
+            className="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5"
           >
             <GraduationCap className="h-4 w-4" />
             <span>Switch to Mentor Persona</span>
@@ -151,7 +152,7 @@ export default function MentorDashboardPage() {
       </div>
 
       {/* Search & Filters */}
-      <div className="glass-panel rounded-2xl p-4 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="w-full sm:w-80 relative">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
@@ -159,17 +160,17 @@ export default function MentorDashboardPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search by project, student, or college..."
-            className="w-full bg-slate-950 border border-slate-700/80 rounded-xl pl-10 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>
 
         <div className="flex flex-wrap items-center gap-3 text-xs w-full sm:w-auto">
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-400 font-medium">Domain:</span>
+            <span className="text-slate-500 font-medium">Domain:</span>
             <select
               value={selectedDomain}
               onChange={(e) => setSelectedDomain(e.target.value)}
-              className="bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-white focus:outline-none focus:border-indigo-500"
+              className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               {domains.map((d) => (
                 <option key={d} value={d}>
@@ -180,11 +181,11 @@ export default function MentorDashboardPage() {
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-400 font-medium">Status:</span>
+            <span className="text-slate-500 font-medium">Status:</span>
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-white focus:outline-none focus:border-indigo-500 capitalize"
+              className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500 capitalize"
             >
               <option value="all">All Stages</option>
               <option value="idea">Idea</option>
@@ -221,28 +222,28 @@ export default function MentorDashboardPage() {
             return (
               <div
                 key={p.id}
-                className="glass-panel glass-panel-hover rounded-2xl p-6 border border-slate-800 flex flex-col justify-between space-y-4 relative group"
+                className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-2xs hover:border-purple-200/80 transition-all flex flex-col justify-between space-y-4 relative group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-semibold border ${domainColor.bg} ${domainColor.text} ${domainColor.border}`}>
                       {p.domain}
                     </span>
-                    <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] font-medium capitalize">
+                    <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[10px] font-medium capitalize">
                       {p.status}
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-white group-hover:text-purple-300 transition-colors leading-snug">
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-purple-700 transition-colors leading-snug">
                     {p.title}
                   </h3>
 
-                  <div className="text-xs text-slate-400 space-y-1">
+                  <div className="text-xs text-slate-500 space-y-1">
                     <p>
-                      <strong className="text-slate-300">Student:</strong> {p.student_name}
+                      <strong className="text-slate-700">Student:</strong> {p.student_name}
                     </p>
                     <p className="truncate">
-                      <strong className="text-slate-300">Institution:</strong> {p.institution}
+                      <strong className="text-slate-700">Institution:</strong> {p.institution}
                     </p>
                   </div>
 
@@ -252,7 +253,7 @@ export default function MentorDashboardPage() {
                       {p.technologies.slice(0, 4).map((t: string, i: number) => (
                         <span
                           key={i}
-                          className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-[10px] text-indigo-300 font-mono"
+                          className="px-2 py-0.5 rounded bg-slate-50 border border-slate-200 text-[10px] text-indigo-700 font-mono"
                         >
                           {t}
                         </span>
@@ -262,19 +263,19 @@ export default function MentorDashboardPage() {
                 </div>
 
                 {/* Footer Controls */}
-                <div className="pt-3 border-t border-slate-800/80 space-y-3">
+                <div className="pt-3 border-t border-slate-100 space-y-3">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-400">Roadmap Progress</span>
-                    <span className="font-bold text-emerald-400">{p.progress}%</span>
+                    <span className="text-slate-500 font-medium">Roadmap Progress</span>
+                    <span className="font-bold text-emerald-600">{p.progress}%</span>
                   </div>
-                  <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-emerald-400" style={{ width: `${p.progress}%` }} />
+                  <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${p.progress}%` }} />
                   </div>
 
                   <div className="flex items-center justify-between pt-1">
                     <Link
                       href={`/projects/${p.id}`}
-                      className="text-xs text-indigo-400 hover:underline flex items-center gap-1"
+                      className="text-xs text-indigo-600 hover:text-indigo-700 hover:underline flex items-center gap-1 font-medium"
                     >
                       <span>Workspace</span>
                       <ExternalLink className="h-3 w-3" />
@@ -282,7 +283,7 @@ export default function MentorDashboardPage() {
 
                     <button
                       onClick={() => handleOpenReview(p)}
-                      className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold shadow transition-colors flex items-center gap-1"
+                      className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold shadow-2xs transition-colors flex items-center gap-1"
                     >
                       <Award className="h-3.5 w-3.5" />
                       <span>Review & Grade</span>
@@ -297,27 +298,27 @@ export default function MentorDashboardPage() {
 
       {/* Review Modal */}
       {reviewModalOpen && selectedProject && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-slate-700 max-w-xl w-full space-y-5 animate-in zoom-in-95">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl max-w-xl w-full space-y-5 animate-in zoom-in-95">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <Award className="h-4 w-4 text-purple-400" />
+                <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                  <Award className="h-4 w-4 text-purple-600" />
                   Faculty Mentorship Review
                 </h3>
-                <p className="text-xs text-slate-400 mt-0.5">{selectedProject.title}</p>
+                <p className="text-xs text-slate-500 mt-0.5">{selectedProject.title}</p>
               </div>
               <button
                 onClick={() => setReviewModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="p-1 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
               >
-                ✕
+                <X className="w-5 h-5" />
               </button>
             </div>
 
             <form onSubmit={handleSubmitReview} className="space-y-4 text-xs">
               <div>
-                <label className="text-slate-300 font-semibold block mb-1">Rubric Rating (1 to 5 Stars)</label>
+                <label className="text-slate-700 font-semibold block mb-1">Rubric Rating (1 to 5 Stars)</label>
                 <div className="flex items-center gap-2">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
@@ -326,45 +327,45 @@ export default function MentorDashboardPage() {
                       onClick={() => setRating(star)}
                       className={`h-8 w-8 rounded-lg flex items-center justify-center text-sm font-bold border transition-colors ${
                         rating >= star
-                          ? 'bg-amber-500/20 text-amber-400 border-amber-500/40'
-                          : 'bg-slate-900 text-slate-500 border-slate-800'
+                          ? 'bg-amber-50 text-amber-600 border-amber-300'
+                          : 'bg-slate-50 text-slate-400 border-slate-200'
                       }`}
                     >
                       ★
                     </button>
                   ))}
-                  <span className="text-xs font-bold text-amber-400 ml-2">{rating} / 5 Stars</span>
+                  <span className="text-xs font-bold text-amber-600 ml-2">{rating} / 5 Stars</span>
                 </div>
               </div>
 
               <div>
-                <label className="text-slate-300 font-semibold block mb-1">Qualitative Feedback & Guidance *</label>
+                <label className="text-slate-700 font-semibold block mb-1">Qualitative Feedback & Guidance *</label>
                 <textarea
                   rows={4}
                   required
                   value={feedbackText}
                   onChange={(e) => setFeedbackText(e.target.value)}
                   placeholder="Provide constructive guidance on architectural choices, experimental validation, or patent potential..."
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-white leading-relaxed"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 leading-relaxed focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
               </div>
 
-              <div className="p-3 rounded-xl bg-purple-950/30 border border-purple-500/20 text-[11px] text-purple-300">
+              <div className="p-3 rounded-xl bg-purple-50 border border-purple-200 text-[11px] text-purple-800">
                 💡 Submitting this evaluation stores official faculty feedback on the student's project dashboard.
               </div>
 
-              <div className="flex justify-end gap-2 pt-2 border-t border-slate-800">
+              <div className="flex justify-end gap-2 pt-2 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setReviewModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-slate-400 hover:text-white"
+                  className="px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submittingReview}
-                  className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold"
+                  className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold shadow-xs transition-colors"
                 >
                   {submittingReview ? 'Submitting...' : 'Submit Official Review'}
                 </button>

@@ -352,13 +352,13 @@ export default function GlobalPatentHubPage() {
         )}
 
         {/* 5-Stage Search & Methodology Guide */}
-        <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-md space-y-6">
+        <div className="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-6">
           <div className="space-y-1">
-            <h3 className="text-lg font-bold text-amber-400 flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-amber-400" />
+            <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <BookOpen className="w-5 h-5 text-amber-600" />
               How InnoSphere AI Prior-Art Discovery Works
             </h3>
-            <p className="text-xs sm:text-sm text-slate-400">
+            <p className="text-xs sm:text-sm text-slate-500">
               Our 5-stage search methodology combines technical concept extraction, CPC classification mapping, and vector semantic similarity.
             </p>
           </div>
@@ -373,15 +373,15 @@ export default function GlobalPatentHubPage() {
             ].map((stage, idx) => (
               <div
                 key={idx}
-                className="bg-slate-950/80 border border-slate-800 rounded-2xl p-4 space-y-1.5"
+                className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1.5"
               >
-                <span className="font-mono text-xs font-extrabold text-amber-400">
+                <span className="font-mono text-xs font-extrabold text-amber-600">
                   STAGE {stage.num}
                 </span>
-                <h4 className="text-xs font-bold text-white">
+                <h4 className="text-xs font-bold text-slate-900">
                   {stage.title}
                 </h4>
-                <p className="text-[11px] text-slate-400 leading-relaxed">
+                <p className="text-[11px] text-slate-600 leading-relaxed">
                   {stage.desc}
                 </p>
               </div>

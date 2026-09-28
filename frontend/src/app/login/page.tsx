@@ -400,8 +400,8 @@ function LoginFormContent() {
           <div className="space-y-6 relative z-10">
             <Link href="/" className="inline-flex items-center gap-2.5 group">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-500 to-purple-500 p-0.5 shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform">
-                <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-slate-900">
-                  <Sparkles className="h-4 w-4 text-indigo-400 animate-pulse" />
+                <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-white">
+                  <Sparkles className="h-4 w-4 text-indigo-600 animate-pulse" />
                 </div>
               </div>
               <div className="flex items-center gap-1.5">
@@ -779,7 +779,7 @@ function LoginFormContent() {
       {/* FORGOT PASSWORD MODAL                                                     */}
       {/* ========================================================================= */}
       {forgotModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in">
           <div className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">

@@ -116,19 +116,19 @@ export function FloatingAssistant() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-white hover:bg-slate-50 text-slate-800 shadow-lg hover:shadow-xl transition-all border border-slate-200 cursor-pointer text-xs font-semibold"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg hover:shadow-xl hover:shadow-indigo-500/25 hover:-translate-y-0.5 transition-all cursor-pointer text-xs font-semibold border border-indigo-500"
           title="Open AI Research & Innovation Assistant"
           aria-label="Open AI Assistant"
         >
           <div className="relative flex items-center justify-center">
-            <div className="h-6 w-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
-              <Bot className="h-3.5 w-3.5" />
+            <div className="h-6 w-6 rounded-full bg-white text-indigo-600 flex items-center justify-center shadow-xs">
+              <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
             </div>
-            <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-emerald-500 ring-2 ring-white" />
+            <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 ring-2 ring-indigo-600" />
           </div>
-          <span>AI Mentor</span>
+          <span className="tracking-tight">AI Mentor</span>
           {activeProject && (
-            <span className="hidden sm:inline-block text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium truncate max-w-[120px] border border-slate-200">
+            <span className="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full bg-indigo-700/80 text-indigo-100 font-medium truncate max-w-[120px] border border-indigo-500/50">
               {activeProject.domain}
             </span>
           )}
@@ -138,28 +138,29 @@ export function FloatingAssistant() {
       {/* Assistant Modal / Drawer */}
       {isOpen && (
         <div
-          className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col rounded-xl bg-white border border-slate-200 shadow-2xl overflow-hidden transition-all duration-200 animate-in fade-in slide-in-from-bottom-4 max-w-[calc(100vw-2rem)] max-h-[88vh] ${
+          className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col rounded-2xl bg-white border border-slate-200 shadow-2xl overflow-hidden transition-all duration-200 animate-in fade-in slide-in-from-bottom-4 max-w-[calc(100vw-2rem)] max-h-[88vh] ${
             isExpanded
-              ? 'w-[calc(100vw-2rem)] md:w-[680px] h-[80vh]'
-              : 'w-[calc(100vw-2rem)] sm:w-[440px] h-[550px] max-h-[85vh]'
+              ? 'w-[calc(100vw-2rem)] md:w-[700px] h-[82vh]'
+              : 'w-[calc(100vw-2rem)] sm:w-[460px] h-[580px] max-h-[85vh]'
           }`}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 bg-slate-50 border-b border-slate-200 shrink-0">
+          <div className="flex items-center justify-between px-4 py-3.5 bg-slate-50/80 backdrop-blur-sm border-b border-slate-100 shrink-0">
             <div className="flex items-center gap-2.5">
-              <div className="h-7 w-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs">
-                <Bot className="h-4 w-4" />
+              <div className="h-8 w-8 rounded-xl bg-gradient-to-tr from-indigo-600 via-violet-600 to-cyan-500 text-white flex items-center justify-center shadow-sm shadow-indigo-500/20">
+                <Sparkles className="h-4 w-4" />
               </div>
               <div>
                 <h3 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
                   InnoSphere AI Mentor
-                  <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 border border-emerald-200 font-semibold">
-                    Online
+                  <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 font-medium flex items-center gap-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Gemini 2.5 Flash
                   </span>
                 </h3>
                 {activeProject ? (
-                  <p className="text-[10px] text-slate-500 truncate max-w-[200px] sm:max-w-[260px]">
-                    Context: <span className="text-blue-600 font-medium">{activeProject.title}</span>
+                  <p className="text-[10px] text-slate-500 truncate max-w-[200px] sm:max-w-[280px]">
+                    Context: <span className="text-indigo-600 font-medium">{activeProject.title}</span>
                   </p>
                 ) : (
                   <p className="text-[10px] text-slate-500">Global Research & Innovation Mode</p>
@@ -170,7 +171,7 @@ export function FloatingAssistant() {
             <div className="flex items-center gap-1">
               <button
                 onClick={handleResetChat}
-                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 rounded-md transition-colors cursor-pointer"
+                className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-lg transition-colors cursor-pointer"
                 title="Reset Conversation"
                 aria-label="Reset Conversation"
               >
@@ -178,7 +179,7 @@ export function FloatingAssistant() {
               </button>
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 rounded-md transition-colors cursor-pointer"
+                className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-lg transition-colors cursor-pointer"
                 title={isExpanded ? 'Collapse' : 'Expand'}
                 aria-label={isExpanded ? 'Collapse' : 'Expand'}
               >
@@ -186,7 +187,7 @@ export function FloatingAssistant() {
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 rounded-md transition-colors cursor-pointer"
+                className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-lg transition-colors cursor-pointer"
                 title="Close"
                 aria-label="Close"
               >
@@ -196,23 +197,23 @@ export function FloatingAssistant() {
           </div>
 
           {/* Chat Messages Body */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-white">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-slate-50/40">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
                 className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'} group`}
               >
                 {msg.role !== 'user' && (
-                  <div className="h-6 w-6 rounded bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0 mt-0.5">
-                    <Bot className="h-3.5 w-3.5 text-blue-600" />
+                  <div className="h-7 w-7 rounded-xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-center shrink-0 mt-0.5 text-indigo-600">
+                    <Bot className="h-4 w-4" />
                   </div>
                 )}
                 <div className="relative max-w-[85%]">
                   <div
-                    className={`rounded-lg px-3.5 py-2.5 text-xs leading-relaxed ${
+                    className={`rounded-2xl px-4 py-2.5 text-xs leading-relaxed ${
                       msg.role === 'user'
-                        ? 'bg-blue-600 text-white font-medium shadow-xs'
-                        : 'bg-slate-50 border border-slate-200 text-slate-800 shadow-xs'
+                        ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium shadow-sm shadow-indigo-500/10'
+                        : 'bg-white border border-slate-200/80 text-slate-800 shadow-xs'
                     }`}
                   >
                     <div className="whitespace-pre-wrap">{msg.content}</div>
@@ -221,7 +222,7 @@ export function FloatingAssistant() {
                   {msg.role !== 'user' && (
                     <button
                       onClick={() => handleCopy(msg.content, idx)}
-                      className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1 rounded bg-white border border-slate-200 text-slate-500 hover:text-slate-900 transition-opacity shadow-xs cursor-pointer"
+                      className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1 rounded-md bg-white border border-slate-200 text-slate-400 hover:text-slate-700 transition-all shadow-xs cursor-pointer"
                       title="Copy response"
                     >
                       {copiedIndex === idx ? <Check className="h-3 w-3 text-emerald-600" /> : <Copy className="h-3 w-3" />}
@@ -232,23 +233,23 @@ export function FloatingAssistant() {
             ))}
 
             {isLoading && (
-              <div className="flex gap-2 items-center text-xs text-slate-600 bg-slate-50 p-3 rounded-lg w-fit border border-slate-200">
-                <Loader2 className="h-3.5 w-3.5 animate-spin text-blue-600" />
-                <span>Consulting project context and scientific literature...</span>
+              <div className="flex gap-2.5 items-center text-xs text-indigo-900 bg-indigo-50/80 border border-indigo-100 p-3 rounded-xl w-fit shadow-xs animate-in fade-in">
+                <Loader2 className="h-3.5 w-3.5 animate-spin text-indigo-600" />
+                <span className="font-medium">Consulting project context and scientific literature...</span>
               </div>
             )}
             <div ref={messagesEndRef} />
           </div>
 
           {/* Quick Starter Chips */}
-          <div className="px-3 py-2 border-t border-slate-200 bg-slate-50 shrink-0">
-            <div className="flex gap-1.5 overflow-x-auto pb-0.5 no-scrollbar">
+          <div className="px-3.5 py-2 border-t border-slate-100 bg-white shrink-0">
+            <div className="flex gap-1.5 overflow-x-auto pb-1 no-scrollbar">
               {starterPrompts.map((p, i) => (
                 <button
                   key={i}
                   onClick={() => handleSend(p.query)}
                   disabled={isLoading}
-                  className="whitespace-nowrap px-2.5 py-1 rounded-md bg-white hover:bg-slate-100 hover:border-slate-300 border border-slate-200 text-[10.5px] text-slate-700 transition-colors shrink-0 cursor-pointer"
+                  className="whitespace-nowrap px-2.5 py-1 rounded-full bg-slate-50 hover:bg-indigo-50/60 hover:text-indigo-700 hover:border-indigo-200 border border-slate-200/80 text-[11px] text-slate-600 font-medium transition-all shrink-0 cursor-pointer"
                 >
                   {p.label}
                 </button>
@@ -262,7 +263,7 @@ export function FloatingAssistant() {
               e.preventDefault();
               handleSend();
             }}
-            className="p-3 bg-white border-t border-slate-200 flex items-center gap-2 shrink-0"
+            className="p-3 bg-white border-t border-slate-100 flex items-center gap-2 shrink-0"
           >
             <input
               type="text"
@@ -273,12 +274,12 @@ export function FloatingAssistant() {
                   ? `Ask about ${activeProject.title}...`
                   : 'Ask about literature, datasets, tech stack, roadmaps...'
               }
-              className="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              className="flex-1 bg-slate-50/80 border border-slate-200/80 rounded-xl px-3.5 py-2 text-xs text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
             />
             <button
               type="submit"
               disabled={!input.trim() || isLoading}
-              className="h-8 px-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-1 text-xs font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-colors shrink-0 cursor-pointer shadow-xs"
+              className="h-8.5 px-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white flex items-center justify-center gap-1 text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed transition-all shrink-0 cursor-pointer shadow-sm shadow-indigo-500/20"
               aria-label="Send message"
             >
               <Send className="h-3.5 w-3.5" />

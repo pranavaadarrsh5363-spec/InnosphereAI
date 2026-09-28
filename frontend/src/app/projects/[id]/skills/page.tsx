@@ -251,7 +251,7 @@ export default function ProjectSkillsPage() {
         );
       case 'OPTIONAL':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-800 text-slate-400 border border-slate-200">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200">
             OPTIONAL
           </span>
         );
@@ -274,7 +274,7 @@ export default function ProjectSkillsPage() {
       case 'MEDIUM':
         return <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-blue-50 text-blue-700 border border-blue-200">MEDIUM</span>;
       default:
-        return <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-800 text-slate-400">LOW</span>;
+        return <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-slate-600 border border-slate-200">LOW</span>;
     }
   };
 
@@ -285,7 +285,7 @@ export default function ProjectSkillsPage() {
       case 'LOW':
         return <span className="text-[10px] font-mono text-emerald-600 font-bold">Effort: Low</span>;
       default:
-        return <span className="text-[10px] font-mono text-blue-400 font-bold">Effort: Med</span>;
+        return <span className="text-[10px] font-mono text-blue-600 font-bold">Effort: Med</span>;
     }
   };
 
@@ -310,11 +310,11 @@ export default function ProjectSkillsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 text-slate-900 p-6">
-        <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-indigo-600/20 border border-blue-200 mb-4 animate-pulse">
-          <Brain className="h-7 w-7 text-blue-600 animate-spin" />
+        <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-indigo-50 border border-indigo-200 mb-4 animate-pulse">
+          <Brain className="h-7 w-7 text-indigo-600 animate-spin" />
         </div>
-        <h2 className="text-xl font-bold tracking-tight">Analyzing Project Skills & Prerequisites...</h2>
-        <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-md text-center">
+        <h2 className="text-xl font-bold tracking-tight text-slate-900">Analyzing Project Skills & Prerequisites...</h2>
+        <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-md text-center">
           Extracting required technologies, topological dependency chains & personalized learning roadmap
         </p>
       </div>
@@ -324,20 +324,20 @@ export default function ProjectSkillsPage() {
   if (error || !skillsData) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 text-slate-900 p-6">
-        <div className="max-w-md w-full rounded-3xl bg-white border border-slate-200 p-8 text-center space-y-4 shadow-2xl">
+        <div className="max-w-md w-full rounded-3xl bg-white border border-slate-200 p-8 text-center space-y-4 shadow-xl">
           <AlertTriangle className="h-12 w-12 text-amber-600 mx-auto" />
-          <h3 className="text-lg font-bold text-white">Skills Gap Analysis Notice</h3>
-          <p className="text-xs text-slate-300 leading-relaxed">{error || 'Project skill data could not be computed.'}</p>
+          <h3 className="text-lg font-bold text-slate-900">Skills Gap Analysis Notice</h3>
+          <p className="text-xs text-slate-600 leading-relaxed">{error || 'Project skill data could not be computed.'}</p>
           <div className="flex justify-center gap-3 pt-2">
             <button
               onClick={() => loadSkillsData(true)}
-              className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold"
+              className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold shadow-xs cursor-pointer"
             >
               Retry Analysis
             </button>
             <Link
               href="/dashboard"
-              className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold"
+              className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-semibold"
             >
               Back to Dashboard
             </Link>
@@ -354,24 +354,24 @@ export default function ProjectSkillsPage() {
       {/* ------------------------------------------------------------- */}
       {/* 1. TOP HEADER & WORKSPACE BANNER                              */}
       {/* ------------------------------------------------------------- */}
-      <div className="bg-gradient-to-b from-indigo-950/40 via-slate-900/80 to-slate-950 border-b border-slate-200 pt-8 pb-6 px-4 sm:px-6 lg:px-8 shadow-xl">
+      <div className="bg-gradient-to-br from-indigo-50/60 via-white to-slate-50 border-b border-slate-200/80 pt-8 pb-6 px-4 sm:px-6 lg:px-8 shadow-xs">
         <div className="max-w-7xl mx-auto space-y-4">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="space-y-1.5">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-500/10 text-blue-700 border border-blue-200">
-                  <Brain className="h-3.5 w-3.5 text-blue-600" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                  <Brain className="h-3.5 w-3.5 text-indigo-600" />
                   SKILLS & PREREQUISITES GAP MAP
                 </span>
                 <span className="text-xs font-bold text-slate-400">•</span>
-                <span className="text-xs font-mono font-semibold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-200">
+                <span className="text-xs font-mono font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                   {skillsData.domain || 'Engineering Project'}
                 </span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                 {skillsData.project_title}
               </h1>
-              <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 max-w-3xl leading-relaxed">
                 Understand what you need to learn before building your innovation. InnoSphere AI maps your project requirements to the technologies and skills you need, identifies learning gaps, and creates a personalized learning path.
               </p>
             </div>
@@ -380,7 +380,7 @@ export default function ProjectSkillsPage() {
             <div className="flex flex-wrap items-center gap-2.5 shrink-0">
               <button
                 onClick={() => setQuestionnaireModalOpen(true)}
-                className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md shadow-indigo-600/20 flex items-center gap-1.5 transition-all"
+                className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-xs flex items-center gap-1.5 transition-all cursor-pointer"
               >
                 <Sliders className="h-3.5 w-3.5" />
                 <span>My Skill Profile</span>
@@ -389,7 +389,7 @@ export default function ProjectSkillsPage() {
               <button
                 onClick={handleSyncRoadmap}
                 disabled={syncingRoadmap}
-                className="px-3.5 py-2 rounded-xl bg-slate-50 hover:bg-slate-800 border border-slate-200 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-all disabled:opacity-50"
+                className="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-all disabled:opacity-50 cursor-pointer shadow-2xs"
               >
                 <GitPullRequest className={`h-3.5 w-3.5 text-teal-600 ${syncingRoadmap ? 'animate-spin' : ''}`} />
                 <span>Sync Roadmap</span>
@@ -397,20 +397,20 @@ export default function ProjectSkillsPage() {
 
               <button
                 onClick={() => handleOpenExport('markdown')}
-                className="px-3 py-2 rounded-xl bg-slate-50 hover:bg-slate-800 border border-slate-200 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-all"
+                className="px-3 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs"
                 title="Export Learning Plan"
               >
-                <Download className="h-3.5 w-3.5 text-cyan-600" />
+                <Download className="h-3.5 w-3.5 text-indigo-600" />
                 <span>Export Plan</span>
               </button>
 
               <button
                 onClick={() => loadSkillsData(true)}
                 disabled={refreshing}
-                className="p-2 rounded-xl bg-slate-50 hover:bg-slate-800 border border-slate-200 text-slate-400 hover:text-white transition-all"
+                className="p-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-500 hover:text-slate-800 transition-all cursor-pointer shadow-2xs"
                 title="Refresh Analysis"
               >
-                <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin text-blue-600' : ''}`} />
+                <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin text-indigo-600' : ''}`} />
               </button>
             </div>
           </div>
@@ -481,19 +481,19 @@ export default function ProjectSkillsPage() {
                 </div>
 
                 <div className="p-3 rounded-2xl bg-purple-50 border border-purple-200">
-                  <div className="text-[10px] font-bold uppercase text-purple-600">Prereq Required</div>
-                  <div className="text-2xl font-black text-white mt-0.5">{summary.prerequisite_required_count}</div>
-                  <div className="text-[10px] text-slate-400">Learn foundation first</div>
+                  <div className="text-[10px] font-bold uppercase text-purple-700">Prereq Required</div>
+                  <div className="text-2xl font-black text-slate-900 mt-0.5">{summary.prerequisite_required_count}</div>
+                  <div className="text-[10px] text-slate-500">Learn foundation first</div>
                 </div>
               </div>
             </div>
 
             <div className="pt-3 border-t border-slate-200">
               <div className="flex items-center justify-between text-xs font-semibold mb-1.5">
-                <span className="text-slate-300">Composite Readiness</span>
-                <span className="text-blue-600 font-bold">{summary.readiness_percentage}%</span>
+                <span className="text-slate-600">Composite Readiness</span>
+                <span className="text-indigo-600 font-bold">{summary.readiness_percentage}%</span>
               </div>
-              <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
                 <div
                   className="bg-gradient-to-r from-indigo-500 via-teal-400 to-emerald-400 h-full transition-all duration-500"
                   style={{ width: `${summary.readiness_percentage}%` }}
@@ -503,18 +503,18 @@ export default function ProjectSkillsPage() {
           </div>
 
           {/* "Am I Ready to Start?" Panel */}
-          <div className="lg:col-span-2 rounded-3xl bg-white border border-slate-200 p-5 space-y-3.5 shadow-xl flex flex-col justify-between">
+          <div className="lg:col-span-2 rounded-3xl bg-white border border-slate-200/80 p-5 space-y-3.5 shadow-xs flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Target className="h-4 w-4 text-emerald-600" />
-                  <h3 className="text-sm font-bold text-white">Can I Start Building? — Transparent Readiness Guidance</h3>
+                  <h3 className="text-sm font-bold text-slate-900">Can I Start Building? — Transparent Readiness Guidance</h3>
                 </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-blue-700 border border-blue-200 font-bold">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200 font-bold">
                   Guided Milestones
                 </span>
               </div>
-              <p className="text-xs text-slate-300 mt-1 italic">
+              <p className="text-xs text-slate-600 mt-1 italic">
                 &ldquo;{skillsData.am_i_ready.verdict_summary}&rdquo;
               </p>
 
@@ -811,15 +811,15 @@ export default function ProjectSkillsPage() {
         {/* TAB 2: TECHNOLOGY -> SKILL MAP                                */}
         {/* ------------------------------------------------------------- */}
         {activeTab === 'technologies' && (
-          <div className="space-y-4 animate-in fade-in">
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 flex items-center justify-between">
+          <div className="space-y-6 animate-in fade-in">
+            <div className="p-4 rounded-2xl bg-white border border-slate-200/80 flex items-center justify-between shadow-xs">
               <div>
-                <h3 className="text-sm font-bold text-white">Recommended Technology Stack Requirements</h3>
-                <p className="text-xs text-slate-400 mt-0.5">Every technology recommendation in InnoSphere AI is mapped to its exact required skill competencies.</p>
+                <h3 className="text-sm font-bold text-slate-900">Recommended Technology Stack Requirements</h3>
+                <p className="text-xs text-slate-500 mt-0.5">Every technology recommendation in InnoSphere AI is mapped to its exact required skill competencies.</p>
               </div>
               <Link
                 href="/insights"
-                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1"
+                className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-semibold flex items-center gap-1 transition"
               >
                 <span>View Tech Stack Advisor</span>
                 <ExternalLink className="h-3.5 w-3.5" />
@@ -828,25 +828,25 @@ export default function ProjectSkillsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {skillsData.required_technologies.map((tech: any, idx: number) => (
-                <div key={idx} className="p-5 rounded-3xl bg-white border border-slate-200 space-y-3.5">
+                <div key={idx} className="p-5 rounded-3xl bg-white border border-slate-200/80 space-y-3.5 shadow-xs">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Cpu className="h-4 w-4 text-blue-600" />
-                      <h4 className="text-base font-bold text-white font-mono">{tech.technology}</h4>
+                      <Cpu className="h-4 w-4 text-indigo-600" />
+                      <h4 className="text-base font-bold text-slate-900 font-mono">{tech.technology}</h4>
                     </div>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500/10 text-blue-700 border border-blue-200">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
                       {tech.category}
                     </span>
                   </div>
 
-                  <p className="text-xs text-slate-300 leading-relaxed">{tech.description}</p>
+                  <p className="text-xs text-slate-600 leading-relaxed">{tech.description}</p>
 
-                  <div className="space-y-1.5 pt-2 border-t border-slate-200">
-                    <span className="text-[10px] uppercase font-bold text-slate-400">Required Skills to Master:</span>
+                  <div className="space-y-1.5 pt-2 border-t border-slate-100">
+                    <span className="text-[10px] uppercase font-bold text-slate-500">Required Skills to Master:</span>
                     <div className="flex flex-wrap gap-1.5">
                       {tech.required_skills.map((sk: string, i: number) => (
-                        <span key={i} className="text-xs px-2.5 py-1 rounded-xl bg-slate-50 border border-slate-200 text-slate-200 flex items-center gap-1">
-                          <Check className="h-3 w-3 text-blue-600" /> {sk}
+                        <span key={i} className="text-xs px-2.5 py-1 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 flex items-center gap-1 font-medium">
+                          <Check className="h-3 w-3 text-indigo-600" /> {sk}
                         </span>
                       ))}
                     </div>
@@ -862,18 +862,18 @@ export default function ProjectSkillsPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'graph' && (
           <div className="space-y-4 animate-in fade-in">
-            <div className="p-5 rounded-3xl bg-white border border-slate-200 space-y-3">
+            <div className="p-5 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                     <GitPullRequest className="h-4 w-4 text-purple-600" />
                     Topological Skill Dependency Graph
                   </h3>
-                  <p className="text-xs text-slate-400 mt-0.5">
+                  <p className="text-xs text-slate-500 mt-0.5">
                     Skills are organized by dependency depth. Arrows indicate prerequisite chains that unlock advanced project frameworks.
                   </p>
                 </div>
-                <span className="text-xs font-mono text-slate-400">
+                <span className="text-xs font-mono text-slate-500">
                   {skillsData.dependency_graph.nodes.length} Nodes • {skillsData.dependency_graph.edges.length} Dependencies
                 </span>
               </div>
@@ -882,7 +882,7 @@ export default function ProjectSkillsPage() {
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 pt-3">
                 {/* Level 0: Foundations */}
                 <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-200 flex items-center justify-between">
+                  <div className="text-xs font-bold text-slate-700 pb-2 border-b border-slate-200 flex items-center justify-between">
                     <span>Level 0: Foundations</span>
                     <span className="text-[10px] font-mono text-slate-500">Prereq Layer</span>
                   </div>
@@ -891,20 +891,20 @@ export default function ProjectSkillsPage() {
                     .map((node: any) => (
                       <div
                         key={node.id}
-                        className="p-3 rounded-xl bg-white border border-slate-200 hover:border-indigo-500/50 transition-all space-y-1"
+                        className="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs hover:border-indigo-300 transition-all space-y-1"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-white">{node.label}</span>
+                          <span className="text-xs font-bold text-slate-900">{node.label}</span>
                           {getGapStatusBadge(node.gap_status)}
                         </div>
-                        <div className="text-[10px] text-slate-400">{node.category}</div>
+                        <div className="text-[10px] text-slate-500">{node.category}</div>
                       </div>
                     ))}
                 </div>
 
                 {/* Level 1: AI & Data Basics */}
                 <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-200 flex items-center justify-between">
+                  <div className="text-xs font-bold text-slate-700 pb-2 border-b border-slate-200 flex items-center justify-between">
                     <span>Level 1: AI & Data</span>
                     <span className="text-[10px] font-mono text-slate-500">Intermediate</span>
                   </div>
@@ -913,20 +913,20 @@ export default function ProjectSkillsPage() {
                     .map((node: any) => (
                       <div
                         key={node.id}
-                        className="p-3 rounded-xl bg-white border border-slate-200 hover:border-indigo-500/50 transition-all space-y-1"
+                        className="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs hover:border-indigo-300 transition-all space-y-1"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-white">{node.label}</span>
+                          <span className="text-xs font-bold text-slate-900">{node.label}</span>
                           {getGapStatusBadge(node.gap_status)}
                         </div>
-                        <div className="text-[10px] text-slate-400">{node.category}</div>
+                        <div className="text-[10px] text-slate-500">{node.category}</div>
                       </div>
                     ))}
                 </div>
 
                 {/* Level 2: Frameworks */}
                 <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-200 flex items-center justify-between">
+                  <div className="text-xs font-bold text-slate-700 pb-2 border-b border-slate-200 flex items-center justify-between">
                     <span>Level 2: Frameworks</span>
                     <span className="text-[10px] font-mono text-slate-500">Core Tools</span>
                   </div>
@@ -935,20 +935,20 @@ export default function ProjectSkillsPage() {
                     .map((node: any) => (
                       <div
                         key={node.id}
-                        className="p-3 rounded-xl bg-white border border-slate-200 hover:border-indigo-500/50 transition-all space-y-1"
+                        className="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs hover:border-indigo-300 transition-all space-y-1"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-white">{node.label}</span>
+                          <span className="text-xs font-bold text-slate-900">{node.label}</span>
                           {getGapStatusBadge(node.gap_status)}
                         </div>
-                        <div className="text-[10px] text-slate-400">{node.category}</div>
+                        <div className="text-[10px] text-slate-500">{node.category}</div>
                       </div>
                     ))}
                 </div>
 
                 {/* Level 3+: Specialized & Deployment */}
                 <div className="space-y-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                  <div className="text-xs font-bold text-slate-300 pb-2 border-b border-slate-200 flex items-center justify-between">
+                  <div className="text-xs font-bold text-slate-700 pb-2 border-b border-slate-200 flex items-center justify-between">
                     <span>Level 3+: Specialized</span>
                     <span className="text-[10px] font-mono text-slate-500">Project Output</span>
                   </div>
@@ -957,13 +957,13 @@ export default function ProjectSkillsPage() {
                     .map((node: any) => (
                       <div
                         key={node.id}
-                        className="p-3 rounded-xl bg-white border border-slate-200 hover:border-indigo-500/50 transition-all space-y-1"
+                        className="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs hover:border-indigo-300 transition-all space-y-1"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-white">{node.label}</span>
+                          <span className="text-xs font-bold text-slate-900">{node.label}</span>
                           {getGapStatusBadge(node.gap_status)}
                         </div>
-                        <div className="text-[10px] text-slate-400">{node.category}</div>
+                        <div className="text-[10px] text-slate-500">{node.category}</div>
                       </div>
                     ))}
                 </div>
@@ -1044,13 +1044,13 @@ export default function ProjectSkillsPage() {
                                   className="p-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 flex items-start justify-between gap-2 group transition-colors"
                                 >
                                   <div>
-                                    <div className="text-xs font-semibold text-white group-hover:text-blue-700 flex items-center gap-1">
+                                    <div className="text-xs font-semibold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1">
                                       <span>{r.title}</span>
                                       <ExternalLink className="h-3 w-3 opacity-60" />
                                     </div>
-                                    <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-2">{r.why_this_resource}</p>
+                                    <p className="text-[10px] text-slate-500 mt-0.5 line-clamp-2">{r.why_this_resource}</p>
                                   </div>
-                                  <span className="text-[9px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono shrink-0">
+                                  <span className="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 font-mono shrink-0">
                                     {r.source}
                                   </span>
                                 </a>
@@ -1067,7 +1067,7 @@ export default function ProjectSkillsPage() {
                               <Link
                                 key={tIdx}
                                 href={t.action || '#'}
-                                className="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold flex items-center gap-1 transition-colors"
+                                className="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 text-xs font-semibold flex items-center gap-1 transition-colors"
                               >
                                 <span>{t.title}</span>
                                 <ArrowRight className="h-3 w-3" />
@@ -1089,14 +1089,14 @@ export default function ProjectSkillsPage() {
         {/* ------------------------------------------------------------- */}
         {activeTab === 'resources' && (
           <div className="space-y-4 animate-in fade-in">
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 flex items-center justify-between">
+            <div className="p-4 rounded-2xl bg-white border border-slate-200/80 flex items-center justify-between shadow-xs">
               <div>
-                <h3 className="text-sm font-bold text-white">Grounded Open-Access Learning Resources</h3>
-                <p className="text-xs text-slate-400 mt-0.5">Matched from arXiv papers, official documentation, GitHub repositories, and Kaggle open datasets.</p>
+                <h3 className="text-sm font-bold text-slate-900">Grounded Open-Access Learning Resources</h3>
+                <p className="text-xs text-slate-500 mt-0.5">Matched from arXiv papers, official documentation, GitHub repositories, and Kaggle open datasets.</p>
               </div>
               <Link
                 href="/discover"
-                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1"
+                className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-semibold flex items-center gap-1 transition cursor-pointer"
               >
                 <span>Search All Repos</span>
                 <ExternalLink className="h-3.5 w-3.5" />
@@ -1262,14 +1262,14 @@ export default function ProjectSkillsPage() {
             <div className="flex justify-end gap-3 pt-3 border-t border-slate-200">
               <button
                 onClick={() => setQuestionnaireModalOpen(false)}
-                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold"
+                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-semibold cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSaveQuestionnaire}
                 disabled={savingProfile}
-                className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md shadow-indigo-600/20 disabled:opacity-50"
+                className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-xs disabled:opacity-50 cursor-pointer"
               >
                 {savingProfile ? 'Updating Gaps...' : 'Save & Recalculate Gaps'}
               </button>
@@ -1282,14 +1282,14 @@ export default function ProjectSkillsPage() {
       {/* EXPORT LEARNING PLAN MODAL                                    */}
       {/* ------------------------------------------------------------- */}
       {exportModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
           <div className="w-full max-w-3xl bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 max-h-[85vh] flex flex-col justify-between">
             <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <div className="flex items-center gap-2">
-                <Download className="h-5 w-5 text-cyan-600" />
-                <h3 className="text-base font-bold text-white">Export Skills & Learning Plan</h3>
+                <Download className="h-5 w-5 text-indigo-600" />
+                <h3 className="text-base font-bold text-slate-900">Export Skills & Learning Plan</h3>
               </div>
-              <button onClick={() => setExportModalOpen(false)} className="text-slate-400 hover:text-white text-sm">
+              <button onClick={() => setExportModalOpen(false)} className="text-slate-400 hover:text-slate-700 text-sm cursor-pointer">
                 ✕
               </button>
             </div>
@@ -1297,23 +1297,23 @@ export default function ProjectSkillsPage() {
             <div className="flex gap-2 my-3">
               <button
                 onClick={() => handleOpenExport('markdown')}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold ${
-                  exportFormat === 'markdown' ? 'bg-cyan-600 text-white' : 'bg-slate-50 text-slate-400 border border-slate-200'
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold cursor-pointer transition ${
+                  exportFormat === 'markdown' ? 'bg-indigo-600 text-white shadow-xs' : 'bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200'
                 }`}
               >
                 Markdown Format
               </button>
               <button
                 onClick={() => handleOpenExport('json')}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold ${
-                  exportFormat === 'json' ? 'bg-cyan-600 text-white' : 'bg-slate-50 text-slate-400 border border-slate-200'
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold cursor-pointer transition ${
+                  exportFormat === 'json' ? 'bg-indigo-600 text-white shadow-xs' : 'bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200'
                 }`}
               >
                 JSON Payload
               </button>
             </div>
 
-            <div className="my-2 overflow-y-auto bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs font-mono text-slate-200 whitespace-pre-wrap max-h-[48vh]">
+            <div className="my-2 overflow-y-auto bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs font-mono text-slate-800 whitespace-pre-wrap max-h-[48vh] shadow-2xs">
               {exportLoading
                 ? 'Generating export...'
                 : exportFormat === 'markdown'
@@ -1329,14 +1329,14 @@ export default function ProjectSkillsPage() {
                   setCopiedExport(true);
                   setTimeout(() => setCopiedExport(false), 2000);
                 }}
-                className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1.5"
+                className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold flex items-center gap-1.5 cursor-pointer shadow-xs"
               >
                 {copiedExport ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
                 <span>{copiedExport ? 'Copied to Clipboard' : 'Copy Output'}</span>
               </button>
               <button
                 onClick={() => setExportModalOpen(false)}
-                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold"
+                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-semibold cursor-pointer"
               >
                 Close
               </button>
@@ -1349,28 +1349,28 @@ export default function ProjectSkillsPage() {
       {/* ADD EVIDENCE MODAL                                            */}
       {/* ------------------------------------------------------------- */}
       {evidenceModalOpen && evidenceSkillTarget && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
           <div className="w-full max-w-md bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="h-5 w-5 text-emerald-600" />
-                <h3 className="text-base font-bold text-white">Attach Skill Evidence</h3>
+                <h3 className="text-base font-bold text-slate-900">Attach Skill Evidence</h3>
               </div>
-              <button onClick={() => setEvidenceModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
+              <button onClick={() => setEvidenceModalOpen(false)} className="text-slate-400 hover:text-slate-700 cursor-pointer">✕</button>
             </div>
 
             <div className="space-y-3 text-xs">
               <div>
-                <span className="text-slate-400 font-bold">Target Skill:</span>
-                <div className="text-sm font-bold text-white mt-0.5">{evidenceSkillTarget.skill_name}</div>
+                <span className="text-slate-500 font-bold">Target Skill:</span>
+                <div className="text-sm font-bold text-slate-900 mt-0.5">{evidenceSkillTarget.skill_name}</div>
               </div>
 
               <div>
-                <label className="text-slate-400 font-bold block mb-1">Evidence Type</label>
+                <label className="text-slate-500 font-bold block mb-1">Evidence Type</label>
                 <select
                   value={evidenceForm.type}
                   onChange={(e) => setEvidenceForm({ ...evidenceForm, type: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-200 focus:outline-hidden"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-hidden"
                 >
                   <option value="PROJECT_EVIDENCE">Project Implementation / Code</option>
                   <option value="SELF_REPORTED">Course Completion / Certificate</option>
@@ -1379,24 +1379,24 @@ export default function ProjectSkillsPage() {
               </div>
 
               <div>
-                <label className="text-slate-400 font-bold block mb-1">Evidence Title / Reference</label>
+                <label className="text-slate-500 font-bold block mb-1">Evidence Title / Reference</label>
                 <input
                   type="text"
                   placeholder="e.g. GitHub repo link or course certificate"
                   value={evidenceForm.title}
                   onChange={(e) => setEvidenceForm({ ...evidenceForm, title: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-200 focus:outline-hidden"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-hidden"
                 />
               </div>
 
               <div>
-                <label className="text-slate-400 font-bold block mb-1">Description / Notes</label>
+                <label className="text-slate-500 font-bold block mb-1">Description / Notes</label>
                 <textarea
                   rows={3}
                   placeholder="Brief explanation of what was implemented or verified..."
                   value={evidenceForm.description}
                   onChange={(e) => setEvidenceForm({ ...evidenceForm, description: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-200 focus:outline-hidden"
+                  className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-hidden"
                 />
               </div>
             </div>
@@ -1404,13 +1404,13 @@ export default function ProjectSkillsPage() {
             <div className="flex justify-end gap-3 pt-3 border-t border-slate-200">
               <button
                 onClick={() => setEvidenceModalOpen(false)}
-                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold"
+                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-semibold cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 onClick={handleAddEvidence}
-                className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold"
+                className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold cursor-pointer shadow-xs"
               >
                 Save Evidence
               </button>

@@ -123,7 +123,7 @@ export function ResourceCard({
       ];
 
   return (
-    <div className="bg-white rounded-2xl p-5 border border-slate-200 flex flex-col justify-between relative group shadow-xs hover:shadow-md transition-all">
+    <div className="bg-white rounded-2xl p-5 border border-slate-200/80 flex flex-col justify-between relative group shadow-xs hover:shadow-md hover:border-indigo-200/80 hover:-translate-y-0.5 transition-all">
       {toastMessage && (
         <div className="absolute top-3 right-3 z-20 px-3 py-1 bg-emerald-600 text-white text-[11px] font-semibold rounded-lg shadow-lg animate-in fade-in">
           {toastMessage}
@@ -135,19 +135,19 @@ export function ResourceCard({
         <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
           <div className="flex flex-wrap items-center gap-1.5">
             <span
-              className={`flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-semibold border ${sourceInfo.color}`}
+              className={`flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold border ${sourceInfo.color}`}
             >
               <SourceIcon className="h-3 w-3" />
               {resource.source}
             </span>
-            <span className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-100 text-slate-700 border border-slate-200 capitalize">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-slate-100 text-slate-700 border border-slate-200/80 capitalize">
               {resource.resource_type.replace('_', ' ')}
             </span>
-            <span className={`px-2 py-0.5 rounded-md text-[10px] font-medium border ${domainColor.bg} ${domainColor.text} ${domainColor.border}`}>
+            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold border ${domainColor.bg} ${domainColor.text} ${domainColor.border}`}>
               {resource.domain}
             </span>
             {resource.doi && (
-              <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-blue-50 text-blue-700 border border-blue-200" title={`DOI: ${resource.doi}`}>
+              <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-indigo-50 text-indigo-700 border border-indigo-200" title={`DOI: ${resource.doi}`}>
                 DOI
               </span>
             )}
@@ -161,11 +161,11 @@ export function ResourceCard({
           {/* AI Relevance Score Button with breakdown toggle */}
           <button
             onClick={() => setShowBreakdown(!showBreakdown)}
-            className={`flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold border transition-colors cursor-pointer ${
+            className={`flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold border transition-all cursor-pointer ${
               score >= 90
                 ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100'
                 : score >= 80
-                ? 'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100'
+                ? 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100'
                 : 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100'
             }`}
             title="Click to inspect Transparent AI Relevance Breakdown"
@@ -178,75 +178,75 @@ export function ResourceCard({
 
         {/* Transparent Relevance Breakdown Modal/Drawer */}
         {showBreakdown && (
-          <div className="p-3.5 mb-3 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5 text-xs animate-in fade-in">
+          <div className="p-4 mb-3 rounded-2xl bg-slate-50/90 border border-slate-200 space-y-2.5 text-xs animate-in fade-in">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1">
-                <Brain className="h-3 w-3 text-blue-600" />
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                <Brain className="h-3.5 w-3.5 text-indigo-600" />
                 Semantic & Hybrid Score Breakdown
               </span>
               <span className="text-emerald-700 font-bold text-xs">Composite: {score}%</span>
             </div>
 
-            <div className="space-y-1.5 text-[10px]">
+            <div className="space-y-2 text-[10px]">
               <div>
                 <div className="flex justify-between text-slate-600 mb-0.5">
-                  <span className="flex items-center gap-1">🧠 Vector Semantic Similarity</span>
+                  <span className="flex items-center gap-1 font-medium">🧠 Vector Semantic Similarity</span>
                   <span className="text-emerald-700 font-bold">{breakdown.semantic_similarity}%</span>
                 </div>
-                <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                <div className="w-full bg-slate-200/80 h-1.5 rounded-full overflow-hidden">
                   <div className="bg-emerald-500 h-full rounded-full transition-all" style={{ width: `${breakdown.semantic_similarity}%` }} />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between text-slate-600 mb-0.5">
-                  <span className="flex items-center gap-1">🎯 Domain Alignment</span>
-                  <span className="text-blue-700 font-bold">{breakdown.domain_match}%</span>
+                  <span className="flex items-center gap-1 font-medium">🎯 Domain Alignment</span>
+                  <span className="text-indigo-700 font-bold">{breakdown.domain_match}%</span>
                 </div>
-                <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
-                  <div className="bg-blue-600 h-full rounded-full transition-all" style={{ width: `${breakdown.domain_match}%` }} />
-                </div>
-              </div>
-
-              <div>
-                <div className="flex justify-between text-slate-600 mb-0.5">
-                  <span className="flex items-center gap-1">⚙️ Technology Stack Match</span>
-                  <span className="text-purple-700 font-bold">{breakdown.technology_match}%</span>
-                </div>
-                <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
-                  <div className="bg-purple-600 h-full rounded-full transition-all" style={{ width: `${breakdown.technology_match}%` }} />
+                <div className="w-full bg-slate-200/80 h-1.5 rounded-full overflow-hidden">
+                  <div className="bg-indigo-600 h-full rounded-full transition-all" style={{ width: `${breakdown.domain_match}%` }} />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between text-slate-600 mb-0.5">
-                  <span className="flex items-center gap-1">🔍 Keyword Lexical Overlap</span>
-                  <span className="text-indigo-700 font-bold">{breakdown.keyword_relevance}%</span>
+                  <span className="flex items-center gap-1 font-medium">⚙️ Technology Stack Match</span>
+                  <span className="text-violet-700 font-bold">{breakdown.technology_match}%</span>
                 </div>
-                <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
-                  <div className="bg-indigo-600 h-full rounded-full transition-all" style={{ width: `${breakdown.keyword_relevance}%` }} />
+                <div className="w-full bg-slate-200/80 h-1.5 rounded-full overflow-hidden">
+                  <div className="bg-violet-600 h-full rounded-full transition-all" style={{ width: `${breakdown.technology_match}%` }} />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between text-slate-600 mb-0.5">
-                  <span className="flex items-center gap-1">🏆 Quality & Provenance Signals</span>
+                  <span className="flex items-center gap-1 font-medium">🔍 Keyword Lexical Overlap</span>
+                  <span className="text-cyan-700 font-bold">{breakdown.keyword_relevance}%</span>
+                </div>
+                <div className="w-full bg-slate-200/80 h-1.5 rounded-full overflow-hidden">
+                  <div className="bg-cyan-600 h-full rounded-full transition-all" style={{ width: `${breakdown.keyword_relevance}%` }} />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between text-slate-600 mb-0.5">
+                  <span className="flex items-center gap-1 font-medium">🏆 Quality & Provenance Signals</span>
                   <span className="text-teal-700 font-bold">{breakdown.quality_signal}%</span>
                 </div>
-                <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                <div className="w-full bg-slate-200/80 h-1.5 rounded-full overflow-hidden">
                   <div className="bg-teal-600 h-full rounded-full transition-all" style={{ width: `${breakdown.quality_signal}%` }} />
                 </div>
               </div>
             </div>
 
-            <p className="text-[9px] text-slate-500 italic pt-1 border-t border-slate-200">
+            <p className="text-[9px] text-slate-500 italic pt-1.5 border-t border-slate-200">
               * Note: Calibrated hybrid relevance index generated from 768-D semantic vector cosine similarity and multi-factor metadata alignment.
             </p>
           </div>
         )}
 
         {/* Title & Description */}
-        <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mb-2 break-words">
+        <h3 className="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors leading-snug mb-2 break-words">
           {resource.title}
         </h3>
         <p className="text-xs text-slate-600 leading-relaxed line-clamp-3 mb-3 break-words">
@@ -287,7 +287,7 @@ export function ResourceCard({
             {resource.technologies.slice(0, 4).map((tech, i) => (
               <span
                 key={i}
-                className="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-[10px] text-slate-700 font-mono"
+                className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200/80 text-[10px] text-slate-700 font-mono"
               >
                 {tech}
               </span>
@@ -299,17 +299,17 @@ export function ResourceCard({
         <div className="mb-4">
           <button
             onClick={() => setShowExplanation(!showExplanation)}
-            className="w-full flex items-center justify-between text-left p-2.5 rounded-xl bg-blue-50/60 border border-blue-100 text-[11px] text-blue-800 hover:bg-blue-50 transition-colors cursor-pointer"
+            className="w-full flex items-center justify-between text-left p-2.5 rounded-xl bg-indigo-50/50 border border-indigo-100/80 text-[11px] text-indigo-900 hover:bg-indigo-50 transition-colors cursor-pointer"
           >
             <span className="flex items-center gap-1.5 font-semibold">
-              <Sparkles className="h-3.5 w-3.5 text-blue-600" />
+              <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
               Why this resource is relevant
             </span>
             {showExplanation ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
           </button>
 
           {showExplanation && (
-            <div className="p-3 mt-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2.5 animate-in fade-in">
+            <div className="p-3.5 mt-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2.5 animate-in fade-in">
               <div className="space-y-1.5">
                 {whyPoints.map((point, pIdx) => (
                   <div key={pIdx} className="flex items-start gap-2">
@@ -320,7 +320,7 @@ export function ResourceCard({
               </div>
 
               <div className="pt-2 border-t border-slate-200 flex items-start gap-2 text-[10px] text-slate-500">
-                <span className="px-1.5 py-0.5 rounded font-bold bg-blue-50 text-blue-700 border border-blue-200 shrink-0">
+                <span className="px-1.5 py-0.5 rounded font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 shrink-0">
                   SOURCE
                 </span>
                 <span>Verified {resource.source} record with {resource.is_open_source ? 'open-access permissions' : 'standard documentation'}.</span>
@@ -339,9 +339,9 @@ export function ResourceCard({
                 type="checkbox"
                 checked={isComparing}
                 onChange={onToggleCompare}
-                className="rounded border-slate-300 text-blue-600 focus:ring-0 h-3.5 w-3.5"
+                className="rounded border-slate-300 text-indigo-600 focus:ring-0 h-3.5 w-3.5"
               />
-              <span>Compare</span>
+              <span className="font-medium">Compare</span>
             </label>
           )}
         </div>
@@ -350,13 +350,13 @@ export function ResourceCard({
           <button
             onClick={handleSave}
             disabled={isSaving}
-            className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
               isSaved
-                ? 'bg-blue-50 border border-blue-200 text-blue-700'
-                : 'bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 hover:text-slate-900'
+                ? 'bg-indigo-50 border border-indigo-200 text-indigo-700'
+                : 'bg-white hover:bg-slate-50 border border-slate-200/80 text-slate-700 hover:text-slate-900 shadow-2xs'
             }`}
           >
-            {isSaved ? <BookmarkCheck className="h-3.5 w-3.5 text-blue-600" /> : <Bookmark className="h-3.5 w-3.5" />}
+            {isSaved ? <BookmarkCheck className="h-3.5 w-3.5 text-indigo-600" /> : <Bookmark className="h-3.5 w-3.5" />}
             <span>{isSaved ? 'Saved' : 'Save'}</span>
           </button>
 
@@ -364,7 +364,7 @@ export function ResourceCard({
             href={resource.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white text-xs font-bold shadow-xs transition-all hover:-translate-y-0.5"
             title="Open Original Source Repository or Paper"
           >
             <span>View Source</span>

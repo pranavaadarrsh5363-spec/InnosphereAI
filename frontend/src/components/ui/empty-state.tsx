@@ -24,20 +24,20 @@ export function EmptyState({
   badge,
 }: EmptyStateProps) {
   return (
-    <div className="glass-panel rounded-3xl p-8 sm:p-12 text-center max-w-lg mx-auto border border-slate-800 space-y-4 animate-in fade-in">
-      <div className="h-14 w-14 rounded-2xl bg-indigo-600/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mx-auto shadow-inner">
-        <Icon className="h-7 w-7 text-indigo-400" />
+    <div className="bg-white rounded-3xl p-8 sm:p-12 text-center max-w-lg mx-auto border border-slate-200/80 shadow-xs space-y-4 animate-in fade-in">
+      <div className="h-14 w-14 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center mx-auto shadow-xs">
+        <Icon className="h-7 w-7 text-indigo-600" />
       </div>
 
       {badge && (
-        <span className="inline-block text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+        <span className="inline-block text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200/60">
           {badge}
         </span>
       )}
 
       <div className="space-y-1.5">
-        <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">{title}</h3>
-        <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-md mx-auto">
+        <h3 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">{title}</h3>
+        <p className="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-md mx-auto">
           {description}
         </p>
       </div>

@@ -192,17 +192,17 @@ function DiscoverContent() {
     <div className="space-y-6">
       {/* Compare Floating Bar */}
       {selectedForCompare.length > 0 && (
-        <div className="fixed bottom-6 right-6 z-40 bg-slate-900/95 border border-indigo-500/50 shadow-2xl rounded-2xl p-4 flex items-center gap-4 backdrop-blur animate-in fade-in slide-in-from-bottom-4">
+        <div className="fixed bottom-6 right-6 z-40 bg-white/95 border border-indigo-200/90 shadow-xl rounded-2xl p-4 flex items-center gap-4 backdrop-blur animate-in fade-in slide-in-from-bottom-4">
           <div className="flex items-center gap-2">
-            <Scale className="h-5 w-5 text-indigo-400" />
-            <span className="text-sm font-semibold text-white">
+            <Scale className="h-5 w-5 text-indigo-600" />
+            <span className="text-sm font-semibold text-slate-900">
               {selectedForCompare.length} resource{selectedForCompare.length > 1 ? 's' : ''} selected
             </span>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setSelectedForCompare([])}
-              className="px-3 py-1.5 text-xs text-slate-400 hover:text-white transition-colors"
+              className="px-3 py-1.5 text-xs text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
             >
               Clear
             </button>
