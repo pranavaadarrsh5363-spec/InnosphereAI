@@ -85,7 +85,7 @@ export function FloatingAssistant() {
         {
           role: 'assistant',
           content:
-            "⚠️ I couldn't reach the AI backend service right now. Please ensure your backend is running at `http://localhost:8000`.",
+            "⚠️ I couldn't reach the AI backend service right now. Please ensure your backend service is online and accessible.",
         },
       ]);
     } finally {

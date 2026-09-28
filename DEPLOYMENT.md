@@ -52,7 +52,7 @@ This guide provides step-by-step instructions for deploying the **InnoSphere AI*
    * **Framework Preset:** Next.js
    * **Root Directory:** `frontend`
 4. Add Environment Variable:
-   * `NEXT_PUBLIC_API_URL`: `https://your-backend-api.onrender.com/api/v1`
+   * `NEXT_PUBLIC_API_URL`: `https://innosphereai-backend.onrender.com/api/v1`
 5. Click **Deploy**. Vercel will build and distribute your Next.js application across global edge nodes.
 
 ---
@@ -63,11 +63,11 @@ Once deployed, verify your live services:
 
 ```bash
 # 1. Check Backend Health
-curl https://your-backend-api.onrender.com/health
+curl https://innosphereai-backend.onrender.com/health
 
 # Response:
-# {"status":"healthy","database":"connected","ai_engine":"ready"}
+# {"status":"healthy","version":"1.0.0","environment":"production"}
 
 # 2. Check OpenAPI Docs
-# Visit https://your-backend-api.onrender.com/docs
+# Visit https://innosphereai-backend.onrender.com/docs
 ```
