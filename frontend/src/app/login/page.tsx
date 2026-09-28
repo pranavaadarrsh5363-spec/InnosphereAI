@@ -9,7 +9,7 @@ import {
   Mail,
   ArrowRight,
   GraduationCap,
-  User,
+  Award,
   ShieldCheck,
   Loader2,
   Eye,
@@ -17,26 +17,90 @@ import {
   CheckCircle2,
   AlertCircle,
   Atom,
-  Cpu,
-  Scale,
   FlaskConical,
+  Scale,
   Compass,
   KeyRound,
   X,
-  Send,
-  HelpCircle,
+  Check,
+  Zap,
 } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
 
+type RoleKey = 'student' | 'mentor' | 'admin';
+
+interface RoleConfig {
+  id: RoleKey;
+  title: string;
+  badge: string;
+  icon: React.ElementType;
+  description: string;
+  defaultEmail: string;
+  defaultPassword: string;
+  targetPath: string;
+  accentColor: string;
+  borderColor: string;
+  bgLight: string;
+  activeBorder: string;
+  activeBg: string;
+}
+
+const ROLES: RoleConfig[] = [
+  {
+    id: 'student',
+    title: 'Student Innovator',
+    badge: 'Student Portal',
+    icon: GraduationCap,
+    description: 'Build, validate, and discover resources for your research projects',
+    defaultEmail: 'innovator@student.edu',
+    defaultPassword: 'password123',
+    targetPath: '/dashboard',
+    accentColor: 'text-indigo-400',
+    borderColor: 'border-slate-800 hover:border-indigo-500/50',
+    bgLight: 'bg-slate-900/60',
+    activeBorder: 'border-indigo-500 ring-2 ring-indigo-500/30 shadow-indigo-500/10 shadow-lg',
+    activeBg: 'bg-indigo-950/40',
+  },
+  {
+    id: 'mentor',
+    title: 'Faculty Mentor',
+    badge: 'Mentor Hub',
+    icon: Award,
+    description: 'Guide students, evaluate milestones, and provide rubric feedback',
+    defaultEmail: 'mentor@university.edu',
+    defaultPassword: 'password123',
+    targetPath: '/mentor',
+    accentColor: 'text-purple-400',
+    borderColor: 'border-slate-800 hover:border-purple-500/50',
+    bgLight: 'bg-slate-900/60',
+    activeBorder: 'border-purple-500 ring-2 ring-purple-500/30 shadow-purple-500/10 shadow-lg',
+    activeBg: 'bg-purple-950/40',
+  },
+  {
+    id: 'admin',
+    title: 'Platform Admin',
+    badge: 'Admin Console',
+    icon: ShieldCheck,
+    description: 'Manage platform governance, system metrics, and innovation analytics',
+    defaultEmail: 'admin@innosphere.ai',
+    defaultPassword: 'admin123',
+    targetPath: '/analytics',
+    accentColor: 'text-blue-400',
+    borderColor: 'border-slate-800 hover:border-blue-500/50',
+    bgLight: 'bg-slate-900/60',
+    activeBorder: 'border-blue-500 ring-2 ring-blue-500/30 shadow-blue-500/10 shadow-lg',
+    activeBg: 'bg-blue-950/40',
+  },
+];
+
 function getSafeRedirectUrl(rawRedirect: string | null, userRole?: string): string {
   if (!rawRedirect) {
-    if (userRole === 'mentor' || userRole === 'faculty') return '/mentor';
+    if (userRole === 'mentor') return '/mentor';
     if (userRole === 'admin') return '/analytics';
     return '/dashboard';
   }
 
   // Security: Prevent Open Redirect Vulnerabilities
-  // Must start with single '/', cannot start with '//', '/\\', or contain protocols ('http:', 'https:', 'javascript:')
   if (
     rawRedirect.startsWith('/') &&
     !rawRedirect.startsWith('//') &&
@@ -46,7 +110,7 @@ function getSafeRedirectUrl(rawRedirect: string | null, userRole?: string): stri
     return rawRedirect;
   }
 
-  return userRole === 'mentor' || userRole === 'faculty'
+  return userRole === 'mentor'
     ? '/mentor'
     : userRole === 'admin'
     ? '/analytics'
@@ -57,8 +121,13 @@ function LoginFormContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const rawRedirect = searchParams?.get('redirect') || null;
+  const initialRoleParam = (searchParams?.get('role') as RoleKey) || 'student';
 
   const { user, login, googleLogin, forgotPassword, demoLogin, isLoading } = useAuth();
+
+  const [selectedRole, setSelectedRole] = useState<RoleKey>(
+    ['student', 'mentor', 'admin'].includes(initialRoleParam) ? initialRoleParam : 'student'
+  );
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -72,7 +141,7 @@ function LoginFormContent() {
   // Global Auth Status
   const [submitting, setSubmitting] = useState(false);
   const [googleSubmitting, setGoogleSubmitting] = useState(false);
-  const [demoSubmitting, setDemoSubmitting] = useState<string | null>(null);
+  const [demoSubmitting, setDemoSubmitting] = useState<RoleKey | null>(null);
   const [authError, setAuthError] = useState<string | null>(null);
   const [authSuccessMsg, setAuthSuccessMsg] = useState<string | null>(null);
 
@@ -81,6 +150,9 @@ function LoginFormContent() {
   const [forgotEmail, setForgotEmail] = useState('');
   const [forgotLoading, setForgotLoading] = useState(false);
   const [forgotFeedback, setForgotFeedback] = useState<string | null>(null);
+
+  // Active Role Configuration
+  const currentRoleConfig = ROLES.find((r) => r.id === selectedRole) || ROLES[0];
 
   // Authenticated user detection: Redirect if already logged in
   useEffect(() => {
@@ -117,6 +189,26 @@ function LoginFormContent() {
     return isValid;
   };
 
+  const handleRoleSelect = (roleKey: RoleKey) => {
+    setSelectedRole(roleKey);
+    setAuthError(null);
+    setAuthSuccessMsg(null);
+    setEmailError(null);
+    setPasswordError(null);
+  };
+
+  const handleFillCredentials = (roleKey?: RoleKey) => {
+    const target = ROLES.find((r) => r.id === (roleKey || selectedRole)) || ROLES[0];
+    if (roleKey && roleKey !== selectedRole) {
+      setSelectedRole(roleKey);
+    }
+    setEmail(target.defaultEmail);
+    setPassword(target.defaultPassword);
+    setEmailError(null);
+    setPasswordError(null);
+    setAuthError(null);
+  };
+
   const handleStandardLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateInputs()) return;
@@ -127,20 +219,29 @@ function LoginFormContent() {
 
     try {
       const authUser = await login(email.trim(), password, rememberMe);
-      setAuthSuccessMsg(`Welcome back, ${authUser.full_name || 'Innovator'}! Redirecting...`);
+      
+      // Check for role alignment
+      if (authUser.role !== selectedRole) {
+        setAuthSuccessMsg(
+          `Signed in as ${authUser.role.toUpperCase()} (${authUser.full_name || authUser.email}). Redirecting to your assigned workspace...`
+        );
+      } else {
+        setAuthSuccessMsg(`Welcome back, ${authUser.full_name || 'Innovator'}! Redirecting...`);
+      }
+
       const destination = getSafeRedirectUrl(rawRedirect, authUser.role);
       setTimeout(() => {
         router.push(destination);
-      }, 350);
+      }, 400);
     } catch (err: any) {
       if (err.status === 401) {
-        setAuthError('Invalid email or password. Please check your credentials and try again.');
+        setAuthError('Invalid email or password. Please verify your credentials or use the Quick Fill button.');
       } else if (err.status === 429) {
         setAuthError('Too many login attempts. Please wait a few moments and try again.');
       } else if (err.status === 403) {
-        setAuthError('Your account is currently inactive. Please contact the administrator.');
+        setAuthError('Your account is currently inactive. Please contact system administrator.');
       } else if (err.status === 0 || err.message?.includes('connect')) {
-        setAuthError('Unable to connect to InnoSphere AI. Please check your network connection.');
+        setAuthError('Unable to connect to InnoSphere AI backend. Please verify server connectivity.');
       } else {
         setAuthError(err.message || 'Authentication failed. Please verify your details.');
       }
@@ -155,36 +256,39 @@ function LoginFormContent() {
     setAuthSuccessMsg(null);
 
     try {
-      const authUser = await googleLogin({
-        email: email ? email.trim() : 'innovator@student.edu',
-        name: 'Google Verified Student',
-      }, rememberMe);
+      const authUser = await googleLogin(
+        {
+          email: email ? email.trim() : 'innovator@student.edu',
+          name: 'Google Verified Student',
+        },
+        rememberMe
+      );
       setAuthSuccessMsg(`Signed in with Google as ${authUser.full_name}! Redirecting...`);
       const destination = getSafeRedirectUrl(rawRedirect, authUser.role);
       setTimeout(() => {
         router.push(destination);
       }, 350);
     } catch (err: any) {
-      setAuthError('Google Sign-In failed. Please try again or use standard email login.');
+      setAuthError('Google Sign-In failed. Please try again or use standard credentials.');
     } finally {
       setGoogleSubmitting(false);
     }
   };
 
-  const handleDemoPersona = async (role: 'student' | 'mentor' | 'admin') => {
-    setDemoSubmitting(role);
+  const handleQuickDemoLogin = async (roleKey: RoleKey) => {
+    setDemoSubmitting(roleKey);
     setAuthError(null);
     setAuthSuccessMsg(null);
 
     try {
-      const authUser = await demoLogin(role);
-      setAuthSuccessMsg(`Logged in as ${role.toUpperCase()} Persona (${authUser.full_name})!`);
-      const destination = getSafeRedirectUrl(rawRedirect, role);
+      const authUser = await demoLogin(roleKey);
+      setAuthSuccessMsg(`Authenticated as ${roleKey.toUpperCase()} (${authUser.full_name})! Redirecting...`);
+      const destination = getSafeRedirectUrl(rawRedirect, roleKey);
       setTimeout(() => {
         router.push(destination);
       }, 300);
     } catch (err: any) {
-      setAuthError(`Failed to authenticate as demo ${role}.`);
+      setAuthError(`Failed to authenticate as ${roleKey}. Please check backend connection.`);
     } finally {
       setDemoSubmitting(null);
     }
@@ -216,9 +320,9 @@ function LoginFormContent() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex items-center justify-center p-4 sm:p-6 lg:p-10">
-      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden min-h-[640px]">
+      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden min-h-[680px]">
         {/* ========================================================================= */}
-        {/* LEFT PANEL: Branding, Value Proposition, Innovation Graph Illustration   */}
+        {/* LEFT PANEL: Branding, Value Proposition, Innovation Graph Highlights      */}
         {/* ========================================================================= */}
         <div className="lg:col-span-5 bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 text-white p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800">
           {/* Subtle Ambient Glows */}
@@ -245,13 +349,13 @@ function LoginFormContent() {
             {/* Headline & Description */}
             <div className="space-y-2.5 pt-2">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                <Atom className="w-3.5 h-3.5 text-indigo-400" /> AI Innovation Platform
+                <Atom className="w-3.5 h-3.5 text-indigo-400" /> Dedicated Role-Based Access
               </span>
               <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
-                Transform Ideas Into Innovation
+                Empowering Student Innovation
               </h1>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Discover resources, explore research, validate ideas, and turn student innovation into real technology solutions.
+                Seamless role-based workspace tailored for student innovators, research faculty mentors, and academic administrators.
               </p>
             </div>
 
@@ -261,7 +365,7 @@ function LoginFormContent() {
                 {
                   icon: Compass,
                   title: 'Intelligent Resource Discovery',
-                  desc: 'Semantic AI search across datasets, papers, and hardware.',
+                  desc: 'Semantic AI search across papers, datasets, and hardware sensors.',
                   color: 'text-cyan-400',
                 },
                 {
@@ -302,24 +406,24 @@ function LoginFormContent() {
           {/* Bottom Trust Badge */}
           <div className="pt-6 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between relative z-10">
             <span className="flex items-center gap-1 text-slate-400">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> PBKDF2 Encrypted & RBAC
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> PBKDF2 Encrypted & Role-Based RBAC
             </span>
             <span>v1.0.0</span>
           </div>
         </div>
 
         {/* ========================================================================= */}
-        {/* RIGHT PANEL: Welcome Back, Login Form, Google OAuth, 1-Click Personas    */}
+        {/* RIGHT PANEL: Role Selection, Credentials Form, 1-Click Fast Fill          */}
         {/* ========================================================================= */}
-        <div className="lg:col-span-7 p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6">
+        <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
           <div className="space-y-6 max-w-lg mx-auto w-full">
             {/* Header */}
             <div className="space-y-1">
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                Welcome Back
+                Welcome to InnoSphere AI
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-                Sign in to continue your innovation journey.
+                Select your account type and sign in to access your designated workspace.
               </p>
             </div>
 
@@ -339,47 +443,88 @@ function LoginFormContent() {
               </div>
             )}
 
-            {/* 1-Click Evaluator Personas (Competition Evaluation Feature) */}
-            <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5" /> 1-Click Evaluator Personas
-                </span>
-                <span className="text-[10px] text-slate-400">Zero Password Needed</span>
-              </div>
+            {/* ===================================================================== */}
+            {/* 3-CARD ROLE SELECTION SECTION                                          */}
+            {/* ===================================================================== */}
+            <div className="space-y-2">
+              <label className="text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                <span>Select Account Type</span>
+                <span className="text-[10px] text-slate-400 font-normal">Choose your platform role</span>
+              </label>
 
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                {ROLES.map((r) => {
+                  const Icon = r.icon;
+                  const isSelected = selectedRole === r.id;
+                  return (
+                    <button
+                      key={r.id}
+                      type="button"
+                      onClick={() => handleRoleSelect(r.id)}
+                      className={`p-3 rounded-2xl border text-left transition-all relative flex flex-col justify-between ${
+                        isSelected
+                          ? `${r.activeBorder} ${r.activeBg}`
+                          : `${r.borderColor} ${r.bgLight} hover:bg-slate-100 dark:hover:bg-slate-800/60`
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <div
+                          className={`p-1.5 rounded-xl ${
+                            isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-300'
+                          }`}
+                        >
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        {isSelected && (
+                          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-600 text-white shadow-xs">
+                            <Check className="w-3 h-3" />
+                          </span>
+                        )}
+                      </div>
+                      <div>
+                        <span className="text-xs font-bold block text-slate-900 dark:text-white">
+                          {r.title}
+                        </span>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-2 mt-0.5 leading-tight">
+                          {r.description}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Quick Test Credential Bar */}
+            <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-2.5">
+              <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+                <Zap className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                <span>
+                  Testing as <strong>{currentRoleConfig.title}</strong>?
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5 w-full sm:w-auto">
                 <button
                   type="button"
-                  disabled={submitting || !!demoSubmitting || googleSubmitting}
-                  onClick={() => handleDemoPersona('student')}
-                  className="p-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200 dark:border-indigo-800/60 text-xs font-bold text-indigo-700 dark:text-indigo-300 text-center transition-all disabled:opacity-50"
-                  title="Log in as Student Innovator"
+                  onClick={() => handleFillCredentials(selectedRole)}
+                  className="flex-1 sm:flex-none px-2.5 py-1 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 text-[11px] font-semibold transition-colors"
                 >
-                  {demoSubmitting === 'student' ? 'Logging in...' : '🎓 Student'}
+                  Fill Credentials
                 </button>
                 <button
                   type="button"
                   disabled={submitting || !!demoSubmitting || googleSubmitting}
-                  onClick={() => handleDemoPersona('mentor')}
-                  className="p-2 rounded-xl bg-purple-50 dark:bg-purple-950/40 hover:bg-purple-100 dark:hover:bg-purple-900/60 border border-purple-200 dark:border-purple-800/60 text-xs font-bold text-purple-700 dark:text-purple-300 text-center transition-all disabled:opacity-50"
-                  title="Log in as Faculty / Mentor"
+                  onClick={() => handleQuickDemoLogin(selectedRole)}
+                  className="flex-1 sm:flex-none px-2.5 py-1 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 text-indigo-600 dark:text-indigo-300 text-[11px] font-bold transition-colors disabled:opacity-50"
                 >
-                  {demoSubmitting === 'mentor' ? 'Logging in...' : '🧑‍🏫 Mentor'}
-                </button>
-                <button
-                  type="button"
-                  disabled={submitting || !!demoSubmitting || googleSubmitting}
-                  onClick={() => handleDemoPersona('admin')}
-                  className="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200 dark:border-blue-800/60 text-xs font-bold text-blue-700 dark:text-blue-300 text-center transition-all disabled:opacity-50"
-                  title="Log in as Platform Admin"
-                >
-                  {demoSubmitting === 'admin' ? 'Logging in...' : '🛡️ Admin'}
+                  {demoSubmitting === selectedRole ? 'Signing in...' : '1-Click Sign In'}
                 </button>
               </div>
             </div>
 
-            {/* Standard Email/Password Form */}
+            {/* ===================================================================== */}
+            {/* STANDARD CREDENTIALS FORM                                              */}
+            {/* ===================================================================== */}
             <form onSubmit={handleStandardLogin} className="space-y-4 text-xs" noValidate>
               {/* Email Field */}
               <div className="space-y-1.5">
@@ -387,7 +532,7 @@ function LoginFormContent() {
                   htmlFor="login-email"
                   className="font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between"
                 >
-                  <span>Email Address</span>
+                  <span>{currentRoleConfig.title} Email</span>
                   {emailError && <span className="text-[11px] text-red-500 font-normal">{emailError}</span>}
                 </label>
                 <div className="relative">
@@ -404,7 +549,7 @@ function LoginFormContent() {
                       setEmail(e.target.value);
                       if (emailError) setEmailError(null);
                     }}
-                    placeholder="name@university.edu"
+                    placeholder={currentRoleConfig.defaultEmail}
                     className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border ${
                       emailError
                         ? 'border-red-500 focus:ring-red-500'
@@ -487,11 +632,11 @@ function LoginFormContent() {
                 {submitting ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Signing in...</span>
+                    <span>Signing in as {currentRoleConfig.title}...</span>
                   </>
                 ) : (
                   <>
-                    <span>Sign In</span>
+                    <span>Sign In as {currentRoleConfig.title}</span>
                     <ArrowRight className="w-4 h-4" />
                   </>
                 )}
@@ -559,7 +704,7 @@ function LoginFormContent() {
 
           {/* Minimal Footer */}
           <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 text-center text-[11px] text-slate-400">
-            © 2026 InnoSphere AI. Built for Student Innovators & Researchers.
+            © 2026 InnoSphere AI. Built for Student Innovators, Mentors & Administrators.
           </div>
         </div>
       </div>

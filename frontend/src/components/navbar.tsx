@@ -38,7 +38,7 @@ import { ProjectSwitcher } from '@/components/project-switcher';
 export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, logout, demoLogin } = useAuth();
+  const { user, logout } = useAuth();
   const { activeProject } = useProject();
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
@@ -269,55 +269,22 @@ export function Navbar() {
                       )}
                     </div>
 
-                    {/* 1-Click Evaluation Persona Switcher */}
-                    <div className="p-1.5 border-b border-slate-800">
-                      <p className="text-[9px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
-                        Switch Role
-                      </p>
-                      <div className="grid grid-cols-3 gap-1">
-                        <button
-                          onClick={async () => {
-                            await demoLogin('student');
-                            setUserDropdownOpen(false);
-                            router.push('/dashboard');
-                          }}
-                          className={`px-1.5 py-1 rounded text-[10px] font-medium text-center transition-colors ${
-                            user.role === 'student'
-                              ? 'bg-indigo-600 text-white'
-                              : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                          }`}
-                        >
-                          Student
-                        </button>
-                        <button
-                          onClick={async () => {
-                            await demoLogin('mentor');
-                            setUserDropdownOpen(false);
-                            router.push('/mentor');
-                          }}
-                          className={`px-1.5 py-1 rounded text-[10px] font-medium text-center transition-colors ${
-                            user.role === 'mentor'
-                              ? 'bg-purple-600 text-white'
-                              : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                          }`}
-                        >
-                          Mentor
-                        </button>
-                        <button
-                          onClick={async () => {
-                            await demoLogin('admin');
-                            setUserDropdownOpen(false);
-                            router.push('/analytics');
-                          }}
-                          className={`px-1.5 py-1 rounded text-[10px] font-medium text-center transition-colors ${
-                            user.role === 'admin'
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                          }`}
-                        >
-                          Admin
-                        </button>
-                      </div>
+                    {/* Informational Role Badge (Authoritative Role Display) */}
+                    <div className="p-2 border-b border-slate-800 flex items-center justify-between">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                        Current Role
+                      </span>
+                      <span
+                        className={`px-2 py-0.5 rounded text-[10px] font-bold capitalize ${
+                          user.role === 'mentor'
+                            ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                            : user.role === 'admin'
+                            ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+                            : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                        }`}
+                      >
+                        {user.role || 'Student'}
+                      </span>
                     </div>
 
                     <div className="pt-1 space-y-0.5">

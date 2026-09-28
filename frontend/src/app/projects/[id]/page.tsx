@@ -586,7 +586,7 @@ export default function ProjectWorkspaceDetailPage() {
             </div>
           ) : (
             <div className="text-center py-10 glass-panel rounded-2xl border border-slate-800">
-              <p className="text-xs text-slate-400">No mentor feedback submitted yet. Switch role to Faculty Mentor in navbar to test scoring.</p>
+              <p className="text-xs text-slate-400">No mentor feedback submitted yet. Sign in as a Faculty Mentor to submit an evaluation.</p>
             </div>
           )}
         </div>

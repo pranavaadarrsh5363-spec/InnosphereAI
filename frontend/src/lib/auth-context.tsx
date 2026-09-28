@@ -54,16 +54,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const userData = await api.getMe();
         setUser(userData);
       } else {
-        // Automatically log in as default demo student for zero-friction evaluation
-        await demoLogin('student');
+        setToken(null);
+        setUser(null);
       }
     } catch (err) {
-      console.warn('Auth auto-refresh error, loading demo student fallback', err);
-      try {
-        await demoLogin('student');
-      } catch (e) {
-        clearToken();
-      }
+      console.warn('Auth auto-refresh error', err);
+      clearToken();
     } finally {
       setIsLoading(false);
     }
